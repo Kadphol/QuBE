@@ -1,0 +1,26 @@
+/\* TEAM \*/
+ Project Lead (Front-end Developer): Kadphol Lenglerdphol
+ Contact: kadphol.len@outlook.co.th
+ From: Thailand
+
+ UI/UX Designer: Thanaporn Yankomut 
+ Contact: 
+ From: Thailand
+
+ Back-end Developer: Worapat Tubtimdee
+ Contact: 
+ From: Thailand
+
+/\* ACKNOWLEDGEMENT \*/
+Advior: Dr.Unchalisa Taetragool
+Contact: unchalisa.tae@mail.kmutt.ac.th
+
+Character: Irin Yooktajarong
+Contact: 
+
+/\* SITE \*/
+ Last update: -
+ Language: Thai
+ Doctype: HTML5
+ IDE: VSCode
+ Technologies: Javascript, React, Node.js, Express, MongoDB
