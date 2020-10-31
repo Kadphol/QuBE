@@ -18,6 +18,10 @@ function App() {
         >
           Learn React
         </a>
+        <br/>
+        <a href="http://127.0.0.1:80/auth/facebook">
+          <button> Login </button>
+        </a>
       </header>
     </div>
   );
