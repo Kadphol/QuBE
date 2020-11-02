@@ -3,10 +3,12 @@ import { Route } from 'react-router-dom'
 
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Home from '../Home';
+import Login from './Login'
 
 import '../../styles/App.css';
 
 function App() {
+  
   return (
     <div className="App">
       <div className="Navigation">
