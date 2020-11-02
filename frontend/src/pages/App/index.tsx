@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from '../../assets/logo.svg';
+import Login from './Login'
 import '../../styles/App.css';
 
 function App() {
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -18,11 +20,8 @@ function App() {
         >
           Learn React
         </a>
-        <br/>
-        <a href="http://127.0.0.1:80/auth/facebook">
-          <button> Login </button>
-        </a>
       </header>
+      {/* <Login/> */}
     </div>
   );
 }
