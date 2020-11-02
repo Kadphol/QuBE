@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Login = () => {
-    state = {
+    const state = {
         loginStatus: false
-    }
+    } 
     return (
         <div>
             <a style={this.state.loginStatus?"display:none":""} href="http://127.0.0.1:80/auth/facebook">
