@@ -1,16 +1,64 @@
 import React from 'react';
+import https from 'https'
+import axios, {AxiosRequestConfig, AxiosInstance} from 'axios'
 
-const Login = () => {
-    const state = {
-        loginStatus: false
-    } 
-    return (
-        <div>
-            <a style={this.state.loginStatus?"display:none":""} href="http://127.0.0.1:80/auth/facebook">
-                <button> Login </button>
-            </a>
-        </div>
-    )
+interface userProps {
+    //props
 }
 
-export default Login;
+interface userState {
+    loginStatus: boolean
+    name?: string
+}
+
+const config: AxiosRequestConfig = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true
+  }
+  
+const instance: AxiosInstance = axios.create(config)
+
+class LoginButton extends React.Component<userProps, userState> {
+
+    constructor(props: userState) {
+        super(props);
+        this.state = {
+            loginStatus: false
+        };
+    }
+
+    componentDidMount(): void {
+        console.log("Mount")
+        instance.get('http://localhost/')
+            .then(res => {
+                console.log(res.data)
+                const data = res.data;
+                this.setState({
+                    loginStatus: data.status,
+                    name: data.name,
+                });
+            })
+    }
+
+    Login = (): void => {
+        window.location.href = "http://localhost/login"
+    }
+
+    Logout = (): void => {
+        window.location.href = "http://localhost/logout"
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <button onClick={this.state.loginStatus?this.Logout:this.Login} className="btn btn-primary"> {this.state.loginStatus ? "Logout" : "Login"} </button>
+                <br />
+                <a>{this.state.loginStatus ? "Welcome" : ""} {this.state.name}</a>
+            </React.Fragment>
+        );
+    }
+}
+
+export default LoginButton;
