@@ -20,7 +20,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
     clientID: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
-    callbackURL: "http://localhost/auth/facebook/callback"
+    callbackURL: "http://localhost/login/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     data = new users({
@@ -39,22 +39,44 @@ app.use(cookieParser())
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }))
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+  if ('OPTIONS' == req.method) {
+       res.send(200);
+   } else {
+       next();
+   }
+  });
+
 app.get('/', (req, res) => {
-  let text
-  if (req.user) text = "You are already logged in"
-  else text = "You have not been logged in"
-  res.send(text)
+  let status 
+  let name 
+  if(req.isAuthenticated()){
+     status = true
+     name = req.user.displayName
+  }
+  else {
+    status = false
+    name = null
+  }
+  
+  res.send({status,name})
 })
-app.get('/auth/facebook', passport.authenticate('facebook'))
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '/' }))
+
+app.get('/login', passport.authenticate('facebook'))
+app.get('/login/callback',
+  passport.authenticate('facebook', { successRedirect: 'http://localhost:3000',
+                                      failureRedirect: 'http://localhost:3000' }))
 
 app.get('/logout',(req, res) => {
   console.log(req.session)
   req.session.destroy(function(err){ 
   console.log(req.session)
-    res.redirect('/')
+    res.redirect('http://localhost:3000')
   }) 
 })
 
