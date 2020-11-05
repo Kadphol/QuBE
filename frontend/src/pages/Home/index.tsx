@@ -1,8 +1,9 @@
 import React from 'react';
 import LoginButton from '../App/Login';
+import IntroButton from '../../components/IntroButton';
 import './Home.css';
 
-import logo from '../../assets/logo.png';
+import logoName from '../../assets/intro-logo-name.png';
 import name from '../../assets/name.png';
 import qubie from '../../assets/Qubie-intro.svg';
 
@@ -10,20 +11,24 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
-            <div className="intro-1 col-md-7">
+            <div className="intro-1 col-lg-7">
               <img src={qubie} alt="qubie" />
             </div>
-            <div className="intro-2 col-md-4">
-              <img src={logo} alt="QuBE Logo" className="justify-content-center"/>
-              <img src={name} alt="QuBE full name" />
-              <p>
-                  เราคือ สื่อการเรียนรู้ที่จะช่วยให้ทุกคนสามารถ
-                เข้าใจในควอนตัมคอมพิวเตอร์ได้ง่ายขึ้นผ่าน สื่อที่ทุกคนจะได้รับความสนุกสอดแทรกกับ
-                เนื้อหาความรู้เพื่อรับการเข้ามาของ
-                ควอนตัมคอมพิวเตอร์ในอนาคต
-              </p>
+            <div className="intro-2 col-lg-5">
+              <img src={logoName} alt="QuBE Logo" />
+              <div className="d-flex justify-content-center">
+                <p className="text-center">
+                    เราคือ สื่อการเรียนรู้ที่จะช่วยให้ทุกคนสามารถเข้าใจ<br />
+                    ในควอนตัมคอมพิวเตอร์ได้ง่ายขึ้นผ่านสื่อที่ทุกคน <br />
+                    จะได้รับความสนุกสอดแทรกกับเนื้อหาความรู้ <br />
+                  เพื่อรับการเข้ามาของควอนตัมคอมพิวเตอร์ในอนาคต  <br />
+                </p>
+              </div>
+              <div className="d-flex justify-content-center">
+                <IntroButton link="/explore" name="เริ่มต้นการผจญภัย" />
+              </div>
             </div>
           </div>
           <br />
