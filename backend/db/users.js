@@ -10,17 +10,30 @@ const db = mongoose.connection
 const schema = mongoose.Schema
 
 const users_schema = new schema({
-    name: String
-},
-{ 
-    strict: false 
+    id: Number,
+    name: String,
+    image: String,
+    progress: {
+        chaper: {type:Number, default:0},
+        unit: {type:Number, default:0},
+        star: {type:[Number], default:[0,0,0,0,0]},
+        score: {type:Number, default:0}
+    }
 }
 )
 
 const users = module.exports = mongoose.model("users",users_schema)
 
-module.exports.add = function(data,callback){
-    data.save(callback)
+module.exports.addnew = function(data,callback){
+    users.findOne({id:data.id}).exec((err,res)=>{
+        if (!res) {
+            users.create(data)
+        }
+    }   
+)}
+
+module.exports.fetch = function(id,callback){
+    users.findOne({id:id},callback)
 }
 
 module.exports.getAll = function(callback){
