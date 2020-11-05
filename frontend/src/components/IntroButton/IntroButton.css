@@ -1,0 +1,11 @@
+a.btn-primary {
+  font-family: 'Kanit',sans-serif;
+  font-size: medium;
+  background-color: #A29BFE;
+  border-color: #A29BFE;
+  color: white;
+}
+
+a.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  background-color: #6254D2;
+}
