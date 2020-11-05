@@ -1,0 +1,26 @@
+@media (min-width: 1440px) {
+  .home {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+.intro-1 {
+  background-image: url('../../assets/intro-1.png');
+  background-repeat: no-repeat;
+}
+
+.intro-1 img {
+  padding-top: 10vw;
+}
+
+.intro-2 {
+  padding-top: 3vw;
+}
+
+.intro-2 p {
+  font-family: 'Kanit', sans-serif;
+  color: #653C69;
+}
