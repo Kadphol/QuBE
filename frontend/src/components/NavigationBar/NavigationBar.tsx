@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import logo from '../../assets/brand.png';
 
 import './NavigationBar.css';
 
@@ -9,7 +10,7 @@ class NavigationBar extends React.Component {
     return (
       <React.Fragment>
         <Navbar bg="light">
-          <Navbar.Brand href="/">QuBE</Navbar.Brand>
+          <Navbar.Brand href="/"><img src={logo} alt="QuBE logo brand for navbar."/></Navbar.Brand>
           <Navbar.Collapse>
             <Nav className="justify-content-end ml-auto">
               <NavLink exact to="/" className="nav-link">เริ่มต้นกับควอนตัม</NavLink>
