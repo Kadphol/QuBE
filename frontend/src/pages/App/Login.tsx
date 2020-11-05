@@ -1,5 +1,4 @@
 import React from 'react';
-import https from 'https'
 import axios, {AxiosRequestConfig, AxiosInstance} from 'axios'
 
 interface userProps {
@@ -9,6 +8,13 @@ interface userProps {
 interface userState {
     loginStatus: boolean
     name?: string
+    image?: string
+    progress?: {
+        chaper?: number,
+        unit?: number,
+        star?: number[],
+        score?: number
+    }
 }
 
 const config: AxiosRequestConfig = {
@@ -31,14 +37,17 @@ class LoginButton extends React.Component<userProps, userState> {
 
     componentDidMount(): void {
         console.log("Mount")
-        instance.get('http://localhost/')
+        instance.get('http://localhost/fetch')
             .then(res => {
-                console.log(res.data)
-                const data = res.data;
+                if(res.data) {
                 this.setState({
-                    loginStatus: data.status,
-                    name: data.name,
-                });
+                    loginStatus: true,
+                    name: res.data.name,
+                    image: res.data.image,    
+                    progress: res.data.progress
+                }); 
+                console.log(this.state)
+                }
             })
     }
 
@@ -56,6 +65,8 @@ class LoginButton extends React.Component<userProps, userState> {
                 <button onClick={this.state.loginStatus?this.Logout:this.Login} className="btn btn-primary"> {this.state.loginStatus ? "Logout" : "Login"} </button>
                 <br />
                 <a>{this.state.loginStatus ? "Welcome" : ""} {this.state.name}</a>
+                <br/>
+                <img src={this.state.image}/>
             </React.Fragment>
         );
     }
