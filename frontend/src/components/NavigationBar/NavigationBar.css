@@ -1,4 +1,15 @@
-.nav-link { color: #6254D2 !important; font-family: 'Kanit', sans-serif;}
-.nav-link:hover { border-bottom: 3px solid #7BD5F5; background-color: #EEEEEE;}
-.nav-link.active { border-bottom: 3px solid #55CFE6; }
-nav.navbar { padding-top: 0px; padding-bottom: 0px; }
+.nav-link {
+  color: #6254d2 !important;
+  font-family: 'Kanit', sans-serif;
+}
+.nav-link:hover {
+  border-bottom: 3px solid #7bd5f5;
+  background-color: #eeeeee;
+}
+.nav-link.active {
+  border-bottom: 3px solid #55cfe6;
+}
+nav.navbar {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
