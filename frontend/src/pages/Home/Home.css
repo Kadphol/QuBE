@@ -1,8 +1,11 @@
 @media (min-width: 1440px) {
   .home {
-    max-width: 1240px;
+    max-width: 1270px;
     margin-left: auto;
     margin-right: auto;
+  }
+  .row {
+    min-height: 1024px;
   }
 }
 
@@ -13,11 +16,16 @@
 }
 
 .intro-1 img {
-  padding-top: 10rem;
+  padding-top: 12rem;
 }
 
 .intro-2 p {
   font-family: 'Kanit', sans-serif;
   font-size: large;
   color: #653C69;
+}
+
+.wave {
+  background-image: url('../../assets/intro-wave-1.png');
+  background-repeat: no-repeat;
 }
