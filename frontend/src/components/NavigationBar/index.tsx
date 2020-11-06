@@ -3,7 +3,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/brand.png';
 
-import './NavigationBar.css';
+import './NavigationBar.scoped.css';
 
 class NavigationBar extends React.Component {
   render() {
