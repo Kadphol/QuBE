@@ -8,7 +8,7 @@ import './NavigationBar.scoped.css';
 class NavigationBar extends React.Component {
   render() {
     return (
-      <>
+      <div className="Navigation">
         <Navbar bg="light">
           <Navbar.Brand href="/">
             <img src={logo} alt="QuBE logo brand for navbar." />
@@ -30,7 +30,7 @@ class NavigationBar extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-      </>
+      </div>
     );
   }
 }

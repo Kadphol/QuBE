@@ -13,3 +13,8 @@ nav.navbar {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
+.Navigation {
+  margin-left: 100px;
+  margin-right: 100px;
+}

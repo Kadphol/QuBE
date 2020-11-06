@@ -4,7 +4,6 @@ import IntroButton from '../../components/IntroButton';
 import './Home.css';
 
 import logoName from '../../assets/intro-logo-name.png';
-import name from '../../assets/name.png';
 import qubie from '../../assets/Qubie-intro.svg';
 
 class Home extends React.Component {
@@ -31,10 +30,29 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-          <br />
-          <LoginButton />
+          <div className="row justify-content-center">
+            <div className="col-lg-8">
+              <div className="embed-responsive embed-responsive-16by9"> {/*test video*/}
+                <iframe title="video preview" className="embed-responsive-item"
+                frameBorder="0"  
+                src="https://www.youtube.com/embed/C0DPdy98e4c" /> 
+              </div>
+            </div>
+          </div>
+          <div className="wave row">
+            <div className="col-lg-5">
+              <span>
+              เทคโนโลยี  ควอนตัม สามารถทำให้เราสร้างควอนตัมคอมพิวเตอร์
+ที่มีประสิทธิภาพในการประมวลผลเหนือคอมพิวเตอร์ในปัจจุบันได้หลายเท่าตัว
+โดยสามารถนำไปใช้งานในด้านต่างๆ ไม่ว่าจะเป็นการถอดรหัสที่รวดเร็ว 
+การพัฒนา AI ที่มีประสิทธิภาพรวมถึงการพยากรณ์ที่แม่นยำ
+              </span>
+            </div> 
+          </div>
         </div>
+        <LoginButton />
       </div>
+
     );
   }
 }
