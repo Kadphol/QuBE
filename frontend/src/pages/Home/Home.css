@@ -1,31 +1,110 @@
 @media (min-width: 1440px) {
-  .home {
+  .container {
     max-width: 1270px;
     margin-left: auto;
     margin-right: auto;
   }
-  .row {
-    min-height: 1024px;
-  }
 }
 
+h2 {
+  font-family: 'Chonburi', sans-serif;
+  font-size: 40px !important;
+  color: #522158;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-family: 'Chonburi', sans-serif;
+  font-size: 40px !important;
+  color: rgba(255, 255, 255, 0.5);;
+}
+
+.row {
+  min-height: 1024px;
+}
+
+.subrow {
+  max-width: 1440px;
+  min-height: 512px;
+}
+
+.row p {
+  font-family: 'Kanit', sans-serif;
+  font-size: large;
+}
+
+.intro {
+  padding-left: 100px;
+  padding-right: 100px;
+}
 
 .intro-1 {
   background-image: url('../../assets/intro-1.png');
   background-repeat: no-repeat;
 }
 
-.intro-1 img {
-  padding-top: 12rem;
-}
-
 .intro-2 p {
-  font-family: 'Kanit', sans-serif;
-  font-size: large;
   color: #653C69;
 }
 
 .wave {
   background-image: url('../../assets/intro-wave-1.png');
   background-repeat: no-repeat;
+}
+
+.wave p {
+  color: #FFFFFF;
+  font-size: large;
+  padding-top: 20px;
+}
+
+.why {
+  margin-top: 15rem;
+}
+
+.what {
+  margin-top: 7rem;
+}
+
+.feature {
+  background-image: url('../../assets/intro-feature.png');
+  background-repeat: no-repeat;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.feature h1 {
+  font-family: 'Chonburi',sans-serif;
+  color: #C46399;
+  font-size: 50px;
+}
+
+.feature .head {
+  padding-top: 150px;
+}
+
+.feature-box {
+  padding-top: 120px;
+}
+
+.feature-box h2 {
+  font-size: 30px !important;
+}
+
+.feature-challenge {
+  padding-bottom: 150px;
+}
+
+.svg-qubie {
+  animation: animation-qubie 10s infinite;
+}
+
+@keyframes animation-qubie {
+  from, to {
+    transform: translateY(50px) rotate(5deg);
+  }
+
+  50% {
+    transform: translateY(150px) rotate(5deg);
+  }
 }
