@@ -27,19 +27,18 @@ function App() {
   instance.get('http://localhost/fetch')
     .then(res => {
       if (res.data) {
-        setUser({
+        setUser( prevState => ({
           loginStatus: true,
           name: res.data.name,
           image: res.data.image,
-          progress: res.data.progress
-        });
+        }));
       }
     })
 
   return (
     <div className="App">
       <div className="Navigation">
-        <NavigationBar name={user.name} loginStatus={user.loginStatus} image={user.image} />
+        <NavigationBar name={user.name} loginStatus={user.loginStatus} image={user.image}/>
       </div>
       <div>
         <Route exact path="/" component={Home} />

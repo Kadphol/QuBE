@@ -1,15 +1,14 @@
+interface detail {    
+    // progress: number[],
+    // star: number[],
+    highscore: number
+}
+
 export interface Iuser {
     loginStatus: boolean
     name?: string
     image?: string
-    progress?: {
-        chaper?: number,
-        unit?: number,
-        star?: number[],
-        score?: number
+    detail?:{
+        [key: string]: detail
     }
-}
-
-export interface userProps {
-    name: string
 }
