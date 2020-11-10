@@ -1,11 +1,10 @@
 import React from 'react';
-import LoginButton from '../App/Login';
 import IntroButton from '../../components/IntroButton';
 import './Home.css';
 
-import logoName from '../../assets/intro-logo-name.png';
-import {ReactComponent as Qubie} from '../../assets/Qubie-intro.svg';
-import footer from '../../assets/intro-lower.png';
+import logoName from '../../assets/intro/intro-logo-name.png';
+import {ReactComponent as Qubie} from '../../svg/Qubie-intro.svg';
+import footer from '../../assets/intro/intro-lower.png';
 
 class Home extends React.Component {
   render() {
@@ -31,7 +30,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-          <div className="row justify-content-center">
+          <div className="row preview justify-content-center">
             <div className="col-lg-8">
               <div className="embed-responsive embed-responsive-16by9"> {/*test video*/}
                 <iframe title="video preview" className="embed-responsive-item"
