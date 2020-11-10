@@ -1,24 +1,18 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 
-import NavigationBar from '../../components/NavigationBar/NavigationBar';
-import Home from '../Home';
+import NavigationBar from '../../components/NavigationBar';
+import Routes from '../../routing';
 
 import '../../styles/App.css';
 
 function App() {
-  
   return (
     <div className="App">
-      <div className="Navigation">
+      <BrowserRouter>
         <NavigationBar />
-      </div>
-      <div>
-        <Route exact path= "/" component={Home} />
-        <Route path="/explore" />
-        <Route path="/playground" />
-        <Route path="/challenge" />
-      </div> 
+        <Routes />
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,64 +1,70 @@
 import React from 'react';
-import https from 'https'
-import axios, {AxiosRequestConfig, AxiosInstance} from 'axios'
+import https from 'https';
+import axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
 
 interface userProps {
-    //props
+  // props
 }
 
 interface userState {
-    loginStatus: boolean
-    name?: string
+  loginStatus: boolean;
+  name?: string;
 }
 
 const config: AxiosRequestConfig = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    withCredentials: true
-  }
-  
-const instance: AxiosInstance = axios.create(config)
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  withCredentials: true,
+};
+
+const instance: AxiosInstance = axios.create(config);
 
 class LoginButton extends React.Component<userProps, userState> {
+  constructor(props: userState) {
+    super(props);
+    this.state = {
+      loginStatus: false,
+    };
+  }
 
-    constructor(props: userState) {
-        super(props);
-        this.state = {
-            loginStatus: false
-        };
-    }
+  componentDidMount(): void {
+    console.log('Mount');
+    instance.get('http://localhost/').then((res) => {
+      console.log(res.data);
+      const { data } = res;
+      this.setState({
+        loginStatus: data.status,
+        name: data.name,
+      });
+    });
+  }
 
-    componentDidMount(): void {
-        console.log("Mount")
-        instance.get('http://localhost/')
-            .then(res => {
-                console.log(res.data)
-                const data = res.data;
-                this.setState({
-                    loginStatus: data.status,
-                    name: data.name,
-                });
-            })
-    }
+  Login = (): void => {
+    window.location.href = 'http://localhost/login';
+  };
 
-    Login = (): void => {
-        window.location.href = "http://localhost/login"
-    }
+  Logout = (): void => {
+    window.location.href = 'http://localhost/logout';
+  };
 
-    Logout = (): void => {
-        window.location.href = "http://localhost/logout"
-    }
-
-    render() {
-        return (
-            <React.Fragment>
-                <button onClick={this.state.loginStatus?this.Logout:this.Login} className="btn btn-primary"> {this.state.loginStatus ? "Logout" : "Login"} </button>
-                <br />
-                <a>{this.state.loginStatus ? "Welcome" : ""} {this.state.name}</a>
-            </React.Fragment>
-        );
-    }
+  render() {
+    return (
+      <>
+        <button
+          onClick={this.state.loginStatus ? this.Logout : this.Login}
+          className="btn btn-primary"
+        >
+          {' '}
+          {this.state.loginStatus ? 'Logout' : 'Login'}{' '}
+        </button>
+        <br />
+        <a>
+          {this.state.loginStatus ? 'Welcome' : ''} {this.state.name}
+        </a>
+      </>
+    );
+  }
 }
 
 export default LoginButton;
