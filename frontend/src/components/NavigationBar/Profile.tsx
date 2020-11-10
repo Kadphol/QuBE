@@ -15,7 +15,7 @@ class Profile extends React.Component<Iuser> {
     return (
       <React.Fragment>
             <NavDropdown className="ml-auto" title={profileIcon} id="basic-nav-dropdown">
-                <a>{this.props.name}</a>
+                <NavDropdown.Item className="ml-auto" >{this.props.name}</NavDropdown.Item>
                 <NavDropdown.Item className="ml-auto" href="http://localhost:80/logout">Logout</NavDropdown.Item>
             </NavDropdown>  
       </React.Fragment>
