@@ -11,14 +11,23 @@ const schema = mongoose.Schema
 
 const users_schema = new schema({
     id: Number,
+    type: "Facebook" | "Guest",
     name: String,
     image: String,
-    progress: {
-        chaper: {type:Number, default:0},
-        unit: {type:Number, default:0},
+    detail: {
+        progress: {type:[Number], default:[0,0]},
         star: {type:[Number], default:[0,0,0,0,0]},
-        score: {type:Number, default:0}
+        highscore: {type:Number, default:0}
+    },
+    survey: {
+        pre:{
+            type:{type:Boolean, default:false}
+        },
+        post:{
+            comment:{type:String, default:""}
+        }
     }
+    
 }
 )
 

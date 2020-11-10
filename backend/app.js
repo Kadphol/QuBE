@@ -26,6 +26,7 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     data = new users({
         id:profile.id,
+        type:"Facebook",
         name:profile.displayName,
         image:profile.photos[0].value
     })
