@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import axios, { AxiosRequestConfig, AxiosInstance} from 'axios'
 
-import NavigationBar from '../../components/NavigationBar/NavigationBar';
-import Home from '../Home';
-import Explore from '../Explore';
+import NavigationBar from '../../components/NavigationBar';
+import Routes from '../../routing'
 
 import '../../styles/App.css';
 import { Iuser } from '../../type.modal'
@@ -37,15 +36,10 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Navigation">
+      <BrowserRouter>
         <NavigationBar name={user.name} loginStatus={user.loginStatus} image={user.image}/>
-      </div>
-      <div>
-        <Route exact path="/" component={Home} />
-        <Route path="/explore" component={Explore} />
-        <Route path="/playground" />
-        <Route path="/challenge" />
-      </div>
+        <Routes />
+      </BrowserRouter>
     </div>
   );
 }
