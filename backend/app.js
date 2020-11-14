@@ -36,6 +36,7 @@ passport.use(new FacebookStrategy({
     done(null, profile)
   }
 ))
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }))
@@ -57,6 +58,7 @@ app.use(function(req, res, next) {
 app.get('/',(req,res)=>{
   res.send('Backend')
 })
+
 app.get('/fetch', (req, res) => {
   if(req.isAuthenticated()){
     users.fetch(req.user.id,function(err,data){
