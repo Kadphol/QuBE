@@ -1,7 +1,5 @@
 import React from 'react';
-import {Iuser} from '../../type.modal'
 import '../../styles/LoginButton.css'
-
 
 class LoginButton extends React.Component {
 
