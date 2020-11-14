@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/brand.png';
+import LoginModal from '../LoginModal/';
 
 import './NavigationBar.scoped.css';
 
 class NavigationBar extends React.Component {
+
   render() {
     return (
       <div className="Navigation">
+        <LoginModal show={true} onHide={false}/>
         <Navbar bg="light">
           <Navbar.Brand href="/">
             <img src={logo} alt="QuBE logo brand for navbar." />
@@ -29,6 +32,9 @@ class NavigationBar extends React.Component {
               </NavLink>
             </Nav>
           </Navbar.Collapse>
+          <a className="btn btn-primary nav-login-button" href="#">
+            เข้าสู่ระบบ
+          </a>
         </Navbar>
       </div>
     );
