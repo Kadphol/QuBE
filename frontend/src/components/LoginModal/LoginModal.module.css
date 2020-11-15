@@ -1,0 +1,50 @@
+.modalsize {
+  width: 650px;
+}
+
+.logo {
+  margin: 50px 0px;
+}
+
+.login {
+  font-family: 'Kanit',sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #8B90E3;
+}
+
+.line {
+  font-family: 'Kanit',sans-serif;
+  font-size: 15px;
+  position: relative;
+  margin: 0;
+  color: #8B90E3;
+}
+
+.line:after, .line:before {
+  content: '';
+  width: 90px;
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  background: #8B90E3;
+}
+
+.line:before {
+  transform: translate(-120%, -50%);
+}
+
+.line:after {
+  transform: translate(20%, -50%);
+}
+
+.fblogin {
+  border-radius: 50px !important;
+  padding: 0.5rem 3rem !important;
+  font-size: 23px;
+}
+
+.bot {
+  margin-top: 10px;
+  margin-bottom: 50px
+}
