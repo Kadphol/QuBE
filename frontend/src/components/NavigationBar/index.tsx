@@ -11,7 +11,7 @@ class NavigationBar extends React.Component {
   render() {
     return (
       <div className="Navigation">
-        <LoginModal show={true} onHide={false}/>
+        <LoginModal show={false} onHide={true}/> {/* close modal*/}
         <Navbar bg="light">
           <Navbar.Brand href="/">
             <img src={logo} alt="QuBE logo brand for navbar." />
