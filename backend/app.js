@@ -20,20 +20,23 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
     clientID: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
-    callbackURL: "http://localhost/login/callback"
+    callbackURL: "http://localhost/login/callback",
+    profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)']
   },
   function(accessToken, refreshToken, profile, done) {
     data = new users({
-        profile,
-        accessToken,
-        refreshToken
+        id:profile.id,
+        type:"Facebook",
+        name:profile.displayName,
+        image:profile.photos[0].value
     })
-    users.add(data,function(err){
+    users.addnew(data,function(err){
     if(err) throw err
     })
     done(null, profile)
   }
 ))
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }))
@@ -52,19 +55,18 @@ app.use(function(req, res, next) {
    }
   });
 
-app.get('/', (req, res) => {
-  let status 
-  let name 
+app.get('/',(req,res)=>{
+  res.send('Backend')
+})
+
+app.get('/fetch', (req, res) => {
   if(req.isAuthenticated()){
-     status = true
-     name = req.user.displayName
+    users.fetch(req.user.id,function(err,data){
+      console.log("FETCH",data)
+      if(err) throw err
+      return res.send(data)
+    })
   }
-  else {
-    status = false
-    name = null
-  }
-  
-  res.send({status,name})
 })
 
 app.get('/login', passport.authenticate('facebook'))
@@ -73,9 +75,7 @@ app.get('/login/callback',
                                       failureRedirect: 'http://localhost:3000' }))
 
 app.get('/logout',(req, res) => {
-  console.log(req.session)
   req.session.destroy(function(err){ 
-  console.log(req.session)
     res.redirect('http://localhost:3000')
   }) 
 })

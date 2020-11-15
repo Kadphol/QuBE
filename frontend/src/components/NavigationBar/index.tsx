@@ -5,9 +5,16 @@ import logo from '../../assets/brand.png';
 import LoginModal from '../LoginModal/';
 
 import './NavigationBar.scoped.css';
+import LoginButton from './LoginButton'
+import Profile from './Profile'
+import {Iuser} from '../../type.modal'
 
-class NavigationBar extends React.Component {
+class NavigationBar extends React.Component<Iuser> {
 
+  constructor(props:Iuser) {
+      super(props);
+  }
+  
   render() {
     return (
       <div className="Navigation">
@@ -30,11 +37,14 @@ class NavigationBar extends React.Component {
               <NavLink to="/challenge" className="nav-link">
                 ท้าทายกับควอนตัม
               </NavLink>
+              {this.props.loginStatus
+              ?<Profile name={this.props.name} loginStatus={this.props.loginStatus} image={this.props.image}/>
+              :<LoginButton/>}
             </Nav>
           </Navbar.Collapse>
-          <a className="btn btn-primary nav-login-button" href="#">
+          {/*<a className="btn btn-primary nav-login-button" href="#">
             เข้าสู่ระบบ
-          </a>
+          </a>*/}
         </Navbar>
       </div>
     );
