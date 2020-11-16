@@ -81,7 +81,7 @@ app.get('/fetch', (req, res) => {
   }
 })
 
-app.post('/login', passport.authenticate('facebook'))
+app.get('/login', passport.authenticate('facebook'))
 app.get('/login/callback',
   passport.authenticate('facebook', { successRedirect: 'http://localhost:3000',
                                       failureRedirect: 'http://localhost:3000' }))
