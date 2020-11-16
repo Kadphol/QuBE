@@ -12,7 +12,7 @@ interface ModalProps {
 export default class LoginModal extends React.Component<ModalProps> {
   Login = (): void => {
     // axios.get('http://localhost/login')
-    window.location.href = 'http://localhost/guestlogin'
+    window.location.href = 'http://localhost/login'
   }
   guestLogin = (): void =>{
     // axios.get('http://localhost/guestlogin')
