@@ -1,3 +1,7 @@
 .modal-lg {
     max-width: 650px !important;
 }
+
+.App {
+    text-align: center;
+}
