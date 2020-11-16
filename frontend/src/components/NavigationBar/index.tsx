@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/brand.png';
@@ -53,7 +53,6 @@ class NavigationBar extends React.Component<Iuser, navState> {
                 : <button className="btn btn-primary nav-login-button" onClick={this.showModal}>เข้าสู่ระบบ </button> }
             </Nav>
           </Navbar.Collapse>
-         
         </Navbar>
       </div>
     );
