@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavDropdown } from 'react-bootstrap';
 
-import '../../styles/Profile.css';
+import './Profile.css';
 import {Iuser} from '../../type.modal'
 
 class Profile extends React.Component<Iuser> {
