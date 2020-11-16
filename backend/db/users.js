@@ -10,7 +10,7 @@ const db = mongoose.connection
 const schema = mongoose.Schema
 
 const users_schema = new schema({
-    id: Number,
+    id: String,
     type: "Facebook" | "Guest",
     name: String,
     image: String,
