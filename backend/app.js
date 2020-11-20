@@ -2,8 +2,11 @@ var session = require('express-session')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var app = require('express')()
+var uuid = require('uuid').v4
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy
+var DummyStrategy = require('passport-dummy').Strategy
+
 var CLIENT_ID = '406602993675033'
 var CLIENT_SECRET = 'ad29d0665bde6cd353d86ce0fff1094e'
 const config = require('./config/config');
@@ -15,7 +18,7 @@ passport.serializeUser(function(user, done) {
   done(null, user);
 })
 passport.deserializeUser(function(obj, done) {
-  done(null, obj)
+  done(null, obj);
 })
 passport.use(new FacebookStrategy({
     clientID: CLIENT_ID,
@@ -30,13 +33,22 @@ passport.use(new FacebookStrategy({
         name:profile.displayName,
         image:profile.photos[0].value
     })
-    users.addnew(data,function(err){
-    if(err) throw err
-    })
+    users.addnew(data,function(err){if(err) throw err})
     done(null, profile)
   }
 ))
-
+passport.use(new DummyStrategy(  
+  (done)=>{
+  genid = uuid()
+  data = new users({
+    id:genid,
+    type:"Guest",
+    name:"Guest-"+genid.slice(0,7),
+    image:"https://i.pinimg.com/564x/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.jpg"
+  })
+  users.addnew(data,function(err){if(err) throw err})
+  return done(null,{id:data.id})
+}))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }))
@@ -73,6 +85,9 @@ app.get('/login', passport.authenticate('facebook'))
 app.get('/login/callback',
   passport.authenticate('facebook', { successRedirect: 'http://localhost:3000',
                                       failureRedirect: 'http://localhost:3000' }))
+                                      
+app.get('/guestlogin', passport.authenticate('dummy',{ successRedirect: 'http://localhost:3000',
+                                                       failureRedirect: 'http://localhost:3000' }))
 
 app.get('/logout',(req, res) => {
   req.session.destroy(function(err){ 

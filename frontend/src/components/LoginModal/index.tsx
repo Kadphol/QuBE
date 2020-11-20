@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import logo from '../../assets/login-logo.png';
-
+import axios from 'axios'
 import styles from './LoginModal.module.css';
 
 interface ModalProps {
@@ -9,12 +9,15 @@ interface ModalProps {
   onHide: Function;
 }
 
-
 export default class LoginModal extends React.Component<ModalProps> {
   Login = (): void => {
-    window.location.href = "http://localhost/login"
+    // axios.get('http://localhost/login')
+    window.location.href = 'http://localhost/login'
   }
-
+  guestLogin = (): void =>{
+    // axios.get('http://localhost/guestlogin')
+    window.location.href = 'http://localhost/guestlogin'
+  }
   render() {
     return (
       <Modal 
@@ -32,7 +35,7 @@ export default class LoginModal extends React.Component<ModalProps> {
             เข้าสู่ระบบด้วย Facebook
           </button>
           <div className={styles.bot}>
-            <a className={styles.line} onClick={this.Login} href="#">หรือ เข้าสู่ระบบแบบ guest</a>
+            <a className={styles.line} onClick={this.guestLogin} href="#">หรือ เข้าสู่ระบบแบบ guest</a>
           </div>
         </Modal.Body>
   
