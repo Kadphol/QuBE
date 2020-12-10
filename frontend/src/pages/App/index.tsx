@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import axios, { AxiosRequestConfig, AxiosInstance} from 'axios'
 
@@ -23,16 +23,18 @@ function App() {
 
   const instance: AxiosInstance = axios.create(config)
 
-  instance.get('http://localhost/fetch')
+  useEffect(()=>{
+    instance.get('http://localhost/fetch')
     .then(res => {
+      console.log(res.data)
       if (res.data) {
-        setUser( prevState => ({
+        setUser( () => ({
           loginStatus: true,
           name: res.data.name,
           image: res.data.image,
         }));
-      }
-    })
+      }})
+  },[])
 
   return (
     <div className="App">
