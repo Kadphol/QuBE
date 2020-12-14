@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import logo from '../../assets/login-logo.png';
-import axios from 'axios'
+import axios, {AxiosInstance,AxiosRequestConfig} from 'axios'
 import styles from './LoginModal.module.css';
 
 interface ModalProps {
@@ -9,14 +9,21 @@ interface ModalProps {
   onHide: Function;
 }
 
+const config: AxiosRequestConfig = {
+  headers: {'Content-Type': 'application/json'},
+  withCredentials: true
+}
+const instance: AxiosInstance = axios.create(config);
+
 export default class LoginModal extends React.Component<ModalProps> {
+
   Login = (): void => {
-    // axios.get('http://localhost/login')
     window.location.href = 'http://localhost/login'
   }
+
   guestLogin = (): void =>{
-    // axios.get('http://localhost/guestlogin')
-    window.location.href = 'http://localhost/guestlogin'
+    instance.get('http://localhost/guestlogin',{})
+    .then( () => window.location.href = 'http://localhost:3000')
   }
   render() {
     return (
