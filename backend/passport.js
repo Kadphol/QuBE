@@ -2,9 +2,6 @@ var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy
 var DummyStrategy = require('passport-dummy').Strategy
 var uuid = require('uuid').v4
-var session = require('express-session')
-var bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser')
 
 var CLIENT_ID = '406602993675033'
 var CLIENT_SECRET = 'ad29d0665bde6cd353d86ce0fff1094e'
@@ -47,9 +44,7 @@ passport.serializeUser(function(user, done) {
     users.addnew(data,function(err){if(err) throw err})
     done(null,data)
   }))
-  app.use(bodyParser.urlencoded({ extended: true }))
-  app.use(cookieParser())
-  app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }))
+
   app.use(passport.initialize())
   app.use(passport.session())
 

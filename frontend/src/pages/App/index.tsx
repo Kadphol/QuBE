@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom'
-import axios, { AxiosRequestConfig, AxiosInstance} from 'axios'
 
 import NavigationBar from '../../components/NavigationBar';
 import Routes from '../../routing'
@@ -8,23 +7,16 @@ import Routes from '../../routing'
 import '../../styles/App.css';
 import { Iuser } from '../../type.modal'
 
+import axios from '../../axiosconfig'
+
 function App() {
 
   const [user, setUser] = useState<Iuser>({
     loginStatus: false
   })
 
-  const config: AxiosRequestConfig = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    withCredentials: true
-  }
-
-  const instance: AxiosInstance = axios.create(config)
-
   useEffect(()=>{
-    instance.get('http://localhost/fetch')
+    axios.get('http://localhost/fetch')
     .then(res => {
       console.log(res.data)
       if (res.data) {
@@ -32,6 +24,10 @@ function App() {
           loginStatus: true,
           name: res.data.name,
           image: res.data.image,
+          chpater: res.data.info.chapter,
+          unit: res.data.info.unit,
+          star: res.data.info.star,
+          highscore: res.data.info.highscore
         }));
       }})
   },[])
@@ -39,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavigationBar name={user.name} loginStatus={user.loginStatus} image={user.image}/>
+        <NavigationBar name={user.name} loginStatus={user.loginStatus} image={user.image} highscore={user.highscore}/>
         <Routes />
       </BrowserRouter>
     </div>

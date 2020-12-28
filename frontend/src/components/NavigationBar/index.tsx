@@ -49,7 +49,7 @@ class NavigationBar extends React.Component<Iuser, navState> {
                 ท้าทายกับควอนตัม
               </NavLink>
                 { this.props.loginStatus
-                ?<Profile name={this.props.name} loginStatus={this.props.loginStatus} image={this.props.image}/>
+                ?<Profile name={this.props.name} loginStatus={this.props.loginStatus} image={this.props.image} highscore={this.props.highscore}/>
                 : <button className="btn btn-primary nav-login-button" onClick={this.showModal}>เข้าสู่ระบบ </button> }
             </Nav>
           </Navbar.Collapse>
