@@ -30,7 +30,7 @@ class Music extends React.Component <{url:string}>{
     render() {
       return (
         <div>
-          <img className="Button" src={this.state.play ? soundon : soundoff} onClick={this.togglePlay} />
+          <img className="Button" src={this.state.play ? soundon : soundoff} onClick={this.togglePlay} alt="On/off BGM"/>
         </div>
       );
     }

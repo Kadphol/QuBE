@@ -22,7 +22,7 @@ class Profile extends React.Component<Iuser> {
     }
 
     render() {
-    const profileIcon = (<img className="circleBorder" src={this.props.image} width="30" height="30"></img>);
+    const profileIcon = (<img className="circleBorder" src={this.props.image} width="30" height="30" alt="profile"></img>);
     return (
       <React.Fragment>
             <NavDropdown className="ml-auto" title={profileIcon} id="basic-nav-dropdown">
