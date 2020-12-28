@@ -1,22 +1,17 @@
 import React from 'react';
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 import samplecircuit from '../../assets/sample-circuit.png';
 import './Playground.scoped.css';
-
-const config: AxiosRequestConfig = {
-    headers: { 'Content-Type': 'application/json' },
-    withCredentials: true
-}
-const instance: AxiosInstance = axios.create(config);
+import axios from '../../axiosconfig'
 
 class Playground extends React.Component {
 
     state = {
-        listResult: null
+        listResult: null,
+        progress: null
     }
 
     run = (): void => {
-        instance.post('http://localhost/sim', { n: 2 })
+        axios.post('http://localhost/sim', { n: 2 })
             .then((res) => {
 
                 let results = res.data.split('\n')
