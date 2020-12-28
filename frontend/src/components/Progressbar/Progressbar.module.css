@@ -1,5 +1,8 @@
 .progress {
   compose: progress;
+  width: 900px;
+  margin: auto;
+  padding-top: 20px;
 }
 
 .progress li {
@@ -14,7 +17,7 @@
 }
 
 .progress li:before {
-  content: url('../../assets/progressbar/progressbar-unavailable.png');
+  content: url('../../assets/progressbar/unavailable.svg');
   display: block;
 }
 
@@ -47,5 +50,5 @@
   top: 55.5%;
 }
 .progress li.active:before {
-  content: url('../../assets/progressbar/progressbar-selected.png');
+  content: url('../../assets/progressbar/available.svg');
 }
