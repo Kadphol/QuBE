@@ -16,7 +16,9 @@ const users_schema = new schema({
     name: String,
     image: String,
     info: {
-        explore: {type: mongoose.Schema.Types.ObjectId, ref:'explore',default:null},
+        // explore: {type: mongoose.Schema.Types.ObjectId, ref:'explore',default:null},
+        chapter: {type:Number, default:0},
+        unit: {type:Number, default:0},
         star: {type:[Number], default:[0,0,0,0,0]},
         highscore: {type:Number, default:0}
     },
@@ -38,23 +40,27 @@ const users = module.exports = mongoose.model("users",users_schema)
 module.exports.addnew = function(data,callback){
     users.findOne({id:data.id}).exec((err,res)=>{
         if (!res) {
-            explore.fetch(0,(err,init)=>{
-                data.info.explore = init._id     
                 users.create(data)
-            })
         }
     }   
 )}
 
-module.exports.updateExplore = function(user,updateid,callback){
+module.exports.updateInfo = function(user,chapter,unit,star,score,callback){
     users.findOne({id:user.id}).exec((err,res)=>{
         if (res) {
-            explore.fetch(updateid,(err,init)=>{
-                res.info.explore = init._id
-                console.log(res)
-                res.save()
-            })
-        }
+            if(star!=undefined){
+                res.info.star[chapter-1] = star
+            }
+            if(score!=undefined){
+                res.info.highscore = score
+            }
+            if (chapter>res.info.chapter || (chapter==res.info.chapter && unit>res.info.unit)){
+                res.info.chapter = chapter
+                res.info.unit = unit
+            }
+            res.markModified('info.star')
+            res.save()
+        }  
     })
 }
 
