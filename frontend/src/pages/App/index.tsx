@@ -8,6 +8,8 @@ import '../../styles/App.css';
 import { Iuser } from '../../type.modal'
 
 import axios from '../../axiosconfig'
+import { userContext } from '../../context/userContext';
+//import userEvent from '@testing-library/user-event';
 
 function App() {
 
@@ -24,7 +26,7 @@ function App() {
           loginStatus: true,
           name: res.data.name,
           image: res.data.image,
-          chpater: res.data.info.chapter,
+          chapter: res.data.info.chapter,
           unit: res.data.info.unit,
           star: res.data.info.star,
           highscore: res.data.info.highscore
@@ -34,10 +36,12 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <NavigationBar name={user.name} loginStatus={user.loginStatus} image={user.image} highscore={user.highscore}/>
-        <Routes />
-      </BrowserRouter>
+      <userContext.Provider value={user}>
+        <BrowserRouter>
+          <NavigationBar name={user.name} loginStatus={user.loginStatus} image={user.image} highscore={user.highscore}/>
+          <Routes />
+        </BrowserRouter>
+      </userContext.Provider>
     </div>
   );
 }
