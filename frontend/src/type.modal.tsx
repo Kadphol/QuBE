@@ -1,8 +1,9 @@
 export interface Iuser {
-    loginStatus: boolean
+    loginStatus?: boolean
     name?: string
     image?: string
-    explore?: string
+    chapter?: number
+    unit?: number
     star?: number[]
     highscore?: number
 }
