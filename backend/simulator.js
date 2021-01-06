@@ -7,15 +7,14 @@ module.exports = (app) => {
     app.post('/sim', (req, res) => {
         
         data = req.body
-        
+
         const circuit = Circuit.createCircuit(data.n);
 
-        // data.circuit.map()
-        circuit.add(Gate.h, 0, 0);
-        circuit.add(Gate.cx, 1, [0,1]);
-        circuit.print();
+        data.cc.forEach(el => {
+            circuit.addGate(el.gate,el.col,el.wire)
+        });
 
-        const input = [0,0];
+        const input = Array(data.n).fill(0)
 
         console.log('\nInput:');
         console.log(input);
