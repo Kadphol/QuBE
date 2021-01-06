@@ -1,6 +1,6 @@
 import React from 'react';
 import IntroButton from '../../components/IntroButton';
-import './Home.css';
+import './Home.scoped.css';
 
 import logoName from '../../assets/intro/intro-logo-name.png';
 import {ReactComponent as Qubie} from '../../svg/Qubie-intro.svg';
