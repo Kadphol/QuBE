@@ -36,7 +36,7 @@ export default class LoginModal extends React.Component<ModalProps> {
             เข้าสู่ระบบด้วย Facebook
           </button>
           <div className={styles.bot}>
-            <a className={styles.line} onClick={this.guestLogin} href="#">หรือ เข้าสู่ระบบแบบ guest</a>
+            <a className={styles.line} onClick={this.guestLogin} href="/">หรือ เข้าสู่ระบบแบบ guest</a>
           </div>
         </Modal.Body>
   

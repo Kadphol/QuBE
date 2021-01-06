@@ -9,7 +9,7 @@ export default function Routes() {
   return (
     <>
       <Route path="/" exact component={ Home } />
-      <Route path="/explore" exact component={ Explore } />
+      <Route path="/explore" exact component={ Explore }/>
       <Route path="/playground" exact component={ Playground }/>
       <Route path="/challenge" />
     </>

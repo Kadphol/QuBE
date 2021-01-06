@@ -36,19 +36,70 @@
   content: none;
 }
 
-.active {
-  compose: progress active;
+.available {
+  compose: progress available;
 }
 
-.progress li.active {
+.progress li.available {
   color: #8B90E3;
 }
 
-.progress li.active:after {
+.progress li.available:after {
   background-color: #8B90E3;
   height: 3px;
   top: 55.5%;
 }
-.progress li.active:before {
+.progress li.available:before {
   content: url('../../assets/progressbar/available.svg');
+}
+
+.star1 {
+  compose: progress star1;
+}
+
+.progress li.star1 {
+  color: #8B90E3;
+}
+
+.progress li.star1:after {
+  background-color: #8B90E3;
+  height: 3px;
+  top: 55.5%;
+}
+.progress li.star1:before {
+  content: url('../../assets/progressbar/available1.svg');
+}
+
+.star2 {
+  compose: progress star2;
+}
+
+.progress li.star2 {
+  color: #8B90E3;
+}
+
+.progress li.star2:after {
+  background-color: #8B90E3;
+  height: 3px;
+  top: 55.5%;
+}
+.progress li.star2:before {
+  content: url('../../assets/progressbar/available2.svg');
+}
+
+.star3 {
+  compose: progress star3;
+}
+
+.progress li.star3 {
+  color: #8B90E3;
+}
+
+.progress li.star3:after {
+  background-color: #8B90E3;
+  height: 3px;
+  top: 55.5%;
+}
+.progress li.star3:before {
+  content: url('../../assets/progressbar/available3.svg');
 }
