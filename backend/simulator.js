@@ -27,6 +27,11 @@ module.exports = (app) => {
 
         console.log('\nInternal state (as string):');
         console.log(circuit.stateToString());
-        res.send(circuit.stateToString())
+        let result = circuit.stateToString().split('\n')
+        result = result.map(el=>el.split('|')[1])
+        let labels = result.map(el=>el.split('>')[0])
+        let values = result.map(el=>parseFloat(el.split('>')[1]))
+        console.log(labels,values)
+        res.send({labels,values})
     });
 }
