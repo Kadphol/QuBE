@@ -1,0 +1,50 @@
+.Composer {
+    float: left;
+    width: 70%;
+    display:inline;
+    padding-left: 20px;
+}
+
+.gates {
+    overflow: hidden;
+}
+
+img.gate {
+    height: auto; 
+    width: auto; 
+    max-width: 10%; 
+    max-height: 10%;
+    padding-left: 10px;
+}
+
+img.small {
+    /* float: left; */
+    height: auto; 
+    width: auto; 
+    max-width: 10%; 
+    max-height: 10%;
+    display: inline;
+}
+
+button.btn-primary {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    background-color: #A29BFE;
+    border-color: #A29BFE;
+    color: white;
+    margin-left: 20px;
+  }
+
+button.btn-primary:disabled {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    background-color: #bbbbbb;
+    border-color: #A29BFE;
+    color: white;
+}
+
+div.buttonPanel {
+      float:left;
+      margin-top: 20px;
+      margin-bottom: 20px;
+}
