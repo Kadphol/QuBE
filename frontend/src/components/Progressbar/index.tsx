@@ -21,7 +21,7 @@ function star(star?:number) {
 
 function Progressbar(props:Iuser) {
   return (
-    <div className="progressbar">
+    <React.Fragment>
       <ul className={styles.progress}>
         <li className={
           (props.chapter! >= 1 ) ? star(props.star![0])
@@ -39,7 +39,7 @@ function Progressbar(props:Iuser) {
           (props.chapter! >= 5 ) ? star(props.star![4])
           : undefined }>Algorithm</li>
       </ul>
-    </div>
+    </React.Fragment>
   )
 }
 
