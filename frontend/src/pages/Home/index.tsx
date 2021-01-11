@@ -100,7 +100,7 @@ class Home extends React.Component {
           </div>
         </div>
         <footer className="footer ml-0 mr-0">
-            <img src={footer} alt="footer"/>
+            <img src={footer} alt="footer" style={{width: "1425px"}}/>
         </footer>
       </div>
 
