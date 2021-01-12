@@ -1,24 +1,4 @@
-ul {
-    list-style-type:none;
+div.flex {
+    display:flex;
+    height: 100%;  
 }
-
-p.large {
-    font-size: 30px;
-}
-
-div.cc {
-    margin: auto;
-    width: 50%;
-}
-
-img.left {
-    margin-left: 20px;
-}
-
-button.btn-primary {
-    font-family: 'Kanit',sans-serif;
-    font-size: medium;
-    background-color: #A29BFE;
-    border-color: #A29BFE;
-    color: white;
-  }
