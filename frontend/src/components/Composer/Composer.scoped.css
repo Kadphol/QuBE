@@ -1,29 +1,32 @@
 .Composer {
     float: left;
-    width: 70%;
+    width: 68%;
     display:inline;
-    padding-left: 20px;
+    margin-left: 40px;
 }
 
 .gates {
-    overflow: hidden;
+    
+    margin-left: 0;
 }
 
 img.gate {
     height: auto; 
     width: auto; 
-    max-width: 10%; 
-    max-height: 10%;
-    padding-left: 10px;
+    max-width: 7%; 
+    max-height: 7%;
+    margin-left: 10px;
 }
 
-img.small {
+img.inline {
     /* float: left; */
     height: auto; 
     width: auto; 
-    max-width: 10%; 
-    max-height: 10%;
+    max-width: 7%; 
+    max-height: 7%;
     display: inline;
+    
+    /* border: solid red; */
 }
 
 button.btn-primary {
@@ -45,6 +48,36 @@ button.btn-primary:disabled {
 
 div.buttonPanel {
       float:left;
-      margin-top: 20px;
-      margin-bottom: 20px;
+      margin-top: 16px;
+      margin-bottom: 16px;
 }
+
+div.maincomposer {
+    position: relative;
+}
+
+.bar {
+    float: left;
+    display: inline;
+}
+
+.svg-qubie {
+    animation: animation-qubie 10s infinite;
+    height: 200px;
+    width: 200px;
+    float: left;
+    display: inline;
+    position: fixed;
+    margin-left: 60px;
+    
+  }
+  
+  @keyframes animation-qubie {
+    from, to {
+      transform: scale(-1, 1) translateY(0px) rotate(5deg);
+    }
+  
+    50% {
+      transform: scale(-1, 1) translateY(50px) rotate(5deg);
+    }
+  }
