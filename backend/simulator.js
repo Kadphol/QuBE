@@ -3,15 +3,15 @@ const qiskit = require('qiskit');
 const cloud = new qiskit.Cloud();
 const { Circuit, Gate } = require('@qiskit/sim');
 
-module.exports = (app) => {
+module.exports = (app) => { 
     app.post('/sim', (req, res) => {
         
         data = req.body
-
+        console.log(data)
         const circuit = Circuit.createCircuit(data.n);
 
         data.cc.forEach(el => {
-            circuit.addGate(el.gate,el.col,el.wire)
+            circuit.addGate(el.gate,el.col,el.line)
         });
 
         const input = Array(data.n).fill(0)
