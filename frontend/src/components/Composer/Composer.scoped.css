@@ -1,0 +1,83 @@
+.Composer {
+    float: left;
+    width: 68%;
+    display:inline;
+    margin-left: 40px;
+}
+
+.gates {
+    
+    margin-left: 0;
+}
+
+img.gate {
+    height: auto; 
+    width: auto; 
+    max-width: 7%; 
+    max-height: 7%;
+    margin-left: 10px;
+}
+
+img.inline {
+    /* float: left; */
+    height: auto; 
+    width: auto; 
+    max-width: 7%; 
+    max-height: 7%;
+    display: inline;
+    
+    /* border: solid red; */
+}
+
+button.btn-primary {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    background-color: #A29BFE;
+    border-color: #A29BFE;
+    color: white;
+    margin-left: 20px;
+  }
+
+button.btn-primary:disabled {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    background-color: #bbbbbb;
+    border-color: #A29BFE;
+    color: white;
+}
+
+div.buttonPanel {
+      float:left;
+      margin-top: 16px;
+      margin-bottom: 16px;
+}
+
+div.maincomposer {
+    position: relative;
+}
+
+.bar {
+    float: left;
+    display: inline;
+}
+
+.svg-qubie {
+    animation: animation-qubie 10s infinite;
+    height: 200px;
+    width: 200px;
+    float: left;
+    display: inline;
+    position: fixed;
+    margin-left: 60px;
+    
+  }
+  
+  @keyframes animation-qubie {
+    from, to {
+      transform: scale(-1, 1) translateY(0px) rotate(5deg);
+    }
+  
+    50% {
+      transform: scale(-1, 1) translateY(50px) rotate(5deg);
+    }
+  }
