@@ -16,6 +16,7 @@
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.4",
     "pixi.js": "^5.3.6",
+    "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-bootstrap": "^1.4.0",
     "react-chartjs-2": "^2.11.1",
@@ -24,9 +25,10 @@
     "react-pixi-fiber": "^0.14.2",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
+    "react-scripts": "4.0.1",
     "react-spring": "^8.0.27",
     "redux": "^4.0.5",
+    "styled-components": "^5.2.1",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
   },
@@ -55,7 +57,9 @@
     ]
   },
   "devDependencies": {
+    "@types/prop-types": "^15.7.3",
     "@types/react-redux": "^7.1.11",
-    "@types/redux": "^3.6.0"
+    "@types/redux": "^3.6.0",
+    "@types/styled-components": "^5.1.7"
   }
 }

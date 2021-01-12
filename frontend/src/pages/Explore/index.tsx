@@ -1,11 +1,11 @@
 import React from 'react';
-import intro from '../../assets/intro.png';
+
 import Music from '../../components/sound/Music'
 import Progressbar from '../../components/Progressbar';
-// import DialogBox from '../../components/DialogBox';
+import DialogBox from '../../components/DialogBox';
+import MenuMap from './MenuMap';
 import './Explore.css';
 import { userContext } from '../../context/userContext';
-
 class Explore extends React.Component {
 
   render() {
@@ -16,8 +16,12 @@ class Explore extends React.Component {
             (user) => <Progressbar {...user}/>
           }
         </userContext.Consumer>
-        <img src={intro} alt="intro"/>
-        {/* <DialogBox /> */}
+        <userContext.Consumer>
+          {
+            (user) => <MenuMap {...user}/>
+          }
+        </userContext.Consumer>
+        <DialogBox />
         <Music url="https://www.mboxdrive.com/bgm.mp3"/>
       </div>
     );
