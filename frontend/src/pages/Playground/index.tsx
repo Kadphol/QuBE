@@ -74,24 +74,24 @@ class Playground extends React.Component <IProps,IState>{
 
     render() {
         return (
-            <div>
+            <div className="playground">
                 <div className="cc">
                     <br></br>
                     <p className="large">Active: {this.state.active}</p>
                     <Row>
-                    <img className="left" src={x} alt="x" onClick={()=>this.activate('x')}/>
-                    <img className="left" src={h} alt="h" onClick={()=>this.activate('h')}/>
-                    {/* <img className="left" src={empty} alt="h" onClick={()=>this.activate('empty')}/> */}
+                        <img className="left" src={x} alt="x" onClick={()=>this.activate('x')}/>
+                        <img className="left" src={h} alt="h" onClick={()=>this.activate('h')}/>
+                        {/* <img className="left" src={empty} alt="h" onClick={()=>this.activate('empty')}/> */}
                     </Row>
                     <Row>
-                    <img src={q0} alt="bit0" />
-                    <img src={dict[this.state.ccimg[0][0]]} alt="w0c0"  onClick={()=>this.place(0,0)} />
-                    <img src={m} alt="m0" />
+                        <img src={q0} alt="bit0" />
+                        <img src={dict[this.state.ccimg[0][0]]} alt="w0c0"  onClick={()=>this.place(0,0)} />
+                        <img src={m} alt="m0" />
                     </Row>
                     <Row>
-                    <img src={q0} alt="bit1" />
-                    <img src={dict[this.state.ccimg[1][0]]} alt="w1c0" onClick={()=>this.place(1,0)}/>
-                    <img src={m} alt="m1" />
+                        <img src={q0} alt="bit1" />
+                        <img src={dict[this.state.ccimg[1][0]]} alt="w1c0" onClick={()=>this.place(1,0)}/>
+                        <img src={m} alt="m1" />
                     </Row>
                 </div >
                 <div>

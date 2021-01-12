@@ -1,0 +1,10 @@
+.message {
+  width: 75%;
+  text-align: left;
+  display: inline-block;
+}
+
+.message span {
+  font-family: 'Kanit';
+  font-size: 25px;
+}

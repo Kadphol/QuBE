@@ -1,0 +1,21 @@
+.dialogbox {
+  background-color: #FFFFFF;
+  border: 10px solid #215273;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 50px;
+}
+
+.icon {
+  display: inline-block;
+  align-self: center;
+}
+
+.next {
+  align-items: center;
+  margin: auto;
+}
+
+.center {
+  display: none;
+}

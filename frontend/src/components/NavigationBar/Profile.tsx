@@ -7,10 +7,6 @@ import axios from '../../axiosconfig'
 
 class Profile extends React.Component<Iuser> {
 
-    constructor(props:Iuser) {
-        super(props);
-    }
-
     save(){
         axios.put('http://localhost/updateInfo',{chapter:1,unit:2,star:3,score:1000})
         window.location.reload();
