@@ -101,11 +101,11 @@ h3 {
   padding-bottom: 150px;
 }
 
-.svg-qubie {
-  animation: animation-qubie 10s infinite;
+.svg-qubie-intro {
+  animation: animation-qubie-intro 10s infinite;
 }
 
-@keyframes animation-qubie {
+@keyframes animation-qubie-intro {
   from, to {
     transform: translateY(50px) rotate(5deg);
   }
