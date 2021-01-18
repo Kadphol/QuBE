@@ -1,15 +1,5 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import styled from 'styled-components';
-
-import map from '../../assets/explore/map1.png';
-
-const Menu = styled.div`
-  background: url(${map});
-  width: 1240px;
-  height: 720px;
-  text-align: center;
-`;
 
 const ulStyle = {
   listStyleType: 'none',
@@ -43,7 +33,7 @@ const linkStyle = {
 } as React.CSSProperties;
 
 export default function MenuMap() {
-  let { path, url } = useRouteMatch();
+  let { url } = useRouteMatch();
 
   const items = [{
     path: url+'/chapter-1',
@@ -62,14 +52,12 @@ export default function MenuMap() {
     text: "บทที่ 5: อัลกอริทึม"
   }]
   return (
-    <Menu >
-      <ul style={ulStyle}>
-        {items.map(item => (
-          <li key={item.path} className= "mapmenu__item" style={liStyle}>
-            <Link to={item.path} style={linkStyle}>{item.text}</Link>
-          </li>
-        ))}
-      </ul>
-    </Menu>
+    <ul style={ulStyle}>
+      {items.map(item => (
+        <li key={item.path} className= "mapmenu__item" style={liStyle}>
+          <Link to={item.path} style={linkStyle}>{item.text}</Link>
+        </li>
+      ))}
+    </ul>
   )
 }

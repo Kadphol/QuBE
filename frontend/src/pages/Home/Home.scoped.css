@@ -10,7 +10,7 @@
   }
 
   .subrow {
-    max-width: 1440px;
+    max-width: 1420px;
   }
 }
 
@@ -42,6 +42,7 @@ h3 {
 .intro-1 {
   background-image: url('../../assets/intro/intro-1.png');
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .intro-2 p {
