@@ -6,7 +6,6 @@ const Circuit = require('./custom_module/Circuit')
 
 module.exports = (app) => { 
     app.post('/sim', (req, res) => {
-
         data = req.body
         console.log(data)
         const circuit = Circuit.createCircuit(data.n);

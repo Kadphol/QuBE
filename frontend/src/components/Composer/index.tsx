@@ -51,6 +51,14 @@ const QubieWrapper = styled.div`
     right: -240px;
     bottom: 70px;
     position: absolute;  
+    // border: solid blue;
+    * {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 interface IProps {
@@ -404,7 +412,7 @@ class Composer extends React.Component<IProps, IState>{
                     }}
                 />
                 <QubieWrapper>
-                <Qubie className="svg-qubie" />
+                <Qubie className="svg-qubie-intro" />
                 </QubieWrapper>
                 </div>     
             </div>

@@ -1,14 +1,16 @@
   .Menu {
     float: left;
     width: 25vw;
-    height: 90vh;
+    height: calc(100vh - 80px);
     transition: width 0.5s;
     font-family: 'Kanit',sans-serif;
     font-size: 50px;
     color: white;
     background-color: #8B90E3;
-    /* resize: both;
-    object-fit: contain; */
+    overflow: hidden;
+    object-fit: contain;
+    resize: both;
+    /* object-fit: contain; */
   }
 
   #wrapper2 {

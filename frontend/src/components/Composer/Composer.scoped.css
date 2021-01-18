@@ -12,8 +12,8 @@
 img.gate {
     height: auto; 
     width: auto; 
-    max-width: 4.4rem; 
-    max-height: 4.4rem;
+    max-width: 7%; 
+    max-height: 7%;
     margin-left: 10px;
 }
 
@@ -21,13 +21,15 @@ img.inline {
     /* float: left; */
     height: auto; 
     width: auto; 
-    max-width: 6.4%; 
-    max-height: 6.4%;
+    max-width: 6.3%; 
+    max-height: 6.3%;
     display: inline;
+    
+    /* border: solid red; */
 }
 
 #first {
-  margin-left:15px;
+    margin-left: 20px;
 }
 
 button.btn-primary {

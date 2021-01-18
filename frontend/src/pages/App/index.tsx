@@ -9,7 +9,6 @@ import { Iuser } from '../../type.modal'
 
 import axios from '../../axiosconfig'
 import { userContext } from '../../context/userContext';
-//import userEvent from '@testing-library/user-event';
 
 function App() {
 
