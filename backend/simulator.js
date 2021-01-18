@@ -1,11 +1,12 @@
 const API_TOKEN = '78ff82ce42b3e26abb9479f9582835b1efaa84d96ecc354f793d20aae655def2abf621ba067eaceef687a625a173837703d3c69fa95c0beeae46ae1870e4393a'
 const qiskit = require('qiskit');
 const cloud = new qiskit.Cloud();
-const { Circuit, Gate } = require('@qiskit/sim');
+// const { Circuit, Gate } = require('@qiskit/sim');
+const Circuit = require('./custom_module/Circuit')
 
 module.exports = (app) => { 
     app.post('/sim', (req, res) => {
-        
+
         data = req.body
         console.log(data)
         const circuit = Circuit.createCircuit(data.n);
