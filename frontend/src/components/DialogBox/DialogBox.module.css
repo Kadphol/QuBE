@@ -4,9 +4,8 @@
 }
 
 .next {
-  position: absolute;
-  top: 20%;
-  right: 10px;
-  float: right;
-  margin: auto;
+  /* border: solid orange; */
+  position: flex;
+  padding-top: 19px;
+  /* margin: auto; */
 }
