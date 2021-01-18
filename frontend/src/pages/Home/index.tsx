@@ -13,7 +13,7 @@ class Home extends React.Component {
         <div className="container-fluid">
           <div className="row intro">
             <div className="intro-1 col-lg-7">
-              <Qubie className="svg-qubie" />
+              <Qubie className="svg-qubie-intro" />
             </div> 
             <div className="intro-2 col-lg-5">
               <img src={logoName} alt="QuBE Logo" />

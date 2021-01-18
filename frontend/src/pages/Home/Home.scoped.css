@@ -10,8 +10,7 @@
   }
 
   .subrow {
-    max-width: 1440px;
-    min-height: 512px;
+    max-width: 1420px;
   }
 }
 
@@ -43,6 +42,7 @@ h3 {
 .intro-1 {
   background-image: url('../../assets/intro/intro-1.png');
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .intro-2 p {
@@ -51,6 +51,10 @@ h3 {
 
 .row.preview {
   min-height: 720px;
+}
+
+.subrow {
+  min-height: 512px;
 }
 
 .wave {
@@ -101,11 +105,11 @@ h3 {
   padding-bottom: 150px;
 }
 
-.svg-qubie {
-  animation: animation-qubie 10s infinite;
+.svg-qubie-intro {
+  animation: animation-qubie-intro 10s infinite;
 }
 
-@keyframes animation-qubie {
+@keyframes animation-qubie-intro {
   from, to {
     transform: translateY(50px) rotate(5deg);
   }

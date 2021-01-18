@@ -1,31 +1,43 @@
 import React from 'react';
+import { BrowserRouter as Router,Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import Music from '../../components/sound/Music'
 import Progressbar from '../../components/Progressbar';
 import DialogBox from '../../components/DialogBox';
-import MenuMap from './MenuMap';
+import Map from './Map';
+import MenuMap from './MenuMap'
 import './Explore.css';
 import { userContext } from '../../context/userContext';
-class Explore extends React.Component {
 
-  render() {
-    return (
-      <div className="explore">
-        <userContext.Consumer>
-          {
-            (user) => <Progressbar {...user}/>
-          }
-        </userContext.Consumer>
-        <userContext.Consumer>
-          {
-            (user) => <MenuMap {...user}/>
-          }
-        </userContext.Consumer>
+
+
+function Explore() {
+  
+  const { path } = useRouteMatch();
+  return (
+    <div className="explore">
+      <userContext.Consumer>
+        {
+          (user) => <Progressbar {...user}/>
+        }
+      </userContext.Consumer>
+      <Map>
+        <Router>
+          <Switch>
+            <Route exact path = {path} component = { MenuMap }/>
+            <Route path = {`${path}/chapter-1`} />
+            <Route path = {`${path}/chapter-2`} />
+            <Route path = {`${path}/chapter-3`} />
+            <Route path = {`${path}/chapter-4`} />
+            <Route path = {`${path}/chapter-5`} />
+          </Switch>
+        </Router>
         <DialogBox />
-        <Music url="https://www.mboxdrive.com/bgm.mp3"/>
-      </div>
-    );
-  }
+      </Map>
+      
+      <Music url="https://www.mboxdrive.com/bgm.mp3"/>
+    </div>
+  );
 }
 
 export default Explore;

@@ -1,17 +1,39 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import styled from 'styled-components';
 
-import map from '../../assets/explore/map1.png';
+const ulStyle = {
+  listStyleType: 'none',
+  margin: 'auto',
+  padding: 0,
+  position: 'relative',
+  top: '7%',
+  width: '520px'
+} as React.CSSProperties;
 
-const Menu = styled.div`
-  background: url(${map});
-  width: 1240px;
-  height: 720px;
-`;
+const liStyle = {
+  backgroundColor: '#9CF495',
+  marginBottom: '31px',
+  height: '100px',
+  borderRadius: '10px',
+  textAlign: 'left',
+  paddingLeft: '70px',
+  paddingTop: '15px',
+  mapmenu__item: {
+    "&:hover": {
+      backgroundColor: '#7AB175'
+    }
+  }
+} as React.CSSProperties;
+
+const linkStyle = {
+  textDecoration: 'none',
+  fontFamily: 'Kanit',
+  fontSize: '45px',
+  color: '#000000',
+} as React.CSSProperties;
 
 export default function MenuMap() {
-  let { path, url } = useRouteMatch();
+  let { url } = useRouteMatch();
 
   const items = [{
     path: url+'/chapter-1',
@@ -30,14 +52,12 @@ export default function MenuMap() {
     text: "บทที่ 5: อัลกอริทึม"
   }]
   return (
-    <Menu >
-      <ul>
-        {items.map(item => (
-          <li key={item.path} className= "mapmenu__item">
-            <Link to={item.path}>{item.text}</Link>
-          </li>
-        ))}
-      </ul>
-    </Menu>
+    <ul style={ulStyle}>
+      {items.map(item => (
+        <li key={item.path} className= "mapmenu__item" style={liStyle}>
+          <Link to={item.path} style={linkStyle}>{item.text}</Link>
+        </li>
+      ))}
+    </ul>
   )
 }
