@@ -19,6 +19,7 @@ const MessageDiv = styled.div`
   border-radius: 50px;
   margin: 15px 50px;
   overflow: hidden;
+  margin-top: 1%;
 `;
 
 const IconDiv = styled.div`
@@ -32,11 +33,9 @@ const IconDiv = styled.div`
   z-index: 2;
 `;
 
-
-
 const DialogBox = () => {
   return (
-    <div style={{ marginTop: '5px'}}>
+    <div style={{ paddingTop: '570px', height:'100%', position: 'static'}}>
       <IconDiv>
         <img src={beck} alt="test" className={styles.icon}/>
       </IconDiv>
