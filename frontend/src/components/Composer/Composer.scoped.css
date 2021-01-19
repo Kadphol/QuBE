@@ -1,12 +1,11 @@
 .Composer {
-    float: left;
-    width: 68%;
-    display:inline;
-    margin-left: 40px;
+    width: 70vw;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 10px;
 }
 
 .gates {
-    
     margin-left: 0;
 }
 
@@ -22,11 +21,15 @@ img.inline {
     /* float: left; */
     height: auto; 
     width: auto; 
-    max-width: 4.4rem; 
-    max-height: 4.4rem;
+    max-width: 6.3%; 
+    max-height: 6.3%;
     display: inline;
     
     /* border: solid red; */
+}
+
+#first {
+    margin-left: 20px;
 }
 
 button.btn-primary {
@@ -35,15 +38,18 @@ button.btn-primary {
     background-color: #A29BFE;
     border-color: #A29BFE;
     color: white;
-    margin-left: 20px;
   }
 
 button.btn-primary:disabled {
     font-family: 'Kanit',sans-serif;
     font-size: medium;
-    background-color: #bbbbbb;
+    background-color: #8B90E3;
     border-color: #A29BFE;
     color: white;
+}
+
+#buttonPanel {
+    margin-left: 20px;
 }
 
 div.buttonPanel {
@@ -52,32 +58,8 @@ div.buttonPanel {
       margin-bottom: 16px;
 }
 
-div.maincomposer {
+.result {
+    float: left;
+    display: inline;
     position: relative;
 }
-
-.bar {
-    float: left;
-    display: inline;
-}
-
-.svg-qubie {
-    animation: animation-qubie 10s infinite;
-    height: 200px;
-    width: 200px;
-    float: left;
-    display: inline;
-    position: fixed;
-    margin-left: 60px;
-    
-  }
-  
-  @keyframes animation-qubie {
-    from, to {
-      transform: scale(-1, 1) translateY(0px) rotate(5deg);
-    }
-  
-    50% {
-      transform: scale(-1, 1) translateY(50px) rotate(5deg);
-    }
-  }

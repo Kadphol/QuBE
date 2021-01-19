@@ -33,6 +33,7 @@ import axios from '../../axiosconfig';
 import { Row } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
 import {ReactComponent as Qubie} from '../../svg/Qubie-intro.svg';
+import styled from 'styled-components';
 
 const image: { [id: string]: string; } = { 'x': x, 'y': y, 'z': z, 'h': h, 'cx': cx, 'ccx': ccx };
 const imageInuse: { [id: string]: string; } = {
@@ -41,7 +42,24 @@ const imageInuse: { [id: string]: string; } = {
     'ccx00': ccxInuse00, 'ccx0': ccxInuse0, 'ccx1': ccxInuse1, 'ccx2': ccxInuse2, 'ccx3': ccxInuse3, 'ccx4': ccxInuse4, 'ccx5': ccxInuse5,
 };
 const qubit: { [id:number]: string; } = { 0:q1, 1:q2, 2:q3, 3:q4, 4:q5,}
-const eLine = Array(12).fill('e')
+const eLine = Array(13).fill('e')
+
+const QubieWrapper = styled.div`
+    transform: scaleX(-1);
+    height: 200px;
+    width: 200px;
+    right: -240px;
+    bottom: 70px;
+    position: absolute;  
+    // border: solid blue;
+    * {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+`;
 
 interface IProps {
 }
@@ -97,7 +115,7 @@ class Composer extends React.Component<IProps, IState>{
                 result.labels = res.data.labels
                 result.datasets[0].data = res.data.values
                 this.setState({ result: result })
-                console.log(result)
+                console.log(result) 
             })
     }
 
@@ -266,7 +284,7 @@ class Composer extends React.Component<IProps, IState>{
                         line: [control1[0],control2[0],newPlace[0]],
                         col: newPlace[1] 
                     }
-                    // cc = [...cc, newgate] // cannot apply ccx gate
+                    cc = [...cc, newgate] // cannot apply ccx gate
                     this.setState({ ccimg: newccimg, cc: cc, placingGate: Array(),multipleGate:multipleGate}) // clear Placing Gate, Add Miltiple Gate
                 }
                 else { // remove all ccx before
@@ -308,10 +326,26 @@ class Composer extends React.Component<IProps, IState>{
 
     removeQubit = () => {
         let ccimg = this.state.ccimg
+        let removeIndex = Array()
+        let multipleGate = this.state.multipleGate
+        multipleGate.forEach((gate,index)=>{
+            if (gate.findIndex(subgate => subgate[0]===this.state.n-1)!== -1){
+            removeIndex.push(index)
+            }
+        })
+
+        for (var i = removeIndex.length -1; i >= 0; i--){
+            multipleGate[removeIndex[i]].forEach(img=>{
+                ccimg[img[0]][img[1]] = 'e'
+            })
+            multipleGate.splice(removeIndex[i],1);
+        }
+        console.log(multipleGate.length)
         ccimg.pop()
         let n = this.state.n - 1
-        let cc = this.state.cc.filter(el => el.line < n)
-        this.setState({ ccimg: ccimg, cc: cc, n: n })
+        let cc = this.state.cc.filter(el => el.line < n || (Array.isArray(el.line)&&!el.line.includes(n)))
+        // console.log(cc)
+        this.setState({ ccimg: ccimg, cc: cc, n: n, multipleGate:multipleGate})
     }
 
     render() {
@@ -331,11 +365,11 @@ class Composer extends React.Component<IProps, IState>{
                         {this.state.ccimg.map((line, l:number) => {
                             return ( 
                                 <Row className="row">
-                                    <img src={qubit[l]} className="inline" />
+                                    <img src={qubit[l]} className="inline" id="first" />
                                     {line.map((col: string, c: number) => {
                                         return <img className="inline" src={imageInuse[col]} onClick={() => this.place(l, c)} />
                                     })}
-                                    <img src={m} className="inline" />
+                                    <img src={m} className="inline" id="last" />
                                 </Row>
                             )
                         })}
@@ -344,16 +378,15 @@ class Composer extends React.Component<IProps, IState>{
 
 
                 <div className="buttonPanel">
-                    <button className="btn btn-primary" onClick={this.run}>Run</button>
-                    <button className="btn btn-primary" onClick={this.reset}>Reset</button>
-                    <button className="btn btn-primary" disabled={this.state.n > 4} onClick={this.addQubit}>Add Qubit</button>
-                    <button className="btn btn-primary" disabled={this.state.n < 2} onClick={this.removeQubit}>Remove Qubit</button>
+                    <button className="btn btn-primary" id="buttonPanel" onClick={this.run}>Run</button>
+                    <button className="btn btn-primary" id="buttonPanel" onClick={this.reset}>Reset</button>
+                    <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onClick={this.addQubit}>Add Qubit</button>
+                    <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n < 2} onClick={this.removeQubit}>Remove Qubit</button>
                 </div>
-                
-                <Qubie className="svg-qubie" />
+                <div className="result">   
                 <Bar
                     data={this.state.result}
-                    width={700}
+                    width={680}
                     height={200}
                     options={{
                         responsive: false,
@@ -378,6 +411,10 @@ class Composer extends React.Component<IProps, IState>{
                         }
                     }}
                 />
+                <QubieWrapper>
+                <Qubie className="svg-qubie-intro" />
+                </QubieWrapper>
+                </div>     
             </div>
         );
     }

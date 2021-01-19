@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Explore from '../pages/Explore';
 import Playground from '../pages/Playground';
+import Challenge from '../pages/Challenge'
 
 export default function Routes() {
   return (
@@ -11,7 +12,7 @@ export default function Routes() {
       <Route path="/" exact component={ Home } />
       <Route path="/explore" component={ Explore }/>
       <Route path="/playground" exact component={ Playground }/>
-      <Route path="/challenge" />
+      <Route path="/challenge" exact component={ Challenge }/>
     </>
   )
 }

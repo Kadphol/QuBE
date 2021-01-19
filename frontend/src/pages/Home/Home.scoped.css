@@ -111,10 +111,10 @@ h3 {
 
 @keyframes animation-qubie-intro {
   from, to {
-    transform: translateY(50px) rotate(5deg);
+    transform: translateY(20%) rotate(5deg);
   }
 
   50% {
-    transform: translateY(150px) rotate(5deg);
+    transform: translateY(40%) rotate(5deg);
   }
 }
