@@ -1,5 +1,5 @@
 .Composer {
-    width: 70vw;
+    width: 100%;
     display: inline-block;
     overflow: hidden;
     margin-left: 10px;
@@ -18,14 +18,15 @@ img.gate {
 }
 
 img.inline {
-    /* float: left; */
     height: auto; 
     width: auto; 
     max-width: 6.3%; 
     max-height: 6.3%;
     display: inline;
-    
-    /* border: solid red; */
+}
+
+#first {
+    margin-left: 20px;
 }
 
 #first {
@@ -50,16 +51,14 @@ button.btn-primary:disabled {
 
 #buttonPanel {
     margin-left: 20px;
+    position: inline-block;   
+    float: left; 
 }
 
 div.buttonPanel {
+    width: 100%;
       float:left;
       margin-top: 16px;
       margin-bottom: 16px;
 }
 
-.result {
-    float: left;
-    display: inline;
-    position: relative;
-}

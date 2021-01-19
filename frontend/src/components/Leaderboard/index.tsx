@@ -6,9 +6,12 @@ import { Row } from 'react-bootstrap';
 import Person from './person'
 import { Iuser } from '../../type.modal'
 import { ReactComponent as Qubie } from '../../svg/Qubie-intro.svg';
-import { ReactComponent as Beg } from '../../svg/Beg.svg';
+import { ReactComponent as Beck } from '../../svg/Beck.svg';
+import scene4 from '../../assets/challenge/scene4.png'
 
 const Main = styled.div`
+background-image: url(${scene4});
+background-size: cover;
 width: 100%;
 height: 100%;
 margin: auto;
@@ -17,11 +20,12 @@ position: relative;
 `
 
 const Board = styled.div`
+background-color: beige;
 width: 50%;
 height: 95%;
 margin: auto;
 margin-top: 10px;
-border: solid violet;
+border: solid black;
 `
 
 const Filter = styled.div`
@@ -153,8 +157,8 @@ class Leaderboard extends React.Component<Iuser, IState> {
         }
         </Board>
         <Character>
-          <Qubie style={{ left:"0" }} className="svg-qubie"/>
-          <Beg style={{ right:"20px" }} className="svg-qubie"/>
+          <Qubie style={{ left:"0" }} className="svg-qubie-intro"/>
+          <Beck style={{ right:"20px" }} className="svg-qubie-intro"/>
         </Character>
       </Main>
     );
