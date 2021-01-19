@@ -1,0 +1,65 @@
+.Composer {
+    width: 70vw;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+.gates {
+    margin-left: 0;
+}
+
+img.gate {
+    height: auto; 
+    width: auto; 
+    max-width: 7%; 
+    max-height: 7%;
+    margin-left: 10px;
+}
+
+img.inline {
+    /* float: left; */
+    height: auto; 
+    width: auto; 
+    max-width: 6.3%; 
+    max-height: 6.3%;
+    display: inline;
+    
+    /* border: solid red; */
+}
+
+#first {
+    margin-left: 20px;
+}
+
+button.btn-primary {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    background-color: #A29BFE;
+    border-color: #A29BFE;
+    color: white;
+  }
+
+button.btn-primary:disabled {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    background-color: #8B90E3;
+    border-color: #A29BFE;
+    color: white;
+}
+
+#buttonPanel {
+    margin-left: 20px;
+}
+
+div.buttonPanel {
+      float:left;
+      margin-top: 16px;
+      margin-bottom: 16px;
+}
+
+.result {
+    float: left;
+    display: inline;
+    position: relative;
+}

@@ -1,0 +1,11 @@
+.icon {
+  display: block;
+  padding: 10px;
+}
+
+.next {
+  /* border: solid orange; */
+  position: flex;
+  padding-top: 19px;
+  /* margin: auto; */
+}

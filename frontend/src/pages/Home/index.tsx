@@ -1,6 +1,6 @@
 import React from 'react';
 import IntroButton from '../../components/IntroButton';
-import './Home.css';
+import './Home.scoped.css';
 
 import logoName from '../../assets/intro/intro-logo-name.png';
 import {ReactComponent as Qubie} from '../../svg/Qubie-intro.svg';
@@ -13,7 +13,7 @@ class Home extends React.Component {
         <div className="container-fluid">
           <div className="row intro">
             <div className="intro-1 col-lg-7">
-              <Qubie className="svg-qubie" />
+              <Qubie className="svg-qubie-intro" />
             </div> 
             <div className="intro-2 col-lg-5">
               <img src={logoName} alt="QuBE Logo" />
@@ -100,7 +100,7 @@ class Home extends React.Component {
           </div>
         </div>
         <footer className="footer ml-0 mr-0">
-            <img src={footer} alt="footer"/>
+            <img src={footer} alt="footer" style={{width: "1425px"}}/>
         </footer>
       </div>
 

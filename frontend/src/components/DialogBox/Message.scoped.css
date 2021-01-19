@@ -1,0 +1,11 @@
+.message {
+  width: 90%;
+  float: left;
+  padding-top: 10px;
+  padding-left: 90px;
+  padding-right: 10px;
+}
+.message span {
+  font-family: 'Kanit';
+  font-size: 25px;
+}

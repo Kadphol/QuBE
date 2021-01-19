@@ -1,0 +1,51 @@
+  .Menu {
+    float: left;
+    width: 25vw;
+    height: calc(100vh - 80px);
+    transition: width 0.5s;
+    font-family: 'Kanit',sans-serif;
+    font-size: 50px;
+    color: white;
+    background-color: #8B90E3;
+    overflow: hidden;
+    object-fit: contain;
+    resize: both;
+    /* object-fit: contain; */
+  }
+
+  #wrapper2 {
+    height: 0vh;
+    transition: height 0.5s;
+  }
+
+  .detail {
+    text-align: center;
+    font-family: 'Kanit',sans-serif;
+    font-size: 15px;
+    color: black;
+    display: block;
+  }
+
+  .buttonPanel2 {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  align-items: center;
+  justify-content: center;
+  }
+
+  .sampleCircuit {
+    width: 50%;
+    height: 50%;
+    margin-bottom: 10px;
+  }
+
+  @keyframes slide-right {
+    from {  transform: scale(1,1) translateX(0%); }
+    to { transform: scale(2,1) translateX(50%); }
+  }
+
+  @keyframes slide-left {
+    from {  transform: scale(2,1) translateX(50%); }
+    to { transform: scale(1,1) translateX(0%); }
+  }

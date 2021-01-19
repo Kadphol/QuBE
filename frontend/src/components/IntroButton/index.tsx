@@ -1,5 +1,5 @@
 import React from 'react';
-import './IntroButton.scoped.css'
+import './IntroButton.scoped.css';
 
 type ButtonProps = {
   link: string,

@@ -1,5 +1,5 @@
 .nav-link {
-  color: #6254d2 !important;
+  color: #8B90E3 !important;
   font-family: 'Kanit', sans-serif;
 }
 .nav-link:hover {
@@ -17,4 +17,23 @@ nav.navbar {
 .Navigation {
   margin-left: 100px;
   margin-right: 100px;
+}
+
+button.btn-primary {
+  font-family: 'Kanit',sans-serif;
+  font-size: medium;
+  background-color: #A29BFE;
+  border-color: #A29BFE;
+  color: white;
+}
+
+button.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  background-color: #6254D2;
+  border-color: #6254D2;
+}
+
+.nav-login-button {
+  margin-left: 50px;
+  border-radius: 50px !important;
+  padding: 0.5rem 1rem !important;
 }
