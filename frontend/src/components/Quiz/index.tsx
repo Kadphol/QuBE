@@ -61,7 +61,7 @@ class Quiz extends React.Component {
     else this.setState({ penalty: this.state.penalty + 500 })
   }
 
-  next = () => this.setState({ item: this.state.item + 1, pass: false, nextbutton: false })
+  next = () => this.setState({ item: this.state.item + 1, penalty: 0, pass: false, nextbutton: false })
 
   handleScore = score => this.setState({ score: score })
 
