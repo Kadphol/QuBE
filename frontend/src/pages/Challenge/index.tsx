@@ -75,23 +75,12 @@ class Challenge extends React.Component {
         <Wrapper>
           {this.state.select==0?
           <Fragment>
-<<<<<<< HEAD
           <Column1>
               <button className="btn btn-primary" onClick={()=>this.switch(1)}>เริ่มท้าทาย</button>
           </Column1>
           <Column2>
               <button className="btn btn-primary" onClick={()=>this.switch(2)}>อันดับคะแนน</button>
           </Column2>
-=======
-          <Column>
-              <img id="img" src={scene1}/>
-              <button className="btn btn-primary" id="button"  onClick={()=>this.switch(1)}>เริ่มท้าทาย</button>
-          </Column>
-          <Column>
-            <img id="img2" src={scene2}/>
-              <button className="btn btn-primary" id="button2" onClick={()=>this.switch(2)}>อันดับคะแนน</button>
-          </Column>
->>>>>>> a5e4fe3194b0e24b226f6b82957107016eb789ba
           </Fragment>
           :
           this.state.select==1
