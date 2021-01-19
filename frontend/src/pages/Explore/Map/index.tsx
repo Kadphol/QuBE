@@ -8,6 +8,7 @@ const Menu = styled.div`
   width: 1240px;
   height: 720px;
   text-align: center;
+  margin: auto;
 `;
 
 export default function Map({ children }) {

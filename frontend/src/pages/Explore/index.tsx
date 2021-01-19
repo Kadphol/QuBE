@@ -13,6 +13,7 @@ import styled from 'styled-components'
 const Main = styled.div`
   position: relative;
   margin: auto;
+  padding-bottom: 1%;
   overflow: hidden;
   // border: solid violet;
   * {
@@ -23,9 +24,6 @@ const Main = styled.div`
 const MapWrapper = styled.div`
   position: relative;
   border: solid gold;
-  * {
-    margin: auto;
-  }
 `
 
 function Explore() {
