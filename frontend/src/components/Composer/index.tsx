@@ -48,8 +48,8 @@ const QubieWrapper = styled.div`
     transform: scaleX(-1);
     height: 200px;
     width: 200px;
-    right: -240px;
-    bottom: 70px;
+    right: 50px;
+    bottom: 100px;
     position: absolute;  
     // border: solid blue;
     * {
@@ -62,6 +62,8 @@ const QubieWrapper = styled.div`
 `;
 
 interface IProps {
+    quiz: boolean,
+    answerCheck: (string)=>void
 }
 
 interface IState {
@@ -82,7 +84,7 @@ interface IState {
         }>
     }
 }
-
+    
 const el: HTMLElement = document.getElementById('Composer')!;
 
 class Composer extends React.Component<IProps, IState>{
@@ -114,6 +116,7 @@ class Composer extends React.Component<IProps, IState>{
                 let result = this.state.result
                 result.labels = res.data.labels
                 result.datasets[0].data = res.data.values
+                this.props.answerCheck(res.data.values)!
                 this.setState({ result: result })
                 console.log(result) 
             })
@@ -354,14 +357,16 @@ class Composer extends React.Component<IProps, IState>{
             <div className="Composer" id="Composer">
                 <br />
                 {/* <p className="large">Active: {this.state.active}</p> */}
+                
+                <div style={{ display: this.props.quiz?'flex':'block'}}>
+                    <div>
+                        
                 <div className="gates">
                     {Object.keys(image).map(key => {
                         return <img className="gate" src={image[key]} onClick={(e) => this.activate(e, key)} />
                     })}
                 </div>
                 <br />
-                <div className="maincomposer">
-                    <div className="circuit">
                         {this.state.ccimg.map((line, l:number) => {
                             return ( 
                                 <Row className="row">
@@ -373,21 +378,25 @@ class Composer extends React.Component<IProps, IState>{
                                 </Row>
                             )
                         })}
+                    
                     </div>
-                </div>
 
 
+                {!this.props.quiz && 
                 <div className="buttonPanel">
                     <button className="btn btn-primary" id="buttonPanel" onClick={this.run}>Run</button>
                     <button className="btn btn-primary" id="buttonPanel" onClick={this.reset}>Reset</button>
                     <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onClick={this.addQubit}>Add Qubit</button>
                     <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n < 2} onClick={this.removeQubit}>Remove Qubit</button>
-                </div>
-                <div className="result">   
+                </div> }
+
+                <div style={{
+                    position: 'relative',
+                    marginTop: '80px'}}>  
                 <Bar
                     data={this.state.result}
-                    width={680}
-                    height={200}
+                    width={this.props.quiz?550:750}
+                    height={this.props.quiz?220:275}
                     options={{
                         responsive: false,
                         maintainAspectRatio: false,
@@ -411,10 +420,23 @@ class Composer extends React.Component<IProps, IState>{
                         }
                     }}
                 />
+                {   !this.props.quiz &&
                 <QubieWrapper>
                 <Qubie className="svg-qubie-intro" />
                 </QubieWrapper>
-                </div>     
+                }
+                </div>    
+                
+                </div>
+
+                {this.props.quiz && 
+                <div className="buttonPanel">
+                    <button className="btn btn-primary" id="buttonPanel" onClick={this.run}>Run</button>
+                    <button className="btn btn-primary" id="buttonPanel" onClick={this.reset}>Reset</button>
+                    <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onClick={this.addQubit}>Add Qubit</button>
+                    <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n < 2} onClick={this.removeQubit}>Remove Qubit</button>
+                </div> }
+                
             </div>
         );
     }
