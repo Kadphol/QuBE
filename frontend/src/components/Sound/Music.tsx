@@ -1,6 +1,6 @@
 import React from 'react';
-import soundon from '../../assets/sound/sound-on.png';
-import soundoff from '../../assets/sound/sound-off.png';
+import soundon from '../../assets/Sound/sound-on.png';
+import soundoff from '../../assets/Sound/sound-off.png';
 import './Music.scoped.css'
 
 class Music extends React.Component <{url:string}>{

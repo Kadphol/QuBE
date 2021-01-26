@@ -8,7 +8,7 @@ import scene2 from '../../assets/challenge/scene2.png'
 
 const Wrapper = styled.div`
   margin: 50px 100px 50px;
-  border: solid grey;
+  // border: solid grey;
   height: 720px;
   width: 1240px;
   margin: auto;

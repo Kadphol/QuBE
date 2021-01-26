@@ -23,7 +23,7 @@ const Main = styled.div`
 
 const MapWrapper = styled.div`
   position: relative;
-  border: solid gold;
+ // border: solid gold;
 `
 
 function Explore() {
