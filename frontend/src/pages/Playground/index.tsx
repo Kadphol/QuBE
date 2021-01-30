@@ -9,7 +9,7 @@ class Playground extends React.Component {
         return (
             <div className="flex">
                 <Sidebar/>
-                <Composer  quiz={false} answerCheck={()=>{}}/>
+                <Composer column={13} quiz={false} answerCheck={()=>{}}/>
             </div>
         );
     }
