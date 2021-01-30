@@ -74,8 +74,8 @@ class Person extends React.Component<IProps> {
                     {this.props.data.filter(person => person.index <= 10).map(person => {
                         return (
                             <CardRow>
-                                <Row>
-                                    <p style={{ marginLeft: "20px" }}>{person.index}</p>
+                                <Row className="R">
+                                    <p style={{ paddingLeft: "20px", width:'20px' }}>{person.index}</p>
                                     <img src={person.image} />
                                     <p style={{ marginLeft: "35px" }}>{person.name} </p>
                                     <p style={{ position: "absolute", right: "40px" }}>{person.score}</p>
@@ -88,7 +88,7 @@ class Person extends React.Component<IProps> {
 
                     <CardSelf>
                         <Row>
-                            <p style={{ marginLeft: "20px" }}>{this.props.self.index}</p>
+                            <p style={{ paddingLeft: "20px", width:'20px' }}>{this.props.self.index}</p>
                             <img src={this.props.self.image} />
                             <p style={{ marginLeft: "35px" }}>{this.props.self.name} </p>
                             <p style={{ position: "absolute", right: "40px" }}>{this.props.self.score}</p>

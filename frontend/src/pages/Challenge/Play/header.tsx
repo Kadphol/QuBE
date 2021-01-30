@@ -5,12 +5,16 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 const Main = styled.div`
   position: relative;
   width: 50%;
-  margin: 15px 20px;
   height: auto;
   font-family: 'Kanit',sans-serif;
   font-size: medium;
   display: flex;
 `
+
+const TimerDiv = styled.div`
+    margin: 10px 20px;
+`
+
 interface IProps {
     play: boolean;
     penalty: number;
@@ -22,12 +26,15 @@ class Quiz extends React.Component <IProps>{
     state = {
         remainingTime: 0,
         remainingScore: 0,
+        penalty: 0,
+        justWrong: false,
     };
 
     render() {
         return (
             <Main>
-                <CountdownCircleTimer
+                <TimerDiv>
+<CountdownCircleTimer
                     size={100}
                     isPlaying={this.props.play}
                     duration={60}
@@ -39,16 +46,25 @@ class Quiz extends React.Component <IProps>{
                 >
                     {({ remainingTime }) => {
                         if(this.state.remainingTime!==remainingTime) {
-                            let score = 1300+(20*remainingTime!)-this.props.penalty
-                            score = score<0?0:score;
+                            let score = 100+(40*remainingTime!)-this.props.penalty
+                            score = score<100?100:score;
                             this.props.handleScore(score)
-                            this.setState({remainingTime:remainingTime,remainingScore:score})
+                            this.setState({remainingTime:remainingTime,remainingScore:score,justWrong:this.state.penalty!==this.props.penalty,penalty:this.props.penalty})
                         }
                         return(remainingTime!.toString().concat(' วินาที'))}}
                 </CountdownCircleTimer>
-                <div>
+                </TimerDiv>
+                
+                <div style={{
+            left:'125px',
+            width: '200px',
+            height: '125px',
+            paddingTop: '20px',
+            position: 'absolute',
+            fontFamily: 'Kanit',
+          }}>
                     
-                <div style={{margin:'15px 20px 0px', fontSize: '40px'}}>
+                <div style={{margin:'auto', fontSize: '40px', color:this.state.justWrong?"red":"black"}}>
                 {this.state.remainingScore}
                 </div>
                 <div style={{marginTop: '-15px',fontSize: '20px'}}>
