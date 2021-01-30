@@ -5,6 +5,7 @@
 
 .next {
   /* border: solid orange; */
+  cursor:pointer;
   position: flex;
   padding-top: 19px;
   /* margin: auto; */

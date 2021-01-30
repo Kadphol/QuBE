@@ -25,11 +25,23 @@ class NavigationBar extends React.Component<Iuser, navState> {
   showModal = (): void => {
     if(!this.props.loginStatus) this.setState(state => ({modalShow:true}))
   }
+
+  hideModal = (): void => {
+    this.setState({modalShow:false})
+  }
   
+  handleClick = (e):void => {
+    if (!this.props.loginStatus) {
+      e.preventDefault()
+      this.setState({modalShow:true})
+    }
+
+  }
+
   render() {
     return (
       <div className="Navigation">
-        <LoginModal show={ this.state.modalShow } onHide={() => this.setState(state => ({modalShow:false}))}/> {/* close modal*/}
+        <LoginModal show={ this.state.modalShow } onHide={this.hideModal}/> {/* close modal*/}
         <Navbar bg="light">
           <Navbar.Brand href="/">
             <img src={logo} alt="QuBE logo brand for navbar." />
@@ -39,13 +51,13 @@ class NavigationBar extends React.Component<Iuser, navState> {
               <NavLink exact to="/" className="nav-link">
                 เริ่มต้นกับควอนตัม
               </NavLink>
-              <NavLink to="/explore" className="nav-link">
+              <NavLink to="/explore" onClick={this.handleClick} className="nav-link">
                 ผจญภัยในโลกควอนตัม
               </NavLink>
-              <NavLink to="/playground" className="nav-link">
+              <NavLink to="playground" onClick={this.handleClick} className="nav-link">
                 สนามฝึกซ้อมควอนตัม
               </NavLink>
-              <NavLink to="/challenge" className="nav-link">
+              <NavLink to="/challenge" onClick={this.handleClick} className="nav-link">
                 ท้าทายกับควอนตัม
               </NavLink>
                 { this.props.loginStatus
