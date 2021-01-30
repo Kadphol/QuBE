@@ -1,9 +1,7 @@
 import React from 'react';
 import { BrowserRouter, BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import Music from '../../components/Button/Music'
 import Progressbar from '../../components/Progressbar';
-import DialogBox from '../../components/DialogBox';
 import Map from './Map'
 import MenuChapter from './MenuChapter'
 import './Explore.css';
@@ -16,6 +14,7 @@ const Main = styled.div`
   height: 100%;
   position: relative;
   margin: auto;
+  padding-bottom: 1%;
   overflow: hidden;
 `
 

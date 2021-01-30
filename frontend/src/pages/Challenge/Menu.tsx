@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { ReactComponent as Dragon} from '../../svg/Dragon.svg'
 import { ReactComponent as Qubie} from '../../svg/Qubie-intro.svg'
-import styled from 'styled-components'
-import { relative } from 'path';
 
 const ulStyle = {
   listStyleType: 'none',
@@ -43,7 +41,7 @@ const column = {
 
 const character = {
     width:'300px',
-    height:'auto',
+    height:'100%',
     padding: '10px',
     transform: 'rotate(5deg)'
 } as React.CSSProperties;
