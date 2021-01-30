@@ -29,7 +29,7 @@
 }
 
 .rows img {
-    height: auto; 
+    height: 15vh; 
     width: auto; 
     max-width: 6.3%; 
     max-height: 6.3%;
@@ -41,7 +41,7 @@
 }
 
 .rowsQuiz img {
-    height: auto; 
+    height: 15vh; 
     width: auto; 
     max-width: 6%; 
     max-height: 6%;
