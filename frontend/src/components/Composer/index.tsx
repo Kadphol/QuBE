@@ -42,26 +42,29 @@ const imageInuse: { [id: string]: string; } = {
     'ccx00': ccxInuse00, 'ccx0': ccxInuse0, 'ccx1': ccxInuse1, 'ccx2': ccxInuse2, 'ccx3': ccxInuse3, 'ccx4': ccxInuse4, 'ccx5': ccxInuse5,
 };
 const qubit: { [id:number]: string; } = { 0:q1, 1:q2, 2:q3, 3:q4, 4:q5,}
-const eLine = Array(13).fill('e')
+var eLine = Array(13).fill('e')
 
 const QubieWrapper = styled.div`
     transform: scaleX(-1);
     height: 200px;
     width: 200px;
-    right: -240px;
-    bottom: 70px;
-    position: absolute;  
-    // border: solid blue;
+    right: 50px;
+    bottom: 100px;
+    margin-left: 20px;
+    // border: solid gold;
     * {
         position: absolute;
         right: 0;
-        bottom: 0;
+        bottom: 0px;
         width: 100%;
         height: 100%;
     }
 `;
 
 interface IProps {
+    quiz: boolean,
+    answerCheck: (string)=>void,
+    column: number
 }
 
 interface IState {
@@ -82,7 +85,7 @@ interface IState {
         }>
     }
 }
-
+    
 const el: HTMLElement = document.getElementById('Composer')!;
 
 class Composer extends React.Component<IProps, IState>{
@@ -108,12 +111,17 @@ class Composer extends React.Component<IProps, IState>{
         }
     }
 
+    constructor(props) {
+        super(props)
+    }
+
     run = (): void => {
         axios.post('http://localhost/sim', { n: this.state.n, cc: this.state.cc })
             .then((res) => {
                 let result = this.state.result
                 result.labels = res.data.labels
                 result.datasets[0].data = res.data.values
+                this.props.answerCheck(res.data.values)!
                 this.setState({ result: result })
                 console.log(result) 
             })
@@ -131,7 +139,7 @@ class Composer extends React.Component<IProps, IState>{
         }
         if (gate !== this.state.active) {
             const target = e.target as HTMLElement
-            target.style.border = "solid red"
+            target.style.border = "1px solid black"
             this.setState({ active: gate, activeElement: target, placingGate: Array() })
         }
         else this.setState({ active: 'e', placingGate: Array() })
@@ -351,43 +359,51 @@ class Composer extends React.Component<IProps, IState>{
     render() {
         return (
 
-            <div className="Composer" id="Composer">
+            <div className={this.props.quiz?"composerQuiz":"composer"} >
                 <br />
                 {/* <p className="large">Active: {this.state.active}</p> */}
-                <div className="gates">
+                
+                <div style={{ display: this.props.quiz?'block':'block'}}>
+                    <div>
+                        
+                <div className={this.props.quiz?"gatesQuiz":"gates"}>
                     {Object.keys(image).map(key => {
-                        return <img className="gate" src={image[key]} onClick={(e) => this.activate(e, key)} />
+                        return <img src={image[key]} onClick={(e) => this.activate(e, key)} />
                     })}
                 </div>
                 <br />
-                <div className="maincomposer">
-                    <div className="circuit">
                         {this.state.ccimg.map((line, l:number) => {
                             return ( 
-                                <Row className="row">
-                                    <img src={qubit[l]} className="inline" id="first" />
+                                <Row className={this.props.quiz?"rowsQuiz":"rows"}>
+                                    <img src={qubit[l]} id="first"/>
                                     {line.map((col: string, c: number) => {
-                                        return <img className="inline" src={imageInuse[col]} onClick={() => this.place(l, c)} />
+                                        return <img src={imageInuse[col]} onClick={() => this.place(l, c)} />
                                     })}
-                                    <img src={m} className="inline" id="last" />
+                                    <img src={m} id="last" />
                                 </Row>
                             )
                         })}
+                    
                     </div>
-                </div>
 
 
+                
                 <div className="buttonPanel">
-                    <button className="btn btn-primary" id="buttonPanel" onClick={this.run}>Run</button>
-                    <button className="btn btn-primary" id="buttonPanel" onClick={this.reset}>Reset</button>
-                    <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onClick={this.addQubit}>Add Qubit</button>
-                    <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n < 2} onClick={this.removeQubit}>Remove Qubit</button>
-                </div>
-                <div className="result">   
+                    <button className="btn btn-primary" id="buttonPanel" onClick={this.run}>วัดค่าคิวบิต</button>
+                    <button className="btn btn-primary" id="buttonPanel" onClick={this.reset}>รีเซ็ต</button>
+                  { !this.props.quiz && <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onClick={this.addQubit}>เพิ่มจำนวนคิวบิต</button> }
+                  { !this.props.quiz &&  <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n < 2} onClick={this.removeQubit}>ลดจำนวนคิวบิต</button> }
+                </div> 
+
+                <div style={{
+                    display: 'flex',
+                    position: 'relative',
+                    marginTop: '80px',
+                    marginLeft: this.props.quiz?'250px':'0'}}>  
                 <Bar
                     data={this.state.result}
-                    width={680}
-                    height={200}
+                    width={this.props.quiz?500:750}
+                    height={this.props.quiz?130:275}
                     options={{
                         responsive: false,
                         maintainAspectRatio: false,
@@ -411,10 +427,21 @@ class Composer extends React.Component<IProps, IState>{
                         }
                     }}
                 />
+                {   !this.props.quiz &&
                 <QubieWrapper>
                 <Qubie className="svg-qubie-intro" />
                 </QubieWrapper>
-                </div>     
+                }
+                </div>    
+                
+                </div>
+
+                {/* {this.props.quiz && 
+                <div className="buttonPanel">
+                    <button className="btn btn-primary" id="buttonPanel" onClick={this.run}>ส่งคำตอบ</button>
+                    <button className="btn btn-primary" id="buttonPanel" onClick={this.reset}>รีเซ็ต</button>
+                </div> } */}
+                
             </div>
         );
     }

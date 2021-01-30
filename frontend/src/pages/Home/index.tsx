@@ -1,5 +1,5 @@
 import React from 'react';
-import IntroButton from '../../components/IntroButton';
+import IntroButton from '../../components/Button';
 import './Home.scoped.css';
 
 import logoName from '../../assets/intro/intro-logo-name.png';
@@ -9,7 +9,7 @@ import footer from '../../assets/intro/intro-lower.png';
 class Home extends React.Component {
   render() {
     return (
-      <div className="home">
+      <div className="home" style={{overflowX:'hidden'}}>
         <div className="container-fluid">
           <div className="row intro">
             <div className="intro-1 col-lg-7">
@@ -35,7 +35,7 @@ class Home extends React.Component {
               <div className="embed-responsive embed-responsive-16by9"> {/*test video*/}
                 <iframe title="video preview" className="embed-responsive-item"
                 frameBorder="0"  
-                src="https://www.youtube.com/embed/C0DPdy98e4c" /> 
+                src="https://www.youtube.com/embed/K4TOrB7at0Y" /> 
               </div>
             </div>
           </div>

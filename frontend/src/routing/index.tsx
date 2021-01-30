@@ -12,7 +12,7 @@ export default function Routes() {
       <Route path="/" exact component={ Home } />
       <Route path="/explore" component={ Explore }/>
       <Route path="/playground" exact component={ Playground }/>
-      <Route path="/challenge" exact component={ Challenge }/>
+      <Route path="/challenge" component={ Challenge }/>
     </>
   )
 }

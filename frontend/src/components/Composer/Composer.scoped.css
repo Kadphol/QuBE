@@ -1,31 +1,55 @@
-.Composer {
-    width: 70vw;
+.composer {
+    width: 100%;
     display: inline-block;
     overflow: hidden;
-    margin-left: 10px;
 }
 
-.gates {
-    margin-left: 0;
+.composerQuiz {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 40px;
+    margin-top: -20px;
 }
 
-img.gate {
-    height: auto; 
-    width: auto; 
-    max-width: 7%; 
-    max-height: 7%;
-    margin-left: 10px;
-}
-
-img.inline {
-    /* float: left; */
+.gates img {
     height: auto; 
     width: auto; 
     max-width: 6.3%; 
     max-height: 6.3%;
+    margin-left: 10px;
+}
+
+.gatesQuiz img {
+    height: auto; 
+    width: auto; 
+    max-width: 5%; 
+    max-height: 5%;
+    margin-left: 10px;
+}
+
+.rows img {
+    height: 15vh; 
+    width: auto; 
+    max-width: 6.3%; 
+    max-height: 6.3%;
     display: inline;
-    
-    /* border: solid red; */
+}
+
+.rows img:hover {
+    border: solid gold;
+}
+
+.rowsQuiz img {
+    height: 15vh; 
+    width: auto; 
+    max-width: 6%; 
+    max-height: 6%;
+    display: inline;
+}
+
+.rowsQuiz img:hover {
+    border: solid gold;
 }
 
 #first {
@@ -50,16 +74,14 @@ button.btn-primary:disabled {
 
 #buttonPanel {
     margin-left: 20px;
+    position: inline-block;   
+    float: left; 
 }
 
 div.buttonPanel {
+    width: 100%;
       float:left;
       margin-top: 16px;
       margin-bottom: 16px;
 }
 
-.result {
-    float: left;
-    display: inline;
-    position: relative;
-}
