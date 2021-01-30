@@ -23,7 +23,7 @@ class Profile extends React.Component<Iuser> {
             <NavDropdown className="ml-auto" title={profileIcon} id="basic-nav-dropdown">
                 <NavDropdown.Item className="ml-auto" >{this.props.name}</NavDropdown.Item>
                 <NavDropdown.Item className="ml-auto" >Score: {this.props.highscore}</NavDropdown.Item>
-                <NavDropdown.Item className="ml-auto" onClick={this.save}>Save</NavDropdown.Item>
+                {/* <NavDropdown.Item className="ml-auto" onClick={this.save}>Save</NavDropdown.Item> */}
                 <NavDropdown.Item className="ml-auto" href="http://localhost:80/logout" onClick={this.logout}>Logout</NavDropdown.Item>
             </NavDropdown>  
       </React.Fragment>
