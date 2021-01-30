@@ -36,7 +36,7 @@ h3 {
 .intro {
   padding-left: 100px;
   padding-right: 100px;
-  min-height: 750px;
+  min-height: 550px;
 }
 
 .intro-1 {
@@ -106,15 +106,15 @@ h3 {
 }
 
 .svg-qubie-intro {
-  animation: animation-qubie-intro 10s infinite;
+  animation: animation-qubie-intro 5s infinite;
 }
 
 @keyframes animation-qubie-intro {
   from, to {
-    transform: translateY(20%) rotate(5deg);
+    transform: translateY(0%) rotate(5deg);
   }
 
   50% {
-    transform: translateY(40%) rotate(5deg);
+    transform: translateY(20%) rotate(5deg);
   }
 }
