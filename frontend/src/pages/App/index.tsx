@@ -16,6 +16,12 @@ function App() {
     loginStatus: false
   })
 
+  const updateExplore = (chapter: number, unit: number) => {
+    setUser({chapter: chapter, unit: unit})
+  }
+
+  const providerValue = {user,setUser}
+
   useEffect(()=>{
     axios.get('http://localhost/fetch')
     .then(res => {
@@ -23,6 +29,7 @@ function App() {
       if (res.data) {
         setUser( () => ({
           loginStatus: true,
+          type: res.data.type,
           name: res.data.name,
           image: res.data.image,
           chapter: res.data.info.chapter,
@@ -35,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      <userContext.Provider value={user}>
+      <userContext.Provider value={providerValue}>
         <BrowserRouter>
           <NavigationBar name={user.name} loginStatus={user.loginStatus} image={user.image} highscore={user.highscore}/>
           <Routes />

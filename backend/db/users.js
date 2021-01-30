@@ -57,7 +57,7 @@ module.exports.updateInfo = function(user,chapter,unit,star,score,callback){
             if (chapter>res.info.chapter || (chapter==res.info.chapter && unit>res.info.unit)){
                 res.info.chapter = chapter
                 res.info.unit = unit
-            }
+            } 
             res.markModified('info.star')
             res.save()
         }  
@@ -72,6 +72,10 @@ module.exports.getAll = function(callback){
     users.find(callback)
 }
 
-module.exports.remove = function(callback){
+module.exports.removeAll = function(callback){
     users.deleteMany({},callback)
+}
+
+module.exports.removeGuest = function(callback){
+    users.deleteMany({type:'Guest'},callback)
 }

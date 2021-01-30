@@ -1,12 +1,11 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import styled from 'styled-components';
 
 import Message from './Message';
 import styles from './DialogBox.module.css';
 
 
-import next from '../../assets/explore/dialog/next.png';
-import beck from '../../assets/explore/dialog/Beck-icon.png';
+import nextIcon from '../../assets/explore/dialog/next.png';
 
 const MessageDiv = styled.div`
   width: 80%;
@@ -33,16 +32,18 @@ const IconDiv = styled.div`
   z-index: 2;
 `;
 
-const DialogBox = () => {
+const DialogBox = ({img,message,next,showIcon=true,showNext=true}) => {
+
   return (
     <div style={{ paddingTop: '570px', height:'100%', position: 'static'}}>
-      <IconDiv>
-        <img src={beck} alt="test" className={styles.icon}/>
+      {showIcon
+      ?<IconDiv>
+        <img src={img} alt="test" className={styles.icon}/>
       </IconDiv>
+      :null}
       <MessageDiv>
-        <Message message="สงสัยกันมั้ยว่า คอมพิวเตอร์แบบดั้งเดิมที่เราใช้กันอยู่ สามารถเข้าใจได้อย่างไร
-  ว่าเราป้อนค่าอะไรเข้าไปและเราต้องการให้แสดงผลอะไรออกมา"/>
-        <img className={`${styles.next}`} src={next} alt="next icon"/>
+        <Message message={message} />
+        {showNext?<img className={`${styles.next}`} src={nextIcon} alt="next icon" onClick={next}/>:null}
       </MessageDiv>
     </div>
   )
