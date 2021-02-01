@@ -25,7 +25,6 @@ function App() {
   useEffect(()=>{
     axios.get('http://localhost/fetch')
     .then(res => {
-      console.log(res.data)
       if (res.data) {
         setUser( () => ({
           loginStatus: true,
