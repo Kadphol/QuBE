@@ -6,6 +6,9 @@ import styles from './DialogBox.module.css';
 
 
 import nextIcon from '../../assets/explore/dialog/next.png';
+const sfxDialog = require('../../assets/sound/sfx_dialog.mp3').default
+const sfxClick = require('../../assets/sound/sfx_click.mp3').default
+
 
 const MessageDiv = styled.div`
   width: 80%;
@@ -34,6 +37,8 @@ const IconDiv = styled.div`
 
 const DialogBox = ({img,message,next,showIcon=true,showNext=true}) => {
 
+  const click = new Audio(sfxClick)
+
   return (
     <div style={{ paddingTop: '570px', height:'100%', position: 'static'}}>
       {showIcon
@@ -43,7 +48,7 @@ const DialogBox = ({img,message,next,showIcon=true,showNext=true}) => {
       :null}
       <MessageDiv>
         <Message message={message} />
-        {showNext?<img className={`${styles.next}`} src={nextIcon} alt="next icon" onClick={next}/>:null}
+        {showNext?<img className={`${styles.next}`} src={nextIcon} alt="next icon" onMouseDown={()=>click.play()} onClick={next}/>:null}
       </MessageDiv>
     </div>
   )
