@@ -44,7 +44,7 @@ class Home extends React.Component {
           <div className="row wave">
             <div className="row subrow">
               <div className="col-lg-1"></div>
-              <div className="col-lg-4 why">
+              <div className="col-lg-6 why">
                 <h2>ทำไมต้องควอนตัม</h2>
                 <h3>ทำไมต้องควอนตัม</h3>
                 <p>
@@ -54,10 +54,10 @@ class Home extends React.Component {
                 การพัฒนา AI ที่มีประสิทธิภาพรวมถึงการพยากรณ์ที่แม่นยำ   
                 </p>
               </div>
-              <img src={item1}/>
+              <img src={item1} style={{position:'absolute',top:'1450px',left:'750px'}}/>
             </div>
             <div className="row subrow justify-content-end">
-              <img src={item2}/>
+              <img src={item2} style={{position:'absolute',top:'1900px',left:'150px'}}/>
               <div className="col-lg-5"></div>
               <div className="col-lg-7 what">
                 <h2>Quantum Computing คืออะไร</h2>

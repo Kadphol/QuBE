@@ -50,13 +50,15 @@ module.exports.updateInfo = function (user, chapter, unit, star, score, callback
     users.findOne({ id: user.id }).exec((err, res) => {
         if (res) {
             if (star != undefined) {
-                res.info.star[chapter - 1] = star
+                res.info.star = star
             }
             if (score != undefined) {
                 res.info.highscore = score
             }
-            res.info.chapter = chapter
-            res.info.unit = unit
+            if (chapter != undefined && unit != undefined) {
+                res.info.chapter = chapter
+                res.info.unit = unit
+            }
             res.markModified('info.star')
             res.save()
         }

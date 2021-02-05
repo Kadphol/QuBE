@@ -37,9 +37,11 @@ class Unit extends React.Component<IProps> {
         let nextFrame = this.state.frame + 1
         let { chapter, star } = this.props.user
         if (nextFrame == this.lastFrame-1) {
-            if (this.state.star > star![this.props.chapter]) star![this.props.chapter - 1] = this.state.star // if new star is higher, replace
-            axios.put(`${ENDPOINT.URL}/updateInfo`, { star: star })  // update star
-            this.props.setUser(() => ({ ...this.props.user, star: star }))
+            if (this.state.star > star![this.props.chapter-1]) { // if new star is higher, replace
+                star![this.props.chapter - 1] = this.state.star
+                axios.put(`${ENDPOINT.URL}/updateInfo`, { star: star })  // update star
+                this.props.setUser(() => ({ ...this.props.user, star: star }))
+            }
             if (this.props.chapter > chapter!) {
                 axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: 0, chapter: this.props.chapter })  // clear chapter
                 this.props.setUser(() => ({ ...this.props.user, unit: 0, chapter: this.props.chapter }))
