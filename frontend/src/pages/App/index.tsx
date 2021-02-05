@@ -7,7 +7,8 @@ import Routes from '../../routing'
 import '../../styles/App.css';
 import { Iuser } from '../../type.modal'
 
-import axios from '../../axiosconfig'
+import axios from '../../config/axiosconfig'
+import ENDPOINT from '../../config/endpoint'
 import { userContext } from '../../context/userContext';
 
 function App() {
@@ -16,14 +17,10 @@ function App() {
     loginStatus: false
   })
 
-  const updateExplore = (chapter: number, unit: number) => {
-    setUser({chapter: chapter, unit: unit})
-  }
-
   const providerValue = {user,setUser}
 
   useEffect(()=>{
-    axios.get('http://localhost/fetch')
+    axios.get(`${ENDPOINT.URL}/fetch`)
     .then(res => {
       console.log(res.data)
       if (res.data) {
@@ -35,7 +32,7 @@ function App() {
           chapter: res.data.info.chapter,
           unit: res.data.info.unit,
           star: res.data.info.star,
-          highscore: res.data.info.highscore
+          score: res.data.info.highscore
         }));
       }})
   },[])
@@ -44,7 +41,7 @@ function App() {
     <div className="App">
       <userContext.Provider value={providerValue}>
         <BrowserRouter>
-          <NavigationBar name={user.name} loginStatus={user.loginStatus} image={user.image} highscore={user.highscore}/>
+            <NavigationBar />
           <Routes />
         </BrowserRouter>
       </userContext.Provider>

@@ -1,33 +1,37 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom' 
 import { NavDropdown } from 'react-bootstrap';
 
 import './Profile.css';
 import {Iuser} from '../../type.modal'
-import axios from '../../axiosconfig'
+import axios from '../../config/axiosconfig'
+import ENDPOINT from '../../config/endpoint'
 
-class Profile extends React.Component<Iuser> {
+export default function Profile({user,setUser}) {
 
-    save(){
-        axios.put('http://localhost/updateInfo',{chapter:1,unit:2,star:3,score:1000})
-        window.location.reload();
-    } 
+    const history = useHistory()
 
-    logout() {
-        window.location.reload();
+    const clear = () => {
+        axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: 0, chapter: 0, score:0}) // clear progress
+        setUser(()=>({...user,unit: 0, chapter: 0, score:0}))
     }
 
-    render() {
-    const profileIcon = (<img className="circleBorder" src={this.props.image} width="30" height="30" alt="profile"></img>);
+    const logout = () => {
+        history.push('/')
+    }
+
+    const profileIcon = (<img className="circleBorder" src={user.image} width="30" height="30" alt="profile"></img>);
+    
     return (
       <React.Fragment>
             <NavDropdown className="ml-auto" title={profileIcon} id="basic-nav-dropdown">
-                <NavDropdown.Item className="ml-auto" >{this.props.name}</NavDropdown.Item>
-                <NavDropdown.Item className="ml-auto" >Score: {this.props.highscore}</NavDropdown.Item>
-                {/* <NavDropdown.Item className="ml-auto" onClick={this.save}>Save</NavDropdown.Item> */}
-                <NavDropdown.Item className="ml-auto" href="http://localhost:80/logout" onClick={this.logout}>Logout</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" >{user.name}</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" >Chapter: {user.chapter}</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" >Unit: {user.unit}</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" >Score: {user.score}</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" onClick={clear}>Clear</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" href={`${ENDPOINT.URL}/logout`} onClick={logout}>Logout</NavDropdown.Item>
             </NavDropdown>  
       </React.Fragment>
     );
 }
-}
-export default Profile
