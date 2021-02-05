@@ -17,9 +17,9 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                     user={this.props.user}
                     setUser={this.props.setUser}
                     chapter={1}
-                    unit={1}
+                    unit={3}
                     frameComponent={[F0,F1,F2,F3,F4,F5,F6,F7,F8,F9]}
-                    interactFrame={[1]}
+                    interactFrame={[F1]}
                     script={[
                         "นานมาแล้ว คอมพิวเตอร์ได้ถูกคิดค้นขึ้น และมีการพัฒนาออกมาในรูปแบบต่าง ๆ ให้ใช้ในชีวิตประจำวัน เพื่อเพิ่มความสะดวกสบายให้กับพวกเรา",
                         "เรามาลองทดสอบกัน เธอรู้หรือเปล่า ว่าอุปกรณ์ไหนบ้างอาศัยคอมพิวเตอร์ในการทำงาน",

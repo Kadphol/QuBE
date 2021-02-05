@@ -5,6 +5,8 @@ import './Home.scoped.css';
 import logoName from '../../assets/intro/intro-logo-name.png';
 import {ReactComponent as Qubie} from '../../svg/Qubie-intro.svg';
 import footer from '../../assets/intro/intro-lower.png';
+import item1 from '../../assets/intro/item1.png'
+import item2 from '../../assets/intro/item2.png'
 
 class Home extends React.Component {
   render() {
@@ -52,8 +54,10 @@ class Home extends React.Component {
                 การพัฒนา AI ที่มีประสิทธิภาพรวมถึงการพยากรณ์ที่แม่นยำ   
                 </p>
               </div>
+              <img src={item1}/>
             </div>
             <div className="row subrow justify-content-end">
+              <img src={item2}/>
               <div className="col-lg-5"></div>
               <div className="col-lg-7 what">
                 <h2>Quantum Computing คืออะไร</h2>
@@ -86,7 +90,7 @@ class Home extends React.Component {
                   การฝึกซ้อมกำลังให้แข่งแกร่งผ่านการต่อวงจรจำลอง
                   ควอนตัมก่อนการต่อสู้กับเจ้ามังกรตัวร้าย
                 </p>
-                <IntroButton link="/playground" name="สำรวจโลกควอนตัม" />
+                <IntroButton link="/playground" name="ฝึกซ้อมควอนตัม" />
               </div>
               <div className="feature-box feature-challenge">
                 <h2>ท้าทายกับควอนตัม</h2>
@@ -94,7 +98,7 @@ class Home extends React.Component {
                   ร่วมต่อสู้กับเจ้ามังกรตัวร้ายด้วยบททดสอบความรู้ 
                   ความเข้าใจควอนตันคอมพิวเตอร์กับเหล่านางฟ้าทั้งหลาย
                 </p>
-                <IntroButton link="/challenge" name="สำรวจโลกควอนตัม" />
+                <IntroButton link="/challenge" name="ท้าทายกับควอนตัม" />
               </div>
             </div>
           </div>

@@ -20,7 +20,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                     chapter={2}
                     unit={0}
                     frameComponent={[F0]}
-                    interactFrame={[-1]}
+                    interactFrame={[]}
                     script={[
                         "Coming Soon",
                         "เอาล่ะ เธอรู้อยู่แล้วใช่มั้ย ว่า บิต ใน Classical computer หมายถึงหน่วยที่เล็กที่สุดของข้อมูล ที่คอมพิวเตอร์อ่านได้จากสถานะทางไฟฟ้า",

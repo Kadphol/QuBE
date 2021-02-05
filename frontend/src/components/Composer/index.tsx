@@ -29,11 +29,16 @@ import q3 from '../../assets/playground/q3.png';
 import q4 from '../../assets/playground/q4.png';
 import q5 from '../../assets/playground/q5.png';
 import './Composer.scoped.css';
-import axios from '../../axiosconfig';
+import axios from '../../config/axiosconfig';
 import { Row } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
 import {ReactComponent as Qubie} from '../../svg/Qubie-intro.svg';
 import styled from 'styled-components';
+
+
+const sfxClick = require('../../assets/sound/sfx_click.mp3').default
+const sfxCorrect = require('../../assets/sound/sfx_correct.mp3').default
+const sfxWrong = require('../../assets/sound/sfx_wrong.mp3').default
 
 const image: { [id: string]: string; } = { 'x': x, 'y': y, 'z': z, 'h': h, 'cx': cx, 'ccx': ccx };
 const imageInuse: { [id: string]: string; } = {
@@ -64,7 +69,8 @@ const QubieWrapper = styled.div`
 interface IProps {
     quiz: boolean,
     answerCheck: (string)=>void,
-    column: number
+    column: number,
+    solution?: number[]
 }
 
 interface IState {
@@ -115,19 +121,30 @@ class Composer extends React.Component<IProps, IState>{
         super(props)
     }
 
+    click = new Audio(sfxClick)
+    correct = new Audio(sfxCorrect)
+    wrong = new Audio(sfxWrong)
+
     run = (): void => {
         axios.post('http://localhost/sim', { n: this.state.n, cc: this.state.cc })
             .then((res) => {
                 let result = this.state.result
                 result.labels = res.data.labels
                 result.datasets[0].data = res.data.values
-                this.props.answerCheck(res.data.values)!
+                if(this.props.quiz){
+                    let valid = JSON.stringify(res.data.values) == JSON.stringify(this.props.solution)
+                    if(valid) this.correct.play()
+                    else this.wrong.play()
+                    this.props.answerCheck(valid)
+                }
                 this.setState({ result: result })
                 console.log(result) 
             })
     }
 
     activate = (e: React.MouseEvent<HTMLElement>, gate: string): void => {
+
+        this.click.play()
         if (this.state.activeElement) this.state.activeElement.style.border = ""
         // if change gate while placing multiple gate, remove remaining gate in circuit
         if (this.state.placingGate.length!==0){
@@ -148,6 +165,7 @@ class Composer extends React.Component<IProps, IState>{
 
     place = (line: number, col: number): void => {
         
+        this.click.play()
         let cc = this.state.cc
         let newccimg: Array<Array<string>> = this.state.ccimg.slice()
         let placingGate = this.state.placingGate.slice()
@@ -389,10 +407,10 @@ class Composer extends React.Component<IProps, IState>{
 
                 
                 <div className="buttonPanel">
-                    <button className="btn btn-primary" id="buttonPanel" onClick={this.run}>วัดค่าคิวบิต</button>
-                    <button className="btn btn-primary" id="buttonPanel" onClick={this.reset}>รีเซ็ต</button>
-                  { !this.props.quiz && <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onClick={this.addQubit}>เพิ่มจำนวนคิวบิต</button> }
-                  { !this.props.quiz &&  <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n < 2} onClick={this.removeQubit}>ลดจำนวนคิวบิต</button> }
+                    <button className="btn btn-primary" id="buttonPanel" onMouseDown={()=>this.click.play()} onClick={this.run}>วัดค่าคิวบิต</button>
+                    <button className="btn btn-primary" id="buttonPanel" onMouseDown={()=>this.click.play()} onClick={this.reset}>รีเซ็ต</button>
+                  { !this.props.quiz && <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onMouseDown={()=>this.click.play()} onClick={this.addQubit}>เพิ่มจำนวนคิวบิต</button> }
+                  { !this.props.quiz &&  <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n < 2} onMouseDown={()=>this.click.play()} onClick={this.removeQubit}>ลดจำนวนคิวบิต</button> }
                 </div> 
 
                 <div style={{
@@ -433,15 +451,7 @@ class Composer extends React.Component<IProps, IState>{
                 </QubieWrapper>
                 }
                 </div>    
-                
                 </div>
-
-                {/* {this.props.quiz && 
-                <div className="buttonPanel">
-                    <button className="btn btn-primary" id="buttonPanel" onClick={this.run}>ส่งคำตอบ</button>
-                    <button className="btn btn-primary" id="buttonPanel" onClick={this.reset}>รีเซ็ต</button>
-                </div> } */}
-                
             </div>
         );
     }

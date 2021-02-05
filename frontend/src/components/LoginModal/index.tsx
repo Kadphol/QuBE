@@ -1,28 +1,34 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'
 import { Modal } from 'react-bootstrap';
 import logo from '../../assets/login-logo.png';
 import styles from './LoginModal.module.css';
-import axios from '../../axiosconfig'
+import axios from '../../config/axiosconfig'
+import ENDPOINT from '../../config/endpoint'
 
 interface ModalProps {
   show: boolean;
   onHide: Function;
 }
 
-export default class LoginModal extends React.Component<ModalProps> {
+export default function LoginModal(props) {
 
-  Login = (): void => {
-    window.location.href = 'http://localhost/login'
+  const history = useHistory()
+
+  const Login = () => {
+    window.location.href = `${ENDPOINT.URL}/login`
+    history.push('/')
+    
   }
 
-  guestLogin = (): void =>{
-    axios.get('http://localhost/guestlogin',{})
-    .then( () => window.location.href = 'http://localhost:3000')
+  const guestLogin = () =>{
+    axios.get(`${ENDPOINT.URL}/guestlogin`,{})
+    .then( () => history.push('/'))
   }
-  render() {
-    return (
+  
+  return (
       <Modal 
-        {...this.props}
+        {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -32,16 +38,14 @@ export default class LoginModal extends React.Component<ModalProps> {
             <img src={logo} alt="logo in login modal"/>
           </div>
           <h4 className={styles.login}>เข้าสู่ระบบ</h4>
-          <button className={`btn btn-primary ${styles.fblogin}`} onClick={this.Login}>
+          <button className={`btn btn-primary ${styles.fblogin}`} onClick={Login}>
             เข้าสู่ระบบด้วย Facebook
           </button>
           <div className={styles.bot}>
-            <a className={styles.line} onClick={this.guestLogin} href="/">หรือ เข้าสู่ระบบแบบ guest</a>
+            <a className={styles.line} onClick={guestLogin} href="/">หรือ เข้าสู่ระบบแบบ guest</a>
           </div>
         </Modal.Body>
-  
       </Modal>
     );
-  }
   
 }
