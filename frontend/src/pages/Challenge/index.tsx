@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { Fragment } from 'react';
+=======
+import React from 'react';
+>>>>>>> 4719a703c12f24615a059db4db2e0b68f6377d0e
 import Play from './Play'
 import Leaderboard from './Leaderboard'
 import Menu from './Menu'
