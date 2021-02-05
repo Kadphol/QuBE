@@ -5,6 +5,8 @@ import './Home.scoped.css';
 import logoName from '../../assets/intro/intro-logo-name.png';
 import {ReactComponent as Qubie} from '../../svg/Qubie-intro.svg';
 import footer from '../../assets/intro/intro-lower.png';
+import item1 from '../../assets/intro/item1.png'
+import item2 from '../../assets/intro/item2.png'
 
 class Home extends React.Component {
   render() {
@@ -52,8 +54,10 @@ class Home extends React.Component {
                 การพัฒนา AI ที่มีประสิทธิภาพรวมถึงการพยากรณ์ที่แม่นยำ   
                 </p>
               </div>
+              <img src={item1}/>
             </div>
             <div className="row subrow justify-content-end">
+              <img src={item2}/>
               <div className="col-lg-5"></div>
               <div className="col-lg-7 what">
                 <h2>Quantum Computing คืออะไร</h2>

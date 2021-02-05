@@ -20,13 +20,9 @@ import item9 from '../../../../assets/explore/chapter1/unit1/item9.png'
 import item10 from '../../../../assets/explore/chapter1/unit1/item10.png'
 import item11 from '../../../../assets/explore/chapter1/unit1/item11.png'
 import item12 from '../../../../assets/explore/chapter1/unit1/item12.png'
-<<<<<<< HEAD
 const sfxCorrect = require('../../../../assets/sound/sfx_correct.mp3').default
 const sfxWrong = require('../../../../assets/sound/sfx_wrong.mp3').default
 const sfxClick = require('../../../../assets/sound/sfx_click.mp3').default
-=======
-import dialog from '../../../../components/DialogBox'
->>>>>>> 4719a703c12f24615a059db4db2e0b68f6377d0e
 
 const Main = styled.div`
 width: 100%;
@@ -69,21 +65,15 @@ class F0 extends React.Component {
 class F1 extends React.Component<any> {
 
     state = { clicked: [false, false, false, false, false, false] }
-<<<<<<< HEAD
     correct = new Audio(sfxCorrect)
     wrong = new Audio(sfxWrong)
-=======
->>>>>>> 4719a703c12f24615a059db4db2e0b68f6377d0e
 
     handleClick = (item) => {
         let { clicked } = this.state
         clicked[item] = true
         this.setState({ clicked: clicked })
-<<<<<<< HEAD
         if (item == 1 || item == 2 || item == 5 ) this.correct.play()
         else this.wrong.play()
-=======
->>>>>>> 4719a703c12f24615a059db4db2e0b68f6377d0e
         if (clicked[1] && clicked[2] && clicked[5]) this.props.next()
     }
 

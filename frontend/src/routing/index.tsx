@@ -17,7 +17,6 @@ export default function Routes() {
       {({user})=>
       <React.Fragment>
       <Route path="/" exact component={ Home } />
-<<<<<<< HEAD
       <Route path="/explore"    render={()=>user.loginStatus
                                           ?<Explore/>
                                           :<LoginModal show 
@@ -33,11 +32,5 @@ export default function Routes() {
       </React.Fragment>
       }
     </userContext.Consumer>
-=======
-      <Route path="/explore" component={ Explore }/>
-      <Route path="/playground" exact component={ Playground }/>
-      <Route path="/challenge" component={ Challenge }/>
-    </>
->>>>>>> 4719a703c12f24615a059db4db2e0b68f6377d0e
   )
 }

@@ -19,11 +19,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                     chapter={1}
                     unit={3}
                     frameComponent={[F0]}
-<<<<<<< HEAD
                     interactFrame={[]}
-=======
-                    interactFrame={[1]}
->>>>>>> 4719a703c12f24615a059db4db2e0b68f6377d0e
                     script={[
                         "Coming Soon",
                     ]}
