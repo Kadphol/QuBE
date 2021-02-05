@@ -3,18 +3,13 @@ import { BrowserRouter, BrowserRouter as Router, Route, Switch, useRouteMatch } 
 import background from '../../../assets/explore/chapter2/BackgroundUnit.png'
 import Back from '../../../components/Button/back'
 import { userContext } from '../../../context/userContext';
+import Intro from './Intro'
 import Unit1 from './Unit1'
-// import Unit2 from './Unit2'
-// import Unit3 from './Unit3'
 import Quiz from './Quiz'
 import MenuUnitTemplate from '../MenuUnitTemplate'
+import Music from '../../../components/Button/Music'
 
-// import F2 from './Unit1/F2'
-// import F3 from './Unit1/F3'
-// import F4 from './F4'
-// import F5 from './F5'
-// import F6 from './F6'
-// import F7 from './F7'
+const src = require('../../../assets/sound/bgm2.mp3').default
 
 const main = {
     background: `url(${background})`,
@@ -36,6 +31,7 @@ export default function Chapter2() {
                     <BrowserRouter>
                         <Router>
                             <Switch>
+                            <Route path={`${path}/intro`} render={() => <Intro/>} />
                                 <Route exact path={path} render={() => 
                                 <MenuUnitTemplate 
                                 user={user} 
@@ -56,6 +52,7 @@ export default function Chapter2() {
                                 <Route path={`${path}/quiz`} render={() => <Quiz setUser={setUser} user={user} />} />
                             </Switch>
                         </Router>
+                        <Music url={src}/>
                     </BrowserRouter>
                 }
             </userContext.Consumer>

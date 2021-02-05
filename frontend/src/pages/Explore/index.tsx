@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import { BrowserRouter, BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import Music from '../../components/Button/Music'
+import soundIcon from '../../assets/sound/soundIcon.png'
+import useSound from 'use-sound'
+import Sound from '../../components/Button/Music'
 import Progressbar from '../../components/Progressbar';
-import DialogBox from '../../components/DialogBox';
 import Map from './Map'
 import MenuChapter from './MenuChapter'
 import './Explore.css';
@@ -11,6 +12,8 @@ import { userContext } from '../../context/userContext';
 import styled from 'styled-components'
 import Chapter1 from './Chapter1'
 import Chapter2 from './Chapter2'
+const bgm1 = require('../../assets/sound/bgm1.mp3')
+const bgm2 = require('../../assets/sound/sfx_clear.mp3')
 
 const Main = styled.div`
   height: 100%;
@@ -21,16 +24,20 @@ const Main = styled.div`
 
 const MapWrapper = styled.div`
   position: relative;
+  img {
+  }
 `
 
-function Explore() {
+export default function Explore() {
 
   const { path } = useRouteMatch();
+  const [src,setSrc] = useState(bgm1)
+
   return (
 
     <Main>
       <userContext.Consumer>
-        {({user,setUser}) =>
+        {({ user, setUser }) =>
           <React.Fragment>
             <Progressbar {...user} />
             <MapWrapper>
@@ -38,7 +45,7 @@ function Explore() {
                 <BrowserRouter>
                   <Router>
                     <Switch>
-                      <Route exact path={path} render={() => <MenuChapter {...user} />} />
+                      <Route exact path={path} render={() => <MenuChapter {...user}/>} />
                       <Route path={`${path}/chapter-1`} component={Chapter1} />
                       <Route path={`${path}/chapter-2`} component={Chapter2} />
                       <Route path={`${path}/chapter-3`} />
@@ -47,7 +54,6 @@ function Explore() {
                     </Switch>
                   </Router>
                 </BrowserRouter>
-                {/* <Music url="https://www.mboxdrive.com/bgm.mp3" /> */}
               </Map>
             </MapWrapper>
           </React.Fragment>
@@ -57,5 +63,3 @@ function Explore() {
 
   );
 }
-
-export default Explore;
