@@ -86,7 +86,7 @@ class Home extends React.Component {
                   การฝึกซ้อมกำลังให้แข่งแกร่งผ่านการต่อวงจรจำลอง
                   ควอนตัมก่อนการต่อสู้กับเจ้ามังกรตัวร้าย
                 </p>
-                <IntroButton link="/playground" name="สำรวจโลกควอนตัม" />
+                <IntroButton link="/playground" name="ฝึกซ้อมควอนตัม" />
               </div>
               <div className="feature-box feature-challenge">
                 <h2>ท้าทายกับควอนตัม</h2>
@@ -94,7 +94,7 @@ class Home extends React.Component {
                   ร่วมต่อสู้กับเจ้ามังกรตัวร้ายด้วยบททดสอบความรู้ 
                   ความเข้าใจควอนตันคอมพิวเตอร์กับเหล่านางฟ้าทั้งหลาย
                 </p>
-                <IntroButton link="/challenge" name="สำรวจโลกควอนตัม" />
+                <IntroButton link="/challenge" name="ท้าทายกับควอนตัม" />
               </div>
             </div>
           </div>
