@@ -6,10 +6,15 @@ import { ReactComponent as Dragon } from '../../../svg/Dragon.svg'
 import DialogBox from '../../../components/DialogBox'
 import Composer from '../../../components/Composer'
 import Header from './header'
-import axios from '../../../axiosconfig'
+import axios from '../../../config/axiosconfig'
 import background from '../../../assets/explore/chapter1/BackgroundQuiz.png'
 import {Iuser} from '../../../type.modal'
 import Question from '../../../components/Question'
+import Music from '../../../components/Button/Music'
+
+const src = require('../../../assets/sound/bgm6.mp3').default
+const sfxCorrect = require('../../../assets/sound/sfx_correct.mp3').default
+const sfxWrong = require('../../../assets/sound/sfx_wrong.mp3').default
 
 const Main = styled.div`
   position: relative;
@@ -55,15 +60,16 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
     nextbutton: false
   };
 
-  answerCheck = (answer) => {
-    let solution = [0, 50, 50, 0]
-    if (this.state.item === 1 && JSON.stringify(answer) === JSON.stringify(solution)) {
+  correct = new Audio(sfxCorrect)
+  wrong = new Audio(sfxWrong)
+
+  answerCheck = (valid) => {
+    if (valid) {
       this.setState({ pass: true, totalScore: this.state.totalScore + this.state.score, nextbutton: true })
     }
-    else if (this.state.item === 2 && answer === true) {
-      this.setState({ pass: true, totalScore: this.state.totalScore + this.state.score, nextbutton: true })
+    else {
+      this.setState({ penalty: this.state.penalty + 500 })
     }
-    else this.setState({ penalty: this.state.penalty + 500 })
   }
 
   next = () => this.setState({ item: this.state.item + 1, penalty: 0, pass: false, nextbutton: false })
@@ -118,7 +124,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={!this.state.pass} />
             </HeaderDiv>
             <ObjectDiv>
-              <Composer column={6} quiz={true} answerCheck={this.answerCheck} />
+              <Composer column={6} quiz={true} answerCheck={this.answerCheck} solution={[0, 50, 50, 0]} />
             </ObjectDiv>
             {this.state.pass && <DialogBox img={dragonIcon} showNext={this.state.pass} next={this.next}
             message="ฮึ่ม เจ้าตอบได้ถูกต้อง"/>
@@ -165,6 +171,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
         }
         {this.state.item === 4 &&
         <Redirect to="/challenge"/>}
+        <Music url={src} />
       </Main>
     );
   }

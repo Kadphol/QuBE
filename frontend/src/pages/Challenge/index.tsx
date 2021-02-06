@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Play from './Play'
 import Leaderboard from './Leaderboard'
 import Menu from './Menu'

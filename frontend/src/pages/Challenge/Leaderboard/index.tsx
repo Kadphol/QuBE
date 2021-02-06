@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import { userContext } from '../../../context/userContext';
-import instance from '../../../axiosconfig'
+import instance from '../../../config/axiosconfig'
 import { Row } from 'react-bootstrap';
 import Person from './person'
 import { Iuser } from '../../../type.modal'
@@ -10,6 +10,9 @@ import { ReactComponent as Qubie } from '../../../svg/Qubie-intro.svg';
 import { ReactComponent as Beck } from '../../../svg/Beck.svg';
 import scene from '../../../assets/challenge/leaderboard.png'
 import backIcon from '../../../assets/challenge/backIcon.png'
+import Back from '../../../components/Button/back'
+
+const sfxClick = require('../../../assets/sound/sfx_click.mp3').default
 
 const Main = styled.div`
 background-image: url(${scene});
@@ -86,11 +89,13 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
     back: false
   };
 
+  click = new Audio(sfxClick)
+
   constructor(props) {
     super(props)
   }
 
-  switch = (global) => { this.setState({ global: global }) }
+  switch = (global) => this.setState({ global: global }) 
 
   componentDidMount = () => {
     instance.get('http://localhost/getuser')
@@ -131,8 +136,13 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
       <Main>
         <Board>
           <Filter>
-            <button className="btn btn-primary" disabled={this.state.global} onClick={()=>this.switch(true)}>ทั้งหมด</button>
-            {this.props.user.type=='Facebook'&&<button className="btn btn-primary" disabled={!this.state.global} onClick={()=>this.switch(false)}>เพื่อน</button>}
+            <button className="btn btn-primary" disabled={this.state.global} 
+            onMouseDown={()=>this.click.play()}
+            onClick={()=>this.switch(true)}>ทั้งหมด</button>
+            {this.props.user.type=='Facebook'&&
+            <button className="btn btn-primary" disabled={!this.state.global} 
+            onMouseDown={()=>this.click.play()}
+            onClick={()=>this.switch(false)}>เพื่อน</button>}
           </Filter>
           {this.state.global
             ? <Person data={this.state.data} self={this.state.self} />
@@ -143,8 +153,7 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
           <Qubie style={{ left: "0" }} className="svg-qubie-intro" />
           <Beck style={{ right: "20px" }} className="svg-qubie-intro" />
         </Character>
-        <img src={backIcon} style={{ cursor: 'pointer', position: 'absolute', top: '20px', right: '20px' }} onClick={() => this.setState({ back: true })} />
-        { this.state.back && <Redirect to="/challenge" />}
+        <Back path="/challenge"/>
       </Main>
     );
   }

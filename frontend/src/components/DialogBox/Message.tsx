@@ -11,7 +11,7 @@ const Message = ({message}: any) => {
   );
 
   const transitions = useTransition(items, item => item.key, {
-    trail: 35,
+    trail: 20,
     from: { display: "none" },
     enter: { display: "" }
   });

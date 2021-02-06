@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Dialog from '../../components/DialogBox'
 import { Redirect } from "react-router-dom";
-import axios from '../../axiosconfig'
+import axios from '../../config/axiosconfig'
+import ENDPOINT from '../../config/endpoint'
 import { Iuser } from '../../type.modal';
 
 const Main = styled.div`
@@ -17,8 +18,8 @@ interface IProps {
     user: Iuser;
     chapter: number;
     frameComponent: React.ComponentType<any>[];
-    interactFrame: number[];
-    noDialogFrame: number[];
+    interactFrame: React.ComponentType<any>[];
+    noDialogFrame: React.ComponentType<any>[];
     script: string[];
     icon: string[];
     background: string;
@@ -27,7 +28,7 @@ interface IProps {
 
 class Unit extends React.Component<IProps> {
 
-    state = { frame: 0, star: 0 }
+    state = { frame: 0, star: 0, prevStar: 0, clear: false }
 
     lastFrame = this.props.frameComponent.length
     redirect = "/explore/chapter-".concat(this.props.chapter.toString())
@@ -35,16 +36,18 @@ class Unit extends React.Component<IProps> {
     next = () => {
         let nextFrame = this.state.frame + 1
         let { chapter, star } = this.props.user
-        if (nextFrame == this.lastFrame) {
-            if (this.state.star > star![this.props.chapter]) star![this.props.chapter - 1] = this.state.star // if new star is higher, replace
-            axios.put('http://localhost/updateInfo', { star: star })  // update star
-            this.props.setUser(() => ({ ...this.props.user, star: star }))
+        if (nextFrame == this.lastFrame-1) {
+            if (this.state.star > star![this.props.chapter-1]) { // if new star is higher, replace
+                star![this.props.chapter - 1] = this.state.star
+                axios.put(`${ENDPOINT.URL}/updateInfo`, { star: star })  // update star
+                this.props.setUser(() => ({ ...this.props.user, star: star }))
+            }
             if (this.props.chapter > chapter!) {
-                axios.put('http://localhost/updateInfo', { unit: 0, chapter: this.props.chapter })  // clear chapter
+                axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: 0, chapter: this.props.chapter })  // clear chapter
                 this.props.setUser(() => ({ ...this.props.user, unit: 0, chapter: this.props.chapter }))
             }
         }
-        this.setState({ frame: nextFrame })
+        this.setState({ frame: nextFrame, clear: false })
     }
 
     componentWillReceiveProps = () => {
@@ -55,16 +58,12 @@ class Unit extends React.Component<IProps> {
         this.setState({ star: this.state.star + 1 })
     }
 
-    showDialog = (index: number) => {
-        const find = this.props.interactFrame.indexOf(index);
-        if (find > -1) {
-            this.props.interactFrame.splice(find, 1);
-        }
-        this.forceUpdate();
+    justClear = (index: number) => {
+        this.setState({ prevStar: this.state.star , clear: true})
     }
 
     render() {
-        var { frame } = this.state
+        var { frame, clear } = this.state
         var { icon, script, background, interactFrame, noDialogFrame } = this.props
         const { frameComponent: Component } = this.props;
         return (
@@ -72,9 +71,12 @@ class Unit extends React.Component<IProps> {
                 {Component.map((Item, index) => (
                     frame == index &&
                     <React.Fragment>
-                        <Item index={index} star={this.state.star} next={this.next} showDialog={this.showDialog} increaseStar={this.increaseStar} />
-                        {!noDialogFrame.includes(index) &&
-                            <Dialog showNext={interactFrame.includes(index) ? false : true} next={this.next} img={icon[index]} message={script[index]} />
+                        <Item index={index} star={this.state.star} prevStar={this.state.prevStar} next={this.next} justClear={this.justClear} increaseStar={this.increaseStar} />
+                        {!noDialogFrame.includes(Item) && !clear &&
+                            <Dialog showNext={interactFrame.includes(Item) ? false : true} next={this.next} img={icon[index]} message={script[index]} />
+                        }
+                        {clear &&
+                            <Dialog showNext next={this.next} img={icon[index]} message={"ฮึ่ม! ถูกต้อง"} />
                         }
                     </React.Fragment>
                 )

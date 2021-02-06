@@ -29,11 +29,18 @@
 }
 
 .rows img {
+    height: auto; 
+    width: auto; 
+    max-width: 5%; 
+    max-height: 5%;
+    margin-left: 10px;
+}
+
+.rows img {
     height: 15vh; 
     width: auto; 
     max-width: 6.3%; 
     max-height: 6.3%;
-    display: inline;
 }
 
 .rows img:hover {
@@ -41,7 +48,7 @@
 }
 
 .rowsQuiz img {
-    height: 15vh; 
+    height: auto; 
     width: auto; 
     max-width: 6%; 
     max-height: 6%;
