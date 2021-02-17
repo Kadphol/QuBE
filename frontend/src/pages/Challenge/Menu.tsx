@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { ReactComponent as Dragon} from '../../svg/Dragon.svg'
 import { ReactComponent as Qubie} from '../../svg/Qubie-intro.svg'
+import styled from 'styled-components'
+import { relative } from 'path';
+const sfxClick = require('../../assets/sound/sfx_click.mp3').default
 
 const ulStyle = {
   listStyleType: 'none',
@@ -51,19 +54,26 @@ export default function Menu() {
   let { url } = useRouteMatch();
 
   const [ hover, setHover ] = useState([false,false]);
+  const  click = new Audio(sfxClick)
 
   return (
     <ul style={ulStyle}>
         
         <div style={column}>
         <Qubie className={hover[1]?"svg-qubie-intro":""} style={character}/>
-        <div className= "mapmenu__item" style={hover[1]?liStyleHover:liStyle} onMouseEnter={()=>setHover([false,true])} onMouseLeave={()=>setHover([false,false])}>
+        <div className= "mapmenu__item" style={hover[1]?liStyleHover:liStyle} 
+        onMouseDown={()=>click.play()}
+        onMouseEnter={()=>setHover([false,true])} 
+        onMouseLeave={()=>setHover([false,false])}>
           <Link to={url+'/leaderboard'} style={linkStyle}>กระดานคะแนน</Link>
         </div>
         </div>
 
         <div style={column}>
-        <div className= "mapmenu__item" style={hover[0]?liStyleHover:liStyle} onMouseEnter={()=>setHover([true,false])} onMouseLeave={()=>setHover([false,false])}>
+        <div className= "mapmenu__item" style={hover[0]?liStyleHover:liStyle} 
+        onMouseDown={()=>click.play()}
+        onMouseEnter={()=>setHover([true,false])} 
+        onMouseLeave={()=>setHover([false,false])}>
           <Link to={url+'/play'} style={linkStyle}>เริ่มต้นท้าทาย</Link>
         </div>
         <Dragon className={hover[0]?"svg-qubie-intro":""} style={character}/>

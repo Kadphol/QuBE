@@ -3,6 +3,8 @@ import { Accordion, Card, Button } from "react-bootstrap";
 import './Sidebar.scoped.css'
 import bellpair from '../../assets/playground/bellpair.png'
 
+const sfxClick = require('../../assets/sound/sfx_click.mp3').default
+
 const detail:Array<string> = [
     "Bell pair คือ การต่อวงจรให้คิวบิตนั้นเกิดการพัวพันกัน (Entanglement) โดยวิธีการคือต่อ Hadamard gate ให้คิวบิตหนึ่งมีสถานะ superposition และให้คิวบิตนั้นเป็นตัวควบคุมอีกคิวบิตหนึ่งด้วย CNOT เกต ผลลัพธ์ที่ได้ คือ คิวบิตทั้งสองตัวจะมีค่าเท่ากัน",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -16,6 +18,8 @@ class Sidebar extends React.Component {
         onShow: null,
         active: -1
     }
+
+    click = new Audio(sfxClick)
 
     toggleShow = (id:number) => {
         let menu = document.getElementById("Menu")!
@@ -40,9 +44,11 @@ class Sidebar extends React.Component {
                                 <img className="sampleCircuit" src={bellpair} />
                                 <span className="detail">{this.state.onShow? detail[0] : null}</span>
                                 <div className="buttonPanel2">
-                                <button className="btn btn-primary" onClick={()=>this.toggleShow(0)}>{this.state.onShow? "ย้อนกลับ":"รายละเอียด"}</button>
+                                <button className="btn btn-primary" 
+                                onMouseDown={()=>this.click.play()}
+                                onClick={()=>this.toggleShow(0)}>{this.state.onShow? "ย้อนกลับ":"รายละเอียด"}</button>
                                 </div>
-                            </Card.Body>
+                            </Card.Body> 
                         </Accordion.Collapse>
                     </Card>}
                     {this.state.onShow && this.state.active!== 1 ? null:<Card>
@@ -53,11 +59,12 @@ class Sidebar extends React.Component {
                         </Card.Header>
                         <Accordion.Collapse eventKey="1">
                             <Card.Body>
-                                <img className="sampleCircuit" src={bellpair} />
+                            <span className="comingsoon"> Coming soon</span>
+                                {/* <img className="sampleCircuit" src={bellpair} />
                                 <span className="detail">{this.state.onShow? detail[1] : null}</span>
                                 <div className="buttonPanel2">
                                 <button className="btn btn-primary" onClick={()=>this.toggleShow(1)}>{this.state.onShow? "ย้อนกลับ":"รายละเอียด"}</button>
-                                </div>
+                                </div> */}
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>}
@@ -69,11 +76,12 @@ class Sidebar extends React.Component {
                         </Card.Header>
                         <Accordion.Collapse eventKey="2">
                             <Card.Body>
-                            <img className="sampleCircuit" src={bellpair} />
+                            <span className="comingsoon"> Coming soon</span>
+                            {/* <img className="sampleCircuit" src={bellpair} />
                                 <span className="detail">{this.state.onShow? detail[2] : null}</span>
                                 <div className="buttonPanel2">
                                 <button className="btn btn-primary" onClick={()=>this.toggleShow(2)}>{this.state.onShow? "ย้อนกลับ":"รายละเอียด"}</button>
-                                </div>
+                                </div> */}
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>}
@@ -85,11 +93,12 @@ class Sidebar extends React.Component {
                         </Card.Header>
                         <Accordion.Collapse eventKey="3">
                             <Card.Body>
-                            <img className="sampleCircuit" src={bellpair} />
+                            <span className="comingsoon"> Coming soon</span>
+                            {/* <img className="sampleCircuit" src={bellpair} />
                                 <span className="detail">{this.state.onShow? detail[3] : null}</span>
                                 <div className="buttonPanel2">
                                 <button className="btn btn-primary" onClick={()=>this.toggleShow(3)}>{this.state.onShow? "ย้อนกลับ":"รายละเอียด"}</button>
-                                </div>
+                                </div> */}
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>}

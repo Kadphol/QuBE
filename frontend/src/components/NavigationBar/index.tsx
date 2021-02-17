@@ -2,11 +2,12 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/brand.png';
-import LoginModal from '../LoginModal/';
+import LoginModal from '../LoginModal';
 
 import './NavigationBar.scoped.css';
 import Profile from './Profile'
 import {Iuser} from '../../type.modal'
+import { userContext } from '../../context/userContext'
 
 type navState =  {
   modalShow: boolean
@@ -29,14 +30,6 @@ class NavigationBar extends React.Component<Iuser, navState> {
   hideModal = (): void => {
     this.setState({modalShow:false})
   }
-  
-  handleClick = (e):void => {
-    if (!this.props.loginStatus) {
-      e.preventDefault()
-      this.setState({modalShow:true})
-    }
-
-  }
 
   render() {
     return (
@@ -51,18 +44,22 @@ class NavigationBar extends React.Component<Iuser, navState> {
               <NavLink exact to="/" className="nav-link">
                 เริ่มต้นกับควอนตัม
               </NavLink>
-              <NavLink to="/explore" onClick={this.handleClick} className="nav-link">
+              <NavLink to="/explore" className="nav-link">
                 ผจญภัยในโลกควอนตัม
               </NavLink>
-              <NavLink to="playground" onClick={this.handleClick} className="nav-link">
+              <NavLink to="playground" className="nav-link">
                 สนามฝึกซ้อมควอนตัม
               </NavLink>
-              <NavLink to="/challenge" onClick={this.handleClick} className="nav-link">
+              <NavLink to="/challenge" className="nav-link">
                 ท้าทายกับควอนตัม
               </NavLink>
-                { this.props.loginStatus
-                ?<Profile name={this.props.name} loginStatus={this.props.loginStatus} image={this.props.image} highscore={this.props.highscore}/>
-                : <button className="btn btn-primary nav-login-button" onClick={this.showModal}>เข้าสู่ระบบ </button> }
+              <userContext.Consumer>
+                { ({user,setUser}) => 
+                  user.loginStatus
+                  ?<Profile user={user} setUser={setUser}/>
+                  : <button className="btn btn-primary nav-login-button" onClick={this.showModal}>เข้าสู่ระบบ </button>
+                }
+              </userContext.Consumer>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

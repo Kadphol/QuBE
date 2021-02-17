@@ -40,6 +40,13 @@
     margin-bottom: 10px;
   }
 
+  .comingsoon {
+    display: inline-block;
+    color: #6254D2;
+    font-size: 25px;
+    font-family: 'Kanit',sans-serif;
+  }
+
   @keyframes slide-right {
     from {  transform: scale(1,1) translateX(0%); }
     to { transform: scale(2,1) translateX(50%); }

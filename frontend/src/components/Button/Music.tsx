@@ -1,6 +1,6 @@
 import React from 'react';
-import soundon from '../../assets/sound/soundIcon.png';
-import soundoff from '../../assets/sound/soundIcon.png';
+import soundon from '../../assets/sound/soundOn.png';
+import soundoff from '../../assets/sound/soundOff.png';
 import './Music.scoped.css'
 
 class Music extends React.Component <{url:string}>{
@@ -12,7 +12,7 @@ class Music extends React.Component <{url:string}>{
   
     componentDidMount() {
         this.setState({ play: true })
-        this.audio.volume = 0.1
+        this.audio.volume = 0.25
         this.audio.play()
     }
   
@@ -30,7 +30,7 @@ class Music extends React.Component <{url:string}>{
     render() {
       return (
         <div>
-          <img className="Button" src={this.state.play ? soundon : soundoff} onClick={this.togglePlay} alt="On/off BGM"/>
+          <img className="Button" src={this.state.play ? soundon : soundoff} onClick={this.togglePlay} alt="Music"/>
         </div>
       );
     }

@@ -4,6 +4,8 @@ import { Link, useRouteMatch, Redirect } from 'react-router-dom';
 import padlock from '../../assets/explore/padlock.png'
 import backIcon from '../../assets/explore/backIcon.png'
 
+const sfx = require('../../assets/sound/sfx_click.mp3').default
+
 const ulStyle = {
   listStyleType: 'none',
   margin: '75px auto',
@@ -49,6 +51,7 @@ export default function MenuUnit(props:IProps) {
   let { url } = useRouteMatch();
 
   const [hover,changeHover] = useState(-1)
+  const audio = new Audio(sfx)
 
   const items = [{
     path: url+'/unit-1',
@@ -68,7 +71,7 @@ export default function MenuUnit(props:IProps) {
       {items.map((item,index) => (
        props.user.chapter! > props.detail.chapter-1 || (props.user.chapter! == props.detail.chapter-1 && props.user.unit! >= index)
        ? <Link to={item.path} style={linkStyle} >
-        <li key={item.path} className= "mapmenu__item" style={hover==index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
+        <li key={item.path} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover==index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
          <p>{item.text}</p>
          </li>
          </Link> 

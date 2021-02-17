@@ -1,14 +1,11 @@
 @media (min-width: 1440px) {
+
   .container {
     max-width: 1270px;
     margin-left: auto;
     margin-right: auto;
   }
-
-  .container.row {
-    min-height: 1024px;
-  }
-
+  
   .subrow {
     max-width: 1420px;
   }
@@ -31,6 +28,11 @@ h3 {
 .row p {
   font-family: 'Kanit', sans-serif;
   font-size: large;
+}
+
+.preview {
+  min-height: 720px;
+  max-height: 720px;
 }
 
 .intro {

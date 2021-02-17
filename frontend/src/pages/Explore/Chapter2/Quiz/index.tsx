@@ -18,8 +18,8 @@ class Quiz extends React.Component<{ setUser: any, user: Iuser }> {
                     setUser={this.props.setUser}
                     chapter={1}
                     frameComponent={[F1,F2]}
-                    interactFrame={[-1]}
-                    noDialogFrame={[0]}
+                    interactFrame={[]}
+                    noDialogFrame={[]}
                     script={[
                         `ไหนเจ้าลองบอกมาซิว่า "ควอนตัมคอมพิวเตอร์" แตกต่างจาก "คอมพิวเตอร์แบบดั้งเดิม" อย่างไร`,
                         `ไหนเจ้าลองบอกมาซิว่า "ควอนตัมคอมพิวเตอร์" แตกต่างจาก "คอมพิวเตอร์แบบดั้งเดิม" อย่างไร`,
