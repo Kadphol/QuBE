@@ -88,7 +88,7 @@ export default function MenuChapter(user:Iuser) {
          </Link>
        :<li key={item.path} className= "mapmenu__item" style={liStyleDisable}>
        <p style={linkStyle}>{item.text}</p>
-       <img src={padlock} style={padlockStyle}/>
+       <img src={padlock} style={padlockStyle} alt="locking content"/>
        </li>
       ))}
     </ul>
