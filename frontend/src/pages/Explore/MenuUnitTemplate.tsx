@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Iuser} from '../../type.modal'
 import { Link, useRouteMatch, Redirect } from 'react-router-dom';
 import padlock from '../../assets/explore/padlock.png'
-import backIcon from '../../assets/explore/backIcon.png'
 
 const sfx = require('../../assets/sound/sfx_click.mp3').default
 
@@ -77,7 +76,7 @@ export default function MenuUnit(props:IProps) {
          </Link> 
        :<li key={item.path} className= "mapmenu__item" style={liStyleDisable}>
        <p style={linkStyle}>{item.text}</p>
-       <img src={padlock} style={padlockStyle}/>
+       <img src={padlock} style={padlockStyle} alt="locking content"/>
        </li>
       ))}
     </ul>

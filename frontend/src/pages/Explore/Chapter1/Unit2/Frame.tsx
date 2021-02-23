@@ -20,7 +20,7 @@ import item9 from '../../../../assets/explore/chapter1/unit1/item9.png'
 import item10 from '../../../../assets/explore/chapter1/unit1/item10.png'
 import item11 from '../../../../assets/explore/chapter1/unit1/item11.png'
 import item12 from '../../../../assets/explore/chapter1/unit1/item12.png'
-import dialog from '../../../../components/DialogBox'
+
 
 const Main = styled.div`
 width: 100%;
