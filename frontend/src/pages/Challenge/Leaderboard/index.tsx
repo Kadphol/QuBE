@@ -1,18 +1,14 @@
-import React, { Fragment } from 'react';
-import { Redirect } from 'react-router-dom'
-import styled from 'styled-components'
-import { userContext } from '../../../context/userContext';
-import instance from '../../../config/axiosconfig'
-import { Row } from 'react-bootstrap';
-import Person from './person'
-import { Iuser } from '../../../type.modal'
-import { ReactComponent as Qubie } from '../../../svg/Qubie-intro.svg';
-import { ReactComponent as Beck } from '../../../svg/Beck.svg';
-import scene from '../../../assets/challenge/leaderboard.png'
-import backIcon from '../../../assets/challenge/backIcon.png'
-import Back from '../../../components/Button/back'
+import React from 'react';
+import styled from 'styled-components';
+import instance from '@config/axiosconfig';
+import Person from './person';
+import { Iuser } from '@/type.modal';
+import { ReactComponent as Qubie } from '@svg/Qubie-intro.svg';
+import { ReactComponent as Beck } from '@svg/Beck.svg';
+import scene from '@assets/challenge/leaderboard.png';
+import Back from '@components/Button/back';
 
-const sfxClick = require('../../../assets/sound/sfx_click.mp3').default
+const sfxClick = require('@assets/sound/sfx_click.mp3').default;
 
 const Main = styled.div`
 background-image: url(${scene});
@@ -89,20 +85,16 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
     back: false
   };
 
-  click = new Audio(sfxClick)
+  click = new Audio(sfxClick);
 
-  constructor(props) {
-    super(props)
-  }
-
-  switch = (global) => this.setState({ global: global }) 
+  switch = (global) => this.setState({ global: global }) ;
 
   componentDidMount = () => {
     instance.get('http://localhost/getuser')
       .then(res => {
         let sorted = res.data.sort((a, b) => (a.info.highscore > b.info.highscore) ? -1 : ((b.info.highscore > a.info.highscore) ? 1 : 0));
-        let docs = Array()
-        let facebookDocs = Array()
+        let docs = Array();
+        let facebookDocs = Array();
         sorted.forEach((person, index) => {
           let doc = {
             index: index + 1,
@@ -139,7 +131,7 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
             <button className="btn btn-primary" disabled={this.state.global} 
             onMouseDown={()=>this.click.play()}
             onClick={()=>this.switch(true)}>ทั้งหมด</button>
-            {this.props.user.type=='Facebook'&&
+            {this.props.user.type==='Facebook' &&
             <button className="btn btn-primary" disabled={!this.state.global} 
             onMouseDown={()=>this.click.play()}
             onClick={()=>this.switch(false)}>เพื่อน</button>}

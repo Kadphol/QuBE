@@ -1,9 +1,9 @@
 import React from 'react';
 import { Accordion, Card, Button } from "react-bootstrap";
-import './Sidebar.scoped.css'
-import bellpair from '../../assets/playground/bellpair.png'
+import './Sidebar.scoped.css';
+import bellpair from '@assets/playground/bellpair.png';
 
-const sfxClick = require('../../assets/sound/sfx_click.mp3').default
+const sfxClick = require('@assets/sound/sfx_click.mp3').default;
 
 const detail:Array<string> = [
     "Bell pair คือ การต่อวงจรให้คิวบิตนั้นเกิดการพัวพันกัน (Entanglement) โดยวิธีการคือต่อ Hadamard gate ให้คิวบิตหนึ่งมีสถานะ superposition และให้คิวบิตนั้นเป็นตัวควบคุมอีกคิวบิตหนึ่งด้วย CNOT เกต ผลลัพธ์ที่ได้ คือ คิวบิตทั้งสองตัวจะมีค่าเท่ากัน",
@@ -41,7 +41,7 @@ class Sidebar extends React.Component {
                         </Card.Header>
                         <Accordion.Collapse eventKey="0">
                             <Card.Body>
-                                <img className="sampleCircuit" src={bellpair} />
+                                <img className="sampleCircuit" src={bellpair} alt="bell pair sample"/>
                                 <span className="detail">{this.state.onShow? detail[0] : null}</span>
                                 <div className="buttonPanel2">
                                 <button className="btn btn-primary" 

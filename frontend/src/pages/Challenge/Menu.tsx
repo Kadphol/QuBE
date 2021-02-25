@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import { ReactComponent as Dragon} from '../../svg/Dragon.svg'
-import { ReactComponent as Qubie} from '../../svg/Qubie-intro.svg'
-import styled from 'styled-components'
-import { relative } from 'path';
-const sfxClick = require('../../assets/sound/sfx_click.mp3').default
+import { ReactComponent as Dragon} from '@svg/Dragon.svg';
+import { ReactComponent as Qubie} from '@svg/Qubie-intro.svg';
+const sfxClick = require('@assets/sound/sfx_click.mp3').default;
 
 const ulStyle = {
   listStyleType: 'none',

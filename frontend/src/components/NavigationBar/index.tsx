@@ -1,13 +1,13 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import logo from '../../assets/brand.png';
+import logo from '@assets/brand.png';
 import LoginModal from '../LoginModal';
 
 import './NavigationBar.scoped.css';
 import Profile from './Profile'
-import {Iuser} from '../../type.modal'
-import { userContext } from '../../context/userContext'
+import {Iuser} from '@src/type.modal'
+import { userContext } from '@context/userContext'
 
 type navState =  {
   modalShow: boolean

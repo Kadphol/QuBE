@@ -1,20 +1,20 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'
-import styled from 'styled-components'
-import dragonIcon from '../../../assets/challenge/dragonIcon.png'
-import { ReactComponent as Dragon } from '../../../svg/Dragon.svg'
-import DialogBox from '../../../components/DialogBox'
-import Composer from '../../../components/Composer'
-import Header from './header'
-import axios from '../../../config/axiosconfig'
-import background from '../../../assets/explore/chapter1/BackgroundQuiz.png'
-import {Iuser} from '../../../type.modal'
-import Question from '../../../components/Question'
-import Music from '../../../components/Button/Music'
+import { Redirect } from 'react-router-dom';
+import styled from 'styled-components';
+import dragonIcon from '@assets/challenge/dragonIcon.png';
+import { ReactComponent as Dragon } from '@svg/Dragon.svg';
+import DialogBox from '@components/DialogBox';
+import Composer from '@components/Composer';
+import Header from './header';
+import axios from '@config/axiosconfig';
+import background from '@assets/explore/chapter1/BackgroundQuiz.png';
+import { Iuser } from '@src/type.modal';
+import Question from '@components/Question';
+import Music from '@components/Button/Music';
 
-const src = require('../../../assets/sound/bgm6.mp3').default
-const sfxCorrect = require('../../../assets/sound/sfx_correct.mp3').default
-const sfxWrong = require('../../../assets/sound/sfx_wrong.mp3').default
+const src = require('@assets/sound/bgm6.mp3').default
+const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default
+const sfxWrong = require('@assets/sound/sfx_wrong.mp3').default
 
 const Main = styled.div`
   position: relative;

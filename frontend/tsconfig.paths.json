@@ -7,9 +7,10 @@
          "@pages/*" : ["./pages/*"],
          "@config/*" : ["./config/*"],
          "@context/*" : ["./context/*"],
-         "@styles/*": ["./styles/*"],
-         "@route/*": ["./routing/*"],
-         "@src": ["./"]
+         "@styles/*" : ["./styles/*"],
+         "@route/*" : ["./routing/*"],
+         "@svg/*" : ["./svg/*"],
+         "@src/*" : ["./*"]
        }
   }
 }

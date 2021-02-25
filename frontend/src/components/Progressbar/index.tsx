@@ -1,5 +1,5 @@
 import React from 'react';
-import { Iuser } from '../../type.modal';
+import { Iuser } from '@src/type.modal';
 import styles from './Progressbar.module.css';
 
 function star(star?:number) {
