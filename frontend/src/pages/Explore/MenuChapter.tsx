@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
-import {Iuser} from '../../type.modal'
+import {Iuser} from '@src/type.modal'
 import { Link, useRouteMatch } from 'react-router-dom';
-import padlock from '../../assets/explore/padlock.png'
-import useSound from 'use-sound'
+import padlock from '@assets/explore/padlock.png'
 
-const sfx = require('../../assets/sound/sfx_click.mp3').default
+const sfx = require('@assets/sound/sfx_click.mp3').default
 
 const ulStyle = {
   listStyleType: 'none',
@@ -82,7 +81,7 @@ export default function MenuChapter(user:Iuser) {
       {items.map((item,index) => (
        user.chapter! >= index
        ? <Link to={item.path} style={linkStyle} >
-       <li key={item.path} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover==index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
+       <li key={item.path} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
          <p>{item.text}</p>
          </li>
          </Link>

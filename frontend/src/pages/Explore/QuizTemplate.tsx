@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dialog from '../../components/DialogBox'
+import Dialog from '@components/DialogBox';
 import { Redirect } from "react-router-dom";
-import axios from '../../config/axiosconfig'
-import ENDPOINT from '../../config/endpoint'
-import { Iuser } from '../../type.modal';
+import axios from '@config/axiosconfig';
+import ENDPOINT from '@config/endpoint'
+import { Iuser } from '@src/type.modal';
 
 const Main = styled.div`
   width: 100%;
@@ -69,7 +69,7 @@ class Unit extends React.Component<IProps> {
         return (
             <Main style={{ background: `url(${background})` }}>
                 {Component.map((Item, index) => (
-                    frame == index &&
+                    frame === index &&
                     <React.Fragment>
                         <Item index={index} star={this.state.star} prevStar={this.state.prevStar} next={this.next} justClear={this.justClear} increaseStar={this.increaseStar} />
                         {!noDialogFrame.includes(Item) && !clear &&
@@ -81,7 +81,7 @@ class Unit extends React.Component<IProps> {
                     </React.Fragment>
                 )
                 )}
-                {frame == this.lastFrame && <Redirect to={this.redirect} />}
+                {frame === this.lastFrame && <Redirect to={this.redirect} />}
             </Main>
         );
     }
