@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import instance from '@config/axiosconfig';
 import Person from './person';
-import { Iuser } from '@/type.modal';
+import { Iuser } from '@src/type.modal';
 import { ReactComponent as Qubie } from '@svg/Qubie-intro.svg';
 import { ReactComponent as Beck } from '@svg/Beck.svg';
 import scene from '@assets/challenge/leaderboard.png';

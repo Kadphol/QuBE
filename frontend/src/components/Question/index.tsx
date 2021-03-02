@@ -48,7 +48,7 @@ class Choice extends React.Component<IProps> {
 
     select = (selectItem) => {
         let valid = selectItem === this.props.solution
-        if (this.state.barShow[selectItem] == bar) {
+        if (this.state.barShow[selectItem] === bar) {
             let barShow = this.state.barShow
             barShow[selectItem] = valid ? barCorrect : barWrong
             let sfx = valid ? this.correct : this.wrong
