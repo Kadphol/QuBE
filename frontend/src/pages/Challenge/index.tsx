@@ -14,7 +14,6 @@ const Wrapper = styled.div`
   margin: 110px auto 0px;
   display:flex;
   position: relative;
-  padding-bottom: 1%;
 `
 export default function Challenge() {
 

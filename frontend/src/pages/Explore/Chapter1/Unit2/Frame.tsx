@@ -57,17 +57,17 @@ const FadeOut = styled.div`
   animation: ${fade} 0.5s reverse forwards;
 `;
 
-const SlideInLeft = styled.div`
-  animation: ${slideFromLeft} 0.5s ease-out forwards;
-`;
+// const SlideInLeft = styled.div`
+//   animation: ${slideFromLeft} 0.5s ease-out forwards;
+// `;
 
-const SlideInRight = styled.div`
-  animation: ${slideFromRight} 0.5s ease-out forwards;
-`;
+// const SlideInRight = styled.div`
+//   animation: ${slideFromRight} 0.5s ease-out forwards;
+// `;
 
-const SlideOutLeft = styled.div`
-  animation: ${slideFromLeft} 0.5s ease-out reverse forwards;
-`;
+// const SlideOutLeft = styled.div`
+//   animation: ${slideFromLeft} 0.5s ease-out reverse forwards;
+// `;
 
 class F0 extends React.Component {
   render() {

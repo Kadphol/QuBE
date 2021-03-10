@@ -171,7 +171,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
         }
         {this.state.item === 4 &&
         <Redirect to="/challenge"/>}
-        <Music url={src} />
+        {/* <Music url={src} /> */}
       </Main>
     );
   }

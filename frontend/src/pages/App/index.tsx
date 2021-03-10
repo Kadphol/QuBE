@@ -15,6 +15,7 @@ function App() {
 
   const [user, setUser] = useState<Iuser>({
     loginStatus: false
+    //loginStatus: true
   })
 
   const providerValue = {user,setUser}
