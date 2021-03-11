@@ -1,26 +1,22 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import Beck from '../../../../assets/explore/chapter1/Beck.png'
-import BackgroundClose from '../../../../assets/explore/chapter1/BackgroundClose.png'
-import item1 from '../../../../assets/explore/chapter1/unit1/item1.png'
-import item2 from '../../../../assets/explore/chapter1/unit1/item2.png'
-import item3 from '../../../../assets/explore/chapter1/unit1/item3.png'
-import item4 from '../../../../assets/explore/chapter1/unit1/item4.png'
-import item5 from '../../../../assets/explore/chapter1/unit1/item5.png'
-import item6 from '../../../../assets/explore/chapter1/unit1/item6.png'
-import item1alt from '../../../../assets/explore/chapter1/unit1/item1alt.png'
-import item2alt from '../../../../assets/explore/chapter1/unit1/item2alt.png'
-import item3alt from '../../../../assets/explore/chapter1/unit1/item3alt.png'
-import item4alt from '../../../../assets/explore/chapter1/unit1/item4alt.png'
-import item5alt from '../../../../assets/explore/chapter1/unit1/item5alt.png'
-import item6alt from '../../../../assets/explore/chapter1/unit1/item6alt.png'
-import item7 from '../../../../assets/explore/chapter1/unit1/item7.png'
-import item8 from '../../../../assets/explore/chapter1/unit1/item8.png'
-import item9 from '../../../../assets/explore/chapter1/unit1/item9.png'
-import item10 from '../../../../assets/explore/chapter1/unit1/item10.png'
-import item11 from '../../../../assets/explore/chapter1/unit1/item11.png'
-import item12 from '../../../../assets/explore/chapter1/unit1/item12.png'
-import dialog from '../../../../components/DialogBox'
+import styled, { keyframes } from 'styled-components';
+import Beck from '@assets/explore/chapter1/Beck.png';
+import BackgroundClose from '@assets/explore/chapter1/BackgroundClose.png';
+
+import ccircuit from '@assets/explore/chapter1/unit3/complex_circuit.png';
+import circuit0 from '@assets/explore/chapter1/unit3/circuit0.png';
+import circuit1 from '@assets/explore/chapter1/unit3/circuit1.png';
+import circuit2 from '@assets/explore/chapter1/unit3/circuit2.png';
+import ccircuitEmpty from '@assets/explore/chapter1/unit3/complex_circuit_empty.png';
+import ccircuitA from '@assets/explore/chapter1/unit3/complex_circuit_A.png';
+import A from '@assets/explore/chapter1/unit3/A.png';
+import fillA from '@assets/explore/chapter1/unit3/A_filled.png';
+import B from '@assets/explore/chapter1/unit3/B.png';
+import C from '@assets/explore/chapter1/unit3/C.png';
+import line from '@assets/explore/chapter1/unit3/line.png';
+import process from '@assets/explore/chapter1/unit3/process.png';
+
+const sfxClick = require('@assets/sound/sfx_click.mp3').default;
 
 const Main = styled.div`
 width: 100%;
@@ -50,176 +46,190 @@ const fade = keyframes`
 100% {opacity: 100%}
 `
 
+const FadeIn = styled.div`
+  animation: ${fade} 0.5s forwards;
+`;
+
+const FadeOut = styled.div`
+  animation: ${fade} 0.5s reverse forwards;
+`;
+
+const SlideInLeft = styled.div`
+  animation: ${slideFromLeft} 0.5s ease-out forwards;
+`;
+
 class F0 extends React.Component {
     render() {
         return (<Main>
             <Content style={{backgroundImage:`url(${BackgroundClose})`}}>
-                <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} />
+                <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="beck"/>
             </Content>
         </Main>);
     }
 }
 
-class F1 extends React.Component<any> {
-
-    state = { clicked: [false, false, false, false, false, false] }
-
-    handleClick = (item) => {
-        let { clicked } = this.state
-        clicked[item] = true
-        this.setState({ clicked: clicked })
-        if (clicked[1] && clicked[2] && clicked[5]) this.props.next()
-    }
+class F1 extends React.Component {
 
     render() {
-        let { clicked } = this.state
-        let style = { position: 'absolute', cursor: 'pointer', width: '200px', height: '200px' } as React.CSSProperties
-        return (<Main>
-            <Content>
-                <img src={clicked[0] ? item1alt : item1} style={{ ...style, left: '221px', top: '60px' }} onClick={() => this.handleClick(0)} />
-                <img src={clicked[1] ? item2alt : item2} style={{ ...style, left: '512px', top: '60px' }} onClick={() => this.handleClick(1)} />
-                <img src={clicked[2] ? item3alt : item3} style={{ ...style, left: '793px', top: '60px' }} onClick={() => this.handleClick(2)} />
-                <img src={clicked[3] ? item4alt : item4} style={{ ...style, left: '221px', top: '305px' }} onClick={() => this.handleClick(3)} />
-                <img src={clicked[4] ? item5alt : item5} style={{ ...style, left: '512px', top: '305px' }} onClick={() => this.handleClick(4)} />
-                <img src={clicked[5] ? item6alt : item6} style={{ ...style, left: '793px', top: '305px' }} onClick={() => this.handleClick(5)} />
-            </Content>
-        </Main>);
+        return (
+            <Main>
+                <Content>
+                    <img src={ccircuit} style={{ position: 'absolute', left: '150px', top: '120px' }} alt="complex circuit"/>
+                </Content>
+            </Main>
+        );
     }
 }
 
-class F2 extends React.Component<any> {
+class F2 extends React.Component<{}, {current: number}> {
+    constructor(props) {
+        super(props);
 
-    state = { clicked: [true, true, true, true, true, true] }
+        this.state = {
+            current: 0
+        };
+    }
+
+    componentDidMount() {
+        setInterval((() => {
+            this.setState({
+                current: 1
+            });
+        }), 1500);
+    }
 
     render() {
-        let { clicked } = this.state
-        let style = { position: 'absolute', cursor: 'pointer', width: '200px', height: '200px' } as React.CSSProperties
-        return (<Main>
-            <Content>
-                <img src={clicked[0] ? item1alt : item1} style={{ ...style, left: '221px', top: '60px' }} />
-                <img src={clicked[1] ? item2alt : item2} style={{ ...style, left: '512px', top: '60px' }} />
-                <img src={clicked[2] ? item3alt : item3} style={{ ...style, left: '793px', top: '60px' }} />
-                <img src={clicked[3] ? item4alt : item4} style={{ ...style, left: '221px', top: '305px' }} />
-                <img src={clicked[4] ? item5alt : item5} style={{ ...style, left: '512px', top: '305px' }} />
-                <img src={clicked[5] ? item6alt : item6} style={{ ...style, left: '793px', top: '305px' }} />
-            </Content>
-        </Main>);
+        const image = [circuit0, circuit1]
+        return (
+            <Main>
+                <Content>
+                    <FadeIn>
+                        <img src={image[this.state.current]} style={{ position: 'absolute', left: '260px', top: '150px' }} alt="circuit with zero bit"/>
+                    </FadeIn>
+                </Content>
+            </Main>
+        );
     }
 }
 
 class F3 extends React.Component {
     render() {
-        let style = { position: 'absolute', width: '300px', height: '300px', top: '130px' } as React.CSSProperties
-        return (<Main>
-            <Content>
-                <img src={item7} style={{ ...style, left: '278px', }} />
-                <img src={item8} style={{ ...style, left: '720px', }} />
-            </Content>
-        </Main>);
+        let button_style = { position: 'absolute', width: '60px', height: '60px', left: '400px' } as React.CSSProperties
+        return (
+            <Main>
+                <Content>
+                    <SlideInLeft>
+                        <img src={A} style={{ ...button_style, top: '200px' }} alt="button A"/>
+                        <img src={B} style={{ ...button_style, top: '280px' }} alt="button B"/>
+                        <img src={C} style={{ ...button_style, top: '360px' }} alt="button C"/>
+                        <img src={circuit2} style={{ position: 'absolute', left: '600px', top: '220px' }} alt="circuit"/>
+                    </SlideInLeft>
+                </Content>
+            </Main>
+        );
     }
 }
 
 class F4 extends React.Component {
     render() {
-        let SlideIn = styled.div`
-        animation: ${slideFromLeft} 0.5s ease-out forwards ;
-        `
-        let FadeOut = styled.div`
-        animation: ${fade} 0.5s reverse forwards ;
-        `
-        return (<Main>
-            <Content>
-                <SlideIn>
-                <img src={item7} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
-                </SlideIn>
-                <FadeOut>
-                    <img src={item8} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '720px' }} />
-                </FadeOut>
-            </Content>
-        </Main>);
+        let button_style = { position: 'absolute', width: '60px', height: '60px', left: '300px' } as React.CSSProperties
+        return (
+            <Main>
+                <Content>
+                    <img src={A} style={{ ...button_style, top: '200px' }} alt="button A"/>
+                    <img src={B} style={{ ...button_style, top: '280px' }} alt="button B"/>
+                    <img src={C} style={{ ...button_style, top: '360px' }} alt="button C"/>
+                    <img src={line} style={{ position: 'absolute', left: '360px', top: '225px' }} alt="line"/>
+                    <img src={ccircuitEmpty} style={{ position: 'absolute', left: '400px', top: '145px'}} alt="line"/>
+                </Content>
+            </Main>
+        );
     }
 }
 
-class F5 extends React.Component {
+class F5 extends React.Component<any> {
+    state = {
+        clicked : false
+    }
+    click = new Audio(sfxClick);
+    handleClick() {
+        this.setState({clicked: true});
+        this.props.next();
+    }
     render() {
-        let FadeIn = styled.div`
-        animation: ${fade} 0.5s forwards ;
-        `
-        return (<Main>
-            <Content>
-            <img src={item7} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
-                <FadeIn>
-            <img src={item9} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '130px' }} />
-            <img src={item10} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '830px' }} />
-                </FadeIn>
-            </Content>
-        </Main>);
+        let button_style = { position: 'absolute', width: '60px', height: '60px', left: '300px' } as React.CSSProperties
+        return (
+            <Main>
+                <Content>
+                    <img 
+                        src={this.state.clicked? fillA: A} 
+                        style={{ ...button_style, top: '200px' }} 
+                        onMouseDown={() => this.click.play()}
+                        onClick={()=> this.handleClick()}
+                        alt="button A"/>
+                    <img src={B} style={{ ...button_style, top: '280px' }} alt="button B"/>
+                    <img src={C} style={{ ...button_style, top: '360px' }} alt="button C"/>
+                    <img src={line} style={{ position: 'absolute', left: '360px', top: '225px' }} alt="line"/>
+                    <img src={this.state.clicked? ccircuitA:ccircuitEmpty} style={{ position: 'absolute', left: '400px', top: '145px'}} alt="line"/>
+                </Content>
+            </Main>
+        );
     }
 }
 
 class F6 extends React.Component {
     render() {
-        let SlideOut = styled.div`
-        animation: ${slideFromLeft} 0.5s ease-out reverse forwards ;
-        `
-        let FadeIn = styled.div`
-        animation: ${fade} 0.5s forwards ;
-        `
-        let FadeOut = styled.div`
-        animation: ${fade} 0.5s reverse forwards ;
-        `
-        return (<Main>
-            <Content>
-                <SlideOut>
-                    <img src={item7} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
-                </SlideOut>
-                <FadeIn>
-                    <img src={item8} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '720px' }} />
-                </FadeIn>
-                <FadeOut>
-            <img src={item9} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '130px' }} />
-            <img src={item10} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '830px' }} />
-                </FadeOut>
-            </Content>
-        </Main>);
+        let button_style = { position: 'absolute', width: '60px', height: '60px', left: '300px' } as React.CSSProperties
+        return (
+            <Main>
+                <Content>
+                    <img 
+                        src={fillA} 
+                        style={{ ...button_style, top: '200px' }} 
+                        alt="filled button A"/>
+                    <img src={B} style={{ ...button_style, top: '280px' }} alt="button B"/>
+                    <img src={C} style={{ ...button_style, top: '360px' }} alt="button C"/>
+                    <img src={line} style={{ position: 'absolute', left: '360px', top: '225px' }} alt="line"/>
+                    <img src={ccircuitA} style={{ position: 'absolute', left: '400px', top: '145px'}} alt="line"/>
+                </Content>
+            </Main>
+        );
     }
 }
 
 class F7 extends React.Component {
     render() {
-        let SlideIn = styled.div`
-        animation: ${slideFromRight} 0.5s ease-out forwards ;
-        `
-        let FadeOut = styled.div`
-        animation: ${fade} 0.5s reverse forwards ;
-        `
-        return (<Main>
-            <Content>
-                <SlideIn>
-                    <img src={item8} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
-                </SlideIn>
-                <FadeOut>
-                    <img src={item7} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '278px' }} />
-                </FadeOut>
-            </Content>
-        </Main>);
+        let button_style = { position: 'absolute', width: '60px', height: '60px', left: '300px' } as React.CSSProperties
+        return (
+            <Main>
+                <Content>
+                    <FadeOut>
+                        <img 
+                            src={fillA} 
+                            style={{ ...button_style, top: '200px' }} 
+                            alt="filled button A"/>
+                        <img src={B} style={{ ...button_style, top: '280px' }} alt="button B"/>
+                        <img src={C} style={{ ...button_style, top: '360px' }} alt="button C"/>
+                        <img src={line} style={{ position: 'absolute', left: '360px', top: '225px' }} alt="line"/>
+                        <img src={ccircuitA} style={{ position: 'absolute', left: '400px', top: '145px'}} alt="line"/>
+                    </FadeOut>
+                </Content>
+            </Main>
+        );
     }
 }
 
 class F8 extends React.Component {
     render() {
-        let FadeIn = styled.div`
-        animation: ${fade} 0.5s forwards ;
-        `
-        return (<Main>
-            <Content>
-            <img src={item8} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
-                <FadeIn>
-            <img src={item11} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '130px' }} />
-            <img src={item12} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '830px' }} />
-                </FadeIn>
-            </Content>
-        </Main>);
+        return (
+            <Main>
+                <Content>
+                    <FadeIn>
+                        <img src={process} style={{ position: 'absolute', left: '220px', top: '150px'}} alt="input process output"/>
+                    </FadeIn>
+                </Content>
+            </Main>
+        );
     }
 }
 
@@ -227,10 +237,10 @@ class F9 extends React.Component {
     render() {
         return (<Main>
             <Content style={{backgroundImage:`url(${BackgroundClose})`}}>
-                <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} />
+                <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="beck"/>
             </Content>
         </Main>);
     }
 }
 
-export { F0, F1, F2, F3, F4, F5, F6, F7, F8, F9 }
+export { F0, F1, F2, F3, F4, F5, F6, F7, F8, F9}

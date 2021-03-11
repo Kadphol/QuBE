@@ -1,24 +1,22 @@
-import React, {useEffect,useState} from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import soundIcon from '../../assets/sound/soundIcon.png'
-import useSound from 'use-sound'
-import Sound from '../../components/Button/Music'
-import Progressbar from '../../components/Progressbar';
-import Map from './Map'
-import MenuChapter from './MenuChapter'
+import Progressbar from '@components/Progressbar';
+import Map from './Map';
+import MenuChapter from './MenuChapter';
 import './Explore.css';
-import { userContext } from '../../context/userContext';
-import styled from 'styled-components'
-import Chapter1 from './Chapter1'
-import Chapter2 from './Chapter2'
-const bgm1 = require('../../assets/sound/bgm1.mp3')
-const bgm2 = require('../../assets/sound/sfx_clear.mp3')
+import { userContext } from '@context/userContext';
+import styled from 'styled-components';
+import Chapter1 from './Chapter1';
+import Chapter2 from './Chapter2';
+const bgm1 = require('@assets/sound/bgm1.mp3');
+const bgm2 = require('@assets/sound/sfx_clear.mp3');
 
 const Main = styled.div`
   height: 100%;
   position: relative;
   margin: auto;
+  padding-bottom: 1%;
   overflow: hidden;
 `
 

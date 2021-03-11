@@ -1,33 +1,33 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import Qubie from '../../../../assets/explore/Qubie.png'
-import Dragon from '../../../../assets/explore/Dragon.png'
-import item1 from '../../../../assets/explore/chapter1/quiz/item1.png'
-import item2 from '../../../../assets/explore/chapter1/quiz/item2.png'
-import item3 from '../../../../assets/explore/chapter1/quiz/item3.png'
-import item4 from '../../../../assets/explore/chapter1/quiz/item4.png'
-import item5 from '../../../../assets/explore/chapter1/quiz/item5.png'
-import item6 from '../../../../assets/explore/chapter1/quiz/item6.png'
-import item7 from '../../../../assets/explore/chapter1/quiz/item7.png'
-import item8 from '../../../../assets/explore/chapter1/quiz/item8.png'
-import item9 from '../../../../assets/explore/chapter1/quiz/item9.png'
-import lightOn from '../../../../assets/explore/chapter1/quiz/lightOn.png'
-import lightOff from '../../../../assets/explore/chapter1/quiz/lightOff.png'
-import switchOn from '../../../../assets/explore/chapter1/quiz/switchOn.png'
-import switchOff from '../../../../assets/explore/chapter1/quiz/switchOff.png'
-import star from '../../../../assets/explore/chapter1/quiz/star.png'
-import noStar from '../../../../assets/explore/chapter1/quiz/noStar.png'
-import starFrame from '../../../../assets/explore/chapter1/quiz/starFrame.png'
-import nextButton from '../../../../assets/explore/chapter1/quiz/nextButton.png'
-import completeButton from '../../../../assets/explore/chapter1/quiz/completeButton.png'
-import completeFrame from '../../../../assets/explore/chapter1/quiz/completeFrame.png'
-import Question from '../../../../components/Question'
-const sfxStar = require('../../../../assets/sound/sfx_star.mp3').default
-const sfxPing = require('../../../../assets/sound/sfx_ping.mp3').default
-const sfxWrong = require('../../../../assets/sound/sfx_wrong.mp3').default
-const sfxCorrect = require('../../../../assets/sound/sfx_correct.mp3').default
-const sfxClick = require('../../../../assets/sound/sfx_click.mp3').default
-const sfxClear = require('../../../../assets/sound/sfx_clear.mp3').default
+import styled, { keyframes } from 'styled-components';
+import Qubie from '@assets/explore/Qubie.png';
+import Dragon from '@assets/explore/Dragon.png';
+import item1 from '@assets/explore/chapter1/quiz/item1.png';
+import item2 from '@assets/explore/chapter1/quiz/item2.png';
+import item3 from '@assets/explore/chapter1/quiz/item3.png';
+import item4 from '@assets/explore/chapter1/quiz/item4.png';
+import item5 from '@assets/explore/chapter1/quiz/item5.png';
+import item6 from '@assets/explore/chapter1/quiz/item6.png';
+import item7 from '@assets/explore/chapter1/quiz/item7.png';
+import item8 from '@assets/explore/chapter1/quiz/item8.png';
+import item9 from '@assets/explore/chapter1/quiz/item9.png';
+import lightOn from '@assets/explore/chapter1/quiz/lightOn.png';
+import lightOff from '@assets/explore/chapter1/quiz/lightOff.png';
+import switchOn from '@assets/explore/chapter1/quiz/switchOn.png';
+import switchOff from '@assets/explore/chapter1/quiz/switchOff.png';
+import star from '@assets/explore/chapter1/quiz/star.png';
+import noStar from '@assets/explore/chapter1/quiz/noStar.png';
+import starFrame from '@assets/explore/chapter1/quiz/starFrame.png';
+import nextButton from '@assets/explore/chapter1/quiz/nextButton.png';
+import completeButton from '@assets/explore/chapter1/quiz/completeButton.png';
+import completeFrame from '@assets/explore/chapter1/quiz/completeFrame.png';
+import Question from '@components/Question';
+const sfxStar = require('@assets/sound/sfx_star.mp3').default;
+const sfxPing = require('@assets/sound/sfx_ping.mp3').default;
+const sfxWrong = require('@assets/sound/sfx_wrong.mp3').default;
+const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default;
+const sfxClick = require('@assets/sound/sfx_click.mp3').default;
+const sfxClear = require('@assets/sound/sfx_clear.mp3').default;
 
 const ObjectDiv = styled.div`
   position: absolute;
@@ -88,7 +88,7 @@ class F0 extends React.Component {
     render() {
         return (<Main>
             <Content>
-                <img src={Qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} />
+                <img src={Qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Qubie"/>
             </Content>
         </Main>);
     }
@@ -97,7 +97,7 @@ class F1 extends React.Component {
     render() {
         return (<Main>
             <Content>
-                <img src={Dragon} style={{ position: 'absolute', left: '400px', top: '120px' }} />
+                <img src={Dragon} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Dragon"/>
             </Content>
         </Main>);
     }
@@ -106,8 +106,8 @@ class F2 extends React.Component {
     render() {
         return (<Main>
             <Content>
-                <img src={Qubie} style={{ position: 'absolute', left: '150px', top: '120px' }} />
-                <img src={Dragon} style={{ position: 'absolute', left: '650px', top: '120px' }} />
+                <img src={Qubie} style={{ position: 'absolute', left: '150px', top: '120px' }} alt="Qubie"/>
+                <img src={Dragon} style={{ position: 'absolute', left: '650px', top: '120px' }} alt="Dragon"/>
             </Content>
         </Main>);
     }
@@ -116,8 +116,8 @@ class F3 extends React.Component {
     render() {
         return (<Main>
             <Content>
-                <img src={Qubie} style={{ position: 'absolute', left: '150px', top: '120px' }} />
-                <img src={Dragon} style={{ position: 'absolute', left: '650px', top: '120px' }} />
+                <img src={Qubie} style={{ position: 'absolute', left: '150px', top: '120px' }} alt="Qubie"/>
+                <img src={Dragon} style={{ position: 'absolute', left: '650px', top: '120px' }} alt="Dragon"/>
             </Content>
         </Main>);
     }
@@ -243,7 +243,7 @@ class F7 extends React.Component {
     render() {
         return (<Main>
             <Content>
-                <img src={Dragon} style={{ position: 'absolute', left: '400px', top: '120px' }} />
+                <img src={Dragon} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Dragon"/>
             </Content>
         </Main>);
     }
@@ -253,7 +253,7 @@ class F8 extends React.Component {
     render() {
         return (<Main>
             <Content>
-                <img src={Qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} />
+                <img src={Qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Qubie"/>
             </Content>
         </Main>);
     }
