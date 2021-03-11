@@ -4,13 +4,13 @@ import styled from 'styled-components'
 import dragonIcon from '../../../assets/challenge/dragonIcon.png'
 import { ReactComponent as Dragon } from '../../../svg/Dragon.svg'
 import DialogBox from '../../../components/DialogBox'
-import Composer from '../../../components/Composer'
 import Header from './header'
 import axios from '../../../config/axiosconfig'
 import background from '../../../assets/explore/chapter1/BackgroundQuiz.png'
 import {Iuser} from '../../../type.modal'
-import Question from '../../../components/Question'
 import Music from '../../../components/Button/Music'
+import {C1,C2} from './Composer'
+import {Q1,Q2} from './Question'
 
 const src = require('../../../assets/sound/bgm6.mp3').default
 const sfxCorrect = require('../../../assets/sound/sfx_correct.mp3').default
@@ -33,15 +33,6 @@ const ObjectDiv = styled.div`
   overflow: hidden;
 `
 
-const PlainDiv = styled(ObjectDiv)`
-  padding-top: 10%;
-  font-family: 'Kanit',sans-serif;
-  font-size: 40px;
-  button {
-    font-size: 30px;
-  }
-`
-
 const HeaderDiv = styled.div`  
   width: 100%;
   height: 120px;
@@ -49,10 +40,11 @@ const HeaderDiv = styled.div`
   position: absolute;
 `
 
+
 class Play extends React.Component <{user:Iuser,setUser:any}> {
 
   state = {
-    item: 0,
+    page: 0,
     pass: false,
     score: 0,
     totalScore: 0,
@@ -62,6 +54,10 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
 
   correct = new Audio(sfxCorrect)
   wrong = new Audio(sfxWrong)
+  Composers = [C1,C2]
+  RandomComposer = this.Composers[Math.floor(Math.random()*this.Composers.length)]
+  Questions = [Q1,Q2]
+  RandomQuestion= this.Questions[Math.floor(Math.random()*this.Questions.length)]
 
   answerCheck = (valid) => {
     if (valid) {
@@ -72,7 +68,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
     }
   }
 
-  next = () => this.setState({ item: this.state.item + 1, penalty: 0, pass: false, nextbutton: false })
+  next = () => this.setState({ page: this.state.page + 1, penalty: 0, pass: false, nextbutton: false })
 
   handleScore = score => this.setState({ score: score })
 
@@ -105,7 +101,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
           </div>
         </HeaderDiv>
         {
-          this.state.item === 0 &&
+          this.state.page === 0 &&
           <React.Fragment>
             <HeaderDiv>
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={false} />
@@ -118,45 +114,25 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
           </React.Fragment>
         }
         {
-          this.state.item === 1 &&
+          this.state.page === 1 &&
           <React.Fragment>
             <HeaderDiv>
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={!this.state.pass} />
             </HeaderDiv>
-            <ObjectDiv>
-              <Composer column={6} quiz={true} answerCheck={this.answerCheck} solution={[0, 50, 50, 0]} />
-            </ObjectDiv>
-            {this.state.pass && <DialogBox img={dragonIcon} showNext={this.state.pass} next={this.next}
-            message="ฮึ่ม เจ้าตอบได้ถูกต้อง"/>
-            }
-            {!this.state.pass && <DialogBox img={dragonIcon} showNext={this.state.pass} next={this.next}
-            message="ไหนเจ้าลองต่อวงจรควอนตัม ให้ได้ผลลัพธ์เป็น 01 และ 10 อย่างละ 50% ดูซิ"/>
-            }
+            <this.RandomComposer next={this.next} pass={this.state.pass} answerCheck={this.answerCheck} />
           </React.Fragment>
         }
         {
-          this.state.item === 2 &&
+          this.state.page === 2 &&
           <React.Fragment>
             <HeaderDiv>
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={!this.state.pass} />
             </HeaderDiv>
-            <ObjectDiv>
-              <Question 
-                answerValidate={this.answerCheck}
-                choices={["|01> และ |10>","|10> และ |11>","|00> และ |11>"]}
-                solution={1} 
-              />
-            </ObjectDiv>
-            {this.state.pass && <DialogBox img={dragonIcon} next={this.state.pass?this.next:null}
-            message="ฮึ่ม เจ้าตอบได้ถูกต้อง"/>
-            }
-            {!this.state.pass && <DialogBox img={dragonIcon} next={this.state.pass?this.next:null}
-            message="ไหนลองบอกผลลัพธ์ที่เป็นไปได้ หากเรานำคิวบิตที่มีค่าเท่ากับ |0> สองตัว ทำการต่อวงจรด้วย H-Gate ที่คิวบิตที่สอง และ X-Gate ที่คิวบิตที่หนึ่ง "/>
-            }
+            <this.RandomQuestion next={this.next} pass={this.state.pass} answerCheck={this.answerCheck} />
           </React.Fragment>
         }
         {
-          this.state.item === 3 &&
+          this.state.page === 3 &&
           <React.Fragment>
 
             <HeaderDiv>
@@ -169,7 +145,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
            message={"เจ้าผ่านการทดสอบแล้ว ได้คะแนนทั้งหมด ".concat(this.state.totalScore.toString()).concat(" คะแนน")}/>
           </React.Fragment>
         }
-        {this.state.item === 4 &&
+        {this.state.page === 4 &&
         <Redirect to="/challenge"/>}
         <Music url={src} />
       </Main>
