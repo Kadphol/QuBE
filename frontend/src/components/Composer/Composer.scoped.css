@@ -35,7 +35,7 @@
     max-height: 6.3%;
 }
 
-.rows img:hover {
+.rows img#middle:hover {
     border: solid gold;
 }
 
@@ -75,6 +75,32 @@ button.btn-primary:disabled {
     margin-left: 20px;
     position: inline-block;   
     float: left; 
+}
+
+button.btn-shot:disabled {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    background-color: white;
+    border-color: #A29BFE;
+    color: #8B90E3;
+}
+
+.radioPanel {
+    float: left;
+    padding-top: 10px;
+    padding-left: 20px;
+    position: inline-block;
+}
+
+.radioPanel label {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    padding-left: 10px;
+}
+
+.shot {
+    color: #8B90E3;
+    padding-right: 10px;
 }
 
 div.buttonPanel {
