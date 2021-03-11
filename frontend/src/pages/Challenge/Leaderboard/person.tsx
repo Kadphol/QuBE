@@ -76,7 +76,7 @@ class Person extends React.Component<IProps> {
                             <CardRow>
                                 <Row className="R">
                                     <p style={{ paddingLeft: "20px", width:'20px' }}>{person.index}</p>
-                                    <img src={person.image} />
+                                    <img src={person.image} alt="profile icon"/>
                                     <p style={{ marginLeft: "35px" }}>{person.name} </p>
                                     <p style={{ position: "absolute", right: "40px" }}>{person.score}</p>
                                 </Row>
@@ -89,7 +89,7 @@ class Person extends React.Component<IProps> {
                     <CardSelf>
                         <Row>
                             <p style={{ paddingLeft: "20px", width:'20px' }}>{this.props.self.index}</p>
-                            <img src={this.props.self.image} />
+                            <img src={this.props.self.image} alt="profile icon"/>
                             <p style={{ marginLeft: "35px" }}>{this.props.self.name} </p>
                             <p style={{ position: "absolute", right: "40px" }}>{this.props.self.score}</p>
                         </Row>

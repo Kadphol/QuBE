@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 
-import NavigationBar from '../../components/NavigationBar';
-import Routes from '../../routing'
+import NavigationBar from '@components/NavigationBar';
+import Routes from '@route/index'
 
-import '../../styles/App.css';
-import { Iuser } from '../../type.modal'
+import '@styles/App.css';
+import { Iuser } from '@src/type.modal';
 
-import axios from '../../config/axiosconfig'
-import ENDPOINT from '../../config/endpoint'
-import { userContext } from '../../context/userContext';
+import axios from '@config/axiosconfig';
+import ENDPOINT from '@config/endpoint';
+import { userContext } from '@context/userContext';
 
 function App() {
 
   const [user, setUser] = useState<Iuser>({
     loginStatus: false
+    //loginStatus: true
   })
 
   const providerValue = {user,setUser}

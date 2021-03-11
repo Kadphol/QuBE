@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dialog from '../../components/DialogBox'
+import Dialog from '@components/DialogBox'
 import { Redirect } from "react-router-dom";
-import axios from '../../config/axiosconfig'
-import { Iuser } from '../../type.modal';
-import ENDPOINT from '../../config/endpoint'
+import axios from '@config/axiosconfig'
+import { Iuser } from '@src/type.modal';
+import ENDPOINT from '@config/endpoint'
 
 const Main = styled.div`
   width: 100%;
@@ -36,8 +36,8 @@ class Unit extends React.Component <IProps> {
         let {chapter,unit} = this.props.user
         let updateChapter = this.props.chapter-1
         let updateUnit = this.props.unit
-        if (nextFrame == this.lastFrame) {
-            if(updateChapter>chapter! || (updateChapter==chapter && updateUnit>unit!)){
+        if (nextFrame === this.lastFrame) {
+            if(updateChapter>chapter! || (updateChapter===chapter && updateUnit>unit!)){
             axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: updateUnit, chapter: updateChapter})  // not clear chapter yet
             this.props.setUser(()=>({...this.props.user,unit: updateUnit, chapter: updateChapter}))
             }
@@ -56,14 +56,14 @@ class Unit extends React.Component <IProps> {
         return (
         <Main style={{ background: `url(${background})` }}>
                 {Component.map((Item,index)=>(
-                    frame == index &&
+                    frame === index &&
                     <React.Fragment>
                         <Item next={this.next}/>
                         <Dialog showNext={interactFrame.includes(Item)?false:true} next={this.next} img={icon[index]} message={script[index]} />
                     </React.Fragment>
                 )
                 )}
-                {frame == this.lastFrame && <Redirect to={this.redirect} />}
+                {frame === this.lastFrame && <Redirect to={this.redirect} />}
             </Main>
         );
     }

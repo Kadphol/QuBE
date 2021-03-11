@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dialog from '../../components/DialogBox'
-import SkipButton from '../../components/Button/skip'
+import Dialog from '@components/DialogBox'
+import SkipButton from '@components/Button/skip'
 import { Redirect } from "react-router-dom";
-import { Iuser } from '../../type.modal';
 
 const Main = styled.div`
   width: 100%;
@@ -47,7 +46,7 @@ class Intro extends React.Component <IProps> {
         return (
         <Main>
                 {Component.map((Item,index)=>(
-                    frame == index &&
+                    frame === index &&
                     <div>
                         <Item/>
                         <Dialog showNext next={this.next} img={icon[index]} message={script[index]} />
@@ -55,7 +54,7 @@ class Intro extends React.Component <IProps> {
                     </div>
                 )
                 )}
-                {frame == this.lastFrame && <Redirect to={this.redirect} />}
+                {frame === this.lastFrame && <Redirect to={this.redirect} />}
             </Main>
         );
     }

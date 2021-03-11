@@ -1,12 +1,12 @@
 import { createContext } from 'react';
 import { Iuser } from '../type.modal'
 
-interface userContext {
+interface IuserContext {
   user: Iuser,
   setUser: React.Dispatch<React.SetStateAction<Iuser>>
 }
 
-const userContext = createContext({} as userContext)
+const userContext = createContext({} as IuserContext)
 
 export {
   userContext

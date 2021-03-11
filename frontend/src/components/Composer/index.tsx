@@ -1,50 +1,50 @@
 import React from 'react';
-import x from '../../assets/playground/x.png';
-import xInuse from '../../assets/playground/x_Inuse.png'
-import y from '../../assets/playground/y.png';
-import yInuse from '../../assets/playground/y_Inuse.png';
-import z from '../../assets/playground/z.png';
-import zInuse from '../../assets/playground/z_Inuse.png';
-import h from '../../assets/playground/h.png';
-import hInuse from '../../assets/playground/h_Inuse.png';
-import cx from '../../assets/playground/cx.png';
-import cxInuse0 from '../../assets/playground/cx_Inuse_0.png';
-import cxInuse1 from '../../assets/playground/cx_Inuse_1.png';
-import cxInuse2 from '../../assets/playground/cx_Inuse_2.png';
-import cxInuse3 from '../../assets/playground/cx_Inuse_3.png';
-import cxInuse4 from '../../assets/playground/cx_Inuse_4.png';
-import cz from '../../assets/playground/cz.png';
-import czInuse0 from '../../assets/playground/cz_Inuse_0.png';
-import czInuse1 from '../../assets/playground/cz_Inuse_1.png';
-import czInuse2 from '../../assets/playground/cz_Inuse_2.png';
-import czInuse3 from '../../assets/playground/cz_Inuse_3.png';
-import czInuse4 from '../../assets/playground/cz_Inuse_4.png';
-import ccx from '../../assets/playground/ccx.png';
-import ccxInuse00 from '../../assets/playground/ccx_Inuse_00.png';
-import ccxInuse0 from '../../assets/playground/ccx_Inuse_0.png';
-import ccxInuse1 from '../../assets/playground/ccx_Inuse_1.png';
-import ccxInuse2 from '../../assets/playground/ccx_Inuse_2.png';
-import ccxInuse3 from '../../assets/playground/ccx_Inuse_3.png';
-import ccxInuse4 from '../../assets/playground/ccx_Inuse_4.png';
-import ccxInuse5 from '../../assets/playground/ccx_Inuse_5.png';
-import m from '../../assets/playground/m.png';
-import eInuse from '../../assets/playground/e.png';
-import q1 from '../../assets/playground/q1.png';
-import q2 from '../../assets/playground/q2.png';
-import q3 from '../../assets/playground/q3.png';
-import q4 from '../../assets/playground/q4.png';
-import q5 from '../../assets/playground/q5.png';
+import x from '@assets/playground/x.png';
+import xInuse from '@assets/playground/x_Inuse.png'
+import y from '@assets/playground/y.png';
+import yInuse from '@assets/playground/y_Inuse.png';
+import z from '@assets/playground/z.png';
+import zInuse from '@assets/playground/z_Inuse.png';
+import h from '@assets/playground/h.png';
+import hInuse from '@assets/playground/h_Inuse.png';
+import cx from '@assets/playground/cx.png';
+import cxInuse0 from '@assets/playground/cx_Inuse_0.png';
+import cxInuse1 from '@assets/playground/cx_Inuse_1.png';
+import cxInuse2 from '@assets/playground/cx_Inuse_2.png';
+import cxInuse3 from '@assets/playground/cx_Inuse_3.png';
+import cxInuse4 from '@assets/playground/cx_Inuse_4.png';
+import cz from '@assets/playground/cz.png';
+import czInuse0 from '@assets/playground/cz_Inuse_0.png';
+import czInuse1 from '@assets/playground/cz_Inuse_1.png';
+import czInuse2 from '@assets/playground/cz_Inuse_2.png';
+import czInuse3 from '@assets/playground/cz_Inuse_3.png';
+import czInuse4 from '@assets/playground/cz_Inuse_4.png';
+import ccx from '@assets/playground/ccx.png';
+import ccxInuse00 from '@assets/playground/ccx_Inuse_00.png';
+import ccxInuse0 from '@assets/playground/ccx_Inuse_0.png';
+import ccxInuse1 from '@assets/playground/ccx_Inuse_1.png';
+import ccxInuse2 from '@assets/playground/ccx_Inuse_2.png';
+import ccxInuse3 from '@assets/playground/ccx_Inuse_3.png';
+import ccxInuse4 from '@assets/playground/ccx_Inuse_4.png';
+import ccxInuse5 from '@assets/playground/ccx_Inuse_5.png';
+import m from '@assets/playground/m.png';
+import eInuse from '@assets/playground/e.png';
+import q1 from '@assets/playground/q1.png';
+import q2 from '@assets/playground/q2.png';
+import q3 from '@assets/playground/q3.png';
+import q4 from '@assets/playground/q4.png';
+import q5 from '@assets/playground/q5.png';
 import './Composer.scoped.css';
-import axios from '../../config/axiosconfig';
+import axios from '@config/axiosconfig';
 import { Row } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
-import { ReactComponent as Qubie } from '../../svg/Qubie-intro.svg';
+import {ReactComponent as Qubie} from '@svg/Qubie-intro.svg';
 import styled from 'styled-components';
 
 
-const sfxClick = require('../../assets/sound/sfx_click.mp3').default
-const sfxCorrect = require('../../assets/sound/sfx_correct.mp3').default
-const sfxWrong = require('../../assets/sound/sfx_wrong.mp3').default
+const sfxClick = require('@assets/sound/sfx_click.mp3').default
+const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default
+const sfxWrong = require('@assets/sound/sfx_wrong.mp3').default
 
 const image: { [id: string]: string; } = { 'x': x, 'y': y, 'z': z, 'h': h, 'cx': cx, 'ccx': ccx, 'cz': cz };
 const imageInuse: { [id: string]: string; } = {
@@ -126,10 +126,6 @@ class Composer extends React.Component<IProps, IState>{
                 }
             ]
         }
-    }
-
-    constructor(props) {
-        super(props)
     }
 
     click = new Audio(sfxClick)
@@ -442,21 +438,21 @@ class Composer extends React.Component<IProps, IState>{
 
                 <div style={{ display: this.props.quiz ? 'block' : 'block' }}>
                     <div>
-
-                        <div className={this.props.quiz ? "gatesQuiz" : "gates"}>
-                            {Object.keys(image).map(key => {
-                                return <img src={image[key]} onClick={(e) => this.activate(e, key)} />
-                            })}
-                        </div>
-                        <br />
-                        {this.state.ccimg.map((line, l: number) => {
-                            return (
-                                <Row className={this.props.quiz ? "rowsQuiz" : "rows"}>
-                                    <img src={qubit[l]} id="first" />
+                        
+                <div className={this.props.quiz?"gatesQuiz":"gates"}>
+                    {Object.keys(image).map(key => {
+                        return <img src={image[key]} onClick={(e) => this.activate(e, key)} alt="gate"/>
+                    })}
+                </div>
+                <br />
+                        {this.state.ccimg.map((line, l:number) => {
+                            return ( 
+                                <Row className={this.props.quiz?"rowsQuiz":"rows"}>
+                                    <img src={qubit[l]} id="first" alt="qubit"/>
                                     {line.map((col: string, c: number) => {
-                                        return <img id="middle" src={imageInuse[col]} onClick={() => this.place(l, c)} />
+                                        return <img src={imageInuse[col]} onClick={() => this.place(l, c)} alt="line"/>
                                     })}
-                                    <img src={m} id="last" />
+                                    <img src={m} id="last" alt="measure"/>
                                 </Row>
                             )
                         })}
