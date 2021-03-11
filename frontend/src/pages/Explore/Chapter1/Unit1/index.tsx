@@ -17,7 +17,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                     user={this.props.user}
                     setUser={this.props.setUser}
                     chapter={1}
-                    unit={3}
+                    unit={1}
                     frameComponent={[F0,F1,F2,F3,F4,F5,F6,F7,F8,F9]}
                     interactFrame={[F1]}
                     script={[
