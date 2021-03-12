@@ -188,20 +188,25 @@ class Composer extends React.Component<IProps, IState>{
         foundIndex = multipleGate.findIndex((gatesIndex) =>
             gatesIndex.findIndex((gateIndex) => JSON.stringify([line, col]) === JSON.stringify(gateIndex)) !== -1
         )
+        //foundIndex return index of set of multipleGate that was replaced
         if (foundIndex !== -1) {
             multipleGate[foundIndex].forEach(gateIndex => {
                 console.log()
+                //change every gate placed to empty line
                 newccimg[gateIndex[0]][gateIndex[1]] = 'e'
-                // pick one line 
                 let foundIndex2 = -1
                 cc.forEach((el, index) => {
                     if (Array.isArray(el.line)) {
-                        if (el.line[0] === gateIndex[0]) foundIndex2 = index
+                        // found index 2 return index of set of gate in cc that was replaced
+                        // pick only one line but gateIndex will repeat until matched
+                        if (el.line[0] === gateIndex[0] && el.col === gateIndex[1]) foundIndex2 = index
                     }
                 })
+                // remove that gate from cc
                 if (foundIndex2 !== -1) cc.splice(foundIndex2, 1)
                 console.log('p', cc)
             })
+            // remove multiplegate that was replaced
             multipleGate.splice(foundIndex, 1)
             this.setState({ multipleGate: multipleGate, ccimg: newccimg, cc: cc })
         }
@@ -290,7 +295,7 @@ class Composer extends React.Component<IProps, IState>{
                     cc = [...cc, newgate]
                     this.setState({ ccimg: newccimg, cc: cc, placingGate: Array(), multipleGate: multipleGate }) // for ccx
                 }
-                else { // remove all cx before
+                else { //wrong line, remove all control from another line first
                     newccimg[control1[0]][control1[1]] = 'e'
                     this.setState({ ccimg: newccimg, placingGate: Array() })
                 }
@@ -392,7 +397,9 @@ class Composer extends React.Component<IProps, IState>{
     reset = () => {
         let ccimg = [eLine.slice(), eLine.slice()]
         let cc = Array()
-        this.setState({ ccimg: ccimg, cc: cc, n: 2 })
+        let placingGate = Array()
+        let multipleGate = Array()
+        this.setState({ ccimg: ccimg, cc: cc, placingGate: placingGate, multipleGate: multipleGate, n: 2 })
     }
 
     addQubit = () => {
@@ -450,7 +457,7 @@ class Composer extends React.Component<IProps, IState>{
                                 <Row className={this.props.quiz?"rowsQuiz":"rows"}>
                                     <img src={qubit[l]} id="first" alt="qubit"/>
                                     {line.map((col: string, c: number) => {
-                                        return <img src={imageInuse[col]} onClick={() => this.place(l, c)} alt="line"/>
+                                        return <img id="middle" src={imageInuse[col]} onClick={() => this.place(l, c)} alt="line"/>
                                     })}
                                     <img src={m} id="last" alt="measure"/>
                                 </Row>
