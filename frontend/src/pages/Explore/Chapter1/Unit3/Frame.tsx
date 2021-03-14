@@ -157,7 +157,7 @@ class F5 extends React.Component<any> {
         this.props.next();
     }
     render() {
-        let button_style = { position: 'absolute', width: '60px', height: '60px', left: '300px' } as React.CSSProperties
+        let button_style = { position: 'absolute', cursor:'pointer', width: '60px', height: '60px', left: '300px' } as React.CSSProperties
         return (
             <Main>
                 <Content>
