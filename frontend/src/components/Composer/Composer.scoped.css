@@ -45,7 +45,7 @@
     display: inline;
 }
 
-.rowsQuiz img:hover {
+.rowsQuiz img#middle:hover {
     border: solid gold;
 }
 
