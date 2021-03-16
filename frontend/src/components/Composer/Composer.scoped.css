@@ -29,26 +29,30 @@
 }
 
 .rows img {
-    height: 5rem; 
+    height: 5%; 
     width: auto; 
     max-width: 6.3%; 
     max-height: 6.3%;
 }
 
-.rows img:hover {
+.rows img#middle:hover {
     border: solid gold;
 }
 
 .rowsQuiz img {
-    height: 15vh; 
-    width: auto; 
     max-width: 6%; 
     max-height: 6%;
     display: inline;
 }
 
-.rowsQuiz img:hover {
+.rowsQuiz img#middle:hover {
     border: solid gold;
+}
+
+.rowsQuiz {
+    padding-left: 245px;
+    height:130%;
+    width:130%;
 }
 
 #first {
@@ -77,9 +81,43 @@ button.btn-primary:disabled {
     float: left; 
 }
 
+button.btn-shot:disabled {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    background-color: white;
+    border-color: #A29BFE;
+    color: #8B90E3;
+}
+
+.radioPanel {
+    float: left;
+    padding-top: 10px;
+    padding-left: 20px;
+    position: inline-block;
+}
+
+.radioPanel label {
+    font-family: 'Kanit',sans-serif;
+    font-size: medium;
+    padding-left: 10px;
+}
+
+.shot {
+    color: #8B90E3;
+    padding-right: 10px;
+}
+
 div.buttonPanel {
     width: 100%;
       float:left;
+      margin-top: 16px;
+      margin-bottom: 16px;
+}
+
+
+div.buttonPanelQuiz {
+    width: 100%;
+      margin-left: 245px;
       margin-top: 16px;
       margin-bottom: 16px;
 }

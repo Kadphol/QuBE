@@ -15,7 +15,7 @@ const main = {
     background: `url(${background})`,
     width: '100%',
     height: '100%',
-    border: '1px solid black',
+    border: '1px solid rbga(0,0,0,0)',
     margin: '0px auto',
     position: 'relative',
 } as React.CSSProperties
@@ -38,10 +38,16 @@ export default function Chapter2() {
                                 detail={{
                                     chapter: 2,
                                     title: [
-                                        "หน่วยที่ 1: บิต ปะทะ คิวบิต",
-                                        "หน่วยที่ 2: การทับซ้อนของคิวบิต",
-                                        "หน่วยที่ 3: คิวบิตพัวพัน",
-                                        "บททดสอบ: เผชิญหน้ากับมังกร II"
+                                        "บิต ปะทะ คิวบิต",
+                                        "การทับซ้อนของคิวบิต",
+                                        "คิวบิตพัวพัน",
+                                        "เผชิญหน้ากับมังกร 2"
+                                    ],
+                                    titleEng: [
+                                        "Bit VS Qubit",
+                                        "Superposition",
+                                        "Entanglement",
+                                        "Beat the Dragon II"
                                     ]
                                 }}
                                  />
