@@ -25,19 +25,19 @@ function Progressbar(props:Iuser) {
       <ul className={styles.progress}>
         <li className={
           (props.chapter! >= 1 ) ? star(props.star![0])
-          : undefined }>Basic</li>
+          : undefined }>พื้นฐาน</li>
         <li className={
           (props.chapter! >= 2 ) ? star(props.star![1])
-          : undefined }>Qubits</li>
+          : undefined }>คิวบิต</li>
         <li className={
           (props.chapter! >= 3 ) ? star(props.star![2])
-          : undefined }>Measurement</li>
+          : undefined }>การวัด</li>
         <li className={
           (props.chapter! >= 4 ) ? star(props.star![3])
-          : undefined }>Gate</li>
+          : undefined }>ควอนตัมเกต</li>
         <li className={
           (props.chapter! >= 5 ) ? star(props.star![4])
-          : undefined }>Algorithm</li>
+          : undefined }>อัลกอริทึม</li>
       </ul>
     </React.Fragment>
   )
