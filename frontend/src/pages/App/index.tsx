@@ -11,6 +11,7 @@ import axios from '@config/axiosconfig';
 import ENDPOINT from '@config/endpoint';
 import { userContext } from '@context/userContext';
 import PreSurvey from '@components/Survey/Presurvey'
+import PostSurvey from '@components/Survey/Postsurvey'
 
 function App() {
 
@@ -19,7 +20,9 @@ function App() {
     //loginStatus: true
   })
 
-  const [surveyShow,changeSurveyShow] = useState(false)
+  const [preSurveyShow,changePreSurveyShow] = useState(false)
+  const [postSurveyShow,changePostSurveyShow] = useState(false)
+
   const providerValue = {user,setUser}
 
   useEffect(()=>{
@@ -38,13 +41,15 @@ function App() {
           score: res.data.info.highscore
         }));
       }
-      if (res.data.preSurvey.degree == 0){changeSurveyShow(true)}
+      if (res.data.preSurvey.degree === 0){changePreSurveyShow(true)}
+      if (res.data.postSurvey.satisfy === 0 && res.data.info.highscore !== 0){changePostSurveyShow(true)}
     })
   },[])
 
   return (
     <div className="App">
-      <PreSurvey show={surveyShow} onHide={() => changeSurveyShow(false)} />
+      <PreSurvey show={preSurveyShow} onHide={() => changePreSurveyShow(false)} />
+      <PostSurvey show={postSurveyShow} onHide={() => changePostSurveyShow(false)} />
       <userContext.Provider value={providerValue}>
         <BrowserRouter>
             <NavigationBar />
