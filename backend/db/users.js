@@ -15,24 +15,21 @@ const users_schema = new schema({
     type: "Facebook" | "Guest",
     name: String,
     image: String,
+    created: typeof(Date()),
     info: {
-        // explore: {type: mongoose.Schema.Types.ObjectId, ref:'explore',default:null},
         chapter: { type: Number, default: 0 },
         unit: { type: Number, default: 0 },
         star: { type: [Number], default: [0, 0, 0, 0, 0] },
         highscore: { type: Number, default: 0 }
     },
     preSurvey: {
-        degree: Number,
+        degree: { type: Number, default: 0 },
         type: Boolean,
-        assess: Number,
     },
     postSurvey: {
-        assess: Number,
-        satisfy: Number,
+        satisfy: { type: Number, default: 0 },
         comment: String
     }
-
 })
 
 const users = module.exports = mongoose.model("users", users_schema)
@@ -40,6 +37,7 @@ const users = module.exports = mongoose.model("users", users_schema)
 module.exports.addnew = function (data, callback) {
     users.findOne({ id: data.id }).exec((err, res) => {
         if (!res) {
+            data.created = Date()
             users.create(data)
         }
     }
