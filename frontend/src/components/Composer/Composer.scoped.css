@@ -29,7 +29,7 @@
 }
 
 .rows img {
-    height: 5rem; 
+    height: 5%; 
     width: auto; 
     max-width: 6.3%; 
     max-height: 6.3%;
@@ -40,7 +40,7 @@
 }
 
 .rowsQuiz img {
-    height: 15vh; 
+    height: 5%; 
     width: auto; 
     max-width: 6%; 
     max-height: 6%;
@@ -49,6 +49,12 @@
 
 .rowsQuiz img:hover {
     border: solid gold;
+}
+
+.rowsQuiz {
+    padding-left: 245px;
+    height:130%;
+    width:130%;
 }
 
 #first {
@@ -106,6 +112,14 @@ button.btn-shot:disabled {
 div.buttonPanel {
     width: 100%;
       float:left;
+      margin-top: 16px;
+      margin-bottom: 16px;
+}
+
+
+div.buttonPanelQuiz {
+    width: 100%;
+      margin-left: 245px;
       margin-top: 16px;
       margin-bottom: 16px;
 }
