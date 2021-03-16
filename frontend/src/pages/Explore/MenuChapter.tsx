@@ -68,7 +68,7 @@ export default function MenuChapter(user:Iuser) {
     text: "บทที่ 2: คิวบิต"
   }, {
     path: url+'/chapter-3/intro',
-    text: "บทที่ 3: มาตรวัด"
+    text: "บทที่ 3: การวัด"
   }, {
     path: url+'/chapter-4/intro',
     text: "บทที่ 4: ควอนตัมเกต"

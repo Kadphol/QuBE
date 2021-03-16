@@ -11,6 +11,8 @@ import { Iuser } from '@src/type.modal';
 import Music from '@components/Button/Music';
 import {C1,C2} from './ComposerGenerator'
 import {Q1,Q2} from './QuestionGenerator'
+import ENDPOINT from '@config/endpoint'
+
 
 const src = require('@assets/sound/bgm6.mp3').default
 const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default
@@ -68,14 +70,18 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
     }
   }
 
-  next = () => this.setState({ page: this.state.page + 1, penalty: 0, pass: false, nextbutton: false })
+  next = () => {
+    this.setState({ page: this.state.page + 1, penalty: 0, pass: false, nextbutton: false })
+  }
 
   handleScore = score => this.setState({ score: score })
 
   updateScore = () => {
-    axios.put('http://localhost/updateInfo', { score: this.state.totalScore })
+    axios.put(`${ENDPOINT.URL}/updateInfo`, { score: this.state.totalScore })
     this.props.setUser(()=>({...this.props.user,score: this.state.totalScore}))
-    this.next()
+    // relocation instead for pop-up post survey
+    window.location.href = '/challenge'
+    // this.next()
   }
 
   render() {
@@ -145,8 +151,8 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
            message={"เจ้าผ่านการทดสอบแล้ว ได้คะแนนทั้งหมด ".concat(this.state.totalScore.toString()).concat(" คะแนน")}/>
           </React.Fragment>
         }
-        {this.state.page === 4 &&
-        <Redirect to="/challenge"/>}
+        {/* {this.state.page === 4 &&
+        <Redirect to="/challenge"/>} */}
         {/* <Music url={src} /> */}
       </Main>
     );
