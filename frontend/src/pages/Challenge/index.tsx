@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   background-image: url(${scene1});
   height: 720px;
   width: 1240px;
-  margin: 110px auto 0px;
+  margin: 60px auto 20px;
   display:flex;
   position: relative;
 `
