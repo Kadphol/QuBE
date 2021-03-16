@@ -1,7 +1,7 @@
 import React from 'react';
-import background from '../../../../assets/explore/chapter1/BackgroundQuiz.png';
-import dragon from '../../../../assets/explore/dragonIcon.png';
-import qubie from '../../../../assets/explore/qubieIcon.png';
+import background from '@assets/explore/chapter1/BackgroundQuiz.png';
+import dragon from '@assets/explore/dragonIcon.png';
+import qubie from '@assets/explore/qubieIcon.png';
 import {F0,F1,F2,F3,F4,F5,F6,F7,F8,F9,F10} from './Frame'
 import { Iuser } from '../../../../type.modal'
 import QuizTemplate from '../../QuizTemplate'

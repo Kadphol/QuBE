@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Bew from '../../../../assets/explore/chapter2/Bew.png'
+import Bew from '@assets/explore/chapter2/Bew.png'
 
 const Main = styled.div`
 width: 100%;

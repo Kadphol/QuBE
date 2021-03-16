@@ -46,10 +46,10 @@ class Intro extends React.Component <IProps> {
         return (
         <Main>
                 {Component.map((Item,index)=>(
-                    frame === index &&
+                    frame === index && 
                     <div>
-                        <Item/>
-                        <Dialog showNext next={this.next} img={icon[index]} message={script[index]} />
+                        <Item next={this.next}/>
+                        {index > 0 && <Dialog showNext next={this.next} img={icon[index]} message={script[index]} />}
                         <SkipButton path={this.redirect}/>
                     </div>
                 )

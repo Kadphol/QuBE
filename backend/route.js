@@ -46,8 +46,19 @@ module.exports = (app) => {
   })
 
   app.put('/updateInfo', (req, res) => {
-    console.log(req.user)
     users.updateInfo(req.user, req.body.chapter, req.body.unit, req.body.star, req.body.score, () => {
+      return res.send("OK")
+    })
+  })
+
+  app.put('/updatePreSurvey', (req, res) => {
+    users.updatePreSurvey(req.user, req.body.degree, req.body.type, () => {
+      return res.send("OK")
+    })
+  })
+
+  app.put('/updatePostSurvey', (req, res) => {
+    users.updatePostSurvey(req.user, req.body.satisfy, req.body.comment, () => {
       return res.send("OK")
     })
   })

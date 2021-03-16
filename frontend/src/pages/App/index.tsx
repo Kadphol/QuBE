@@ -10,6 +10,8 @@ import { Iuser } from '@src/type.modal';
 import axios from '@config/axiosconfig';
 import ENDPOINT from '@config/endpoint';
 import { userContext } from '@context/userContext';
+import PreSurvey from '@components/Survey/Presurvey'
+import PostSurvey from '@components/Survey/Postsurvey'
 
 function App() {
 
@@ -17,6 +19,9 @@ function App() {
     loginStatus: false
     //loginStatus: true
   })
+
+  const [preSurveyShow,changePreSurveyShow] = useState(false)
+  const [postSurveyShow,changePostSurveyShow] = useState(false)
 
   const providerValue = {user,setUser}
 
@@ -35,11 +40,16 @@ function App() {
           star: res.data.info.star,
           score: res.data.info.highscore
         }));
-      }})
+      }
+      if (res.data.preSurvey.degree === 0){changePreSurveyShow(true)}
+      if (res.data.postSurvey.satisfy === 0 && res.data.info.highscore !== 0){changePostSurveyShow(true)}
+    })
   },[])
 
   return (
     <div className="App">
+      <PreSurvey show={preSurveyShow} onHide={() => changePreSurveyShow(false)} />
+      <PostSurvey show={postSurveyShow} onHide={() => changePostSurveyShow(false)} />
       <userContext.Provider value={providerValue}>
         <BrowserRouter>
             <NavigationBar />

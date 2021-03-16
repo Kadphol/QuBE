@@ -25,10 +25,9 @@ passport.serializeUser(function(user, done) {
           id:profile.id,
           type:"Facebook",
           name:profile.displayName,
-          image:profile.photos[0].value
+          image:profile.photos[0].value,
       })
       users.addnew(data,function(err){if(err) throw err})
-      // users.updateExplore(data,0,function(err){if(err) throw err})
       done(null, profile)
     }
   ))

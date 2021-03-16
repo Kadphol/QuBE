@@ -12,6 +12,8 @@ export default function Profile({user,setUser}) {
 
     const clear = () => {
         axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: 0, chapter: 0, score:0}) // clear progress
+        axios.put(`${ENDPOINT.URL}/updatePreSurvey`, { degree: 0, type: false}) // clear pre survey
+        axios.put(`${ENDPOINT.URL}/updatePostSurvey`, { satisfy: 0, comment: null}) // clear post survey
         setUser(()=>({...user,unit: 0, chapter: 0, score:0}))
     }
 

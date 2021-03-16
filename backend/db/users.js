@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const config = require('../config/config');
-const explore = require('./explore')
 
 mongoose.connect(config.DB, {
     useNewUrlParser: true,
@@ -15,24 +14,22 @@ const users_schema = new schema({
     type: "Facebook" | "Guest",
     name: String,
     image: String,
+    created: typeof(Date()),
     info: {
-        // explore: {type: mongoose.Schema.Types.ObjectId, ref:'explore',default:null},
         chapter: { type: Number, default: 0 },
         unit: { type: Number, default: 0 },
         star: { type: [Number], default: [0, 0, 0, 0, 0] },
         highscore: { type: Number, default: 0 }
     },
-    preSurvey: {
-        degree: Number,
-        type: Boolean,
-        assess: Number,
-    },
     postSurvey: {
-        assess: Number,
-        satisfy: Number,
-        comment: String
+        satisfy: { type: Number, default: 0 },
+        comment: { type: String, default: null }
+    },
+    preSurvey: {
+        degree: { type: Number, default: 0 },
+        type: { type: Boolean, default: false }
     }
-
+    
 })
 
 const users = module.exports = mongoose.model("users", users_schema)
@@ -40,6 +37,7 @@ const users = module.exports = mongoose.model("users", users_schema)
 module.exports.addnew = function (data, callback) {
     users.findOne({ id: data.id }).exec((err, res) => {
         if (!res) {
+            data.created = Date()
             users.create(data)
         }
     }
@@ -60,6 +58,26 @@ module.exports.updateInfo = function (user, chapter, unit, star, score, callback
                 res.info.unit = unit
             }
             res.markModified('info.star')
+            res.save()
+        }
+    })
+}
+
+module.exports.updatePreSurvey = function (user, degree, type, callback) {
+    users.findOne({ id: user.id }).exec((err, res) => {
+        if (res) {
+            res.preSurvey.degree = degree
+            res.preSurvey.type = type
+            res.save()
+        }
+    })
+}
+
+module.exports.updatePostSurvey = function (user, satisfy, comment, callback) {
+    users.findOne({ id: user.id }).exec((err, res) => {
+        if (res) {
+            res.postSurvey.satisfy = satisfy
+            res.postSurvey.comment = comment
             res.save()
         }
     })
