@@ -22,6 +22,7 @@ import nextButton from '@assets/explore/chapter1/quiz/nextButton.png';
 import completeButton from '@assets/explore/chapter1/quiz/completeButton.png';
 import completeFrame from '@assets/explore/chapter1/quiz/completeFrame.png';
 import Question from '@components/Question';
+import ChapterBox from '@components/ChapterBox'
 const sfxStar = require('@assets/sound/sfx_star.mp3').default;
 const sfxPing = require('@assets/sound/sfx_ping.mp3').default;
 const sfxWrong = require('@assets/sound/sfx_wrong.mp3').default;
@@ -339,28 +340,21 @@ class F10 extends React.Component<any> {
     render() {
         return (<Main>
             <Content >
-                <BoxDiv style={{ backgroundImage: `url(${completeFrame})` }}>
-
-                    {
-                        !this.state.button &&
-                        <img src={this.props.star >= 1 ? star : noStar} style={{ top: '229px', left: '189px' }} />
+                    {   !this.state.button &&
+                        <img src={this.props.star >= 1 ? star : noStar} style={{ position:'absolute', top: '400px', left: '459px' }} />
                     }
-                    {
-                        !this.state.button &&
-                        <img src={this.props.star >= 2 ? star : noStar} style={{ top: '229px', left: '312px' }} />
+                    {   !this.state.button &&
+                        <img src={this.props.star >= 2 ? star : noStar} style={{ position:'absolute', top: '400px', left: '582px' }} />
                     }
-                    {
-                        !this.state.button &&
-                        <img src={this.props.star >= 3 ? star : noStar} style={{ top: '229px', left: '435px' }} />
-
+                    {   !this.state.button &&
+                        <img src={this.props.star >= 3 ? star : noStar} style={{ position:'absolute', top: '400px', left: '705px' }} />
                     }
-                    {
-                        this.state.button &&
-                        <img src={completeButton}
-                            style={{ position: 'absolute', top: '250px', left: '246px', width: '200px', height: '50px', cursor: 'pointer' }}
-                            onMouseDown={() => this.click.play()} onClick={this.props.next} />
+                    {   !this.state.button && 
+                        <ChapterBox next={this.props.next} button={false} chapter="1" title="พื้นฐาน" textColor="green" boxColor="lightgreen" buttonColor="#52DB89" text="เริ่มต้น"/>
                     }
-                </BoxDiv>
+                    {   this.state.button &&
+                        <ChapterBox next={this.props.next} button chapter="1" title="พื้นฐาน" textColor="green" boxColor="lightgreen" buttonColor="#52DB89" text="เสร็จสิ้น"/>
+                    }
             </Content>
         </Main>);
     }

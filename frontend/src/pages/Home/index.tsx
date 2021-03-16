@@ -9,9 +9,20 @@ import item1 from '@assets/intro/item1.png'
 import item2 from '@assets/intro/item2.png'
 
 class Home extends React.Component {
+
+  state = {
+    surveyShow: false
+  }
+
+  componentDidMount = () => {
+    
+  }
+
   render() {
     return (
       <div className="home" style={{overflowX:'hidden'}}>
+
+
         <div className="container-fluid">
           <div className="row intro">
             <div className="intro-1 col-lg-7">
