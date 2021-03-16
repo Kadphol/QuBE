@@ -28,6 +28,7 @@ import ccxInuse3 from '@assets/playground/ccx_Inuse_3.png';
 import ccxInuse4 from '@assets/playground/ccx_Inuse_4.png';
 import ccxInuse5 from '@assets/playground/ccx_Inuse_5.png';
 import m from '@assets/playground/m.png';
+import e from '@assets/playground/delete.png';
 import eInuse from '@assets/playground/e.png';
 import q1 from '@assets/playground/q1.png';
 import q2 from '@assets/playground/q2.png';
@@ -46,7 +47,7 @@ const sfxClick = require('@assets/sound/sfx_click.mp3').default
 const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default
 const sfxWrong = require('@assets/sound/sfx_wrong.mp3').default
 
-const image: { [id: string]: string; } = { 'x': x, 'y': y, 'z': z, 'h': h, 'cx': cx, 'ccx': ccx, 'cz': cz };
+const image: { [id: string]: string; } = { 'x': x, 'y': y, 'z': z, 'h': h, 'cx': cx, 'ccx': ccx, 'cz': cz, 'e': e };
 const imageInuse: { [id: string]: string; } = {
     'x': xInuse, 'y': yInuse, 'z': zInuse, 'h': hInuse, 'e': eInuse,
     'cx0': cxInuse0, 'cx1': cxInuse1, 'cx2': cxInuse2, 'cx3': cxInuse3, 'cx4': cxInuse4,

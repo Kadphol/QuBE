@@ -40,8 +40,6 @@
 }
 
 .rowsQuiz img {
-    height: 5%; 
-    width: auto; 
     max-width: 6%; 
     max-height: 6%;
     display: inline;
