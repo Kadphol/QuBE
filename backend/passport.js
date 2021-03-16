@@ -28,7 +28,6 @@ passport.serializeUser(function(user, done) {
           image:profile.photos[0].value,
       })
       users.addnew(data,function(err){if(err) throw err})
-      // users.updateExplore(data,0,function(err){if(err) throw err})
       done(null, profile)
     }
   ))
