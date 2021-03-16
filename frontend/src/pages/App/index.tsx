@@ -10,6 +10,7 @@ import { Iuser } from '@src/type.modal';
 import axios from '@config/axiosconfig';
 import ENDPOINT from '@config/endpoint';
 import { userContext } from '@context/userContext';
+import PreSurvey from '@components/Survey/Presurvey'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
     //loginStatus: true
   })
 
+  const [surveyShow,changeSurveyShow] = useState(false)
   const providerValue = {user,setUser}
 
   useEffect(()=>{
@@ -35,11 +37,14 @@ function App() {
           star: res.data.info.star,
           score: res.data.info.highscore
         }));
-      }})
+      }
+      if (res.data.preSurvey.degree == 0){changeSurveyShow(true)}
+    })
   },[])
 
   return (
     <div className="App">
+      <PreSurvey show={surveyShow} onHide={() => changeSurveyShow(false)} />
       <userContext.Provider value={providerValue}>
         <BrowserRouter>
             <NavigationBar />
