@@ -54,25 +54,25 @@ export default function PreSurvey(props) {
     const Button3 = {
         ...Button,
         textDecoration: 'none',
-        top: '170px',
-        left: '205px',
-        width: '200px',
-        height: '50px',
+        top: '110px',
+        left: '240px',
+        width: '160px',
+        height: '40px',
         background: '#A29BFE',
         color: 'white',
-        fontSize: '30px',
-        lineHeight: '50px',
+        fontSize: '20px',
+        lineHeight: '40px',
     } as React.CSSProperties;
 
     const thanks = {
-        marginTop:'100px',
+        marginTop: '35px',
         fontFamily: 'Kanit',
         fontStyle: 'normal',
-        fontSize: '40px',
-        lineHeight: '40px',
+        fontSize: '30px',
+        lineHeight: '30px',
         textAlign: 'center',
-        paddingLeft: '40px'
     } as React.CSSProperties;
+
 
     const saveSurvey = () => {
         if (satisfy != 0) {
@@ -97,9 +97,9 @@ export default function PreSurvey(props) {
             centered
         >
             <Modal.Body className="text-center">
-                <div style={main}>
-                    {!done &&
-                        <Form>
+                 {  !done &&
+                    <div style={main}>
+                    <Form>
                             <div className="mb-3" style={{ marginTop: '30px' }}>
                                 <Form.Label>เธอชอบ QuBE มั้ย?</Form.Label>
                                 <br />
@@ -116,14 +116,13 @@ export default function PreSurvey(props) {
                             <div style={Button1} onClick={props.onHide}>ไว้ทีหลังนะ</div>
                             <div style={Button2} onClick={() => saveSurvey()}>ส่งคำตอบ</div>
                         </Form>
-                    }
-                    {done &&
-                        <React.Fragment>
+                </div> }
+                {done &&
+                        <div style={{height:'160px', border: `1px solid ${color}`,}}>
                             <label style={thanks}>ขอบคุณที่ให้ความร่วมมือนะ!</label>
                             <div style={Button3} onClick={props.onHide}>เสร็จสิ้น</div>
-                        </React.Fragment>
-                    }
-                </div>
+                        </div>
+                }
             </Modal.Body>
         </Modal>
     );

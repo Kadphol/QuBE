@@ -134,7 +134,7 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
             {this.props.user.type==='Facebook' &&
             <button className="btn btn-primary" disabled={!this.state.global} 
             onMouseDown={()=>this.click.play()}
-            onClick={()=>this.switch(false)}>เพื่อน</button>}
+            onClick={()=>this.switch(false)}>Facebook</button>}
           </Filter>
           {this.state.global
             ? <Person data={this.state.data} self={this.state.self} />

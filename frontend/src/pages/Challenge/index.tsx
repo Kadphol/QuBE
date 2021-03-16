@@ -1,11 +1,13 @@
 import React from 'react';
 import Play from './Play'
 import Leaderboard from './Leaderboard'
+import HowToPlay from './Howtoplay'
 import Menu from './Menu'
 import { userContext } from '@context/userContext';
 import styled from 'styled-components'
-import scene1 from '@assets/explore/chapter1/BackgroundUnit.png'
+import scene1 from '@assets/explore/chapter1/BackgroundFar.png'
 import { BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
+import HowToplay from './Howtoplay';
 
 const Wrapper = styled.div`
   background-image: url(${scene1});
@@ -28,6 +30,7 @@ export default function Challenge() {
           <Route exact path={path} component={Menu} />
             <Route path={`${path}/play`} render={() => (<Play user={user} setUser={setUser} />)}/>
             <Route path={`${path}/leaderboard`} render={() => (<Leaderboard user={user} />)} />
+            <Route path={`${path}/howtoplay`} component={HowToplay}/>
         </Switch>
             }
         </userContext.Consumer>

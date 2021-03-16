@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import { ReactComponent as Dragon } from "@svg/Dragon.svg";
 import { ReactComponent as Qubie } from "@svg/Qubie-intro.svg";
+import { ReactComponent as Beck } from "@svg/Beck.svg";
 const sfxClick = require("@assets/sound/sfx_click.mp3").default;
 
 const ulStyle = {
@@ -9,7 +10,6 @@ const ulStyle = {
   margin: "auto",
   padding: 0,
   position: "relative",
-  display: "flex",
 } as React.CSSProperties;
 
 const liStyle = {
@@ -20,7 +20,7 @@ const liStyle = {
   borderRadius: "10px",
   textAlign: "center",
   paddingTop: "15px",
-  margin: "100px 20px",
+  margin: "20px 20px 20px",
 } as React.CSSProperties;
 
 const liStyleHover = { ...liStyle, backgroundColor: "#7AB175" };
@@ -31,62 +31,84 @@ const linkStyle = {
   fontSize: "45px",
   color: "#000000",
   textAlign: "center",
-  padding: "10px",
 } as React.CSSProperties;
 
-const column = {
+const bar = {
   position: "relative",
-  width: "auto",
-  display: "flex",
+  width: "500px",
+  height: "140px",
+  clear: "both",
 } as React.CSSProperties;
 
 const character = {
-  width: "300px",
+  // border:'solid green',
+  position: 'absolute',
+  width: "auto",
   height: "100%",
-  padding: "10px",
+  top: '-30px',
+  left: '-80px',
   transform: "rotate(5deg)",
 } as React.CSSProperties;
 
 export default function Menu() {
   let { url } = useRouteMatch();
 
-  const [hover, setHover] = useState([false, false]);
+  const [hover, setHover] = useState(-1);
   const click = new Audio(sfxClick);
 
   return (
     <ul style={ulStyle}>
-      <div style={column}>
-        <Qubie
-          className={hover[1] ? "svg-qubie-intro" : ""}
+
+      <div style={bar}>
+        <Link to={url + "/play"} style={linkStyle}>
+        <div
+          className="mapmenu__item"
+          style={hover === 0 ? liStyleHover : liStyle}
+          onMouseDown={() => click.play()}
+          onMouseEnter={() => setHover(0)}
+          onMouseLeave={() => setHover(-1)}
+        >
+            เริ่มต้นท้าทาย
+        </div>
+        </Link>
+        <Dragon
+          className={hover === 0 ? "svg-qubie-intro" : ""}
           style={character}
         />
-        <div
-          className="mapmenu__item"
-          style={hover[1] ? liStyleHover : liStyle}
-          onMouseDown={() => click.play()}
-          onMouseEnter={() => setHover([false, true])}
-          onMouseLeave={() => setHover([false, false])}
-        >
-          <Link to={url + "/leaderboard"} style={linkStyle}>
-            กระดานคะแนน
-          </Link>
-        </div>
       </div>
 
-      <div style={column}>
+      <div style={bar}>
+        <Qubie
+          className={hover === 1 ? "svg-qubie-intro" : ""}
+          style={character}
+        />
+        <Link to={url + "/leaderboard"} style={linkStyle}>
         <div
           className="mapmenu__item"
-          style={hover[0] ? liStyleHover : liStyle}
+          style={hover === 1 ? liStyleHover : liStyle}
           onMouseDown={() => click.play()}
-          onMouseEnter={() => setHover([true, false])}
-          onMouseLeave={() => setHover([false, false])}
+          onMouseEnter={() => setHover(1)}
+          onMouseLeave={() => setHover(-1)}
         >
-          <Link to={url + "/play"} style={linkStyle}>
-            เริ่มต้นท้าทาย
-          </Link>
+            กระดานคะแนน
+        </div> 
+        </Link>
+      </div>
+
+      <div style={bar}> 
+      <Link to={url + "/howtoplay"} style={linkStyle}>
+        <div
+          className="mapmenu__item"
+          style={hover === 2 ? liStyleHover : liStyle}
+          onMouseDown={() => click.play()}
+          onMouseEnter={() => setHover(2)}
+          onMouseLeave={() => setHover(-1)}
+        >
+            วิธีการเล่น
         </div>
-        <Dragon
-          className={hover[0] ? "svg-qubie-intro" : ""}
+        </Link>
+        <Beck
+          className={hover === 2 ? "svg-qubie-intro" : ""}
           style={character}
         />
       </div>
