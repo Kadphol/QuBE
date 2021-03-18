@@ -6,6 +6,8 @@ import { Iuser } from '@src/type.modal';
 import { ReactComponent as Qubie } from '@svg/Qubie-intro.svg';
 import { ReactComponent as Beck } from '@svg/Beck.svg';
 import scene from '@assets/challenge/leaderboard.png';
+import board1 from '@assets/challenge/Board-all.png';
+import board2 from '@assets/challenge/Board-facebook.png';
 import Back from '@components/Button/back';
 
 const sfxClick = require('@assets/sound/sfx_click.mp3').default;
@@ -21,32 +23,31 @@ position: relative;
 `
 
 const Board = styled.div`
-background-color: beige;
+background: url(${board1});
 width: 50%;
 height: 95%;
 margin: auto;
 margin-top: 10px;
-border: solid black;
+border-radius: 20px;
 `
 
 const Filter = styled.div`
 width: 500px;
 height: 10%;
-margin: 10px auto;
-padding: 7.5px;
+margin-left: -30px;
+padding-top: 10px;
 position: relative;
 
-button {
+.button {
   float: left;
-  margin-left: 10px;
-}
-
-button:disabled {
-  font-family: 'Kanit',sans-serif;
-  font-size: medium;
-  background-color: #8B90E3;
-  border-color: #A29BFE;
-  color: white;
+  margin-left: 50px;
+  width: 100px;
+  font-family: Kanit;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 40px;
+  color: black;
+  cursor: pointer;
 }
 `
 
@@ -126,15 +127,15 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
   render() {
     return (
       <Main>
-        <Board>
+        <Board style={{background:`url(${this.state.global?board1:board2})`}}>
           <Filter>
-            <button className="btn btn-primary" disabled={this.state.global} 
+            <div className="button"
             onMouseDown={()=>this.click.play()}
-            onClick={()=>this.switch(true)}>ทั้งหมด</button>
+            onClick={()=>this.switch(true)}>ทั้งหมด</div>
             {this.props.user.type==='Facebook' &&
-            <button className="btn btn-primary" disabled={!this.state.global} 
+            <div className="button" 
             onMouseDown={()=>this.click.play()}
-            onClick={()=>this.switch(false)}>Facebook</button>}
+            onClick={()=>this.switch(false)}>Facebook</div>}
           </Filter>
           {this.state.global
             ? <Person data={this.state.data} self={this.state.self} />
