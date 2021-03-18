@@ -10,6 +10,7 @@ function weightedRand(spec) {
         sum += spec[i];
         if (r <= sum) return i;
     }
+    return null
 }
 
 module.exports = (app) => {
@@ -30,8 +31,8 @@ module.exports = (app) => {
         console.log('\nRunning the circuit now ...');
         circuit.run(input);
 
-        console.log('\nDone, internal state:');
-        console.log(circuit.state);
+        // console.log('\nDone, internal state:');
+        // console.log(circuit.state);
 
         console.log('\nInternal state (as string):');
         console.log(circuit.stateToString());
@@ -51,7 +52,7 @@ module.exports = (app) => {
 
         for (var i = 0; i < data.shot; i++) {
             let random = weightedRand(stateVector)
-            measure[random] += 1
+            if(random!==null) measure[random] += 1
         }
         measureValues = Object.values(measure)
         measureLabels = Object.keys(measure)

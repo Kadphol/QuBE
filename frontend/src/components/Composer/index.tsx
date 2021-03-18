@@ -27,6 +27,14 @@ import ccxInuse2 from '@assets/playground/ccx_Inuse_2.png';
 import ccxInuse3 from '@assets/playground/ccx_Inuse_3.png';
 import ccxInuse4 from '@assets/playground/ccx_Inuse_4.png';
 import ccxInuse5 from '@assets/playground/ccx_Inuse_5.png';
+import ccz from '@assets/playground/ccz.png';
+import cczInuse00 from '@assets/playground/ccx_Inuse_5.png';
+import cczInuse0 from '@assets/playground/ccx_Inuse_2.png';
+import cczInuse1 from '@assets/playground/ccx_Inuse_4.png';
+import cczInuse2 from '@assets/playground/ccx_Inuse_2.png';
+import cczInuse3 from '@assets/playground/ccx_Inuse_3.png';
+import cczInuse4 from '@assets/playground/ccx_Inuse_4.png';
+import cczInuse5 from '@assets/playground/ccx_Inuse_5.png';
 import m from '@assets/playground/m.png';
 import e from '@assets/playground/delete.png';
 import eInuse from '@assets/playground/e.png';
@@ -47,12 +55,13 @@ const sfxClick = require('@assets/sound/sfx_click.mp3').default
 const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default
 const sfxWrong = require('@assets/sound/sfx_wrong.mp3').default
 
-const image: { [id: string]: string; } = { 'x': x, 'y': y, 'z': z, 'h': h, 'cx': cx, 'ccx': ccx, 'cz': cz, 'e': e };
+const image: { [id: string]: string; } = { 'x': x, 'y': y, 'z': z, 'h': h, 'cx': cx, 'ccx': ccx, 'cz': cz, 'ccz': ccz, 'e': e };
 const imageInuse: { [id: string]: string; } = {
     'x': xInuse, 'y': yInuse, 'z': zInuse, 'h': hInuse, 'e': eInuse,
     'cx0': cxInuse0, 'cx1': cxInuse1, 'cx2': cxInuse2, 'cx3': cxInuse3, 'cx4': cxInuse4,
     'cz0': czInuse0, 'cz1': czInuse1, 'cz2': czInuse2, 'cz3': czInuse3, 'cz4': czInuse4,
     'ccx00': ccxInuse00, 'ccx0': ccxInuse0, 'ccx1': ccxInuse1, 'ccx2': ccxInuse2, 'ccx3': ccxInuse3, 'ccx4': ccxInuse4, 'ccx5': ccxInuse5,
+    'ccz00': cczInuse00, 'ccz0': cczInuse0, 'ccz1': cczInuse1, 'ccz2': cczInuse2, 'ccz3': cczInuse3, 'ccz4': cczInuse4, 'ccz5': cczInuse5,
 };
 const qubit: { [id: number]: string; } = { 0: q1, 1: q2, 2: q3, 3: q4, 4: q5, }
 // var eLine = Array(13).fill('e')
@@ -64,7 +73,6 @@ const QubieWrapper = styled.div`
     right: 50px;
     bottom: 100px;
     margin-left: 20px;
-    // border: solid gold;
     * {
         position: absolute;
         right: 0;
@@ -78,6 +86,7 @@ interface IProps {
     quiz: boolean,
     answerCheck: (string) => void,
     column: number,
+    n: number,
     solution?: number[]
 }
 
@@ -108,14 +117,13 @@ class Composer extends React.Component<IProps, IState>{
 
     eLine = Array(this.props.column).fill('e')
 
-
     state = {
         active: 'e',
         activeElement: el,
         placingGate: Array(),
         multipleGate: Array(),
-        n: 2,
-        ccimg: [this.eLine.slice(), this.eLine.slice()],
+        n: this.props.n,
+        ccimg: [this.eLine.slice(),this.eLine.slice()],
         cc: Array(),
         selectShot: 100,
         shot: 100,
@@ -165,13 +173,12 @@ class Composer extends React.Component<IProps, IState>{
                 this.setState({ ccimg: newccimg })
             })
         }
-        if (gate !== this.state.active) {
+        if (gate !== this.state.active || gate == 'e') {
             const target = e.target as HTMLElement
             target.style.border = "1px solid black"
             this.setState({ active: gate, activeElement: target, placingGate: Array() })
         }
         else this.setState({ active: 'e', placingGate: Array() })
-        // console.log(this.state.ccimg)
     }
 
     place = (line: number, col: number): void => {
@@ -301,6 +308,83 @@ class Composer extends React.Component<IProps, IState>{
                 }
                 else { //wrong line, remove all control from another line first
                     newccimg[control1[0]][control1[1]] = 'e'
+                    this.setState({ ccimg: newccimg, placingGate: Array() })
+                }
+            }
+        }
+
+        else if (this.state.active === 'ccz') {
+            console.log(placingGate.length)
+            // place control1
+            if (this.state.placingGate.length === 0) {
+                let newPlace = [line, col]
+                placingGate.push(newPlace)
+                newccimg[line][col] = 'ccz2'
+                this.setState({ ccimg: newccimg, placingGate: placingGate })
+
+            }
+            // place control2
+            if (this.state.placingGate.length === 1) {
+                let newPlace = [line, col]
+                let control1 = placingGate[0]
+                let valid = col === control1[1] && line !== control1[0]
+                if (valid) {
+                    placingGate.push(newPlace)
+                    newccimg[line][col] = 'ccz2'
+                    this.setState({ ccimg: newccimg, placingGate: placingGate })
+                }
+                else { // remove all cx before
+                    newccimg[control1[0]][control1[1]] = 'e'
+                    this.setState({ ccimg: newccimg, placingGate: Array() })
+                }
+            }
+            // place x
+            else if (this.state.placingGate.length === 2) {
+                let newPlace: Array<number> = [line, col]
+                let control1: Array<number> = placingGate[0]
+                let control2: Array<number> = placingGate[1]
+                let valid = col === control1[1] && line !== control1[0] && line !== control2[0]
+                if (valid) {
+                    placingGate.push(newPlace)
+
+                    // find index of top, med, bottom line
+                    let top: number = Math.min(control1[0], control2[0], newPlace[0])
+                    let bottom: number = Math.max(control1[0], control2[0], newPlace[0])
+                    let med: number = [control1[0], control2[0], newPlace[0]].find(el => el !== top && el !== bottom)!
+
+                    if (top === newPlace[0]) newccimg[top][col] = 'ccz0'
+                    else newccimg[top][col] = 'ccz2'
+                    if (bottom === newPlace[0]) newccimg[bottom][col] = 'ccz1'
+                    else newccimg[bottom][col] = 'ccz4'
+                    if (med === newPlace[0]) newccimg[med][col] = 'ccz00'
+                    else newccimg[med][col] = 'ccz5'
+
+                    let forPush = [[control1[0], control1[1]], [control2[0], control2[1]], [line, col]]
+
+                    // add line between c and x
+                    let i = Math.min(control1[0], control2[0], newPlace[0]) + 1
+                    let j = Math.max(control1[0], control2[0], newPlace[0])
+                    console.log(i, j)
+                    while (i < j) {
+                        if (i !== control1[0] && i !== control2[0] && i !== newPlace[0]) {
+                            newccimg[i][col] = 'ccz3'
+                            forPush.push([i, col])
+                        }
+                        i += 1
+                    }
+
+                    multipleGate.push(forPush)
+                    const newgate = {
+                        gate: 'ccz',
+                        line: [control1[0], control2[0], newPlace[0]],
+                        col: newPlace[1]
+                    }
+                    cc = [...cc, newgate] // cannot apply ccx gate
+                    this.setState({ ccimg: newccimg, cc: cc, placingGate: Array(), multipleGate: multipleGate }) // clear Placing Gate, Add Miltiple Gate
+                }
+                else { // remove all ccx before
+                    newccimg[control1[0]][control1[1]] = 'e'
+                    newccimg[control2[0]][control2[1]] = 'e'
                     this.setState({ ccimg: newccimg, placingGate: Array() })
                 }
             }
@@ -471,27 +555,29 @@ class Composer extends React.Component<IProps, IState>{
                     </div>
 
 
-                    <div className={this.props.quiz?"buttonPanelQuiz":"buttonPanel"}>
+                    <div style={{position:'relative'}} className={this.props.quiz?"buttonPanelQuiz":"buttonPanel"}>
                         <button className="btn btn-primary" id="buttonPanel" onMouseDown={() => this.click.play()} onClick={this.run}>วัดค่าคิวบิต</button>
                         <button className="btn btn-primary" id="buttonPanel" onMouseDown={() => this.click.play()} onClick={this.reset}>รีเซ็ต</button>
                         {!this.props.quiz && <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onMouseDown={() => this.click.play()} onClick={this.addQubit}>เพิ่มคิวบิต</button>}
                         {!this.props.quiz && <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n < 2} onMouseDown={() => this.click.play()} onClick={this.removeQubit}>ลดคิวบิต</button>}
-                        <button className="btn btn-primary btn-shot" id="buttonPanel" disabled >จำนวนช็อต</button>
                         
-                        <div className="radioPanel">
-                        {/* <label className="shot">จำนวนช็อต</label> */}
-                            <div className="form-check form-check-inline">
-                                <input type="radio" onChange={() => this.shotChange(1)} name="inlineRadioOptions"/>
-                                <span className="checkmark"></span>
-                                <label className="form-check-label" >{1}</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input type="radio" onChange={() => this.shotChange(100)} checked={this.state.selectShot === 100} name="inlineRadioOptions"/>
-                                <label className="form-check-label"  >{100}</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input type="radio" onChange={() => this.shotChange(1000)} name="inlineRadioOptions" />
-                                <label className="form-check-label">{1000}</label>
+                        <div style={{float:'left', margin:'-5px 20px',borderRadius:'10px',border:'solid 1px #A29BFE',padding:'5px 5px 5px'}}>
+                            <button className="btn btn-primary btn-shot" id="buttonPanel" disabled >จำนวนช็อต</button>
+                            <div className="radioPanel">
+                            {/* <label className="shot">จำนวนช็อต</label> */}
+                                <div className="form-check form-check-inline">
+                                    <input type="radio" onChange={() => this.shotChange(1)} name="inlineRadioOptions"/>
+                                    <span className="checkmark"></span>
+                                    <label className="form-check-label" >{1}</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input type="radio" onChange={() => this.shotChange(100)} checked={this.state.selectShot === 100} name="inlineRadioOptions"/>
+                                    <label className="form-check-label"  >{100}</label>
+                                </div>
+                                <div className="form-check form-check-inline">
+                                    <input type="radio" onChange={() => this.shotChange(1000)} name="inlineRadioOptions" />
+                                    <label className="form-check-label">{1000}</label>
+                                </div>
                             </div>
                         </div>
                     </div>
