@@ -26,7 +26,7 @@ class C1 extends React.Component<any> {
 
     return <React.Fragment>
             <ObjectDiv>
-              <Composer column={6} quiz={true} answerCheck={this.props.answerCheck} solution={[0, 50, 50, 0]} />
+              <Composer column={6} n={2} quiz={true} answerCheck={this.props.answerCheck} solution={[0, 50, 50, 0]} />
             </ObjectDiv>
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.next}
             message="ฮึ่ม เจ้าตอบได้ถูกต้อง"/>
@@ -44,7 +44,7 @@ class C2 extends React.Component<any> {
 
     return <React.Fragment>
             <ObjectDiv>
-              <Composer column={6} quiz={true} answerCheck={this.props.answerCheck} solution={[50, 0, 0 ,50]} />
+              <Composer column={6} n={2} quiz={true} answerCheck={this.props.answerCheck} solution={[50, 0, 0 ,50]} />
             </ObjectDiv>
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.next}
             message="ฮึ่ม เจ้าตอบได้ถูกต้อง"/>
@@ -56,4 +56,23 @@ class C2 extends React.Component<any> {
     }
 }
 
-export {C1,C2}
+class C3 extends React.Component<any> {
+
+  render() {
+
+  return <React.Fragment>
+          <ObjectDiv>
+            <Composer column={6} n={2} quiz={true} answerCheck={this.props.answerCheck} solution={[25,25,25,25]} />
+          </ObjectDiv>
+          {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.next}
+          message="ฮึ่ม เจ้าตอบได้ถูกต้อง"/>
+          }
+          {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.next}
+          message="ไหนเจ้าลองต่อวงจรควอนตัม ให้ได้ผลลัพธ์เป็น 00,01,10,11 อย่างละเท่า ๆ กันดูซิ"/>
+          }
+        </React.Fragment>
+  }
+}
+
+
+export {C1,C2,C3}
