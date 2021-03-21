@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import Qubie from '@assets/explore/Qubie.png';
 import Dragon from '@assets/explore/Dragon.png';
+import backgroundUnit from '@assets/explore/chapter1/BackgroundUnit.png'
 import item1 from '@assets/explore/chapter1/quiz/item1.png';
 import item2 from '@assets/explore/chapter1/quiz/item2.png';
 import item3 from '@assets/explore/chapter1/quiz/item3.png';
@@ -30,7 +31,7 @@ const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default;
 const sfxClick = require('@assets/sound/sfx_click.mp3').default;
 const sfxClear = require('@assets/sound/sfx_clear.mp3').default;
 
-const ObjectDiv = styled.div`
+const ChoicesDiv = styled.div`
   position: absolute;
   width: 1040px; 
   height: 450px;
@@ -88,7 +89,7 @@ img {
 class F0 extends React.Component {
     render() {
         return (<Main>
-            <Content>
+            <Content style={{background:`url(${backgroundUnit})`}}>
                 <img src={Qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Qubie"/>
             </Content>
         </Main>);
@@ -97,7 +98,7 @@ class F0 extends React.Component {
 class F1 extends React.Component {
     render() {
         return (<Main>
-            <Content>
+            <Content style={{background:`url(${backgroundUnit})`}}>
                 <img src={Dragon} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Dragon"/>
             </Content>
         </Main>);
@@ -106,7 +107,7 @@ class F1 extends React.Component {
 class F2 extends React.Component {
     render() {
         return (<Main>
-            <Content>
+            <Content style={{background:`url(${backgroundUnit})`}}>
                 <img src={Qubie} style={{ position: 'absolute', left: '150px', top: '120px' }} alt="Qubie"/>
                 <img src={Dragon} style={{ position: 'absolute', left: '650px', top: '120px' }} alt="Dragon"/>
             </Content>
@@ -116,7 +117,7 @@ class F2 extends React.Component {
 class F3 extends React.Component {
     render() {
         return (<Main>
-            <Content>
+            <Content style={{background:`url(${backgroundUnit})`}}>
                 <img src={Qubie} style={{ position: 'absolute', left: '150px', top: '120px' }} alt="Qubie"/>
                 <img src={Dragon} style={{ position: 'absolute', left: '650px', top: '120px' }} alt="Dragon"/>
             </Content>
@@ -139,11 +140,11 @@ class F4 extends React.Component<any> {
     render() {
         return (<Main>
             <Content >
-                <ObjectDiv><Question
+                <ChoicesDiv><Question
                     answerValidate={this.validate}
-                    choices={['แค่มีชื่อเรียกต่างกัน', 'ต่างกันที่ผู้ใช้งาน', 'กลไกในการทำงานต่างกัน']}
+                    choices={['แค่มีชื่อเรียกต่างกัน', 'ต่างกันที่ผู้ใช้งาน', 'กลไกในการทำงานต่างกัน','เหมือนกันทุกประการ']}
                     solution={2}
-                /></ObjectDiv>
+                /></ChoicesDiv>
             </Content>
         </Main>);
     }
@@ -164,11 +165,11 @@ class F5 extends React.Component<any> {
     render() {
         return (<Main>
             <Content >
-                <ObjectDiv><Question
+                <ChoicesDiv><Question
                     answerValidate={this.validate}
-                    choices={['ราคาถูกหาซื้อได้ง่าย', 'สามารถประมวลผลได้เร็วกว่า', 'ขนาดเล็กพกพาสะดวก']}
+                    choices={['ราคาถูกหาซื้อได้ง่าย', 'สามารถประมวลผลได้เร็วกว่า', 'ขนาดเล็กพกพาสะดวก', 'นิยมใช้กันอย่างแพร่หลาย']}
                     solution={1}
-                /></ObjectDiv>
+                /></ChoicesDiv>
             </Content>
         </Main>);
     }
@@ -203,15 +204,11 @@ class F6 extends React.Component<any> {
         if(valid) this.correct.play()
         else this.wrong.play()
         let allValid = JSON.stringify(switches) === JSON.stringify(this.solution)
-        if(attemp>=3) this.validate(allValid)
-    }
-
-    validate = (valid) => {
-        if (valid) {
+        if(attemp>=3) this.setState({ perfect: false })
+        if(allValid) {
             this.props.justClear(this.props.index)
             if (this.state.perfect) this.props.increaseStar()
         }
-        else this.setState({ perfect: false })
     }
 
     render() {
@@ -327,32 +324,38 @@ class F10 extends React.Component<any> {
     click = new Audio(sfxClick)
     clear = new Audio(sfxClear)
 
-    state = { button: false }
+    state = { item: 0 }
 
     componentDidMount = () => {
         this.clear.volume = 0.4
         this.clear.play()
-        setTimeout(() => {
-            this.setState({ button: true })
-        }, 4000)
+        setInterval(() => {
+            this.setState({ item: this.state.item+1 })
+        }, 1000)
     }
 
     render() {
+
+        let { item } = this.state
+
         return (<Main>
             <Content >
-                    {   !this.state.button &&
-                        <img src={this.props.star >= 1 ? star : noStar} style={{ position:'absolute', top: '400px', left: '459px' }} />
-                    }
-                    {   !this.state.button &&
-                        <img src={this.props.star >= 2 ? star : noStar} style={{ position:'absolute', top: '400px', left: '582px' }} />
-                    }
-                    {   !this.state.button &&
-                        <img src={this.props.star >= 3 ? star : noStar} style={{ position:'absolute', top: '400px', left: '705px' }} />
-                    }
-                    {   !this.state.button && 
+                    {   item < 4 && 
                         <ChapterBox next={this.props.next} button={false} chapter="1" title="พื้นฐาน" textColor="green" boxColor="lightgreen" buttonColor="#52DB89" text="เริ่มต้น"/>
                     }
-                    {   this.state.button &&
+                    <img src={noStar} style={{ position:'absolute', top: '400px', left: '459px' }} />
+                    <img src={noStar} style={{ position:'absolute', top: '400px', left: '582px' }} />
+                    <img src={noStar} style={{ position:'absolute', top: '400px', left: '705px' }} />
+                    {   item >= 1 && item < 4 &&
+                        <img src={this.props.star >= 1 ? star : noStar} style={{ position:'absolute', top: '400px', left: '459px' }} />
+                    }
+                    {   item >= 2 && item < 4 &&
+                        <img src={this.props.star >= 2 ? star : noStar} style={{ position:'absolute', top: '400px', left: '582px' }} />
+                    }
+                    {   item >= 3 && item < 4 &&
+                        <img src={this.props.star >= 3 ? star : noStar} style={{ position:'absolute', top: '400px', left: '705px' }} />
+                    }
+                    {   item >= 4 &&
                         <ChapterBox next={this.props.next} button chapter="1" title="พื้นฐาน" textColor="green" boxColor="lightgreen" buttonColor="#52DB89" text="เสร็จสิ้น"/>
                     }
             </Content>

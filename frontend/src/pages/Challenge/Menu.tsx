@@ -3,6 +3,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import { ReactComponent as Dragon } from "@svg/Dragon.svg";
 import { ReactComponent as Qubie } from "@svg/Qubie-intro.svg";
 import { ReactComponent as Beck } from "@svg/Beck.svg";
+import ComingSoonModal from '@components/ComingSoonModal'
 const sfxClick = require("@assets/sound/sfx_click.mp3").default;
 
 const ulStyle = {
@@ -54,6 +55,7 @@ export default function Menu() {
   let { url } = useRouteMatch();
 
   const [hover, setHover] = useState(-1);
+  const [modalShow, changeModalShow] = useState(false);
   const click = new Audio(sfxClick);
 
   return (
@@ -96,7 +98,9 @@ export default function Menu() {
       </div>
 
       <div style={bar}> 
-      <Link to={url + "/howtoplay"} style={linkStyle}>
+      {/* <Link to={url + "/howtoplay"} style={linkStyle}> */}
+      <ComingSoonModal show={modalShow} onHide={()=>changeModalShow(false)}/>
+      <div onClick={()=>changeModalShow(true)} style={{...linkStyle,cursor:'pointer'}}>
         <div
           className="mapmenu__item"
           style={hover === 2 ? liStyleHover : liStyle}
@@ -106,7 +110,8 @@ export default function Menu() {
         >
             วิธีการเล่น
         </div>
-        </Link>
+        </div>
+        {/* </Link> */}
         <Beck
           className={hover === 2 ? "svg-qubie-intro" : ""}
           style={character}

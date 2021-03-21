@@ -28,7 +28,7 @@ class F0 extends React.Component<any> {
     render() {
         return (<Main>
             <Content >
-                <ChapterBox button next={this.props.next} chapter="2" title="คิวบิต" textColor="purple" boxColor="pink" buttonColor="violet" text="เริ่มต้น" />
+                <ChapterBox button next={this.props.next} chapter="2" title="คิวบิต" textColor="#84017F" boxColor="#EDACE6" buttonColor="#C052DB" text="เริ่มต้น" />
             </Content>
         </Main>);
     }

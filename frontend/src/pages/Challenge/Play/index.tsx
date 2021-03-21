@@ -9,8 +9,8 @@ import axios from '@config/axiosconfig';
 import background from '@assets/explore/chapter1/BackgroundQuiz.png';
 import { Iuser } from '@src/type.modal';
 import Music from '@components/Button/Music';
-import {C1,C2} from './ComposerGenerator'
-import {Q1,Q2} from './QuestionGenerator'
+import {C1,C2,C3} from './ComposerGenerator'
+import {Q1,Q2,Q3} from './QuestionGenerator'
 import ENDPOINT from '@config/endpoint'
 
 
@@ -56,9 +56,9 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
 
   correct = new Audio(sfxCorrect)
   wrong = new Audio(sfxWrong)
-  Composers = [C1,C2]
+  Composers = [C1,C2,C3]
   RandomComposer = this.Composers[Math.floor(Math.random()*this.Composers.length)]
-  Questions = [Q1,Q2]
+  Questions = [Q1,Q2,Q3]
   RandomQuestion= this.Questions[Math.floor(Math.random()*this.Questions.length)]
 
   answerCheck = (valid) => {
@@ -66,7 +66,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
       this.setState({ pass: true, totalScore: this.state.totalScore + this.state.score, nextbutton: true })
     }
     else {
-      this.setState({ penalty: this.state.penalty + 500 })
+      this.setState({ penalty: this.state.penalty + 200 })
     }
   }
 
@@ -79,7 +79,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
   updateScore = () => {
     axios.put(`${ENDPOINT.URL}/updateInfo`, { score: this.state.totalScore })
     this.props.setUser(()=>({...this.props.user,score: this.state.totalScore}))
-    // relocation instead for pop-up post survey
+    // relocation instead of next() for pop-up post survey
     window.location.href = '/challenge'
     // this.next()
   }
@@ -115,8 +115,8 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
             <ObjectDiv>
             <Dragon style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
             </ObjectDiv>
-           <DialogBox showIcon={false} img={dragonIcon} next={this.next} 
-           message="คำถามมีด้วยกันทั้งหมด 2 ข้อ มีเวลาข้อละ 60 วินาที คะแนนจะลดลงตามเวลาที่ใช้ หากตอบผิดจะโดนหัก 500 คะแนนในข้อนั้น"/>
+           <DialogBox showIcon img={dragonIcon} next={this.next} 
+           message="คราวนี้จะไม่เหมือนทุก ๆ ครั้งที่ผ่านมา ดูซิว่าเจ้าจะมีความสามารถมากแค่ไหนกัน"/>
           </React.Fragment>
         }
         {
@@ -125,7 +125,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
             <HeaderDiv>
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={!this.state.pass} />
             </HeaderDiv>
-            <this.RandomComposer next={this.next} pass={this.state.pass} answerCheck={this.answerCheck} />
+            <this.RandomQuestion next={this.next} pass={this.state.pass} answerCheck={this.answerCheck} />
           </React.Fragment>
         }
         {
@@ -134,7 +134,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
             <HeaderDiv>
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={!this.state.pass} />
             </HeaderDiv>
-            <this.RandomQuestion next={this.next} pass={this.state.pass} answerCheck={this.answerCheck} />
+            <this.RandomComposer next={this.next} pass={this.state.pass} answerCheck={this.answerCheck} />
           </React.Fragment>
         }
         {
