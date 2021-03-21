@@ -6,7 +6,7 @@ const Main = styled.div`
 position: relative;
 margin-left: auto;
 margin-right: auto;
-margin-top: 15px;
+margin-top: 30px;
 width: 500px;
 align-items: center;
 `
@@ -25,7 +25,7 @@ const CardRow = styled.div`
     align-items: center;
     margin-bottom: 5px;
     width: 98%;
-    border: solid black;
+    background: rgba(255,255,255,0.3);
     img {
         border-radius: 50%;
         margin-top: 0px;
@@ -45,7 +45,7 @@ const CardRow = styled.div`
 
 const CardSelf = styled(CardRow)`
 position: absolute;
-    border: solid black;
+    background: rgba(255,255,255,0.3);
     margin-top: 10px;
 `
 
@@ -85,7 +85,6 @@ class Person extends React.Component<IProps> {
                     })}
                 </Scroll>
                 <Main>
-
                     <CardSelf>
                         <Row>
                             <p style={{ paddingLeft: "20px", width:'20px' }}>{this.props.self.index}</p>

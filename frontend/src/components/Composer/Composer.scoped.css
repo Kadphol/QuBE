@@ -15,8 +15,8 @@
 .gates img {
     height: auto; 
     width: auto; 
-    max-width: 6.3%; 
-    max-height: 6.3%;
+    max-width: 5%; 
+    max-height: 5%;
     margin-left: 10px;
 }
 
@@ -29,20 +29,19 @@
 }
 
 .rows img {
-    height: 5%; 
+    height: auto; 
     width: auto; 
-    max-width: 6.3%; 
-    max-height: 6.3%;
+    max-width: 5%; 
+    max-height: 5%;
 }
-
-.rows img#middle:hover {
-    border: solid gold;
-}
-
 .rowsQuiz img {
     max-width: 6%; 
     max-height: 6%;
     display: inline;
+}
+
+.rows img#middle:hover {
+    border: solid gold;
 }
 
 .rowsQuiz img#middle:hover {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Beck from '@assets/explore/chapter1/Beck.png'
 import BackgroundClose from '@assets/explore/chapter1/BackgroundClose.png'
 import item1 from '@assets/explore/chapter1/unit1/item1.png'

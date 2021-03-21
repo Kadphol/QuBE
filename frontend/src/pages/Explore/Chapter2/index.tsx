@@ -5,6 +5,8 @@ import Back from '../../../components/Button/back'
 import { userContext } from '../../../context/userContext';
 import Intro from './Intro'
 import Unit1 from './Unit1'
+import Unit2 from './Unit2'
+import Unit3 from './Unit3'
 import Quiz from './Quiz'
 import MenuUnitTemplate from '../MenuUnitTemplate'
 import Music from '../../../components/Button/Music'
@@ -53,8 +55,8 @@ export default function Chapter2() {
                                  />
                                 } />
                                 <Route path={`${path}/unit-1`} render={() => <Unit1 setUser={setUser} user={user} />} />
-                                <Route path={`${path}/unit-2`} render={() => <Unit1 setUser={setUser} user={user} />} />
-                                <Route path={`${path}/unit-3`} render={() => <Unit1 setUser={setUser} user={user} />} />
+                                <Route path={`${path}/unit-2`} render={() => <Unit2 setUser={setUser} user={user} />} />
+                                <Route path={`${path}/unit-3`} render={() => <Unit3 setUser={setUser} user={user} />} />
                                 <Route path={`${path}/quiz`} render={() => <Quiz setUser={setUser} user={user} />} />
                             </Switch>
                         </Router>
