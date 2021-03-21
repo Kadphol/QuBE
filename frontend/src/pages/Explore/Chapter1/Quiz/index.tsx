@@ -34,6 +34,7 @@ class Quiz extends React.Component<{ setUser: any, user: Iuser }> {
                         ``,
                         `ไม่คิดว่าจะมีฝีมือขนาดนี้ ฝากไว้ก่อนเถอะ`,
                         `อ๊ะ! เจ้ามังกรนั่นจะหนีไปแล้ว`,
+                        ``
                     ]}
                     icon={[qubie,dragon,qubie,dragon,dragon,dragon,dragon,dragon,dragon,dragon,dragon,qubie]}
                     background={background}
