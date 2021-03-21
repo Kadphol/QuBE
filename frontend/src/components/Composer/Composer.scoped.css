@@ -4,7 +4,7 @@
     overflow: hidden;
 }
 
-.composerQuiz {
+.composer#quiz {
     width: 100%;
     display: inline-block;
     overflow: hidden;
@@ -20,7 +20,7 @@
     margin-left: 10px;
 }
 
-.gatesQuiz img {
+.gates#quiz img {
     height: auto; 
     width: auto; 
     max-width: 5%; 
@@ -31,24 +31,21 @@
 .rows img {
     height: 5%; 
     width: 5%; 
-    max-width: 5%; 
-    max-height: 5%;
 }
-.rowsQuiz img {
+.rows#quiz img {
     width: 6%; 
     height: 6%;
-    display: inline;
 }
 
 .rows img#middle:hover {
     border: solid gold;
 }
 
-.rowsQuiz img#middle:hover {
+.rows#quiz img#middle:hover {
     border: solid gold;
 }
 
-.rowsQuiz {
+.rows#quiz {
     padding-left: 245px;
     height:130%;
     width:130%;
@@ -114,7 +111,7 @@ div.buttonPanel {
 }
 
 
-div.buttonPanelQuiz {
+div.buttonPanel#quiz {
     width: 100%;
       margin-left: 245px;
       margin-top: 16px;

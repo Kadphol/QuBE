@@ -527,14 +527,14 @@ class Composer extends React.Component<IProps, IState>{
     render() {
         return (
 
-            <div className={this.props.quiz ? "composerQuiz" : "composer"} >
+            <div className="composer" id={this.props.quiz ? "quiz" : "none"} >
                 <br />
                 {/* <p className="large">Active: {this.state.active}</p> */}
 
-                <div style={{ display: this.props.quiz ? 'block' : 'block' }}>
+                <div style={{ display: 'block' }}>
                     <div>
                         
-                <div className={this.props.quiz?"gatesQuiz":"gates"}>
+                <div className="gates" id={this.props.quiz?"quiz":"none"}>
                     {Object.keys(image).map(key => {
                         return <img src={image[key]} onClick={(e) => this.activate(e, key)} alt="gate"/>
                     })}
@@ -542,7 +542,7 @@ class Composer extends React.Component<IProps, IState>{
                 <br />
                         {this.state.ccimg.map((line, l:number) => {
                             return ( 
-                                <Row className={this.props.quiz?"rowsQuiz":"rows"}>
+                                <Row className="rows" id={this.props.quiz?"quiz":"none"}>
                                     <img src={qubit[l]} id="first" alt="qubit"/>
                                     {line.map((col: string, c: number) => {
                                         return <img id="middle" src={imageInuse[col]} onClick={() => this.place(l, c)} alt="line"/>
@@ -555,7 +555,7 @@ class Composer extends React.Component<IProps, IState>{
                     </div>
 
 
-                    <div style={{position:'relative'}} className={this.props.quiz?"buttonPanelQuiz":"buttonPanel"}>
+                    <div style={{position:'relative'}} className="buttonPanel" id={this.props.quiz?"quiz":"none"}>
                         <button className="btn btn-primary" id="buttonPanel" onMouseDown={() => this.click.play()} onClick={this.run}>วัดค่าคิวบิต</button>
                         <button className="btn btn-primary" id="buttonPanel" onMouseDown={() => this.click.play()} onClick={this.reset}>รีเซ็ต</button>
                         {!this.props.quiz && <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onMouseDown={() => this.click.play()} onClick={this.addQubit}>เพิ่มคิวบิต</button>}
