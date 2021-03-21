@@ -58,7 +58,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
   wrong = new Audio(sfxWrong)
   Composers = [C1,C2,C3]
   RandomComposer = this.Composers[Math.floor(Math.random()*this.Composers.length)]
-  Questions = [Q1]
+  Questions = [Q1,Q2,Q3]
   RandomQuestion= this.Questions[Math.floor(Math.random()*this.Questions.length)]
 
   answerCheck = (valid) => {
@@ -66,7 +66,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
       this.setState({ pass: true, totalScore: this.state.totalScore + this.state.score, nextbutton: true })
     }
     else {
-      this.setState({ penalty: this.state.penalty + 500 })
+      this.setState({ penalty: this.state.penalty + 200 })
     }
   }
 
@@ -79,7 +79,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
   updateScore = () => {
     axios.put(`${ENDPOINT.URL}/updateInfo`, { score: this.state.totalScore })
     this.props.setUser(()=>({...this.props.user,score: this.state.totalScore}))
-    // relocation instead for pop-up post survey
+    // relocation instead of next() for pop-up post survey
     window.location.href = '/challenge'
     // this.next()
   }
