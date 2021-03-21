@@ -46,7 +46,7 @@ class Quiz extends React.Component <IProps>{
                 >
                     {({ remainingTime }) => {
                         if(this.state.remainingTime!==remainingTime) {
-                            let score = 100+(40*remainingTime!)-this.props.penalty
+                            let score = 100+(15*remainingTime!)-this.props.penalty
                             score = score<100?100:score;
                             this.props.handleScore(score)
                             this.setState({remainingTime:remainingTime,remainingScore:score,justWrong:this.state.penalty!==this.props.penalty,penalty:this.props.penalty})
