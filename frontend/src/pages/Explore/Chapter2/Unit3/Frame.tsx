@@ -237,10 +237,11 @@ class F5 extends React.Component {
 
     componentDidMount = () => {
         setInterval(()=>{
-            this.setState({state:this.state.state+1})
-            if(this.state.state===2){this.wrong.play()}
-            if(this.state.state===5){this.correct.play()}
-        },1800)
+            let nextState = this.state.state+1
+            this.setState({state:nextState})
+            if(nextState===2){this.wrong.play()}
+            if(nextState===5){this.correct.play()}
+        },1500)
     }
 
     render() {
