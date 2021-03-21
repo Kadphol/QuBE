@@ -31,12 +31,12 @@ class Q1 extends React.Component<any> {
             <ObjectDiv>
                 <Question
                     answerValidate={this.props.answerCheck}
-                    choices={["Superposition", "Entanglement", "Teleportation"]}
+                    choices={["Superposition", "Entanglement", "Teleportation","Oracle"]}
                     solution={1}
                 />
             </ObjectDiv>
             {this.props.pass && <DialogBox img={dragonIcon} next={this.props.pass ? this.props.next : null}
-                message="ฮึ่ม เจ้าตอบได้ถูกต้อง" />
+                message="เจ้าตอบได้ถูกต้อง" />
             }
             {!this.props.pass && <DialogBox img={dragonIcon} next={this.props.pass ? this.props.next : null}
                 message="ข้อใดเป็นผลลัพธ์ที่คาดหวัง จากการต่อวงจร Bell Pair" />
@@ -52,12 +52,12 @@ class Q2 extends React.Component<any> {
             <ObjectDiv>
                 <Question
                     answerValidate={this.props.answerCheck}
-                    choices={["Alan turing", "Steve Job", "John Stewart Bell"]}
+                    choices={["Alan turing", "Steve Job", "John Stewart Bell","Benjamin Franklin"]}
                     solution={2}
                 />
             </ObjectDiv>
             {this.props.pass && <DialogBox img={dragonIcon} next={this.props.pass ? this.props.next : null}
-                message="ฮึ่ม เจ้าตอบได้ถูกต้อง" />
+                message="เจ้าตอบได้ถูกต้อง" />
             }
             {!this.props.pass && <DialogBox img={dragonIcon} next={this.props.pass ? this.props.next : null}
                 message="ใครมีส่วนเกี่ยวข้องกับการวิจัยควอนตัมคอมพิวเตอร์ " />
@@ -73,12 +73,12 @@ class Q3 extends React.Component<any> {
             <ObjectDiv>
                 <Question
                     answerValidate={this.props.answerCheck}
-                    choices={["Control-Z Gate","Control-NOT Gate","Toffoli Gate"]}
+                    choices={["Control-Z Gate","Control-NOT Gate","Control-Y Gate","Toffoli Gate"]}
                     solution={0}
                 />
             </ObjectDiv>
             {this.props.pass && <DialogBox img={dragonIcon} next={this.props.pass ? this.props.next : null}
-                message="ฮึ่ม เจ้าตอบได้ถูกต้อง" />
+                message="เจ้าตอบได้ถูกต้อง" />
             }
             {!this.props.pass && <DialogBox img={dragonIcon} next={this.props.pass ? this.props.next : null}
                 message="ควอนตัมเกตในข้อใดที่สามารถทำงานได้ถูกต้อง แม้จะสลับด้านแต่ละคิวบิต" />
