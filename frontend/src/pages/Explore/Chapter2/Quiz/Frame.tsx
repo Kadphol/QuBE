@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import Qubie from '@assets/explore/Qubie.png';
 import Dragon from '@assets/explore/Dragon.png';
-import backgroundUnit from '@assets/explore/chapter2/BackgroundUnit.png'
+import backgroundUnit from '@assets/explore/chapter2/backgroundUnit.png'
 import qv0 from '@assets/explore/chapter2/quiz/qv0.png'
 import qv1 from '@assets/explore/chapter2/quiz/qv1.png'
 import qvp from '@assets/explore/chapter2/quiz/qv+.png'
@@ -165,12 +165,16 @@ class F5 extends React.Component<any> {
 
     handleClick = (index) => {
         let { select,attemp,round } = this.state
-        select[index] = !select[index]
+        select[index] = true
         attemp += 1
         let valid = (index === this.solution[round])
         let nextRound = valid? round+1: round
         this.setState({select:select,attemp:attemp,round:nextRound})
-        if(valid) this.correct.play()
+        if(valid) {
+            console.log('valid')
+            this.setState({select:[false,false,false,false,false,false,false,false]})
+            this.correct.play()
+        }
         else this.wrong.play()
         if(attemp>=3) this.setState({ perfect: false })
         if(nextRound>=3) {
@@ -184,21 +188,21 @@ class F5 extends React.Component<any> {
             <Content >
                 <img src={shpere1} style={{ position: 'absolute', top: '100px', left: '300px' }} />
                 <img src={this.state.select[0]?dot:dot2} onClick={()=>this.handleClick(0)}
-                style={{ position: 'absolute', top: '130px', left: '477px' }} />
+                style={{ cursor:'pointer', position: 'absolute', top: '130px', left: '477px' }} />
                 <img src={this.state.select[1]?dot:dot2} onClick={()=>this.handleClick(1)}
-                style={{ position: 'absolute', top: '195px', left: '395px' }} />
+                style={{ cursor:'pointer', position: 'absolute', top: '195px', left: '395px' }} />
                 <img src={this.state.select[2]?dot:dot2} onClick={()=>this.handleClick(2)}
-                style={{ position: 'absolute', top: '400px', left: '335px' }} />
+                style={{ cursor:'pointer', position: 'absolute', top: '400px', left: '335px' }} />
                 <img src={this.state.select[3]?dot:dot2} onClick={()=>this.handleClick(3)}
-                style={{ position: 'absolute', top: '255px', left: '530px' }} />
+                style={{ cursor:'pointer', position: 'absolute', top: '255px', left: '530px' }} />
                 <img src={this.state.select[4]?dot:dot2} onClick={()=>this.handleClick(4)}
-                style={{ position: 'absolute', top: '280px', left: '380px' }} />
+                style={{ cursor:'pointer', position: 'absolute', top: '280px', left: '380px' }} />
                 <img src={this.state.select[5]?dot:dot2} onClick={()=>this.handleClick(5)}
-                style={{ position: 'absolute', top: '315px', left: '650px' }} />
+                style={{ cursor:'pointer', position: 'absolute', top: '315px', left: '650px' }} />
                 <img src={this.state.select[6]?dot:dot2} onClick={()=>this.handleClick(6)}
-                style={{ position: 'absolute', top: '380px', left: '555px' }} />
-                <img src={this.state.select[7]?dot:dot2} onClick={()=>this.handleClick(6)}
-                style={{ position: 'absolute', top: '477px', left: '477px' }} />
+                style={{ cursor:'pointer', position: 'absolute', top: '380px', left: '555px' }} />
+                <img src={this.state.select[7]?dot:dot2} onClick={()=>this.handleClick(7)}
+                style={{ cursor:'pointer', position: 'absolute', top: '477px', left: '477px' }} />
                 <img src={item3} style={{ position: 'absolute', top: '200px', left: '810px' }} />
                 <img src={this.question[this.state.round]} style={{ position: 'absolute', top: '240px', left: '850px' }} />
             </Content>

@@ -2,7 +2,7 @@ import React from 'react';
 import bew from '@assets/explore/chapter2/bewIcon.png';
 import qubie from '@assets/explore/qubieIcon.png';
 import {F0,F1,F2,F3,F4,F5,F6,F7} from './Frame'
-import IntroTemplate from '../../IntroTemplate'
+import IntroTemplate from '../../Template/IntroTemplate'
 
 class Intro extends React.Component {
 

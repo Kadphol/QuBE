@@ -2,7 +2,7 @@ import React from 'react';
 import beck from '@assets/explore/chapter1/beckIcon.png';
 import qubie from '@assets/explore/qubieIcon.png';
 import {F0,F1,F2,F3,F4,F5} from './Frame'
-import IntroTemplate from '../../IntroTemplate'
+import IntroTemplate from '../../Template/IntroTemplate'
 
 class Intro extends React.Component {
 
@@ -15,7 +15,7 @@ class Intro extends React.Component {
                 <IntroTemplate
                     chapter={1}
                     unit={0}
-                    frameComponent={[F0,F1,F2,F3,F4,F5]}
+                    frameComponent={[F0,F1,F2,F3,F3,F4]}
                     script={[
                         ``,
                         `เรามาถึงกันแล้ว ที่นี่คือหมู่บ้านของฉันเอง`,

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import Bew from '@assets/explore/chapter2/Bew.png'
-import backgroundClose from '@assets/explore/chapter2/BackgroundClose.png'
+import Bew from '@assets/explore/chapter2/bew.png'
+import backgroundClose from '@assets/explore/chapter2/backgroundClose.png'
 import q1 from '@assets/explore/chapter2/unit1/q1.png'
 import q2 from '@assets/explore/chapter2/unit1/q2.png'
 import q3 from '@assets/explore/chapter2/unit1/q3.png'
@@ -14,7 +14,6 @@ import item1 from '@assets/explore/chapter2/unit1/item1.png'
 import linear1 from '@assets/explore/chapter2/unit1/linear1.png'
 import linear0 from '@assets/explore/chapter2/unit1/linear0.png'
 import sphere1 from '@assets/explore/chapter2/unit1/sphere1.png'
-import sphere2 from '@assets/explore/chapter2/unit1/sphere2.png'
 import Question from '@components/Question'
 
 const Main = styled.div`

@@ -1,11 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import background from '@assets/explore/chapter2/BackgroundContent.png';
+import background from '@assets/explore/chapter2/backgroundContent.png';
 import bew from '@assets/explore/chapter2/bewIcon.png';
-import qubie from '@assets/explore/qubieIcon.png';
 import {F0,F1,F2,F3,F4,F5} from './Frame'
 import { Iuser } from '../../../../type.modal'
-import UnitTemplate from '../../UnitTemplate'
+import UnitTemplate from '../../Template/UnitTemplate'
 
 class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
 
