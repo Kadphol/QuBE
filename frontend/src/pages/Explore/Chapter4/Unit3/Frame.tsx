@@ -43,12 +43,20 @@ const sfxClick = require('@assets/sound/sfx_click.mp3').default;
 const sfxWrong = require('@assets/sound/sfx_wrong.mp3').default;
 const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default;
 
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+`
+
 class F0 extends React.Component {
     render() {
-        return (
-        <Main>
-            <Content>
-
+        return (<Main>
+            <Content style={{ background: `url(${backgroundClose})` }}>
+                <Fly>
+                <img src={gust} style={{ position: 'absolute', left: '400px', top: '100px' }} />
+                </Fly>
             </Content>
         </Main>);
     }
