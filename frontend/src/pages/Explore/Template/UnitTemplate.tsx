@@ -21,7 +21,7 @@ interface IProps {
     frameComponent: React.ComponentType<any>[];
     interactFrame: React.ComponentType<any>[];
     script: string[];
-    icon: string[];
+    icon: string;
     background: string;
 }
 
@@ -62,7 +62,7 @@ class Unit extends React.Component <IProps> {
                     frame === index &&
                     <React.Fragment>
                         <Item next={this.next}/>
-                        <Dialog showNext={interactFrame.includes(Item)?false:true} next={this.next} img={icon[index]} message={script[index]} />
+                        <Dialog showNext={interactFrame.includes(Item)?false:true} next={this.next} img={icon} message={script[index]} />
                         <Back path={menuPath} />
                     </React.Fragment>
                 )
