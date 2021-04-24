@@ -37,7 +37,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                         "ถ้าเราต้องการกดเพียงแค่ปุ่มเดียว แล้วจะสามารถควบคุมไฟหลาย ๆ ดวงได้ยังไง?",
                         "คำตอบนั่นก็คือ เราจะใช้คอมพิวเตอร์มาช่วยประมวลผลในส่วนนี้นั่นเอง! เยี่ยมไปเลย พระเอกของเรากำลังจะได้ออกโรงแล้ว",
                     ]}
-                    icon={[beck, beck, beck, beck, beck, beck, beck, beck, beck, beck, beck, beck, beck, beck, beck]}
+                    icon={beck}
                     background={background}
                 />
         );

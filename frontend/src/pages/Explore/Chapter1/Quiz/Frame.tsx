@@ -346,7 +346,7 @@ class F7 extends React.Component {
             `} 0.75s 1.5s ease-out forwards;
             `
         return (<Main>
-            <Content>
+            <Content style={{background:`url(${backgroundUnit})`}}>
                 <Fly>
                     <Slide>
                         <Flip>
@@ -368,7 +368,7 @@ class F8 extends React.Component {
             `} 0.75s 1.5s ease-out forwards;
             `
         return (<Main>
-            <Content>
+            <Content style={{background:`url(${backgroundUnit})`}}>
                 <Fly>
                     <Slide>
                     <img src={Qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Qubie"/>
@@ -461,7 +461,7 @@ class F10 extends React.Component<any> {
         let { item } = this.state
 
         return (<Main>
-            <Content >
+            <Content style={{background:`url(${backgroundUnit})`}}>
                     {   item < 4 && 
                         <ChapterBox next={this.props.next} button={false} chapter="1" title="พื้นฐาน" textColor="green" boxColor="lightgreen" buttonColor="#52DB89" text="เริ่มต้น"/>
                     }

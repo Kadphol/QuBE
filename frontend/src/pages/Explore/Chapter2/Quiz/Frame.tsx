@@ -83,31 +83,75 @@ img {
     top: 173px;
 }
 `
-
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+`
 class F0 extends React.Component {
     render() {
+        let Slide = styled.div`
+            animation: ${keyframes`
+            from {transform: translateX(-700px)}
+            to {transform: translateX(0px)}
+            `} 0.75s ease-out forwards;
+            `
         return (<Main>
             <Content style={{background:`url(${backgroundUnit})`}}>
+                <Fly>
+                    <Slide>
                 <img src={Qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Qubie"/>
+                    </Slide>
+                </Fly>
             </Content>
         </Main>);
     }
 }
+
 class F1 extends React.Component {
     render() {
+        let Flip = styled.div`
+        animation: ${keyframes`
+        from {transform: scaleX(1)}
+        to {transform: scaleX(-1)}
+        `} 0.75s 0.2s ease-out forwards;
+        `
         return (<Main>
             <Content style={{background:`url(${backgroundUnit})`}}>
-                <img src={Dragon} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Dragon"/>
+            <Fly>
+                    <Flip>
+                    <img src={Dragon} style={{ position: 'absolute', left: '400px', top: '120px', transform:'scaleX(-1)' }} alt="Dragon"/>
+                    </Flip>
+                </Fly>
             </Content>
         </Main>);
     }
 }
 class F2 extends React.Component {
     render() {
+        let Slide1 = styled.div`
+            animation: ${keyframes`
+            from {transform: translateX(-700px)}
+            to {transform: translateX(0px)}
+            `} 0.75s ease-out forwards;
+            `
+        let Slide2 = styled.div`
+            animation: ${keyframes`
+            from {transform: translateX(-150px)}
+            to {transform: translateX(0px)}
+            `} 0.75s ease-out forwards;
+            `
         return (<Main>
             <Content style={{background:`url(${backgroundUnit})`}}>
-                <img src={Qubie} style={{ position: 'absolute', left: '150px', top: '120px' }} alt="Qubie"/>
+                <Fly>
+                    <Slide1>
+                    <img src={Qubie} style={{ position: 'absolute', left: '150px', top: '120px' }} alt="Qubie"/>
+                    </Slide1>
+                <Slide2>
                 <img src={Dragon} style={{ position: 'absolute', left: '650px', top: '120px' }} alt="Dragon"/>
+                </Slide2>
+                </Fly>
             </Content>
         </Main>);
     }
@@ -116,8 +160,10 @@ class F3 extends React.Component {
     render() {
         return (<Main>
             <Content style={{background:`url(${backgroundUnit})`}}>
+                <Fly>
                 <img src={Qubie} style={{ position: 'absolute', left: '150px', top: '120px' }} alt="Qubie"/>
                 <img src={Dragon} style={{ position: 'absolute', left: '650px', top: '120px' }} alt="Dragon"/>
+                </Fly>
             </Content>
         </Main>);
     }
@@ -256,9 +302,27 @@ class F6 extends React.Component<any> {
 
 class F7 extends React.Component {
     render() {
-        return (<Main>
+        let Flip = styled.div`
+            animation: ${keyframes`
+            from {transform: scaleX(1)}
+            to {transform: scaleX(-1)}
+            `} 0.75s 0.5s ease-out forwards;
+            `
+        let Slide = styled.div`
+            animation: ${keyframes`
+            from {transform: translateX(0px)}
+            to {transform: translateX(1000px)}
+            `} 0.75s 1.5s ease-out forwards;
+            `
+        return (<Main style={{background:`url(${backgroundUnit})`}}>
             <Content>
-                <img src={Dragon} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Dragon"/>
+                <Fly>
+                    <Slide>
+                        <Flip>
+                        <img src={Dragon} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Dragon"/>
+                        </Flip>
+                    </Slide>
+                </Fly>
             </Content>
         </Main>);
     }
@@ -266,9 +330,19 @@ class F7 extends React.Component {
 
 class F8 extends React.Component {
     render() {
+        let Slide = styled.div`
+            animation: ${keyframes`
+            from {transform: translateX(0px)}
+            to {transform: translateX(1000px)}
+            `} 0.75s 1.5s ease-out forwards;
+            `
         return (<Main>
-            <Content>
-                <img src={Qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Qubie"/>
+            <Content style={{background:`url(${backgroundUnit})`}}>
+                <Fly>
+                    <Slide>
+                    <img src={Qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Qubie"/>
+                    </Slide>
+                </Fly>
             </Content>
         </Main>);
     }
@@ -356,7 +430,7 @@ class F10 extends React.Component<any> {
         let { item } = this.state
 
         return (<Main>
-            <Content >
+            <Content style={{background:`url(${backgroundUnit})`}} >
                     {   item < 4 && 
                         <ChapterBox next={this.props.next} button={false} chapter="2" title="คิวบิต" textColor="#84017F" boxColor="#EDACE6" buttonColor="#C052DB" text="เริ่มต้น"/>
                     }

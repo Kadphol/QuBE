@@ -39,6 +39,14 @@ const ChoicesDiv = styled.div`
   display: block;
   overflow: hidden;
 `
+
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+`
+
 const slideFromLeft = keyframes`
 0% {transform: translateX(0px)}
 100% {transform: translateX(200px)}
@@ -53,7 +61,9 @@ class F0 extends React.Component {
     render() {
         return (<Main>
             <Content style={{ background: `url(${backgroundClose})` }}>
+                <Fly>
                 <img src={Bew} style={{ position: 'absolute', left: '400px', top: '100px' }} />
+                </Fly>
             </Content>
         </Main>);
     }
@@ -243,7 +253,9 @@ class F8 extends React.Component {
     render() {
         return (<Main>
             <Content style={{ background: `url(${backgroundClose})` }}>
+            <Fly>
                 <img src={Bew} style={{ position: 'absolute', left: '400px', top: '100px' }} />
+            </Fly>
             </Content>
         </Main>);
     }

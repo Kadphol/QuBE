@@ -29,7 +29,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                         เราจึงเรียกสถานะนี้ว่า "Superposition" หรือ "การซ้อนทับของคิวบิต" นั่นเอง`,
                         "Superposition เป็นคุณสมบัติที่มีประโยชน์มาก เราจะพบได้ในควอนตัมเท่านั้น เป็นเหตุผลให้เราพัฒนาควอนตัมคอมพิวเตอร์ยังไงล่ะ",
                     ]}
-                    icon={[bew, bew, bew, bew, bew, bew]}
+                    icon={bew}
                     background={background}
                 />
         );

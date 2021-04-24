@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import Beck from '@assets/explore/chapter1/beck.png'
-import Qubie from '@assets/explore/Qubie.png'
+import Qubie from '@assets/explore/Qubie.png'   
 import far from '@assets/explore/chapter1/backgroundFar.png';
 import close from '@assets/explore/chapter1/backgroundClose.png';
 import ChapterBox from '@components/ChapterBox'

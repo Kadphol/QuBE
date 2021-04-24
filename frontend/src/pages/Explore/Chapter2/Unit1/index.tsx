@@ -32,7 +32,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                         "โดยที่จุดบนสุดและจุดล่างสุด คือจุดที่คิวบิตมีสถานะเป็น 0 และ 1 เหมือนกับบิตแบบดั้งเดิมนั่นแหละ",
                         "แล้วที่จุดอื่น ๆ คิวบิตมีสถานะอะไรล่ะ? ฉันจะสอนเธอในหน่วยต่อไปเอง",
                     ]}
-                    icon={[bew, bew, bew, bew, bew, bew, bew, bew, bew]}
+                    icon={bew}
                     background={background}
                 />
         );

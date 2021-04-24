@@ -37,7 +37,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                         `แต่ก่อนจะไปถึงควอนตัมคอมพิวเตอร์ ฉันจะพาเธอไปทำความเข้าใจหลักการทำงาน
                         ของคอมพิวเตอร์แบบดั้งเดิมกันก่อน ไปกันเถอะ`
                     ]}
-                    icon={[beck, beck, beck, beck, beck, beck, beck, beck, beck, beck]}
+                    icon={beck}
                     background={background}
                 />
         );
