@@ -111,7 +111,7 @@ class F3 extends React.Component {
                         <img src={qubie} style={{ position: 'absolute', left: '200px', top: '120px', height: '400px', transform: 'scaleX(-1)' }} />
                     </Slide1>
                     <Jump>
-                    <img src={gustIcon} style={{ position: 'absolute', left: '600px', top: '120px', height: '400px' }} />
+                    <img src={gust} style={{ position: 'absolute', left: '600px', top: '60px', height: '400px' }} />
                     </Jump>
                 </Fly>
             </Content>
@@ -125,7 +125,7 @@ class F4 extends React.Component {
             <Content style={{ backgroundImage: `url(${close})`}}>
                 <Fly>
                 <img src={qubie} style={{ position: 'absolute', left: '200px', top: '120px', height: '400px', }} />
-                <img src={gustIcon} style={{ position: 'absolute', left: '600px', top: '120px', height: '400px' }} />
+                <img src={gust} style={{ position: 'absolute', left: '600px', top: '60px', height: '400px' }} />
                 </Fly>
             </Content>
         </Main>);
@@ -138,7 +138,7 @@ class F5 extends React.Component {
             <Content style={{ backgroundImage: `url(${close})`}}>
                 <Fly>
                 <img src={qubie} style={{ position: 'absolute', left: '200px', top: '120px', height: '400px', }} />
-                <img src={gustIcon} style={{ position: 'absolute', left: '600px', top: '120px', height: '400px' }} />
+                <img src={gust} style={{ position: 'absolute', left: '600px', top: '60px', height: '400px' }} />
                 </Fly>
             </Content>
         </Main>);
@@ -151,7 +151,7 @@ class F6 extends React.Component {
             <Content style={{ backgroundImage: `url(${close})`}}>
                 <Fly>
                 <img src={qubie} style={{ position: 'absolute', left: '200px', top: '120px', height: '400px', }} />
-                <img src={gustIcon} style={{ position: 'absolute', left: '600px', top: '120px', height: '400px' }} />
+                <img src={gust} style={{ position: 'absolute', left: '600px', top: '60px', height: '400px' }} />
                 </Fly>
             </Content>
         </Main>);
@@ -189,7 +189,7 @@ class F7 extends React.Component {
                     </Slide>
                 <Jump>
                     <Flip>
-                    <img src={gustIcon} style={{ position: 'absolute', left: '600px', top: '120px', height: '400px' }} />
+                    <img src={gust} style={{ position: 'absolute', left: '600px', top: '60px', height: '400px' }} />
                     </Flip>
                 </Jump>
                 </Fly>

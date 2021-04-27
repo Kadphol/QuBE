@@ -55,7 +55,7 @@ class F0 extends React.Component {
         return (<Main>
             <Content style={{ background: `url(${backgroundClose})` }}>
                 <Fly>
-                <img src={gust} style={{ position: 'absolute', left: '400px', top: '100px' }} />
+                <img src={gust} style={{ position: 'absolute', left: '500px', top: '60px', height:'400px' }} />
                 </Fly>
             </Content>
         </Main>);
