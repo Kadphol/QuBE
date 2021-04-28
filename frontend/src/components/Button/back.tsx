@@ -10,7 +10,7 @@ export default function back({path}) {
     return (
         <Link to={path} >
             <img src={backIcon} onMouseDown={()=>click.play()} 
-            style={{ cursor: 'pointer', position: 'absolute', top: '20px', right: '20px' }} alt="back button"/>
+            style={{ cursor: 'pointer', position: 'absolute', top: '20px', right: '20px', zIndex:5 }} alt="back button"/>
         </Link>
     )
 }

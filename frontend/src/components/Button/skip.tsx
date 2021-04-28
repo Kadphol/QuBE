@@ -10,7 +10,7 @@ export default function skip({path}) {
     return (
         <Link to={path} >
             <img src={skipIcon} onMouseDown={()=>click.play()} 
-            style={{ cursor: 'pointer', position: 'absolute', top: '20px', right: '20px' }} alt="skip button"/>
+            style={{ cursor: 'pointer', position: 'absolute', top: '20px', right: '20px', zIndex:5 }} alt="skip button"/>
         </Link>
     )
 }
