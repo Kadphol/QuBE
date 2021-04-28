@@ -358,8 +358,6 @@ class F6 extends React.Component<any> {
 class F7 extends React.Component {
     render() {
         return (
-            <Main>
-                <Content>
                 <Main>
                 <Content>
                     <Fade1>
@@ -388,8 +386,6 @@ class F7 extends React.Component {
                     <Fadegate>
                         <img src={h} style={{ position: 'absolute', left: '475px', top: '210px', height: '220px' }} />
                     </Fadegate>
-                </Content>
-            </Main>);
                 </Content>
             </Main>);
     }
