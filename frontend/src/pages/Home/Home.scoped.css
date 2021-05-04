@@ -1,4 +1,11 @@
-@media (min-width: 1440px) {
+@media only screen and (max-width: 1440px) {
+  h2 {
+    font-size: 40px !important;
+  }
+
+  h3 {
+    font-size: 40px !important;
+  }
 
   .container {
     max-width: 1270px;
@@ -9,25 +16,90 @@
   .subrow {
     max-width: 1420px;
   }
+
+  .row p {
+    font-size: large;
+  }
+
+  .feature h1 {
+    font-size: 50px;
+  }
+
+  .feature-box h2 {
+    font-size: 30px !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature {
+    background-image: url('../../assets/intro/intro-feature.png');
+  }
+
+  .feature .head {
+    padding-top: 150px;
+  }
+  
+  .feature-box {
+    padding-top: 25vh;
+  }
+  
+  .feature-challenge {
+    padding-bottom: 150px;
+  }
+}
+
+@media only screen and (max-width:1024px) {
+  h2 {
+    font-size: 30px !important;
+  }
+
+  h3 {
+    font-size: 30px !important;
+  }
+
+  .row p {
+    font-size: medium;
+  }
+
+  .feature h1 {
+    font-size: 40px;
+  }
+
+  .feature-box h2 {
+    font-size: 25px !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature {
+    background-image: url('../../assets/intro/intro-feature-small.png');
+  }
+
+  .feature .head {
+    padding-top: 25vh;
+  }
+  
+  .feature-box {
+    padding-top: 10vh;
+  }
+  
+  .feature-challenge {
+    padding-bottom: 15vh;
+  }
 }
 
 h2 {
   font-family: 'Chonburi', sans-serif;
-  font-size: 40px !important;
   color: #522158;
   margin-bottom: 0;
 }
 
 h3 {
   font-family: 'Chonburi', sans-serif;
-  font-size: 40px !important;
   color: rgba(255, 255, 255, 0.5);;
 }
 
 
 .row p {
   font-family: 'Kanit', sans-serif;
-  font-size: large;
 }
 
 .preview {
@@ -55,13 +127,11 @@ h3 {
   min-height: 720px;
 }
 
-.subrow {
-  min-height: 512px;
-}
 
 .wave {
   background-image: url('../../assets/intro/intro-wave-1.png');
   background-repeat: no-repeat;
+  min-height: 1024px;
 }
 
 .wave p {
@@ -71,41 +141,25 @@ h3 {
 }
 
 .why {
-  margin-top: 15rem;
+  margin-top: 13rem;
 }
 
 .what {
-  margin-top: 7rem;
+  margin-top: 5rem;
 }
 
 .feature {
-  background-image: url('../../assets/intro/intro-feature.png');
   background-repeat: no-repeat;
   margin-top: 50px;
-  margin-bottom: 100px;
+  margin-bottom: 30vh;
 }
 
 .feature h1 {
   font-family: 'Chonburi',sans-serif;
   color: #C46399;
-  font-size: 50px;
 }
 
-.feature .head {
-  padding-top: 150px;
-}
 
-.feature-box {
-  padding-top: 120px;
-}
-
-.feature-box h2 {
-  font-size: 30px !important;
-}
-
-.feature-challenge {
-  padding-bottom: 150px;
-}
 
 .svg-qubie-intro {
   animation: animation-qubie-intro 5s infinite;

@@ -21,21 +21,19 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home" style={{overflowX:'hidden'}}>
-
-
         <div className="container-fluid">
           <div className="row intro">
             <div className="intro-1 col-lg-7">
               <Qubie className="svg-qubie-intro" />
             </div> 
             <div className="intro-2 col-lg-5">
-              <img src={logoName} alt="QuBE Logo" />
+              <img src={logoName} alt="QuBE Logo" className="img-fluid"/>
               <div className="d-flex justify-content-center">
                 <p className="text-center">
-                    เราคือ สื่อการเรียนรู้ที่จะช่วยให้ทุกคนสามารถเข้าใจ<br />
-                    ในควอนตัมคอมพิวเตอร์ได้ง่ายขึ้นผ่านสื่อที่ทุกคน <br />
-                    จะได้รับความสนุกสอดแทรกกับเนื้อหาความรู้ <br />
-                  เพื่อรับการเข้ามาของควอนตัมคอมพิวเตอร์ในอนาคต  <br />
+                    เราคือ สื่อการเรียนรู้ที่จะช่วยให้ทุกคนสามารถเข้าใจ
+                    ในควอนตัมคอมพิวเตอร์ได้ง่ายขึ้นผ่านสื่อที่ทุกคน
+                    จะได้รับความสนุกสอดแทรกกับเนื้อหาความรู้
+                   เพื่อรับการเข้ามาของควอนตัมคอมพิวเตอร์ในอนาคต
                 </p>
               </div>
               <div className="d-flex justify-content-center">
@@ -43,6 +41,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
+
           <div className="row preview justify-content-center">
             <div className="col-lg-8">
               <div className="embed-responsive embed-responsive-16by9"> {/*test video*/}
@@ -52,6 +51,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
+
           <div className="row wave">
             <div className="row subrow">
               <div className="col-lg-1"></div>
@@ -65,11 +65,14 @@ class Home extends React.Component {
                 การพัฒนา AI ที่มีประสิทธิภาพรวมถึงการพยากรณ์ที่แม่นยำ   
                 </p>
               </div>
-              <img src={item1} style={{position:'absolute',top:'1450px',left:'750px'}} alt="column 1"/>
+              <div className="col-lg-4">
+                <img src={item1} alt="column 1" className="mx-auto mt-5 img-fluid"/>
+              </div>
             </div>
             <div className="row subrow justify-content-end">
-              <img src={item2} style={{position:'absolute',top:'1900px',left:'150px'}} alt="column 2"/>
-              <div className="col-lg-5"></div>
+              <div className="col-lg-5">
+                <img src={item2} alt="column 2" className="mx-auto img-fluid"/>
+              </div>
               <div className="col-lg-7 what">
                 <h2>Quantum Computing คืออะไร</h2>
                 <h3>Quantum Computing คืออะไร</h3>
@@ -114,8 +117,9 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+
         <footer className="footer ml-0 mr-0">
-            <img src={footer} alt="footer" style={{width: "1425px"}}/>
+            <img src={footer} alt="footer" className="img-fluid"/>
         </footer>
       </div>
 
