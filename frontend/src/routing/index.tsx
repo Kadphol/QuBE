@@ -16,7 +16,7 @@ export default function Routes() {
   return (
     <userContext.Consumer>
       {({user})=>
-      <Suspense fallback={<h1>Loading Page...</h1>}>
+      <Suspense fallback={<h2>Loading ...</h2>}>
           <Route path="/" exact component={ Home } />
           <Route path="/explore"    render={()=>user.loginStatus
                                               ?<Explore/>
