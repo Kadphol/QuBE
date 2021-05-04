@@ -5,9 +5,10 @@ const cookieParser = require('cookie-parser');
 
 var app = express();
 app.listen(config.APP_PORT);
+//console.log(config.ENDPOINT.URL);
 
 app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', config.ENDPOINT);
+  res.setHeader('Access-Control-Allow-Origin', config.ENDPOINT.URL);
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
   res.setHeader('Access-Control-Allow-Headers', 'Authorization,X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
