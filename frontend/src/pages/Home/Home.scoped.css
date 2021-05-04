@@ -39,11 +39,11 @@
   }
   
   .feature-box {
-    padding-top: 25vh;
+    padding-top: 140px;
   }
   
   .feature-challenge {
-    padding-bottom: 150px;
+    padding-bottom: 100px;
   }
 }
 
@@ -74,15 +74,15 @@
   }
 
   .feature .head {
-    padding-top: 25vh;
+    padding-top: 100px;
   }
   
   .feature-box {
-    padding-top: 10vh;
+    padding-top: 7vw;
   }
   
   .feature-challenge {
-    padding-bottom: 15vh;
+    padding-bottom: 5vw;
   }
 }
 
@@ -141,7 +141,7 @@ h3 {
 }
 
 .why {
-  margin-top: 13rem;
+  margin-top: 12rem;
 }
 
 .what {

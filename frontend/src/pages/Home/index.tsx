@@ -84,6 +84,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
+          
           <div className="row feature justify-content-center">
             <div className="col-5 align-self-center">
               <div className="head">
