@@ -6,10 +6,10 @@ const sfxClick = require('@assets/sound/sfx_click.mp3').default
 
 export default function UnitModal(props) {
 
-  const mainColor = props.index == 3 ? '#D52027' : '#02A045'
-  const altColor = props.index == 3 ? '#B71F2E' : '#01842D'
-  const thirdColor = props.index == 3 ? '#D52027' : '#52DB89'
-  const episodeText = props.index == 3 ? 'ตอนพิเศษ' : `ตอนที่ ${props.index + 1}`
+  const mainColor = props.index === 3 ? '#D52027' : '#02A045'
+  const altColor = props.index === 3 ? '#B71F2E' : '#01842D'
+  const thirdColor = props.index === 3 ? '#D52027' : '#52DB89'
+  const episodeText = props.index === 3 ? 'ตอนพิเศษ' : `ตอนที่ ${props.index + 1}`
   const click = new Audio(sfxClick)
 
   const text = {

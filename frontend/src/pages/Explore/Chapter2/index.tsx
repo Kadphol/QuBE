@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
 import background from '../../../assets/explore/chapter2/BackgroundUnit.png'
 import Back from '../../../components/Button/back'

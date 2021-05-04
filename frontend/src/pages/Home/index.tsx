@@ -14,10 +14,6 @@ class Home extends React.Component {
     surveyShow: false
   }
 
-  componentDidMount = () => {
-    
-  }
-
   render() {
     return (
       <div className="home" style={{overflowX:'hidden'}}>

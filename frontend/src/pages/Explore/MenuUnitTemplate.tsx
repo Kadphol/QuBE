@@ -156,33 +156,33 @@ export default function MenuUnit(props: IProps) {
     <React.Fragment>
       <UnitModal show={modalShow} onHide={() => changeModalShow(false)} index={index} item={items[index]} />
       {items.map((item, index) => (
-        props.user.chapter! > props.detail.chapter - 1 || (props.user.chapter! == props.detail.chapter - 1 && props.user.unit! >= index)
+        props.user.chapter! > props.detail.chapter - 1 || (props.user.chapter! === props.detail.chapter - 1 && props.user.unit! >= index)
           // unlocked
           ? <div onClick={() => openModal(index)} onMouseDown={() => audio.play()} style={cards[index]}>
             <div style={{ position: 'relative' }}>
               <div style={
-                props.user.chapter == props.detail.chapter - 1 && props.user.unit == index
-                  ? { ...iconNumber, background: index == 3 ? '#D32027' : '#65AC99' }
-                  : index == 3? iconClearedQuiz : iconCleared
+                props.user.chapter === props.detail.chapter - 1 && props.user.unit === index
+                  ? { ...iconNumber, background: index === 3 ? '#D32027' : '#65AC99' }
+                  : index === 3? iconClearedQuiz : iconCleared
               }>
-                <div style={props.user.chapter == props.detail.chapter - 1 && props.user.unit == index
-                  ? (index==3?divQuiz:divNumber) : (index==3?divClearedQuiz:divCleared)}>
-                  {index == 3 ? 'Q' : index + 1}
+                <div style={props.user.chapter === props.detail.chapter - 1 && props.user.unit === index
+                  ? (index===3?divQuiz:divNumber) : (index===3?divClearedQuiz:divCleared)}>
+                  {index === 3 ? 'Q' : index + 1}
                 </div>
               </div>
-              <span onClick={() => openModal(index)} style={{ ...titleStyle, color: index == 3 ? '#D32027' : '#65AC99' }}>{item.title}</span>
+              <span onClick={() => openModal(index)} style={{ ...titleStyle, color: index === 3 ? '#D32027' : '#65AC99' }}>{item.title}</span>
             </div>
           </div>
           // locked
           : <div style={{ ...cards[index], background: 'rgba(0, 0, 0, 0.6)' }}>
             <div style={{ position: 'relative' }}>
-              <div style={{ ...iconNumber, backgroundColor: index == 3 ? '#D32027' : '#65AC99' }}>
-                <div style={(index==3?divQuiz:divNumber)}>
-                  {index == 3 ? 'Q' : index + 1}
+              <div style={{ ...iconNumber, backgroundColor: index === 3 ? '#D32027' : '#65AC99' }}>
+                <div style={(index===3?divQuiz:divNumber)}>
+                  {index === 3 ? 'Q' : index + 1}
                 </div>
               </div>
               <img src={padlock} style={padlockStyle} alt="locking content" />
-              <span style={{ ...titleStyle, color: index == 3 ? '#D32027' : '#65AC99' }}>{item.title}</span>
+              <span style={{ ...titleStyle, color: index === 3 ? '#D32027' : '#65AC99' }}>{item.title}</span>
             </div>
           </div>
       ))}
