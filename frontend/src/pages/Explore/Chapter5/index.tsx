@@ -20,6 +20,7 @@ const main = {
     border: '1px solid rbga(0,0,0,0)',
     margin: '0px auto',
     position: 'relative',
+    overflow: 'hidden'
 } as React.CSSProperties
 
 export default function Chapter5() {
