@@ -173,7 +173,6 @@ class F3 extends React.Component<any> {
                     choices={['การใช้ตัวเลขทำให้เข้าใจได้ง่าย', 'ไม่สามารถสร้างมาตรวัดอื่น ๆ ได้', 'นำไปใช้ได้โดยคล้ายบิตแบบดั้งเดิม', 'ไม่มีเหตุผลเป็นพิเศษ']}
                     solution={2}
                 /></ChoicesDiv>
-                <button onClick={()=>this.props.justClear(this.props.index)}></button>
             </Content>
         </Main>);
     }
