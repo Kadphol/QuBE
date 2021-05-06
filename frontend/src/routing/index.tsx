@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react';
 import { Route, useHistory } from 'react-router-dom';
-import {userContext} from '../context/userContext'
-import LoginModal from '../components/LoginModal'
+import {userContext} from '@context/userContext';
+import LoginModal from '@components/LoginModal';
+import Loader from '@components/Loader';
 
 const Home = React.lazy(() => import('../pages/Home'));
 const Explore = React.lazy(() => import('../pages/Explore'));
@@ -16,7 +17,7 @@ export default function Routes() {
   return (
     <userContext.Consumer>
       {({user})=>
-      <Suspense fallback={<h2>Loading ...</h2>}>
+      <Suspense fallback={<Loader/>}>
           <Route path="/" exact component={ Home } />
           <Route path="/explore"    render={()=>user.loginStatus
                                               ?<Explore/>
