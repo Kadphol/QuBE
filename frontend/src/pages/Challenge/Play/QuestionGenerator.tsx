@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components'
-import dragonIcon from '../../../assets/challenge/dragonIcon.png'
+import dragonIcon from '../../../assets/challenge/dragonBlackIcon.png'
 import DialogBox from '../../../components/DialogBox'
 import Question from '../../../components/Question'
 
@@ -73,15 +73,15 @@ class Q3 extends React.Component<any> {
             <ObjectDiv>
                 <Question
                     answerValidate={this.props.answerCheck}
-                    choices={["Control-Z Gate","Control-NOT Gate","Control-Y Gate","Toffoli Gate"]}
-                    solution={0}
+                    choices={["Hardamard gate","CCZ gate","Pauli-X gate","CNOT gate"]}
+                    solution={3}
                 />
             </ObjectDiv>
             {this.props.pass && <DialogBox img={dragonIcon} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
             {!this.props.pass && <DialogBox img={dragonIcon} next={this.props.pass ? this.props.next : null}
-                message="ควอนตัมเกตในข้อใดที่สามารถทำงานได้ถูกต้อง แม้จะสลับด้านแต่ละคิวบิต" />
+                message="ในการต่อวงจร Grover's Algorithm สำหรับ 3 คิวบิต ไม่จำเป็นต้องใช้เกตในข้อใด " />
             }
         </React.Fragment>
     }

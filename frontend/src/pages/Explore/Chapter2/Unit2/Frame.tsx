@@ -1,10 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import Bew from '@assets/explore/chapter2/Bew.png'
-import backgroundClose from '@assets/explore/chapter2/BackgroundClose.png'
-import q1 from '@assets/explore/chapter2/unit2/q1.png'
-import q2 from '@assets/explore/chapter2/unit2/q2.png'
-import q3 from '@assets/explore/chapter2/unit2/q3.png'
+import Bew from '@assets/explore/chapter2/bew.png'
+import backgroundClose from '@assets/explore/chapter2/backgroundClose.png'
 import qv0 from '@assets/explore/chapter2/unit2/qv0.png'
 import qv1 from '@assets/explore/chapter2/unit2/qv1.png'
 import qvp from '@assets/explore/chapter2/unit2/qv+.png'
@@ -19,10 +16,8 @@ import linear0 from '@assets/explore/chapter2/unit2/linear0.png'
 import item1 from '@assets/explore/chapter2/unit2/item1.png'
 import item2 from '@assets/explore/chapter2/unit2/item2.png'
 import sphere1 from '@assets/explore/chapter2/unit2/sphere1.png'
-import Question from '@components/Question'
 import Dialog from '@components/DialogBox'
 import qubie from '@assets/explore/qubieIcon.png';
-
 
 const Main = styled.div`
 width: 100%;
@@ -47,6 +42,14 @@ const ChoicesDiv = styled.div`
   display: block;
   overflow: hidden;
 `
+
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+`
+
 const slideFromLeft = keyframes`
 0% {transform: translateX(0px)}
 100% {transform: translateX(200px)}
@@ -62,7 +65,9 @@ class F0 extends React.Component {
     render() {
         return (<Main>
             <Content style={{ background: `url(${backgroundClose})` }}>
+            <Fly>
                 <img src={Bew} style={{ position: 'absolute', left: '400px', top: '100px' }} />
+            </Fly>
             </Content>
         </Main>);
     }
@@ -172,7 +177,9 @@ class F5 extends React.Component {
     render() {
         return (<Main>
             <Content style={{ background: `url(${backgroundClose})` }}>
+            <Fly>
                 <img src={Bew} style={{ position: 'absolute', left: '400px', top: '100px' }} />
+            </Fly>
             </Content>
         </Main>);
     }

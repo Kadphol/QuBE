@@ -7,7 +7,7 @@
     font-size: 50px;
     color: white;
     background-color: #8B90E3;
-    overflow: hidden;
+    overflow-y: scroll;
     object-fit: contain;
     resize: both;
     /* object-fit: contain; */

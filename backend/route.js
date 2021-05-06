@@ -39,6 +39,7 @@ module.exports = (app) => {
     successRedirect: "http://localhost:3000",
     failureRedirect: "http://localhost:3000"
   })
+  
   )
   app.get('/guestlogin', passport.authenticate('dummy'), (req, res) => {
     // console.log(req.user)
@@ -60,6 +61,7 @@ module.exports = (app) => {
   app.put('/updatePostSurvey', (req, res) => {
     users.updatePostSurvey(req.user, req.body.satisfy, req.body.comment, () => {
       return res.send("OK")
+
     })
   })
 

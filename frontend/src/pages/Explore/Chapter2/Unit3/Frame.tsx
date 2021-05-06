@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import Bew from '@assets/explore/chapter2/Bew.png'
-import backgroundClose from '@assets/explore/chapter2/BackgroundClose.png'
+import Bew from '@assets/explore/chapter2/bew.png'
+import backgroundClose from '@assets/explore/chapter2/backgroundClose.png'
 import q1 from '@assets/explore/chapter2/unit3/q1.png'
 import q2 from '@assets/explore/chapter2/unit3/q2.png'
 import system from '@assets/explore/chapter2/unit3/system.png'
@@ -48,6 +48,14 @@ const ChoicesDiv = styled.div`
   display: block;
   overflow: hidden;
 `
+
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+`
+
 const slideFromLeft1 = keyframes`
 0% {transform: translateX(0px)}
 100% {transform: translateX(200px)}
@@ -80,7 +88,9 @@ class F0 extends React.Component {
     render() {
         return (<Main>
             <Content style={{ background: `url(${backgroundClose})` }}>
+            <Fly>
                 <img src={Bew} style={{ position: 'absolute', left: '400px', top: '100px' }} />
+            </Fly>
             </Content>
         </Main>);
     }
@@ -271,7 +281,9 @@ class F6 extends React.Component {
     render() {
         return (<Main>
             <Content style={{ background: `url(${backgroundClose})` }}>
+            <Fly>
                 <img src={Bew} style={{ position: 'absolute', left: '400px', top: '100px' }} />
+            </Fly>
             </Content>
         </Main>);
     }

@@ -61,7 +61,7 @@ export default function MenuChapter(user:Iuser) {
   const [modalShow,changeModalShow] = useState(false)
   const audio = new Audio(sfx)
 
-  const avaliable = 1
+  const avaliable = 5
 
   const items = [{
     path: url+'/chapter-1/intro',
@@ -85,7 +85,7 @@ export default function MenuChapter(user:Iuser) {
     <ul style={ulStyle}>
       {items.map((item,index) => (
        user.chapter! >= index
-       ? index <= avaliable
+       ? index <= avaliable-1
        ? <Link to={item.path} style={linkStyle} >
        <li key={item.path} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
          <p>{item.text}</p>

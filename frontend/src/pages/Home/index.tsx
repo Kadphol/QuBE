@@ -65,11 +65,14 @@ class Home extends React.Component {
                 การพัฒนา AI ที่มีประสิทธิภาพรวมถึงการพยากรณ์ที่แม่นยำ   
                 </p>
               </div>
-              <img src={item1} style={{position:'absolute',top:'1450px',left:'750px'}} alt="column 1"/>
+              <div className="col-lg-3 imagewhy">
+              <img src={item1} style={{marginTop:'5rem'}} alt="column 1"/>
+              </div>
             </div>
             <div className="row subrow justify-content-end">
-              <img src={item2} style={{position:'absolute',top:'1900px',left:'150px'}} alt="column 2"/>
-              <div className="col-lg-5"></div>
+            <div className="col-lg-5">
+              <img src={item2} style={{marginTop:'0px'}} alt="column 1"/>
+              </div>
               <div className="col-lg-7 what">
                 <h2>Quantum Computing คืออะไร</h2>
                 <h3>Quantum Computing คืออะไร</h3>

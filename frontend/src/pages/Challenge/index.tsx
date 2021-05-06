@@ -5,7 +5,7 @@ import HowToPlay from './Howtoplay'
 import Menu from './Menu'
 import { userContext } from '@context/userContext';
 import styled from 'styled-components'
-import scene1 from '@assets/explore/chapter1/BackgroundFar.png'
+import scene1 from '@assets/challenge/backgroundFar.png'
 import { BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
 import HowToplay from './Howtoplay';
 

@@ -11,7 +11,8 @@ class Music extends React.Component<{ url: string }>{
 
   componentDidMount() {
     this.setState({ play: true })
-    this.audio.volume = 0.15
+    this.audio.volume = 0.05
+    this.audio.loop = true;
     this.audio.play()
   }
 

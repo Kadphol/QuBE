@@ -1,9 +1,9 @@
 import React from 'react';
-import background from '@assets/explore/chapter1/BackgroundContent.png';
+import background from '@assets/explore/chapter1/backgroundContent.png';
 import beck from '@assets/explore/chapter1/beckIcon.png';
 import {F0,F1,F2,F3,F4,F5,F6,F7,F8,F9} from './Frame'
 import { Iuser } from '../../../../type.modal'
-import UnitTemplate from '../../UnitTemplate'
+import UnitTemplate from '../../Template/UnitTemplate'
 
 class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
 
@@ -37,7 +37,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                         `แต่ก่อนจะไปถึงควอนตัมคอมพิวเตอร์ ฉันจะพาเธอไปทำความเข้าใจหลักการทำงาน
                         ของคอมพิวเตอร์แบบดั้งเดิมกันก่อน ไปกันเถอะ`
                     ]}
-                    icon={[beck, beck, beck, beck, beck, beck, beck, beck, beck, beck]}
+                    icon={beck}
                     background={background}
                 />
         );

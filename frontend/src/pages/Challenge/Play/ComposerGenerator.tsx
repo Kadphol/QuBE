@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import dragonIcon from '../../../assets/challenge/dragonIcon.png'
+import dragonIcon from '../../../assets/challenge/dragonBlackIcon.png'
 import DialogBox from '../../../components/DialogBox'
 import Composer from '../../../components/Composer'
 
