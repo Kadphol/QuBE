@@ -1,11 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import background from '@assets/explore/chapter2/BackgroundContent.png';
+import background from '@assets/explore/chapter2/backgroundContent.png';
 import bew from '@assets/explore/chapter2/bewIcon.png';
-import qubie from '@assets/explore/qubieIcon.png';
 import {F0,F1,F2,F3,F4,F5,F6} from './Frame'
 import { Iuser } from '../../../../type.modal'
-import UnitTemplate from '../../UnitTemplate'
+import UnitTemplate from '../../Template/UnitTemplate'
 
 class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
 
@@ -31,7 +29,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                         "ใช่แล้ว ดังนั้นเมื่อคิวบิตอยู่ในสถานะพัวพันเชิงควอนตัม เราจะไม่สามารถพิจารณาคิวบิตทั้งสองตัวแบบแยกกันได้อีกต่อไป แต่จะต้องพิจารณาทั้งก้อนแทน",
                         `แถมหากคิวบิตทั้งสองอยู่ในสถานะพัวพันกันแล้ว ไม่ว่าจะถูกจับแยกกันไกลแค่ไหนก็ยังสามารถรักษาสภาพความสัมพันธ์นี้ไว้ได้ โรแมนติกสุด ๆ ไปเลยใช่มั้ยล่ะ ♥`
                     ]}
-                    icon={[bew, bew, bew, bew, bew, bew, bew]}
+                    icon={bew}
                     background={background}
                 />
         );

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-import { ReactComponent as Dragon } from "@svg/Dragon.svg";
 import { ReactComponent as Qubie } from "@svg/Qubie-intro.svg";
 import { ReactComponent as Beck } from "@svg/Beck.svg";
+import dragon from '@assets/challenge/dragonBlack.png'
 import ComingSoonModal from '@components/ComingSoonModal'
 const sfxClick = require("@assets/sound/sfx_click.mp3").default;
 
@@ -73,7 +73,7 @@ export default function Menu() {
             เริ่มต้นท้าทาย
         </div>
         </Link>
-        <Dragon
+        <img src={dragon}
           className={hover === 0 ? "svg-qubie-intro" : ""}
           style={character}
         />

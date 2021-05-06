@@ -1,12 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import dragonIcon from '@assets/challenge/dragonIcon.png';
-import { ReactComponent as Dragon } from '@svg/Dragon.svg';
+import dragonIcon from '@assets/challenge/dragonBlackIcon.png';
+import dragon from '@assets/challenge/dragonBlack.png';
 import DialogBox from '@components/DialogBox';
 import Header from './header';
 import axios from '@config/axiosconfig';
-import background from '@assets/explore/chapter1/BackgroundQuiz.png';
+import background from '@assets/challenge/backgroundQuiz.png';
 import { Iuser } from '@src/type.modal';
 import Music from '@components/Button/Music';
 import {C1,C2,C3} from './ComposerGenerator'
@@ -113,10 +113,10 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={false} />
             </HeaderDiv>
             <ObjectDiv>
-            <Dragon style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
+            <img src={dragon} style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
             </ObjectDiv>
            <DialogBox showIcon img={dragonIcon} next={this.next} 
-           message="คราวนี้จะไม่เหมือนทุก ๆ ครั้งที่ผ่านมา ดูซิว่าเจ้าจะมีความสามารถมากแค่ไหนกัน"/>
+           message="โฮ่! เจ้ากล้ามากนะ ที่มาทำร้ายลูกน้องที่น่ารักของข้าแล้วยังกล้าบุกมาถึงถิ่นของข้าแบบนี้ เห็นทีข้าจะต้องทดสอบความสามารถของเจ้าดูเสียหน่อยแล้ว"/>
           </React.Fragment>
         }
         {
@@ -145,15 +145,15 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={false} />
             </HeaderDiv>
             <ObjectDiv>
-            <Dragon style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
+            <img src={dragon} style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
             </ObjectDiv>
-           <DialogBox showIcon={false} img={dragonIcon} next={this.updateScore} 
-           message={"เจ้าผ่านการทดสอบแล้ว ได้คะแนนทั้งหมด ".concat(this.state.totalScore.toString()).concat(" คะแนน")}/>
+           <DialogBox showIcon img={dragonIcon} next={this.updateScore} 
+           message={"ทำได้ไม่เลวนี่ พลังของเจ้าทำคะแนนไปทั้งหมด ".concat(this.state.totalScore.toString()).concat(" คะแนน ยังมีผู้กล้าอีกมากที่เก่งกว่าเจ้า ถ้าคิดว่าเจ้ายังมีของดีมากกว่านี้ก็ลองเข้ามาใหม่ดู")}/>
           </React.Fragment>
         }
         {/* {this.state.page === 4 &&
         <Redirect to="/challenge"/>} */}
-        {/* <Music url={src} /> */}
+        <Music url={src} />
       </Main>
     );
   }

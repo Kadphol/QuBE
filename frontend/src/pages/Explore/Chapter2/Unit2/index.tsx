@@ -1,11 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import background from '@assets/explore/chapter2/BackgroundContent.png';
+import background from '@assets/explore/chapter2/backgroundContent.png';
 import bew from '@assets/explore/chapter2/bewIcon.png';
-import qubie from '@assets/explore/qubieIcon.png';
 import {F0,F1,F2,F3,F4,F5} from './Frame'
 import { Iuser } from '../../../../type.modal'
-import UnitTemplate from '../../UnitTemplate'
+import UnitTemplate from '../../Template/UnitTemplate'
 
 class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
 
@@ -31,7 +29,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                         เราจึงเรียกสถานะนี้ว่า "Superposition" หรือ "การซ้อนทับของคิวบิต" นั่นเอง`,
                         "Superposition เป็นคุณสมบัติที่มีประโยชน์มาก เราจะพบได้ในควอนตัมเท่านั้น เป็นเหตุผลให้เราพัฒนาควอนตัมคอมพิวเตอร์ยังไงล่ะ",
                     ]}
-                    icon={[bew, bew, bew, bew, bew, bew]}
+                    icon={bew}
                     background={background}
                 />
         );

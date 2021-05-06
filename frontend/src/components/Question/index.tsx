@@ -21,7 +21,6 @@ const Main = styled.div`
     p {
         width: 260px;
         font-family: 'Kanit',sans-serif;
-        font-weight: bold;
         font-size: 20px;
         cursor: pointer;
         position: absolute;

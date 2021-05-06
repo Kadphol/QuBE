@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
-import background from '../../../assets/explore/chapter2/BackgroundUnit.png'
+import background from '../../../assets/explore/chapter2/backgroundUnit.png'
 import Back from '../../../components/Button/back'
 import { userContext } from '../../../context/userContext';
 import Intro from './Intro'
@@ -8,7 +8,7 @@ import Unit1 from './Unit1'
 import Unit2 from './Unit2'
 import Unit3 from './Unit3'
 import Quiz from './Quiz'
-import MenuUnitTemplate from '../MenuUnitTemplate'
+import MenuUnitTemplate from '../Template/MenuUnitTemplate'
 import Music from '../../../components/Button/Music'
 
 const src = require('../../../assets/sound/bgm2.mp3').default
@@ -20,6 +20,7 @@ const main = {
     border: '1px solid rbga(0,0,0,0)',
     margin: '0px auto',
     position: 'relative',
+    overflowX: 'hidden',
 } as React.CSSProperties
 
 export default function Chapter2() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import Beck from '@assets/explore/chapter1/Beck.png';
-import BackgroundClose from '@assets/explore/chapter1/BackgroundClose.png';
+import Beck from '@assets/explore/chapter1/beck.png';
+import BackgroundClose from '@assets/explore/chapter1/backgroundClose.png';
 
 import ccircuit from '@assets/explore/chapter1/unit3/complex_circuit.png';
 import circuit0 from '@assets/explore/chapter1/unit3/circuit0.png';
@@ -30,6 +30,7 @@ width: 100%;
 height: 100%;
 margin: auto;
 position: relative;
+overflow: hidden;
 `;
 
 
@@ -58,11 +59,19 @@ const SlideInLeft = styled.div`
   animation: ${slideFromLeft} 0.5s ease-out forwards;
 `;
 
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+`
 class F0 extends React.Component {
     render() {
         return (<Main>
             <Content style={{backgroundImage:`url(${BackgroundClose})`}}>
+                <Fly>
                 <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="beck"/>
+                </Fly>
             </Content>
         </Main>);
     }
@@ -237,7 +246,9 @@ class F9 extends React.Component {
     render() {
         return (<Main>
             <Content style={{backgroundImage:`url(${BackgroundClose})`}}>
+                <Fly>
                 <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="beck"/>
+                </Fly>
             </Content>
         </Main>);
     }

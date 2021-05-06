@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import axios from '@config/axiosconfig'
 import { Iuser } from '@src/type.modal';
 import ENDPOINT from '@config/endpoint'
+import Back from '@components/Button/back'
 
 const Main = styled.div`
   width: 100%;
@@ -20,7 +21,7 @@ interface IProps {
     frameComponent: React.ComponentType<any>[];
     interactFrame: React.ComponentType<any>[];
     script: string[];
-    icon: string[];
+    icon: string;
     background: string;
 }
 
@@ -53,13 +54,16 @@ class Unit extends React.Component <IProps> {
         var {frame} = this.state
         var {icon,script,background,interactFrame} = this.props
         const { frameComponent: Component } = this.props;
+        const menuPath = `/explore/chapter-${this.props.chapter}`
+
         return (
         <Main style={{ background: `url(${background})` }}>
                 {Component.map((Item,index)=>(
                     frame === index &&
                     <React.Fragment>
                         <Item next={this.next}/>
-                        <Dialog showNext={interactFrame.includes(Item)?false:true} next={this.next} img={icon[index]} message={script[index]} />
+                        <Dialog showNext={interactFrame.includes(Item)?false:true} next={this.next} img={icon} message={script[index]} />
+                        <Back path={menuPath} />
                     </React.Fragment>
                 )
                 )}
