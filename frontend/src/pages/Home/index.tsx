@@ -26,10 +26,10 @@ class Home extends React.Component {
               <img src={logoName} alt="QuBE Logo" className="img-fluid"/>
               <div className="d-flex justify-content-center">
                 <p className="text-center">
-                    เราคือ สื่อการเรียนรู้ที่จะช่วยให้ทุกคนสามารถเข้าใจ
-                    ในควอนตัมคอมพิวเตอร์ได้ง่ายขึ้นผ่านสื่อที่ทุกคน
-                    จะได้รับความสนุกสอดแทรกกับเนื้อหาความรู้
-                   เพื่อรับการเข้ามาของควอนตัมคอมพิวเตอร์ในอนาคต
+                  เราคือสื่อการเรียนรู้ที่จะช่วยให้ทุกคนสามารถเข้าใจ
+                  ในควอนตัมคอมพิวเตอร์ได้ง่ายขึ้นผ่านสื่อที่ทุกคน
+                  จะได้รับความสนุกสอดแทรกกับเนื้อหาความรู้
+                  เพื่อรับการเข้ามาของควอนตัมคอมพิวเตอร์ในอนาคต
                 </p>
               </div>
               <div className="d-flex justify-content-center">
@@ -62,7 +62,7 @@ class Home extends React.Component {
                 </p>
               </div>
               <div className="col-lg-4">
-                <img src={item1} alt="column 1" className="mx-auto mt-5 img-fluid"/>
+                <img src={item1} alt="column 1" className="mx-auto img-fluid imagewhy"/>
               </div>
             </div>
             <div className="row subrow justify-content-end">
