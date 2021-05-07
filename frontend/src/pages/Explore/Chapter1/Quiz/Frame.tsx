@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import Qubie from '@assets/explore/Qubie.png';
 import Dragon from '@assets/explore/Dragon.png';
-import backgroundUnit from '@assets/explore/chapter1/backgroundUnit.png'
+import backgroundUnit from '@assets/explore/chapter1/BackgroundUnit.png'
 import item1 from '@assets/explore/chapter1/quiz/item1.png';
 import item2 from '@assets/explore/chapter1/quiz/item2.png';
 import item3 from '@assets/explore/chapter1/quiz/item3.png';

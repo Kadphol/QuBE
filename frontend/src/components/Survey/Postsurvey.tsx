@@ -75,7 +75,7 @@ export default function PreSurvey(props) {
 
 
     const saveSurvey = () => {
-        if (satisfy != 0) {
+        if (satisfy !== 0) {
         axios.put(`${ENDPOINT.URL}/updatePostSurvey`, { satisfy: satisfy, comment: comment })
         changeDone(true)
         }

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import map from '@assets/explore/chapter1/backgroundFar.png';
+import map from '@assets/explore/chapter1/BackgroundFar.png';
 
 const Menu = styled.div`
   background: url(${map});

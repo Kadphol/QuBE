@@ -11,5 +11,5 @@ const dev = {
 module.exports = {
   DB: process.env.MONGO_URL ? process.env.MONGO_URL : 'mongodb://localhost:27017/qube',
   APP_PORT: process.env.APP_PORT ? process.env.APP_PORT : '80',
-  ENDPOINT: process.env.NODE_ENV === 'development' ? dev : prod
+  ENDPOINT: process.env.NODE_ENV === 'production' ? prod : dev
 };

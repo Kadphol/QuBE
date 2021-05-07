@@ -1,9 +1,9 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import Beck from '@assets/explore/chapter1/beck.png'
+import styled, { keyframes } from 'styled-components';
+import Beck from '@assets/explore/chapter1/Beck.png'
 import Qubie from '@assets/explore/Qubie.png'   
-import far from '@assets/explore/chapter1/backgroundFar.png';
-import close from '@assets/explore/chapter1/backgroundClose.png';
+import far from '@assets/explore/chapter1/BackgroundFar.png';
+import close from '@assets/explore/chapter1/BackgroundClose.png';
 import ChapterBox from '@components/ChapterBox'
 
 const sfxClick = require('@assets/sound/sfx_click.mp3').default
