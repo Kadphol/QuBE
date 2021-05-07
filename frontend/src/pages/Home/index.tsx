@@ -62,7 +62,7 @@ class Home extends React.Component {
                 </p>
               </div>
               <div className="col-lg-4">
-                {/* <img src={item1} alt="column 1" className="mx-auto img-fluid imagewhy"/> */}
+                <img src={item1} alt="column 1" className="mx-auto img-fluid imagewhy"/>
               </div>
             </div>
             <div className="row subrow justify-content-end">
