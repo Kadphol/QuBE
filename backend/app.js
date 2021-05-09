@@ -2,6 +2,7 @@ const express = require('express');
 const config = require('./config/config');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 
 var app = express();
 app.listen(config.APP_PORT);
@@ -15,6 +16,7 @@ app.use(function(req, res, next) {
   next()
 }); 
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -23,3 +25,13 @@ app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true 
 require('./passport.js')(app)  
 require('./route.js')(app)
 require('./simulator.js')(app)
+
+if(process.env.NODE_ENV==='production') {
+  //Serve any static files
+  app.use(express.static(path.join(__dirname,'../frontend/public')));
+
+  //Handle React routing, return all request to React ap
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+  });
+}

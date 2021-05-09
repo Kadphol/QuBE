@@ -1,0 +1,35 @@
+version: "3"
+services:
+  qube-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      ports:
+        - "8080:8080"
+      env_file: ./backend/.env
+      environment: 
+        NODE_ENV: production
+      depends_on: 
+        - mongo
+      networks:
+        - qube-app
+  mongo:
+    image: mongo
+    volumes:
+      - data-volume:/data/db
+    ports: 
+      - "27017:27017"
+    networks: 
+      - qube-app
+
+networks:
+  qube-app:
+    driver: bridge
+
+volumes:
+  data-volume:
+  node_modules:
+  qube-root:
+    driver: local
+
+  
