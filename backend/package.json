@@ -5,11 +5,13 @@
     "main": "app.js",
     "scripts": {
         "build": "webpack",
-        "start": "nodemon -L app.js"
+        "start": "nodemon -L app.js",
+        "start-prod": "node app.js"
     },
     "dependencies": {
         "body-parser": "^1.19.0",
         "cookie-parser": "^1.4.5",
+        "dotenv": "^9.0.1",
         "express": "~4.16.1",
         "express-session": "^1.17.1",
         "ibm-quantum-js": "^0.1.4",

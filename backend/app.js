@@ -6,7 +6,6 @@ const path = require('path');
 
 var app = express();
 app.listen(config.APP_PORT);
-//console.log(config.ENDPOINT.URL);
 
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', config.ENDPOINT.URL);
@@ -23,12 +22,15 @@ app.use(cookieParser())
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }))
 
 require('./passport.js')(app)  
-require('./route.js')(app)
-require('./simulator.js')(app)
+const route = require('./route.js');
+const sim = require('./simulator.js');
+
+app.use('/api', route);
+app.use('/api/sim', sim);
 
 if(process.env.NODE_ENV==='production') {
   //Serve any static files
-  app.use(express.static(path.join(__dirname,'../frontend/public')));
+  app.use(express.static(path.join(__dirname,'../frontend/build')));
 
   //Handle React routing, return all request to React ap
   app.get('*', function(req, res) {

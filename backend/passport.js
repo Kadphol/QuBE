@@ -2,9 +2,10 @@ var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy
 var DummyStrategy = require('passport-dummy').Strategy
 var uuid = require('uuid').v4
+const config = require('./config/config');
 
-var CLIENT_ID = '406602993675033'
-var CLIENT_SECRET = 'ad29d0665bde6cd353d86ce0fff1094e'
+var CLIENT_ID = config.CLIENT_ID;
+var CLIENT_SECRET = config.CLEINT_SECERT;
 const users = require('./db/users.js')
 
 module.exports = (app) => {
@@ -17,7 +18,7 @@ passport.serializeUser(function(user, done) {
   passport.use(new FacebookStrategy({
       clientID: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
-      callbackURL: "http://localhost/login/callback",
+      callbackURL: `${config.ENDPOINT} + /api/login/callback`,
       profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)']
     },
     function(accessToken, refreshToken, profile, done) {
