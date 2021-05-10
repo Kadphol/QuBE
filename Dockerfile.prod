@@ -15,9 +15,9 @@ RUN ls
 RUN yarn build
 
 ## Stage 2: Build server 
-FROM node:12.19-alpine3.9
+FROM node:12.19-alpine3.9 as server
 
-WORKDIR /usr/src/app
+WORKDIR /usr/app/src
 
 COPY --from=frontend /usr/app/frontend/build ./frontend/build
 RUN ls
@@ -30,4 +30,4 @@ COPY backend/ ./
 ENV PORT 8080
 EXPOSE 8080
 
-RUN npm start
+CMD [ "npm", "start" ]

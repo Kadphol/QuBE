@@ -10,7 +10,7 @@ resume:
 	docker-compose unpause
 
 prod-build:
-	docker compose -f docker-compose.production.yml build
+	docker-compose -f docker-compose.production.yml build --no-cache
 
 prod-start:
-	docker compose -f docker-compose.production.yml up --build -remove-orphans
+	docker compose -f docker-compose.production.yml up --build --remove-orphans

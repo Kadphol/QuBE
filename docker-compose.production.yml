@@ -4,15 +4,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-      ports:
-        - "8080:8080"
-      env_file: ./backend/.env
-      environment: 
-        NODE_ENV: production
-      depends_on: 
-        - mongo
-      networks:
-        - qube-app
+    ports:
+      - "8080:8080"
+    env_file: ./backend/.env
+    environment: 
+      NODE_ENV: production
+      MONGO_URI: mongodb://mongo:27017/qube
+    depends_on: 
+      - mongo
+    networks:
+      - qube-app
   mongo:
     image: mongo
     volumes:
