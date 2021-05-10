@@ -1,6 +1,7 @@
 const express = require('express');
 const config = require('./config/config');
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
 const cookieParser = require('cookie-parser');
 const path = require('path');
 
@@ -19,7 +20,14 @@ app.use(function(req, res, next) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }))
+app.use(session({
+  secret: 'keyboard cat', 
+  store: new MemoryStore ({
+    checkPeriod: 86400000
+  }),
+  resave: true, 
+  saveUninitialized: true 
+}))
 
 require('./passport.js')(app)  
 const route = require('./route.js');
