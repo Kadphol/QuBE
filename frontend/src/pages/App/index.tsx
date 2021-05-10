@@ -8,7 +8,6 @@ import '@styles/App.css';
 import { Iuser } from '@src/type.modal';
 
 import axios from '@config/axiosconfig';
-import ENDPOINT from '@config/endpoint';
 import { userContext } from '@context/userContext';
 import PreSurvey from '@components/Survey/Presurvey'
 import PostSurvey from '@components/Survey/Postsurvey'
@@ -25,7 +24,7 @@ function App() {
   const providerValue = {user,setUser}
 
   useEffect(()=>{
-    axios.get(`${ENDPOINT.URL}/fetch`)
+    axios.get(`/fetch`)
     .then(res => {
       //console.log(res.data);
       if (res.data) {

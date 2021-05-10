@@ -1,5 +1,5 @@
   const prod = {
-    URL: 'https:/qube.heroku.com',
+    URL: 'localhost:8080',
   };
   
   const dev = {

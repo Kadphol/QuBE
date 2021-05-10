@@ -4,7 +4,6 @@ import Dialog from '@components/DialogBox'
 import { Redirect } from "react-router-dom";
 import axios from '@config/axiosconfig'
 import { Iuser } from '@src/type.modal';
-import ENDPOINT from '@config/endpoint'
 import Back from '@components/Button/back'
 
 const Main = styled.div`
@@ -39,7 +38,7 @@ class Unit extends React.Component <IProps> {
         let updateUnit = this.props.unit
         if (nextFrame === this.lastFrame) {
             if(updateChapter>chapter! || (updateChapter===chapter && updateUnit>unit!)){
-            axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: updateUnit, chapter: updateChapter})  // not clear chapter yet
+            axios.put(`/updateInfo`, { unit: updateUnit, chapter: updateChapter})  // not clear chapter yet
             this.props.setUser(()=>({...this.props.user,unit: updateUnit, chapter: updateChapter}))
             }
         }

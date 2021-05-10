@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 import axios from '@config/axiosconfig';
-import ENDPOINT from '@config/endpoint';
 
 export default function PreSurvey(props) {
 
@@ -76,7 +75,7 @@ export default function PreSurvey(props) {
 
     const saveSurvey = () => {
         if (satisfy !== 0) {
-        axios.put(`${ENDPOINT.URL}/updatePostSurvey`, { satisfy: satisfy, comment: comment })
+        axios.put(`/updatePostSurvey`, { satisfy: satisfy, comment: comment })
         changeDone(true)
         }
     }

@@ -2,7 +2,8 @@ import axios, {AxiosInstance,AxiosRequestConfig} from 'axios'
 
 const config: AxiosRequestConfig = {
     headers: {'Content-Type': 'application/json'},
-    withCredentials: true
+    withCredentials: true,
+    baseURL: "localhost:8080/api"
   }
   
 const instance: AxiosInstance = axios.create(config);

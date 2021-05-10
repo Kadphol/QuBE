@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import dragonIcon from '@assets/challenge/dragonBlackIcon.png';
 import dragon from '@assets/challenge/dragonBlack.png';
@@ -11,7 +10,6 @@ import { Iuser } from '@src/type.modal';
 import Music from '@components/Button/Music';
 import {C1,C2,C3} from './ComposerGenerator'
 import {Q1,Q2,Q3} from './QuestionGenerator'
-import ENDPOINT from '@config/endpoint'
 
 
 const src = require('@assets/sound/bgm6.mp3').default
@@ -77,7 +75,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
   handleScore = score => this.setState({ score: score })
 
   updateScore = () => {
-    axios.put(`${ENDPOINT.URL}/updateInfo`, { score: this.state.totalScore })
+    axios.put(`/updateInfo`, { score: this.state.totalScore })
     this.props.setUser(()=>({...this.props.user,score: this.state.totalScore}))
     // relocation instead of next() for pop-up post survey
     window.location.href = '/challenge'
