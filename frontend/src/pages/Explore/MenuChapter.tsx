@@ -36,22 +36,22 @@ const liStyle = {
 // } as React.CSSProperties;
 
 const liStyleList = [{...liStyle,top:'600px',left:'50px',},
-                      {...liStyle,top:'190px',left:'70px',},
+                      {...liStyle,top:'220px',left:'80px',},
                       {...liStyle,top:'400px',left:'470px',},
                       {...liStyle,top:'180px',left:'850px',},
-                      {...liStyle,top:'450px',left:'880px',}]
+                      {...liStyle,top:'450px',left:'900px',}]
 const liStyleHover = {...liStyle,backgroundColor:'#7AB175'}
 const liStyleListHover = [{...liStyleHover,top:'600px',left:'50px',},
-                      {...liStyleHover,top:'190px',left:'70px',},
+                      {...liStyleHover,top:'220px',left:'80px',},
                       {...liStyleHover,top:'400px',left:'470px',},
                       {...liStyleHover,top:'180px',left:'850px',},
-                      {...liStyleHover,top:'450px',left:'880px',}]
+                      {...liStyleHover,top:'450px',left:'900px',}]
 const liStyleDisable = {...liStyle,backgroundColor:'#7AB175',filter:'brightness(50%)', cursor:'auto'}
 const liStyleListDisable = [{...liStyleDisable,top:'600px',left:'50px',},
-                      {...liStyleDisable,top:'190px',left:'70px',},
+                      {...liStyleDisable,top:'220px',left:'80px',},
                       {...liStyleDisable,top:'400px',left:'470px',},
                       {...liStyleDisable,top:'180px',left:'850px',},
-                      {...liStyleDisable,top:'450px',left:'880px',}]
+                      {...liStyleDisable,top:'450px',left:'900px',}]
 
 const padlockStyle = {
   position:'absolute',
