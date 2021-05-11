@@ -101,7 +101,7 @@ class F0 extends React.Component {
                 <Fly>
                     <Slide>
                         <Flip>
-                        <img src={dragon} style={{ position: 'absolute', left: '400px', top: '120px',transform:'scaleX(-1)' }} alt="Qubie"/>
+                        <img src={dragon} style={{ position: 'absolute', left: '400px', top: '120px',transform:'scaleX(-1)', height:'400px' }} alt="Qubie"/>
                         </Flip>
                     </Slide>
                 </Fly>
@@ -129,10 +129,10 @@ class F1 extends React.Component {
             <Content style={{background:`url(${backgroundUnit})`}}>
                 <Fly>
             <Slide1>
-            <img src={qubie} style={{ position: 'absolute', left: '200px', top: '120px' }} alt="Qubie"/>
+            <img src={qubie} style={{ position: 'absolute', left: '200px', top: '120px', height:'400px' }} alt="Qubie"/>
             </Slide1>
             <Slide2>
-            <img src={dragon} style={{ position: 'absolute', left: '600px', top: '120px', transform:'scaleX(-1)' }} alt="Dragon"/>
+            <img src={dragon} style={{ position: 'absolute', left: '600px', top: '120px', transform:'scaleX(-1)', height:'400px' }} alt="Dragon"/>
             </Slide2>
                 </Fly>
             </Content>
@@ -146,8 +146,8 @@ class F2 extends React.Component {
         <Main>
             <Content style={{background:`url(${backgroundUnit})`}}>
                 <Fly>
-            <img src={qubie} style={{ position: 'absolute', left: '200px', top: '120px' }} alt="Qubie"/>
-            <img src={dragon} style={{ position: 'absolute', left: '600px', top: '120px' }} alt="Dragon"/>
+            <img src={qubie} style={{ position: 'absolute', left: '200px', top: '120px', height:'400px' }} alt="Qubie"/>
+            <img src={dragon} style={{ position: 'absolute', left: '600px', top: '120px', height:'400px' }} alt="Dragon"/>
                 </Fly>
             </Content>
         </Main>);
@@ -497,7 +497,7 @@ class F6 extends React.Component {
                 <Fly>
                     <Slide>
                         <Flip>
-                        <img src={dragon} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Dragon"/>
+                        <img src={dragon} style={{ position: 'absolute', left: '400px', top: '120px', height:'400px' }} alt="Dragon"/>
                         </Flip>
                     </Slide>
                 </Fly>
@@ -518,7 +518,7 @@ class F7 extends React.Component {
             <Content style={{background:`url(${backgroundUnit})`}}>
                 <Fly>
                     <Slide>
-                    <img src={qubie} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="Qubie"/>
+                    <img src={qubie} style={{ position: 'absolute', left: '400px', top: '120px', height:'400px' }} alt="Qubie"/>
                     </Slide>
                 </Fly>
             </Content>
