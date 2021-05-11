@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
 import background from '../../../assets/explore/chapter2/backgroundUnit.png'
 import Back from '../../../components/Button/back'
@@ -9,9 +9,9 @@ import Unit2 from './Unit2'
 import Unit3 from './Unit3'
 import Quiz from './Quiz'
 import MenuUnitTemplate from '../Template/MenuUnitTemplate'
-import Music from '../../../components/Button/Music'
+import Music from '@components/Button/Music'
 
-const src = require('../../../assets/sound/bgm2.mp3').default
+const src = require('@assets/sound/bgm2.mp3').default
 
 const main = {
     background: `url(${background})`,

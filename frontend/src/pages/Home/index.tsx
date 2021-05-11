@@ -14,28 +14,22 @@ class Home extends React.Component {
     surveyShow: false
   }
 
-  componentDidMount = () => {
-    
-  }
-
   render() {
     return (
       <div className="home" style={{overflowX:'hidden'}}>
-
-
         <div className="container-fluid">
           <div className="row intro">
             <div className="intro-1 col-lg-7">
               <Qubie className="svg-qubie-intro" />
             </div> 
             <div className="intro-2 col-lg-5">
-              <img src={logoName} alt="QuBE Logo" />
+              <img src={logoName} alt="QuBE Logo" className="img-fluid"/>
               <div className="d-flex justify-content-center">
                 <p className="text-center">
-                    เราคือ สื่อการเรียนรู้ที่จะช่วยให้ทุกคนสามารถเข้าใจ<br />
-                    ในควอนตัมคอมพิวเตอร์ได้ง่ายขึ้นผ่านสื่อที่ทุกคน <br />
-                    จะได้รับความสนุกสอดแทรกกับเนื้อหาความรู้ <br />
-                  เพื่อรับการเข้ามาของควอนตัมคอมพิวเตอร์ในอนาคต  <br />
+                  เราคือสื่อการเรียนรู้ที่จะช่วยให้ทุกคนสามารถเข้าใจ
+                  ในควอนตัมคอมพิวเตอร์ได้ง่ายขึ้นผ่านสื่อที่ทุกคน
+                  จะได้รับความสนุกสอดแทรกกับเนื้อหาความรู้
+                  เพื่อรับการเข้ามาของควอนตัมคอมพิวเตอร์ในอนาคต
                 </p>
               </div>
               <div className="d-flex justify-content-center">
@@ -43,6 +37,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
+
           <div className="row preview justify-content-center">
             <div className="col-lg-8">
               <div className="embed-responsive embed-responsive-16by9"> {/*test video*/}
@@ -52,6 +47,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
+
           <div className="row wave">
             <div className="row subrow">
               <div className="col-lg-1"></div>
@@ -65,13 +61,13 @@ class Home extends React.Component {
                 การพัฒนา AI ที่มีประสิทธิภาพรวมถึงการพยากรณ์ที่แม่นยำ   
                 </p>
               </div>
-              <div className="col-lg-3 imagewhy">
-              <img src={item1} style={{marginTop:'5rem'}} alt="column 1"/>
+              <div className="col-lg-4">
+                {/* <img src={item1} alt="column 1" className="mx-auto img-fluid imagewhy"/> */}
               </div>
             </div>
             <div className="row subrow justify-content-end">
-            <div className="col-lg-5">
-              <img src={item2} style={{marginTop:'0px'}} alt="column 1"/>
+              <div className="col-lg-5">
+                <img src={item2} alt="column 2" className="mx-auto img-fluid"/>
               </div>
               <div className="col-lg-7 what">
                 <h2>Quantum Computing คืออะไร</h2>
@@ -84,6 +80,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
+          
           <div className="row feature justify-content-center">
             <div className="col-5 align-self-center">
               <div className="head">
@@ -117,8 +114,9 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+
         <footer className="footer ml-0 mr-0">
-            <img src={footer} alt="footer" style={{width: "1425px"}}/>
+            <img src={footer} alt="footer" className="img-fluid"/>
         </footer>
       </div>
 

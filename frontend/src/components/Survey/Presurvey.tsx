@@ -74,7 +74,7 @@ export default function PreSurvey(props) {
     } as React.CSSProperties;
 
     const saveSurvey = () => {
-        if (degree != 0) {
+        if (degree !== 0) {
             axios.put(`${ENDPOINT.URL}/updatePreSurvey`, { degree: degree, type: type })
             changeDone(true)
         }
