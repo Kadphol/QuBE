@@ -579,10 +579,13 @@ class Composer extends React.Component<IProps, IState>{
                         </div>
                     </div>
                     <div style={{
-                        display: 'flex',
+                        display: this.props.quiz ? 'flex' : 'flex',
+                        background: 'rgb(255,255,255,0.8)',
+                        width: this.props.quiz ? '500px' : '750px',
+                        height: this.props.quiz ? '130px' : '275px',
                         position: 'relative',
                         marginTop: '80px',
-                        marginLeft: this.props.quiz ? '250px' : '0'
+                        marginLeft: this.props.quiz ? '270px' : '0'
                     }}>
                         <Bar
                             data={this.state.result}
