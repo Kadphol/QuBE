@@ -145,7 +145,7 @@ class Composer extends React.Component<IProps, IState>{
     wrong = new Audio(sfxWrong)
 
     run = (): void => {
-        axios.post('http://localhost/sim', { n: this.state.n, cc: this.state.cc, shot: this.state.selectShot })
+        axios.post('/sim', { n: this.state.n, cc: this.state.cc, shot: this.state.selectShot })
             .then((res) => {
                 let result = this.state.result
                 result.labels = res.data.measureLabels

@@ -9,6 +9,7 @@ import scene from '@assets/challenge/leaderboard.png';
 import board1 from '@assets/challenge/Board-all.png';
 import board2 from '@assets/challenge/Board-facebook.png';
 import Back from '@components/Button/back';
+import config from '@config/endpoint';
 
 const sfxClick = require('@assets/sound/sfx_click.mp3').default;
 
@@ -91,7 +92,7 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
   switch = (global) => this.setState({ global: global }) ;
 
   componentDidMount = () => {
-    instance.get('http://localhost/getuser')
+    instance.get(`${config.URL} + '/api/getuser'`)
       .then(res => {
         let sorted = res.data.sort((a, b) => (a.info.highscore > b.info.highscore) ? -1 : ((b.info.highscore > a.info.highscore) ? 1 : 0));
         let docs = Array();

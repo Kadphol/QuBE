@@ -31,7 +31,7 @@ export default function Profile({user,setUser}) {
                 <NavDropdown.Item className="ml-auto" >Unit: {user.unit}</NavDropdown.Item>
                 <NavDropdown.Item className="ml-auto" >Score: {user.score}</NavDropdown.Item>
                 <NavDropdown.Item className="ml-auto" onClick={clear}>Clear</NavDropdown.Item>
-                <NavDropdown.Item className="ml-auto" href={`${ENDPOINT.URL}/logout`} onClick={logout}>Logout</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" href={`${ENDPOINT.URL}/api/logout`} onClick={logout}>Logout</NavDropdown.Item>
             </NavDropdown>  
       </React.Fragment>
     );

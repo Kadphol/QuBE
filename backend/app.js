@@ -6,12 +6,15 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 
 var app = express();
+console.log(process.env.NODE_ENV);
+console.log(config.ENDPOINT.URL);
 app.listen(config.APP_PORT);
 
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', config.ENDPOINT.URL);
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-  res.setHeader('Access-Control-Allow-Headers', 'Authorization,X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  // res.setHeader('Access-Control-Allow-Headers', 'Authorization,X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
   next()
 }); 

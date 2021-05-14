@@ -11,13 +11,13 @@ export default function LoginModal(props) {
   const history = useHistory()
 
   const Login = () => {
-    window.location.href = `${ENDPOINT.URL}/login`
+    window.location.href = `${ENDPOINT.URL}/api/login`
     history.push('/')
     
   }
 
   const guestLogin = () =>{
-    axios.get(`${ENDPOINT.URL}/guestlogin`,{})
+    axios.get(`${ENDPOINT.URL}/api/guestlogin`,{})
     .then( () => history.push('/'))
   }
   

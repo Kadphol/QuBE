@@ -1,6 +1,6 @@
 require('dotenv').config({path: '../.env'});
 const prod = {
-  URL: process.env.CLIENT_URL
+  URL: process.env.CLIENT_URL + ':' + process.env.APP_PORT
 };
 
 const dev = {
