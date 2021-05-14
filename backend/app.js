@@ -9,6 +9,7 @@ var app = express();
 console.log(process.env.NODE_ENV);
 console.log(config.ENDPOINT.URL);
 app.listen(config.APP_PORT);
+//console.log(config.ENDPOINT.URL);
 
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', config.ENDPOINT.URL);
@@ -18,7 +19,6 @@ app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', true);
   next()
 }); 
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))

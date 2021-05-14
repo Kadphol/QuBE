@@ -153,11 +153,11 @@ class F3 extends React.Component<any,any> {
             }
             {
                 this.state.state%3 === 1 &&
-                <img src={item6} style={{ position: 'absolute', left: '367px', top: '140px', height:'390px',transform:'rotate(54deg'}} />
+                <img src={item6} style={{ position: 'absolute', left: '366px', top: '138px', height:'390px',transform:'rotate(53deg'}} />
             }
             {
                 this.state.state%3 === 2 &&
-                <img src={item6} style={{ position: 'absolute', left: '374px', top: '134px', height:'390px',transform:'rotate(277deg)'}} />
+                <img src={item6} style={{ position: 'absolute', left: '374px', top: '133px', height:'390px',transform:'rotate(277deg)'}} />
             }
             <img src={arrow} onClick={()=>{
                 this.click.play()
@@ -198,11 +198,11 @@ class F4 extends React.Component {
         <Main>
             <Content>
             <Slide>
-            <img src={item13} style={{ position: 'absolute', left: '250px', top: '288px', height:'200px'}} />
+            <img src={item13} style={{ position: 'absolute', left: '250px', top: '260px', height:'200px'}} />
             </Slide>
             <Fade>
-            <img src={bv0} style={{ position: 'absolute', left: '800px', top: '288px', height:'200px'}} />
-            <img src={bv1} style={{ position: 'absolute', left: '950px', top: '288px', height:'200px'}} />
+            <img src={bv0} style={{ position: 'absolute', left: '800px', top: '260px', height:'200px'}} />
+            <img src={bv1} style={{ position: 'absolute', left: '950px', top: '260px', height:'200px'}} />
             </Fade>
             </Content>
         </Main>);

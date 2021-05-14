@@ -49,7 +49,7 @@ class Home extends React.Component {
           </div>
 
           <div className="row wave">
-            <div className="row subrow">
+            <div className="row subrow rowwhy">
               <div className="col-lg-1"></div>
               <div className="col-lg-6 why">
                 <h2>ทำไมต้องควอนตัม</h2>
@@ -65,7 +65,7 @@ class Home extends React.Component {
                 <img src={item1} alt="column 1" className="mx-auto img-fluid imagewhy"/>
               </div>
             </div>
-            <div className="row subrow justify-content-end">
+            <div className="row subrow rowwhat justify-content-end">
               <div className="col-lg-5">
                 <img src={item2} alt="column 2" className="mx-auto img-fluid"/>
               </div>
@@ -86,7 +86,7 @@ class Home extends React.Component {
               <div className="head">
                 <h1>QuBE มีอะไรบ้าง</h1>
               </div>
-              <div className="feature-box feature-explore">
+              <div className="feature-box">
                 <h2>การผจญภัยในโลกควอนตัม</h2>
                 <p>
                   การผจญภัยไปกับเหล่านางฟ้าในดินแดนอันแสนพิศวง 
@@ -116,7 +116,7 @@ class Home extends React.Component {
         </div>
 
         <footer className="footer ml-0 mr-0">
-            <img src={footer} alt="footer" className="img-fluid"/>
+            <img src={footer} alt="footer" className="img-fluid" style={{width:'100%',height:'100%'}}/>
         </footer>
       </div>
 

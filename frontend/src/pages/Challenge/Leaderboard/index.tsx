@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import instance from '@config/axiosconfig';
 import Person from './person';
 import { Iuser } from '@src/type.modal';
-import { ReactComponent as Qubie } from '@svg/Qubie-intro.svg';
-import { ReactComponent as Beck } from '@svg/Beck.svg';
+import Qubie from '@assets/explore/Qubie.png'
+import beck from '@assets/explore/chapter1/beck.png'
+import styled, { keyframes } from 'styled-components';
 import scene from '@assets/challenge/leaderboard.png';
 import board1 from '@assets/challenge/Board-all.png';
 import board2 from '@assets/challenge/Board-facebook.png';
@@ -51,15 +51,13 @@ position: relative;
   cursor: pointer;
 }
 `
-
-const Character = styled.div`
-  * {
-  position: absolute;
-    height: 250px;
-    width: 250px;
-    bottom: 120px;
-  }
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
 `
+
 interface IPerson {
   index: number;
   name: string;
@@ -76,7 +74,7 @@ interface IState {
   back: boolean
 }
 
-class Leaderboard extends React.Component<{user:Iuser}, IState> {
+class Leaderboard extends React.Component<{ user: Iuser }, IState> {
 
   state = {
     global: true,
@@ -89,7 +87,7 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
 
   click = new Audio(sfxClick);
 
-  switch = (global) => this.setState({ global: global }) ;
+  switch = (global) => this.setState({ global: global });
 
   componentDidMount = () => {
     instance.get(`${config.URL} + '/api/getuser'`)
@@ -128,26 +126,26 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
   render() {
     return (
       <Main>
-        <Board style={{background:`url(${this.state.global?board1:board2})`}}>
+        <Board style={{ background: `url(${this.state.global ? board1 : board2})` }}>
           <Filter>
             <div className="button"
-            onMouseDown={()=>this.click.play()}
-            onClick={()=>this.switch(true)}>ทั้งหมด</div>
-            {this.props.user.type==='Facebook' &&
-            <div className="button" 
-            onMouseDown={()=>this.click.play()}
-            onClick={()=>this.switch(false)}>Facebook</div>}
+              onMouseDown={() => this.click.play()}
+              onClick={() => this.switch(true)}>ทั้งหมด</div>
+            {this.props.user.type === 'Facebook' &&
+              <div className="button"
+                onMouseDown={() => this.click.play()}
+                onClick={() => this.switch(false)}>Facebook</div>}
           </Filter>
           {this.state.global
             ? <Person data={this.state.data} self={this.state.self} />
             : <Person data={this.state.facebookData} self={this.state.facebookSelf} />
           }
         </Board>
-        <Character>
-          <Qubie style={{ left: "0" }} className="svg-qubie-intro" />
-          <Beck style={{ right: "20px" }} className="svg-qubie-intro" />
-        </Character>
-        <Back path="/challenge"/>
+          <Fly>
+            <img src={Qubie} style={{ position: 'absolute', bottom:'50px', left: '15px', height: '280px' }} />
+            <img src={beck} style={{ position: 'absolute', bottom:'50px', right: '15px', height: '280px' }} />
+          </Fly>
+        <Back path="/challenge" />
       </Main>
     );
   }
