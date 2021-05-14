@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components'
 import { Row } from 'react-bootstrap'
+import qubie from '@assets/explore/qubieIcon.png'
+import beck from '@assets/explore/chapter1/beckIcon.png'
+import gust from '@assets/explore/chapter4/gustIcon.png'
 
 const Main = styled.div`
 position: relative;
@@ -22,31 +25,29 @@ overflow-x: hidden;
 `
 
 const CardRow = styled.div`
-    align-items: center;
-    margin-bottom: 5px;
-    width: 98%;
-    background: rgba(255,255,255,0.3);
+    align-items: left;
+    width: 97%;
+    height: 65px;
+    line-height: 65px;
+    background: rgba(255,255,255,0.5);
+    margin-top: 5px;
+    border-radius: 5px;
+    * {display: inline;}
     img {
         border-radius: 50%;
-        margin-top: 0px;
-        margin-left: 30px;
-        float: left;
-        height: 60px;
+        height: 65px;
+        padding: 2px 15px 2px;
     }
-    p { 
+    p {     
         font-family: 'Kanit',sans-serif;
         font-size: 23px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: inline-block;
-        line-height: 40px;
+        line-height: 60px;
     }
 `
 
 const CardSelf = styled(CardRow)`
 position: absolute;
-    background: rgba(255,255,255,0.3);
-    margin-top: 10px;
+    background: rgba(255,255,255,0.5);
 `
 
 interface IProps {
@@ -66,6 +67,33 @@ interface IProps {
 
 class Person extends React.Component<IProps> {
 
+    state = {
+        data: [{
+            index: 1,
+            name: "Beck",
+            image: beck,
+            score: 1250
+        },
+        {
+            index: 2,
+            name: "Gust",
+            image: gust,
+            score: 930
+        },
+        {
+            index: 3,
+            name: "Qubie",
+            image: qubie,
+            score: 650
+        }],
+        self: {
+            index: 3,
+            name: "Qubie",
+            image: qubie,
+            score: 650
+        }
+    }
+
     render() {
 
         return (
@@ -74,24 +102,20 @@ class Person extends React.Component<IProps> {
                     {this.props.data.filter(person => person.index <= 10).map(person => {
                         return (
                             <CardRow>
-                                <Row className="R">
-                                    <p style={{ paddingLeft: "20px", width:'20px' }}>{person.index}</p>
-                                    <img src={person.image} alt="profile icon"/>
-                                    <p style={{ marginLeft: "35px" }}>{person.name} </p>
+                                    <p style={{position: "absolute", left: "30px"}}>{person.index}</p>
+                                    <img src={person.image} alt="profile icon" style={{ position: "absolute", left: "50px"}}/>
+                                    <p style={{ position: "absolute", left: "155px" }}>{person.name} </p>
                                     <p style={{ position: "absolute", right: "40px" }}>{person.score}</p>
-                                </Row>
                             </CardRow>
                         )
                     })}
                 </Scroll>
                 <Main>
                     <CardSelf>
-                        <Row>
-                            <p style={{ paddingLeft: "20px", width:'20px' }}>{this.props.self.index}</p>
-                            <img src={this.props.self.image} alt="profile icon"/>
-                            <p style={{ marginLeft: "35px" }}>{this.props.self.name} </p>
+                            <p style={{ position: "absolute", left: "30px"}}>{this.props.self.index}</p>
+                            <img src={this.props.self.image} alt="profile icon" style={{ position: "absolute", left: "50px"}}/>
+                            <p style={{ position: "absolute", left: "155px" }}>{this.props.self.name} </p>
                             <p style={{ position: "absolute", right: "40px" }}>{this.props.self.score}</p>
-                        </Row>
                     </CardSelf>
                 </Main>
 
