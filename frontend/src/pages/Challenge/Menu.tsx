@@ -89,7 +89,7 @@ export default function Menu() {
 
       <div style={bar}>
       <img src={Qubie}
-          className={hover === 0 ? "svg-qubie-intro" : ""}
+          className={hover === 1 ? "svg-qubie-intro" : ""}
           style={character}
         />
         <Link to={url + "/leaderboard"} style={linkStyle}>
@@ -121,7 +121,7 @@ export default function Menu() {
         {/* </div> */}
         </Link>
         <img src={king}
-          className={hover === 0 ? "svg-qubie-intro" : ""}
+          className={hover === 2 ? "svg-qubie-intro" : ""}
           style={character}
         />
       </div>
