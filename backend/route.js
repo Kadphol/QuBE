@@ -37,8 +37,8 @@ router.get('/fetch', (req, res) => {
 
 router.get('/login', passport.authenticate('facebook'))
 router.get('/login/callback', passport.authenticate('facebook', {
-  successRedirect: `http://localhost:8080`,
-  failureRedirect: `http://localhost:8080`
+  successRedirect: `http://68.183.155.239`,
+  failureRedirect: `http://68.183.155.239`
 })
 
 )

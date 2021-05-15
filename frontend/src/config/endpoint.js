@@ -1,5 +1,5 @@
   const prod = {
-    URL: 'http://localhost:8080',
+    URL: 'http://68.183.155.239',
   };
   
   const dev = {
