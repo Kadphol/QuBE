@@ -3,6 +3,7 @@ const users = require('./db/users.js')
 const explore = require('./db/explore.js')
 const express = require('express');
 const router = express.Router();
+const config = require('./config/config.js');
 
 
 router.get('/', (req, res) => {
@@ -36,8 +37,8 @@ router.get('/fetch', (req, res) => {
 
 router.get('/login', passport.authenticate('facebook'))
 router.get('/login/callback', passport.authenticate('facebook', {
-  successRedirect: "http://localhost:8080",
-  failureRedirect: "http://localhost:8080"
+  successRedirect: `http://localhost:8080`,
+  failureRedirect: `http://localhost:8080`
 })
 
 )
@@ -46,6 +47,7 @@ router.get('/guestlogin', passport.authenticate('dummy'), (req, res) => {
 })
 
 router.put('/updateInfo', (req, res) => {
+  console.log(req);
   users.updateInfo(req.user, req.body.chapter, req.body.unit, req.body.star, req.body.score, () => {
     return res.send("OK")
   })

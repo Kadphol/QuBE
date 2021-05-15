@@ -1,11 +1,8 @@
 import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
-import far from '@assets/explore/chapter5/backgroundFar.png';
 import close from '@assets/explore/chapter5/backgroundClose.png';
 import ChapterBox from '@components/ChapterBox'
-import princessIcon from '@assets/explore/chapter5/princessIcon.png'
 import princess from '@assets/explore/chapter5/princess.png'
-import qubieIcon from '@assets/explore/qubieIcon.png';
 import qubie from '@assets/explore/Qubie.png'
 
 const sfxClick = require('@assets/sound/sfx_click.mp3').default

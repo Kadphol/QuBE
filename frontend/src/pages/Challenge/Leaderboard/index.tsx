@@ -1,15 +1,14 @@
 import React from 'react';
-import instance from '@config/axiosconfig';
+import axios from '@config/axiosconfig';
 import Person from './person';
 import { Iuser } from '@src/type.modal';
 import Qubie from '@assets/explore/Qubie.png'
-import beck from '@assets/explore/chapter1/beck.png'
+import beck from '@assets/explore/chapter1/Beck.png'
 import styled, { keyframes } from 'styled-components';
 import scene from '@assets/challenge/leaderboard.png';
 import board1 from '@assets/challenge/Board-all.png';
 import board2 from '@assets/challenge/Board-facebook.png';
 import Back from '@components/Button/back';
-import config from '@config/endpoint';
 
 const sfxClick = require('@assets/sound/sfx_click.mp3').default;
 
@@ -90,9 +89,11 @@ class Leaderboard extends React.Component<{ user: Iuser }, IState> {
   switch = (global) => this.setState({ global: global });
 
   componentDidMount = () => {
-    instance.get(`${config.URL} + '/api/getuser'`)
+    axios.get('/getuser')
       .then(res => {
-        let sorted = res.data.sort((a, b) => (a.info.highscore > b.info.highscore) ? -1 : ((b.info.highscore > a.info.highscore) ? 1 : 0));
+        let data = res.data;
+        let array = Object.keys(data).map(key => data[key]);
+        let sorted = array.sort((a, b) => b.info.highscore - a.info.highscore);
         let docs = Array();
         let facebookDocs = Array();
         sorted.forEach((person, index) => {

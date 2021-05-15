@@ -111,17 +111,17 @@ const main = {
        user.chapter! >= index
        ? index <= avaliable-1
        ? <Link to={item.path} style={linkStyle} >
-       <li key={index} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
+       <li key={item.path} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleListHover[index]:liStyleList[index]} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
          <p>{item.text}</p>
          </li>
          </Link>
        : 
        <div onClick={()=>changeModalShow(true)} style={{...linkStyle,cursor:'pointer'}} >
-       <li key={index} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
+       <li key={item.path} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleListHover[index]:liStyleList[index]} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
          <p>{item.text}</p>
          </li>
          </div>
-       :<li key={index} className= "mapmenu__item" style={liStyleDisable}>
+       :<li key={item.path} className= "mapmenu__item" style={liStyleListDisable[index]}>
        <p style={linkStyle}>{item.text}</p>
        <img src={padlock} style={padlockStyle} alt="locking content"/>
        </li>

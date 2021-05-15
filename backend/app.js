@@ -3,14 +3,15 @@ const config = require('./config/config');
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session);
 const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
 const path = require('path');
 
 var app = express();
 console.log(process.env.NODE_ENV);
 console.log(config.ENDPOINT.URL);
 app.listen(config.APP_PORT);
-//console.log(config.ENDPOINT.URL);
 
+app.use(morgan("tiny"));
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', config.ENDPOINT.URL);
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed

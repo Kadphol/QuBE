@@ -49,8 +49,8 @@ function App() {
 
   return (
     <div className="App">
-      <PreSurvey show={preSurveyShow} onHide={() => changePreSurveyShow(false)} />
-      <PostSurvey show={postSurveyShow} onHide={() => changePostSurveyShow(false)} />
+      {/* <PreSurvey show={preSurveyShow} onHide={() => changePreSurveyShow(false)} />
+      <PostSurvey show={postSurveyShow} onHide={() => changePostSurveyShow(false)} /> */}
       <userContext.Provider value={providerValue}>
         <BrowserRouter>
             <NavigationBar />

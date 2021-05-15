@@ -16,9 +16,9 @@ passport.serializeUser(function(user, done) {
     done(null, obj);
   })
   passport.use(new FacebookStrategy({
-      clientID: CLIENT_ID,
-      clientSecret: CLIENT_SECRET,
-      callbackURL: `${config.ENDPOINT} + /api/login/callback`,
+      clientID: '406602993675033',
+      clientSecret: 'ad29d0665bde6cd353d86ce0fff1094e',
+      callbackURL: `http://localhost:8080/api/login/callback`,
       profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)']
     },
     function(accessToken, refreshToken, profile, done) {
