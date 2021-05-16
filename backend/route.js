@@ -89,14 +89,14 @@ router.get('/removeAll', (req, res) => {
   users.removeAll(function (err) {
     if (err) throw err
   })
-  res.redirect('/getuser')
+  res.redirect('/api/getuser')
 })
 
 router.get('/removeGuest', (req, res) => {
   users.removeGuest(function (err) {
     if (err) throw err
   })
-  res.redirect('/getuser')
+  res.redirect('/api/getuser')
 })
 
 router.get('/test', (req, res) => {

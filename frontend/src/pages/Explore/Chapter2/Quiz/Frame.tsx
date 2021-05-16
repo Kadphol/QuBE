@@ -217,7 +217,7 @@ class F5 extends React.Component<any> {
         let nextRound = valid? round+1: round
         this.setState({select:select,attemp:attemp,round:nextRound})
         if(valid) {
-            console.log('valid')
+            //console.log('valid')
             this.setState({select:[false,false,false,false,false,false,false,false]})
             this.correct.play()
         }

@@ -71,10 +71,12 @@ const linkStyle = {
 export default function MenuChapter(user:Iuser) {
   let { url } = useRouteMatch();
 
-const map = [map1,map2,map3,map4,map5]
+const map = [map1,map2,map3,map4,map5];
+var mapIndex = user.chapter!;
+if(user.chapter! > 4) mapIndex = 4;
 
 const main = {
-  background: `url(${map[user.chapter!]})`,
+  background: `url(${map[mapIndex]})`,
   margin: 'auto',
   padding: 0,
   position: 'relative',

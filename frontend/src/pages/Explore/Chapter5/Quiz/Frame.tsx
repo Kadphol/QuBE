@@ -294,7 +294,7 @@ class F7 extends React.Component<any> {
     wrong = new Audio(sfxWrong)
     validate = () => {
         let { data, attemp } = this.state
-        console.log(data.datasets[0].data, data.datasets[1].data)
+        //console.log(data.datasets[0].data, data.datasets[1].data)
         let valid = JSON.stringify(data.datasets[0].data) === JSON.stringify([4, 8, 16, 32]) &&
             JSON.stringify(data.datasets[1].data) === JSON.stringify([2, 2, 4, 5])
         if (valid) {

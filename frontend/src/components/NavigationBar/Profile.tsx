@@ -27,10 +27,10 @@ export default function Profile({user,setUser}) {
       <React.Fragment>
             <NavDropdown className="ml-auto" title={profileIcon} id="basic-nav-dropdown">
                 <NavDropdown.Item className="ml-auto" >{user.name}</NavDropdown.Item>
-                <NavDropdown.Item className="ml-auto" >Chapter: {user.chapter}</NavDropdown.Item>
-                <NavDropdown.Item className="ml-auto" >Unit: {user.unit}</NavDropdown.Item>
+                {/* <NavDropdown.Item className="ml-auto" >Chapter: {user.chapter}</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" >Unit: {user.unit}</NavDropdown.Item> */}
                 <NavDropdown.Item className="ml-auto" >Score: {user.score}</NavDropdown.Item>
-                <NavDropdown.Item className="ml-auto" onClick={clear}>Clear</NavDropdown.Item>
+                {/* <NavDropdown.Item className="ml-auto" onClick={clear}>Clear</NavDropdown.Item> */}
                 <NavDropdown.Item className="ml-auto" href={`${ENDPOINT.URL}/api/logout`} onClick={logout}>Logout</NavDropdown.Item>
             </NavDropdown>  
       </React.Fragment>
