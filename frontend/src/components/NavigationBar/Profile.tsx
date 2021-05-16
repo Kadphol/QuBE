@@ -29,7 +29,7 @@ export default function Profile({user,setUser}) {
                 <NavDropdown.Item className="ml-auto" >{user.name}</NavDropdown.Item>
                 <NavDropdown.Item className="ml-auto" >Chapter: {user.chapter+1}</NavDropdown.Item>
                 <NavDropdown.Item className="ml-auto" >Unit: {user.unit+1}</NavDropdown.Item>
-                <NavDropdown.Item className="ml-auto" >High Score: {user.score}</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" >High Score: {user.highscore}</NavDropdown.Item>
                 {/* <NavDropdown.Item className="ml-auto" onClick={clear}>Clear</NavDropdown.Item> */}
                 <NavDropdown.Item className="ml-auto" href={`${ENDPOINT.URL}/logout`} onClick={logout}>Logout</NavDropdown.Item>
             </NavDropdown>  

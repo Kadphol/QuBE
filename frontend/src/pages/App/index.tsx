@@ -37,7 +37,7 @@ function App() {
           chapter: res.data.info.chapter,
           unit: res.data.info.unit,
           star: res.data.info.star,
-          score: res.data.info.highscore
+          highscore: res.data.info.highscore
         }));
       }
       if (res.data.preSurvey.degree === 0){changePreSurveyShow(true)}
