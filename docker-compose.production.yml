@@ -10,6 +10,7 @@ services:
     environment: 
       NODE_ENV: production
       MONGO_URI: mongodb://mongo:27017/qube
+      BACKEND_URL: http://68.183.155.239
     depends_on: 
       - mongo
     networks:
