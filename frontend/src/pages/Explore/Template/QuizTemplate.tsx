@@ -34,19 +34,25 @@ class Unit extends React.Component<IProps> {
     lastFrame = this.props.frameComponent.length
     redirect = "/explore/chapter-".concat(this.props.chapter.toString())
 
-    next = () => {
+    next = async() => {
         let nextFrame = this.state.frame + 1
-        let { chapter, star } = this.props.user
+        let { chapter, unit, star } = this.props.user
         if (nextFrame === this.lastFrame-1) {
-            if (this.state.star > star![this.props.chapter-1]) { // if new star is higher, replace
-                star![this.props.chapter - 1] = this.state.star
-                axios.put(`${ENDPOINT.URL}/updateInfo`, { star: star })  // update star
-                this.props.setUser(() => ({ ...this.props.user, star: star }))
-            }
-            if (this.props.chapter > chapter!) {
-                axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: 0, chapter: this.props.chapter })  // clear chapter
-                this.props.setUser(() => ({ ...this.props.user, unit: 0, chapter: this.props.chapter }))
-            }
+            // set star, chapter, unit then update only one time
+            star![this.props.chapter - 1] = this.state.star > star![this.props.chapter-1]? this.state.star : star![this.props.chapter - 1]
+            chapter = this.props.chapter > chapter!? this.props.chapter : chapter
+            unit = this.props.chapter > chapter!? 0 : unit
+            axios.put(`${ENDPOINT.URL}/updateInfo`, { star: star, unit: unit, chapter: chapter })
+            this.props.setUser(() => ({ ...this.props.user, star: star, unit: unit, chapter: chapter }))
+            // if (this.state.star > star![this.props.chapter-1]) { // if new star is higher, replace
+            //     star![this.props.chapter - 1] = this.state.star
+            //     axios.put(`${ENDPOINT.URL}/updateInfo`, { star: star })  // update star
+            //     this.props.setUser(() => ({ ...this.props.user, star: star }))
+            // }
+            // if (this.props.chapter > chapter!) {
+            //     axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: 0, chapter: this.props.chapter })  // clear chapter
+            //     this.props.setUser(() => ({ ...this.props.user, unit: 0, chapter: this.props.chapter }))
+            // }
         }
         this.setState({ frame: nextFrame, clear: false })
     }
