@@ -13,7 +13,10 @@ prod-build:
 	docker-compose -f docker-compose.production.yml build --no-cache
 
 prod-start:
-	docker compose -f docker-compose.production.yml up --build --remove-orphans
+	docker-compose -f docker-compose.production.yml up --build --remove-orphans
+
+prod-stop:
+	docker-compose -f docker-compose.production.yml down --remove-orphans
 
 SSH_STRING:=root@68.183.155.239
 

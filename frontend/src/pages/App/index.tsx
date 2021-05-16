@@ -27,7 +27,7 @@ function App() {
     axios.get(`/fetch`)
     .then(res => {
       //console.log(res.data);
-      if (res.data) {
+      if (res.data !== undefined) {
         setUser( () => ({
           loginStatus: true,
           type: res.data.type,
@@ -41,9 +41,6 @@ function App() {
       }
       if (res.data.preSurvey.degree === 0){changePreSurveyShow(true)}
       if (res.data.postSurvey.satisfy === 0 && res.data.info.highscore !== 0){changePostSurveyShow(true)}
-    })
-    .catch(error =>{
-      console.log(error);
     })
   },[])
 

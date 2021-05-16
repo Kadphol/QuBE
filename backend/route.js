@@ -47,7 +47,6 @@ router.get('/guestlogin', passport.authenticate('dummy'), (req, res) => {
 })
 
 router.put('/updateInfo', (req, res) => {
-  console.log(req);
   users.updateInfo(req.user, req.body.chapter, req.body.unit, req.body.star, req.body.score, () => {
     return res.send("OK")
   })

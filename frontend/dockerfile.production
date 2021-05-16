@@ -1,0 +1,19 @@
+#frontend/Dockerfile
+
+FROM node:12.19-alpine3.9
+
+WORKDIR /app
+
+COPY package.json ./ 
+COPY yarn.lock ./
+
+RUN yarn
+
+COPY . ./
+
+ARG BASE_URL
+ENV REACT_APP_BASE_URL=${BASE_URL}
+
+RUN yarn build
+
+# Second Stage
