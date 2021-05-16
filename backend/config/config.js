@@ -4,7 +4,7 @@ const prod = {
 };
 
 const dev = {
-  URL: 'http://localhost:3000',
+  URL: 'http://68.183.155.239',
 };
 
 module.exports = {
