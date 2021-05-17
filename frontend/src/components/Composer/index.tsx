@@ -84,7 +84,9 @@ interface IProps {
     answerCheck: (string) => void,
     column: number,
     n: number,
-    solution?: number[]
+    solution?: number[],
+    remove?: string[],
+    condition?: string[]
 }
 
 interface IState {
@@ -148,7 +150,16 @@ class Composer extends React.Component<IProps, IState>{
                 result.labels = res.data.measureLabels
                 result.datasets[0].data = res.data.measureValues
                 if (this.props.quiz) {
-                    let valid = JSON.stringify(res.data.stateValues) == JSON.stringify(this.props.solution)
+                    let solutionValid = JSON.stringify(res.data.stateValues) == JSON.stringify(this.props.solution)
+                    let conditionValid = true
+                    let ccgates = this.state.cc.map(el=>el.gate)
+                    if(this.props.condition!){
+                        this.props.condition!.map(cond=>{
+                            if(!ccgates.includes(cond)) conditionValid = false
+                    })
+                    }
+                    
+                    let valid = solutionValid && conditionValid
                     if (valid) this.correct.play()
                     else this.wrong.play()
                     this.props.answerCheck(valid)
@@ -533,7 +544,7 @@ class Composer extends React.Component<IProps, IState>{
 
                         <div className="gates" id={this.props.quiz ? "quiz" : "none"}>
                             {Object.keys(image).map(key => {
-                                return <img src={image[key]} onClick={(e) => this.activate(e, key)} alt="gate" />
+                                return !this.props.remove!.includes(key) && <img src={image[key]} onClick={(e) => this.activate(e, key)} alt="gate" />
                             })}
                         </div>
                         <br />

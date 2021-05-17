@@ -29,6 +29,10 @@
     margin-top: 30px;
   }
 
+  .row.intro {
+    margin-top: 0px;
+  }
+
   .row p {
     font-size: large;
   }

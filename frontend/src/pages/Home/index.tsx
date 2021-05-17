@@ -42,7 +42,7 @@ class Home extends React.Component {
             <div className="col-lg-8">
               <div className="embed-responsive embed-responsive-16by9"> {/*test video*/}
                 <iframe title="video preview" className="embed-responsive-item"
-                frameBorder="1"  
+                frameBorder="0"  
                 src="https://www.youtube.com/embed/5UNB7M3mr54" /> 
               </div>
             </div>
