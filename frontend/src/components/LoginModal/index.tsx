@@ -17,8 +17,8 @@ export default function LoginModal(props) {
   }
 
   const guestLogin = () =>{
-    axios.get(`${ENDPOINT.URL}/api/guestlogin`,{})
-    .then( () => history.push('/'))
+    axios.get(`/guestlogin`)
+    .then( () => window.location.href = ENDPOINT.URL)
   }
   
   return (
@@ -33,11 +33,15 @@ export default function LoginModal(props) {
             <img src={logo} alt="logo in login modal"/>
           </div>
           <h4 className={styles.login}>เข้าสู่ระบบ</h4>
-          <button className={`btn btn-primary ${styles.fblogin}`} onClick={Login}>
+          {/* <button className={`btn btn-primary ${styles.fblogin}`} onClick={Login}>
             เข้าสู่ระบบด้วย Facebook
+          </button> */}
+          <button className={`btn btn-primary ${styles.fblogin}`} onClick={guestLogin}>
+            เข้าสู่ระบบแบบ Guest
           </button>
           <div className={styles.bot}>
-            <a className={styles.line} onClick={guestLogin} href="/">หรือ เข้าสู่ระบบแบบ guest</a>
+            {/* <a className={styles.line} onClick={guestLogin} href="/">หรือ เข้าสู่ระบบแบบ guest</a> */}
+            <a className={styles.line} onClick={guestLogin} href="/"> เข้าสู่ระบบแบบ guest </a>
           </div>
         </Modal.Body>
       </Modal>

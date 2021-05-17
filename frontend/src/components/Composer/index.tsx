@@ -84,7 +84,9 @@ interface IProps {
     answerCheck: (string) => void,
     column: number,
     n: number,
-    solution?: number[]
+    solution?: number[],
+    remove?: string[],
+    condition?: string[]
 }
 
 interface IState {
@@ -148,13 +150,22 @@ class Composer extends React.Component<IProps, IState>{
                 result.labels = res.data.measureLabels
                 result.datasets[0].data = res.data.measureValues
                 if (this.props.quiz) {
-                    let valid = JSON.stringify(res.data.stateValues) == JSON.stringify(this.props.solution)
+                    let solutionValid = JSON.stringify(res.data.stateValues) == JSON.stringify(this.props.solution)
+                    let conditionValid = true
+                    let ccgates = this.state.cc.map(el=>el.gate)
+                    if(this.props.condition!){
+                        this.props.condition!.map(cond=>{
+                            if(!ccgates.includes(cond)) conditionValid = false
+                    })
+                    }
+                    
+                    let valid = solutionValid && conditionValid
                     if (valid) this.correct.play()
                     else this.wrong.play()
                     this.props.answerCheck(valid)
                 }
                 this.setState({ result: result, shot: this.state.selectShot })
-                console.log(result)
+                //console.log(result)
             })
     }
 
@@ -191,7 +202,7 @@ class Composer extends React.Component<IProps, IState>{
         if (index !== -1) cc.splice(index, 1)
 
         // check if replace on multiple gate, then remove whole gate
-        console.log('Number of Multiple gates', multipleGate.length)
+        //console.log('Number of Multiple gates', multipleGate.length)
         let foundIndex = -1
         foundIndex = multipleGate.findIndex((gatesIndex) =>
             gatesIndex.findIndex((gateIndex) => JSON.stringify([line, col]) === JSON.stringify(gateIndex)) !== -1
@@ -199,7 +210,7 @@ class Composer extends React.Component<IProps, IState>{
         //foundIndex return index of set of multipleGate that was replaced
         if (foundIndex !== -1) {
             multipleGate[foundIndex].forEach(gateIndex => {
-                console.log()
+                //console.log()
                 //change every gate placed to empty line
                 newccimg[gateIndex[0]][gateIndex[1]] = 'e'
                 let foundIndex2 = -1
@@ -212,7 +223,7 @@ class Composer extends React.Component<IProps, IState>{
                 })
                 // remove that gate from cc
                 if (foundIndex2 !== -1) cc.splice(foundIndex2, 1)
-                console.log('p', cc)
+                //console.log('p', cc)
             })
             // remove multiplegate that was replaced
             multipleGate.splice(foundIndex, 1)
@@ -242,7 +253,7 @@ class Composer extends React.Component<IProps, IState>{
                     // add line between c and x
                     let i = control1[0] < newPlace[0] ? control1[0] + 1 : newPlace[0] + 1
                     let j = control1[0] > newPlace[0] ? control1[0] : newPlace[0]
-                    console.log(i, j)
+                    //console.log(i, j)
                     while (i < j) {
                         newccimg[i][col] = 'cx3'
                         forPush.push([i, col])
@@ -288,7 +299,7 @@ class Composer extends React.Component<IProps, IState>{
                     // add line between c and x
                     let i = control1[0] < newPlace[0] ? control1[0] + 1 : newPlace[0] + 1
                     let j = control1[0] > newPlace[0] ? control1[0] : newPlace[0]
-                    console.log(i, j)
+                    //console.log(i, j)
                     while (i < j) {
                         newccimg[i][col] = 'cz3'
                         forPush.push([i, col])
@@ -311,7 +322,7 @@ class Composer extends React.Component<IProps, IState>{
         }
 
         else if (this.state.active === 'ccz') {
-            console.log(placingGate.length)
+            //console.log(placingGate.length)
             // place control1
             if (this.state.placingGate.length === 0) {
                 let newPlace = [line, col]
@@ -361,7 +372,7 @@ class Composer extends React.Component<IProps, IState>{
                     // add line between c and x
                     let i = Math.min(control1[0], control2[0], newPlace[0]) + 1
                     let j = Math.max(control1[0], control2[0], newPlace[0])
-                    console.log(i, j)
+                    //console.log(i, j)
                     while (i < j) {
                         if (i !== control1[0] && i !== control2[0] && i !== newPlace[0]) {
                             newccimg[i][col] = 'ccz3'
@@ -388,7 +399,7 @@ class Composer extends React.Component<IProps, IState>{
         }
 
         else if (this.state.active === 'ccx') {
-            console.log(placingGate.length)
+            //console.log(placingGate.length)
             // place control1
             if (this.state.placingGate.length === 0) {
                 let newPlace = [line, col]
@@ -438,7 +449,7 @@ class Composer extends React.Component<IProps, IState>{
                     // add line between c and x
                     let i = Math.min(control1[0], control2[0], newPlace[0]) + 1
                     let j = Math.max(control1[0], control2[0], newPlace[0])
-                    console.log(i, j)
+                    //console.log(i, j)
                     while (i < j) {
                         if (i !== control1[0] && i !== control2[0] && i !== newPlace[0]) {
                             newccimg[i][col] = 'ccx3'
@@ -488,7 +499,7 @@ class Composer extends React.Component<IProps, IState>{
     }
 
     addQubit = () => {
-        console.log(this.state)
+        //console.log(this.state)
         let ccimg = this.state.ccimg
         ccimg.push(this.eLine.slice())
         let n = this.state.n + 1
@@ -511,7 +522,7 @@ class Composer extends React.Component<IProps, IState>{
             })
             multipleGate.splice(removeIndex[i], 1);
         }
-        console.log(multipleGate.length)
+        //console.log(multipleGate.length)
         ccimg.pop()
         let n = this.state.n - 1
         let cc = this.state.cc.filter(el => el.line < n || (Array.isArray(el.line) && !el.line.includes(n)))
@@ -533,7 +544,7 @@ class Composer extends React.Component<IProps, IState>{
 
                         <div className="gates" id={this.props.quiz ? "quiz" : "none"}>
                             {Object.keys(image).map(key => {
-                                return <img src={image[key]} onClick={(e) => this.activate(e, key)} alt="gate" />
+                                return !this.props.remove!.includes(key) && <img src={image[key]} onClick={(e) => this.activate(e, key)} alt="gate" />
                             })}
                         </div>
                         <br />

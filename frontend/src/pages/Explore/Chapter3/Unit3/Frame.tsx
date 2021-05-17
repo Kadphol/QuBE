@@ -284,7 +284,7 @@ class F4 extends React.Component<any,any> {
         var i
         for(i=0;i<remain;i++){
         let rand = (Math.floor(Math.random()*100))%4
-        console.log(data.datasets[0].data,rand)
+        //console.log(data.datasets[0].data,rand)
         data.datasets[0].data[rand]+=1
         }
         this.setState({data:data,count:this.state.count+1})

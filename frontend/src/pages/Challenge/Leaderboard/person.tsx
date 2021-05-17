@@ -46,7 +46,8 @@ const CardRow = styled.div`
 `
 
 const CardSelf = styled(CardRow)`
-position: absolute;
+    position: absolute;
+    top: 20px;
     background: rgba(255,255,255,0.5);
 `
 
@@ -112,6 +113,7 @@ class Person extends React.Component<IProps> {
                 </Scroll>
                 <Main>
                     <CardSelf>
+                            <p style={{ position: "absolute", top: "-50px",left:"0"}}>อันดับของคุณ</p>
                             <p style={{ position: "absolute", left: "30px"}}>{this.props.self.index}</p>
                             <img src={this.props.self.image} alt="profile icon" style={{ position: "absolute", left: "50px"}}/>
                             <p style={{ position: "absolute", left: "155px" }}>{this.props.self.name} </p>
