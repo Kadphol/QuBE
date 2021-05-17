@@ -17,7 +17,7 @@ export default function LoginModal(props) {
   }
 
   const guestLogin = () =>{
-    axios.get(`${ENDPOINT.URL}/api/guestlogin`)
+    axios.get(`/guestlogin`)
     .then( () => window.location.href = ENDPOINT.URL)
   }
   

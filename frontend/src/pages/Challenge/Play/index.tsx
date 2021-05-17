@@ -93,7 +93,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
 
   updateScore = () => {
     if(this.state.totalScore>this.props.user.highscore!){
-    axios.put(`${ENDPOINT.URL}/updateInfo`, { score: this.state.totalScore })
+    axios.put(`/updateInfo`, { score: this.state.totalScore })
     this.props.setUser(()=>({...this.props.user,highscore: this.state.totalScore}))
     }
     // relocation instead of next() for pop-up post survey
