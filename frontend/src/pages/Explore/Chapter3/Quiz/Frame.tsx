@@ -251,10 +251,40 @@ class F4 extends React.Component<any> {
             <Content>
             <img src={item10}
              style={{ position: 'absolute', left: '920px', top: '200px', height:'300px'}} />
-            <img src={this.states[this.state.state]}
+             {
+                 this.state.state === 0 &&
+                 <img src={this.states[0]}
+                 style={{ position: 'absolute', left: '160px', top: '235px', height:'120px'}} />
+             }
+             {
+                 this.state.state === 1 &&
+                 <img src={this.states[1]}
+                 style={{ position: 'absolute', left: '160px', top: '235px', height:'120px'}} />
+             }
+             {
+                 this.state.state === 2 &&
+                 <img src={this.states[2]}
+                 style={{ position: 'absolute', left: '160px', top: '235px', height:'120px'}} />
+             }
+             {
+                 this.state.state === 3 &&
+                 <img src={this.states[3]}
+                 style={{ position: 'absolute', left: '160px', top: '235px', height:'120px'}} />
+             }
+             {
+                 this.state.basis === 0 &&
+                 <img src={this.basises[0]}
+                 style={{ position: 'absolute', left: '315px', top: '235px', height:'120px'}} />
+             }
+             {
+                 this.state.basis === 1 &&
+                 <img src={this.basises[1]}
+                 style={{ position: 'absolute', left: '315px', top: '235px', height:'120px'}} />
+             }
+            {/* <img src={this.states[this.state.state]}
              style={{ position: 'absolute', left: '160px', top: '235px', height:'120px'}} />
              <img src={this.basises[this.state.basis]}
-             style={{ position: 'absolute', left: '315px', top: '235px', height:'120px'}} />
+             style={{ position: 'absolute', left: '315px', top: '235px', height:'120px'}} /> */}
                 <button style={{ position: 'absolute', left: '400px', top: '455px'}} className="btn btn-primary" id="buttonPanel" onMouseDown={() => this.click.play()} onClick={this.run}>วัดค่าคิวบิต</button>
             <div style={{position:'absolute',left:'100px',top:'450px',borderRadius:'10px',border:'solid 1px #A29BFE',padding:'5px 5px 5px',background:'rgb(255,255,255,0.7)'}}>
                             <button className="btn btn-primary btn-shot" id="buttonPanel" disabled >จำนวนช็อต</button>
@@ -280,9 +310,9 @@ class F4 extends React.Component<any> {
             <img src={arrow} style={{ position: 'absolute', left: '183px', top: '360px', height:'70px', transform:'scaleX(-1) rotate(270deg)',cursor:'pointer'}} 
                 onClick={()=>this.setState({state:this.state.state===0?3:this.state.state-1})}  />
                 <img src={arrow} style={{ position: 'absolute', left: '380px', top: '160px', height:'70px',transform:'rotate(90deg)', cursor:'pointer'}} 
-                onClick={()=>this.setState({basis:this.state.basis===0?1:this.state.basis+1})}  />
+                onClick={()=>this.setState({basis:this.state.basis===1?0:this.state.basis+1})}  />
             <img src={arrow} style={{ position: 'absolute', left: '380px', top: '360px', height:'70px', transform:'scaleX(-1) rotate(270deg)',cursor:'pointer'}} 
-                onClick={()=>this.setState({basis:this.state.basis===1?0:this.state.basis-1})}  />
+                onClick={()=>this.setState({basis:this.state.basis===0?1:this.state.basis-1})}  />
             <div style={{ background:'rgb(255,255,255,0.5)', position: 'absolute', left: '570px', top: '230px',}}>
             <Bar
                             data={this.state.data}
