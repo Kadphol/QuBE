@@ -3,6 +3,7 @@ const config = require('./config/config');
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session);
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 const morgan = require('morgan');
 const path = require('path');
 
@@ -11,6 +12,7 @@ console.log(process.env.NODE_ENV);
 console.log(config.ENDPOINT.URL);
 app.listen(config.APP_PORT);
 
+app.use(compression());
 app.use(morgan("tiny"));
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', config.ENDPOINT.URL);
