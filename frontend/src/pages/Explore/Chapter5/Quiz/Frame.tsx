@@ -445,7 +445,7 @@ class F8 extends React.Component<any> {
     }
     check = () => {
         let { count, count2, data } = this.state
-        if (count === 3) {
+        if (count === 2) {
             this.correct.play()
             if (count2 === 0) this.setState({ answer: 6, highest:'6' })
             else if (count2 === 1) this.setState({ answer: 3, highest:'สุ่ม' })
