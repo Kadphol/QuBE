@@ -61,10 +61,7 @@ module.exports.updateInfo = function (user, chapter, unit, star, score, callback
             res.markModified('info.unit');
             res.markModified('info.star');
             res.markModified('info.highscore');
-            res.save(function (err, user) {
-                if(err) return next(err);
-                return res.status(200).send('Sucessfully changed password');
-            });
+            res.save();
         }
     })
 }
