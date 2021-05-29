@@ -6,7 +6,7 @@
 ### การติดตั้ง
 1. ดาวน์โหลด source code ผ่านคำสั่ง
 ```
-git clone https://github.com/Kadphol/QuBEv2.git
+git clone https://github.com/Kadphol/QuBE.git
 ```
 - หรือทำด้วยการคลิกตามรูปด้านล่างจากนั้นให้ทำการคลายซิปไฟล์ <br>
 ![image](https://user-images.githubusercontent.com/46192417/105846409-b9538800-600e-11eb-925c-7cfa450caa4c.png) <br>
