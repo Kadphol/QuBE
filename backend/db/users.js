@@ -6,7 +6,6 @@ mongoose.connect(config.DB, {
     useUnifiedTopology: true,
 });
 
-const db = mongoose.connection
 const schema = mongoose.Schema
 
 const users_schema = new schema({
@@ -56,7 +55,7 @@ module.exports.updateInfo = function (user, chapter, unit, star, score, callback
             if (chapter != undefined && unit != undefined) {
                 res.info.chapter = chapter
                 res.info.unit = unit
-            }
+            } 
             res.markModified('info.star')
             res.save()
         }

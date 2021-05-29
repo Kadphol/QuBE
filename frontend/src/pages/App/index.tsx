@@ -27,7 +27,7 @@ function App() {
   useEffect(()=>{
     axios.get(`${ENDPOINT.URL}/fetch`)
     .then(res => {
-      //console.log(res.data);
+      console.log(res.data);
       if (res.data) {
         setUser( () => ({
           loginStatus: true,
@@ -40,8 +40,8 @@ function App() {
           score: res.data.info.highscore
         }));
       }
-      if (res.data.preSurvey.degree === 0){changePreSurveyShow(true)}
-      if (res.data.postSurvey.satisfy === 0 && res.data.info.highscore !== 0){changePostSurveyShow(true)}
+      //if (res.data.preSurvey.degree === 0){changePreSurveyShow(true)}
+      //if (res.data.postSurvey.satisfy === 0 && res.data.info.highscore !== 0){changePostSurveyShow(true)}
     })
     .catch(error =>{
       console.log(error);

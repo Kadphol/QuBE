@@ -7,6 +7,7 @@ class Music extends React.Component<{ url: string }>{
   state = {
     play: false
   }
+
   audio = new Audio(this.props.url);
 
   componentDidMount() {
