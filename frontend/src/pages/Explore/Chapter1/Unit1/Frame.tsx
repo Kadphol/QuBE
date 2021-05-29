@@ -1,28 +1,28 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import Beck from '../../../../assets/explore/chapter1/Beck.png'
-import BackgroundClose from '../../../../assets/explore/chapter1/BackgroundClose.png'
-import item1 from '../../../../assets/explore/chapter1/unit1/item1.png'
-import item2 from '../../../../assets/explore/chapter1/unit1/item2.png'
-import item3 from '../../../../assets/explore/chapter1/unit1/item3.png'
-import item4 from '../../../../assets/explore/chapter1/unit1/item4.png'
-import item5 from '../../../../assets/explore/chapter1/unit1/item5.png'
-import item6 from '../../../../assets/explore/chapter1/unit1/item6.png'
-import item1alt from '../../../../assets/explore/chapter1/unit1/item1alt.png'
-import item2alt from '../../../../assets/explore/chapter1/unit1/item2alt.png'
-import item3alt from '../../../../assets/explore/chapter1/unit1/item3alt.png'
-import item4alt from '../../../../assets/explore/chapter1/unit1/item4alt.png'
-import item5alt from '../../../../assets/explore/chapter1/unit1/item5alt.png'
-import item6alt from '../../../../assets/explore/chapter1/unit1/item6alt.png'
-import item7 from '../../../../assets/explore/chapter1/unit1/item7.png'
-import item8 from '../../../../assets/explore/chapter1/unit1/item8.png'
-import item9 from '../../../../assets/explore/chapter1/unit1/item9.png'
-import item10 from '../../../../assets/explore/chapter1/unit1/item10.png'
-import item11 from '../../../../assets/explore/chapter1/unit1/item11.png'
-import item12 from '../../../../assets/explore/chapter1/unit1/item12.png'
-const sfxCorrect = require('../../../../assets/sound/sfx_correct.mp3').default
-const sfxWrong = require('../../../../assets/sound/sfx_wrong.mp3').default
-const sfxClick = require('../../../../assets/sound/sfx_click.mp3').default
+import styled, { keyframes } from 'styled-components';
+import Beck from '@assets/explore/chapter1/Beck.png'
+import BackgroundClose from '@assets/explore/chapter1/BackgroundClose.png'
+import item1 from '@assets/explore/chapter1/unit1/item1.png'
+import item2 from '@assets/explore/chapter1/unit1/item2.png'
+import item3 from '@assets/explore/chapter1/unit1/item3.png'
+import item4 from '@assets/explore/chapter1/unit1/item4.png'
+import item5 from '@assets/explore/chapter1/unit1/item5.png'
+import item6 from '@assets/explore/chapter1/unit1/item6.png'
+import item1alt from '@assets/explore/chapter1/unit1/item1alt.png'
+import item2alt from '@assets/explore/chapter1/unit1/item2alt.png'
+import item3alt from '@assets/explore/chapter1/unit1/item3alt.png'
+import item4alt from '@assets/explore/chapter1/unit1/item4alt.png'
+import item5alt from '@assets/explore/chapter1/unit1/item5alt.png'
+import item6alt from '@assets/explore/chapter1/unit1/item6alt.png'
+import item7 from '@assets/explore/chapter1/unit1/item7.png'
+import item8 from '@assets/explore/chapter1/unit1/item8.png'
+import item9 from '@assets/explore/chapter1/unit1/item9.png'
+import item10 from '@assets/explore/chapter1/unit1/item10.png'
+import item11 from '@assets/explore/chapter1/unit1/item11.png'
+import item12 from '@assets/explore/chapter1/unit1/item12.png'
+const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default
+const sfxWrong = require('@assets/sound/sfx_wrong.mp3').default
+const sfxClick = require('@assets/sound/sfx_click.mp3').default
 
 const Main = styled.div`
 width: 100%;
@@ -36,6 +36,7 @@ width: 100%;
 height: 100%;
 margin: auto;
 position: relative;
+overflow: hidden;
 `;
 
 
@@ -47,16 +48,26 @@ const slideFromRight = keyframes`
 0% {transform: translateX(202px)}
 100% {transform: translateX(0px)}
 `
+
 const fade = keyframes`
 0% {opacity: 0%}
 100% {opacity: 100%}
 `
 
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+`
+
 class F0 extends React.Component {
     render() {
         return (<Main>
-            <Content style={{backgroundImage:`url(${BackgroundClose})`}}>
-                <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} />
+            <Content style={{ backgroundImage: `url(${BackgroundClose})` }}>
+                <Fly>
+                    <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="beck" />
+                </Fly>
             </Content>
         </Main>);
     }
@@ -72,7 +83,7 @@ class F1 extends React.Component<any> {
         let { clicked } = this.state
         clicked[item] = true
         this.setState({ clicked: clicked })
-        if (item == 1 || item == 2 || item == 5 ) this.correct.play()
+        if (item == 1 || item == 2 || item == 5) this.correct.play()
         else this.wrong.play()
         if (clicked[1] && clicked[2] && clicked[5]) this.props.next()
     }
@@ -136,7 +147,7 @@ class F4 extends React.Component {
         return (<Main>
             <Content>
                 <SlideIn>
-                <img src={item7} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
+                    <img src={item7} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
                 </SlideIn>
                 <FadeOut>
                     <img src={item8} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '720px' }} />
@@ -153,10 +164,10 @@ class F5 extends React.Component {
         `
         return (<Main>
             <Content>
-            <img src={item7} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
+                <img src={item7} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
                 <FadeIn>
-            <img src={item9} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '130px' }} />
-            <img src={item10} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '830px' }} />
+                    <img src={item9} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '130px' }} />
+                    <img src={item10} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '830px' }} />
                 </FadeIn>
             </Content>
         </Main>);
@@ -183,8 +194,8 @@ class F6 extends React.Component {
                     <img src={item8} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '720px' }} />
                 </FadeIn>
                 <FadeOut>
-            <img src={item9} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '130px' }} />
-            <img src={item10} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '830px' }} />
+                    <img src={item9} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '130px' }} />
+                    <img src={item10} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '830px' }} />
                 </FadeOut>
             </Content>
         </Main>);
@@ -219,10 +230,10 @@ class F8 extends React.Component {
         `
         return (<Main>
             <Content>
-            <img src={item8} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
+                <img src={item8} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '480px' }} />
                 <FadeIn>
-            <img src={item11} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '130px' }} />
-            <img src={item12} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '830px' }} />
+                    <img src={item11} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '130px' }} />
+                    <img src={item12} style={{ position: 'absolute', width: '300px', height: '300px', top: '130px', left: '830px' }} />
                 </FadeIn>
             </Content>
         </Main>);
@@ -232,8 +243,10 @@ class F8 extends React.Component {
 class F9 extends React.Component {
     render() {
         return (<Main>
-            <Content style={{backgroundImage:`url(${BackgroundClose})`}}>
-                <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} />
+            <Content style={{ backgroundImage: `url(${BackgroundClose})` }}>
+                <Fly>
+                    <img src={Beck} style={{ position: 'absolute', left: '400px', top: '120px' }} alt="beck" />
+                </Fly>
             </Content>
         </Main>);
     }

@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { BrowserRouter, BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
-import background from '../../../assets/explore/chapter1/BackgroundUnit.png'
-import Back from '../../../components/Button/back'
-import { userContext } from '../../../context/userContext';
-import Intro from './Intro'
-import Unit1 from './Unit1'
-import Unit2 from './Unit2'
-import Unit3 from './Unit3'
-import Quiz from './Quiz'
-import Music from '../../../components/Button/Music'
-import MenuUnitTemplate from '../MenuUnitTemplate'
+import background from '@assets/explore/chapter1/BackgroundUnit.png'
+import Back from '@components/Button/back'
+import { userContext } from '@context/userContext';
+import Intro from './Intro';
+import Unit1 from './Unit1';
+import Unit2 from './Unit2';
+import Unit3 from './Unit3';
+import Quiz from './Quiz';
+import Music from '@components/Button/Music'
+import MenuUnitTemplate from '../Template/MenuUnitTemplate'
 
-const src = require('../../../assets/sound/bgm1.mp3').default
+const src = require('@assets/sound/bgm1.mp3').default
 
 const main = {
     background: `url(${background})`,
     width: '100%',
     height: '100%',
-    border: '1px solid black',
+    border: '1px solid rbga(0,0,0,0)',
     margin: '0px',
     position: 'relative',
 } as React.CSSProperties
@@ -42,10 +42,16 @@ export default function Chapter1() {
                                         detail={{
                                             chapter: 1,
                                             title: [
-                                                "หน่วยที่ 1: สวัสดี! คอมพิวเตอร์",
-                                                "หน่วยที่ 2: รู้จักกับบิต",
-                                                "หน่วยที่ 3: คอมพิวเตอร์ทำงาน!",
-                                                "บททดสอบ: เผชิญหน้ากับมังกร I"
+                                                "สวัสดี! คอมพิวเตอร์",
+                                                "รู้จักกับบิต",
+                                                "คอมพิวเตอร์ทำงาน!",
+                                                "เผชิญหน้ากับมังกร 1"
+                                            ],
+                                            titleEng: [
+                                                    "Hello world!",
+                                                    "Bit Representation",
+                                                    "Computer System Process",
+                                                    "Beat the dragon I"
                                             ]
                                         }} />
                                 } />

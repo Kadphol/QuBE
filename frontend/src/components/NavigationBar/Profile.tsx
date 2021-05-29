@@ -1,11 +1,10 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom' 
+import { useHistory } from 'react-router-dom'; 
 import { NavDropdown } from 'react-bootstrap';
 
 import './Profile.css';
-import {Iuser} from '../../type.modal'
-import axios from '../../config/axiosconfig'
-import ENDPOINT from '../../config/endpoint'
+import axios from '@config/axiosconfig';
+import ENDPOINT from '@config/endpoint';
 
 export default function Profile({user,setUser}) {
 
@@ -13,6 +12,8 @@ export default function Profile({user,setUser}) {
 
     const clear = () => {
         axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: 0, chapter: 0, score:0}) // clear progress
+        axios.put(`${ENDPOINT.URL}/updatePreSurvey`, { degree: 0, type: false}) // clear pre survey
+        axios.put(`${ENDPOINT.URL}/updatePostSurvey`, { satisfy: 0, comment: null}) // clear post survey
         setUser(()=>({...user,unit: 0, chapter: 0, score:0}))
     }
 
@@ -20,7 +21,7 @@ export default function Profile({user,setUser}) {
         history.push('/')
     }
 
-    const profileIcon = (<img className="circleBorder" src={user.image} width="30" height="30" alt="profile"></img>);
+    const profileIcon = (<img className="circleBorder" src={user.image} width="30" height="30" alt="profile" />);
     
     return (
       <React.Fragment>

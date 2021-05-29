@@ -1,15 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 import { Modal } from 'react-bootstrap';
-import logo from '../../assets/login-logo.png';
+import logo from '@assets/login-logo.png';
 import styles from './LoginModal.module.css';
-import axios from '../../config/axiosconfig'
-import ENDPOINT from '../../config/endpoint'
-
-interface ModalProps {
-  show: boolean;
-  onHide: Function;
-}
+import axios from '@config/axiosconfig'
+import ENDPOINT from '@config/endpoint'
 
 export default function LoginModal(props) {
 

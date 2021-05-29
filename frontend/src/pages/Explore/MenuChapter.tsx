@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {Iuser} from '../../type.modal'
+import {Iuser} from '@src/type.modal'
 import { Link, useRouteMatch } from 'react-router-dom';
-import padlock from '../../assets/explore/padlock.png'
-import useSound from 'use-sound'
+import padlock from '@assets/explore/padlock.png'
+import ComingSoonModal from '@components/ComingSoonModal'
 
-const sfx = require('../../assets/sound/sfx_click.mp3').default
+const sfx = require('@assets/sound/sfx_click.mp3').default
 
 const ulStyle = {
   listStyleType: 'none',
@@ -58,8 +58,10 @@ export default function MenuChapter(user:Iuser) {
   let { url } = useRouteMatch();
 
   const [hover,changeHover] = useState(-1)
+  const [modalShow,changeModalShow] = useState(false)
   const audio = new Audio(sfx)
 
+  const avaliable = 5
 
   const items = [{
     path: url+'/chapter-1/intro',
@@ -69,7 +71,7 @@ export default function MenuChapter(user:Iuser) {
     text: "บทที่ 2: คิวบิต"
   }, {
     path: url+'/chapter-3/intro',
-    text: "บทที่ 3: มาตรวัด"
+    text: "บทที่ 3: การวัด"
   }, {
     path: url+'/chapter-4/intro',
     text: "บทที่ 4: ควอนตัมเกต"
@@ -78,19 +80,29 @@ export default function MenuChapter(user:Iuser) {
     text: "บทที่ 5: อัลกอริทึม"
   }]
   return (
+    <React.Fragment>
+    <ComingSoonModal show={modalShow} onHide={()=>changeModalShow(false)}/> 
     <ul style={ulStyle}>
       {items.map((item,index) => (
        user.chapter! >= index
+       ? index <= avaliable-1
        ? <Link to={item.path} style={linkStyle} >
-       <li key={item.path} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover==index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
+       <li key={index} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
          <p>{item.text}</p>
          </li>
          </Link>
-       :<li key={item.path} className= "mapmenu__item" style={liStyleDisable}>
+       : 
+       <div onClick={()=>changeModalShow(true)} style={{...linkStyle,cursor:'pointer'}} >
+       <li key={index} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleHover:liStyle} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
+         <p>{item.text}</p>
+         </li>
+         </div>
+       :<li key={index} className= "mapmenu__item" style={liStyleDisable}>
        <p style={linkStyle}>{item.text}</p>
-       <img src={padlock} style={padlockStyle}/>
+       <img src={padlock} style={padlockStyle} alt="locking content"/>
        </li>
       ))}
     </ul>
+    </React.Fragment>
   )
 }

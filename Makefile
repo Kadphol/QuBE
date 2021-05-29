@@ -3,3 +3,8 @@ start:
 
 stop:
 	docker-compose down
+
+pause:
+	docker-compose pause
+resume:
+	docker-compose unpause

@@ -1,18 +1,16 @@
-import React, { Fragment } from 'react';
-import { Redirect } from 'react-router-dom'
-import styled from 'styled-components'
-import { userContext } from '../../../context/userContext';
-import instance from '../../../config/axiosconfig'
-import { Row } from 'react-bootstrap';
-import Person from './person'
-import { Iuser } from '../../../type.modal'
-import { ReactComponent as Qubie } from '../../../svg/Qubie-intro.svg';
-import { ReactComponent as Beck } from '../../../svg/Beck.svg';
-import scene from '../../../assets/challenge/leaderboard.png'
-import backIcon from '../../../assets/challenge/backIcon.png'
-import Back from '../../../components/Button/back'
+import React from 'react';
+import styled from 'styled-components';
+import instance from '@config/axiosconfig';
+import Person from './person';
+import { Iuser } from '@src/type.modal';
+import { ReactComponent as Qubie } from '@svg/Qubie-intro.svg';
+import { ReactComponent as Beck } from '@svg/Beck.svg';
+import scene from '@assets/challenge/leaderboard.png';
+import board1 from '@assets/challenge/Board-all.png';
+import board2 from '@assets/challenge/Board-facebook.png';
+import Back from '@components/Button/back';
 
-const sfxClick = require('../../../assets/sound/sfx_click.mp3').default
+const sfxClick = require('@assets/sound/sfx_click.mp3').default;
 
 const Main = styled.div`
 background-image: url(${scene});
@@ -25,32 +23,31 @@ position: relative;
 `
 
 const Board = styled.div`
-background-color: beige;
+background: url(${board1});
 width: 50%;
 height: 95%;
 margin: auto;
 margin-top: 10px;
-border: solid black;
+border-radius: 20px;
 `
 
 const Filter = styled.div`
 width: 500px;
 height: 10%;
-margin: 10px auto;
-padding: 7.5px;
+margin-left: -30px;
+padding-top: 10px;
 position: relative;
 
-button {
+.button {
   float: left;
-  margin-left: 10px;
-}
-
-button:disabled {
-  font-family: 'Kanit',sans-serif;
-  font-size: medium;
-  background-color: #8B90E3;
-  border-color: #A29BFE;
-  color: white;
+  margin-left: 50px;
+  width: 100px;
+  font-family: Kanit;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 40px;
+  color: black;
+  cursor: pointer;
 }
 `
 
@@ -89,20 +86,16 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
     back: false
   };
 
-  click = new Audio(sfxClick)
+  click = new Audio(sfxClick);
 
-  constructor(props) {
-    super(props)
-  }
-
-  switch = (global) => this.setState({ global: global }) 
+  switch = (global) => this.setState({ global: global }) ;
 
   componentDidMount = () => {
     instance.get('http://localhost/getuser')
       .then(res => {
         let sorted = res.data.sort((a, b) => (a.info.highscore > b.info.highscore) ? -1 : ((b.info.highscore > a.info.highscore) ? 1 : 0));
-        let docs = Array()
-        let facebookDocs = Array()
+        let docs = Array();
+        let facebookDocs = Array();
         sorted.forEach((person, index) => {
           let doc = {
             index: index + 1,
@@ -134,15 +127,15 @@ class Leaderboard extends React.Component<{user:Iuser}, IState> {
   render() {
     return (
       <Main>
-        <Board>
+        <Board style={{background:`url(${this.state.global?board1:board2})`}}>
           <Filter>
-            <button className="btn btn-primary" disabled={this.state.global} 
+            <div className="button"
             onMouseDown={()=>this.click.play()}
-            onClick={()=>this.switch(true)}>ทั้งหมด</button>
-            {this.props.user.type=='Facebook'&&
-            <button className="btn btn-primary" disabled={!this.state.global} 
+            onClick={()=>this.switch(true)}>ทั้งหมด</div>
+            {this.props.user.type==='Facebook' &&
+            <div className="button" 
             onMouseDown={()=>this.click.play()}
-            onClick={()=>this.switch(false)}>เพื่อน</button>}
+            onClick={()=>this.switch(false)}>Facebook</div>}
           </Filter>
           {this.state.global
             ? <Person data={this.state.data} self={this.state.self} />

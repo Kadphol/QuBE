@@ -1,13 +1,13 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import logo from '../../assets/brand.png';
+import logo from '@assets/brand.png';
 import LoginModal from '../LoginModal';
 
 import './NavigationBar.scoped.css';
 import Profile from './Profile'
-import {Iuser} from '../../type.modal'
-import { userContext } from '../../context/userContext'
+import {Iuser} from '@src/type.modal'
+import { userContext } from '@context/userContext'
 
 type navState =  {
   modalShow: boolean
@@ -34,7 +34,7 @@ class NavigationBar extends React.Component<Iuser, navState> {
   render() {
     return (
       <div className="Navigation">
-        <LoginModal show={ this.state.modalShow } onHide={this.hideModal}/> {/* close modal*/}
+        <LoginModal show={ this.state.modalShow } onHide={this.hideModal}/>
         <Navbar bg="light">
           <Navbar.Brand href="/">
             <img src={logo} alt="QuBE logo brand for navbar." />
@@ -57,7 +57,7 @@ class NavigationBar extends React.Component<Iuser, navState> {
                 { ({user,setUser}) => 
                   user.loginStatus
                   ?<Profile user={user} setUser={setUser}/>
-                  : <button className="btn btn-primary nav-login-button" onClick={this.showModal}>เข้าสู่ระบบ </button>
+                  : <button className="btn btn-primary nav-login-button" onClick={this.showModal}> เข้าสู่ระบบ </button>
                 }
               </userContext.Consumer>
             </Nav>

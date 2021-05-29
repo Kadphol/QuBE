@@ -1,20 +1,22 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'
-import styled from 'styled-components'
-import dragonIcon from '../../../assets/challenge/dragonIcon.png'
-import { ReactComponent as Dragon } from '../../../svg/Dragon.svg'
-import DialogBox from '../../../components/DialogBox'
-import Composer from '../../../components/Composer'
-import Header from './header'
-import axios from '../../../config/axiosconfig'
-import background from '../../../assets/explore/chapter1/BackgroundQuiz.png'
-import {Iuser} from '../../../type.modal'
-import Question from '../../../components/Question'
-import Music from '../../../components/Button/Music'
+import { Redirect } from 'react-router-dom';
+import styled from 'styled-components';
+import dragonIcon from '@assets/challenge/dragonBlackIcon.png';
+import dragon from '@assets/challenge/dragonBlack.png';
+import DialogBox from '@components/DialogBox';
+import Header from './header';
+import axios from '@config/axiosconfig';
+import background from '@assets/challenge/backgroundQuiz.png';
+import { Iuser } from '@src/type.modal';
+import Music from '@components/Button/Music';
+import {C1,C2,C3} from './ComposerGenerator'
+import {Q1,Q2,Q3} from './QuestionGenerator'
+import ENDPOINT from '@config/endpoint'
 
-const src = require('../../../assets/sound/bgm6.mp3').default
-const sfxCorrect = require('../../../assets/sound/sfx_correct.mp3').default
-const sfxWrong = require('../../../assets/sound/sfx_wrong.mp3').default
+
+const src = require('@assets/sound/bgm6.mp3').default
+const sfxCorrect = require('@assets/sound/sfx_correct.mp3').default
+const sfxWrong = require('@assets/sound/sfx_wrong.mp3').default
 
 const Main = styled.div`
   position: relative;
@@ -33,15 +35,6 @@ const ObjectDiv = styled.div`
   overflow: hidden;
 `
 
-const PlainDiv = styled(ObjectDiv)`
-  padding-top: 10%;
-  font-family: 'Kanit',sans-serif;
-  font-size: 40px;
-  button {
-    font-size: 30px;
-  }
-`
-
 const HeaderDiv = styled.div`  
   width: 100%;
   height: 120px;
@@ -49,10 +42,11 @@ const HeaderDiv = styled.div`
   position: absolute;
 `
 
+
 class Play extends React.Component <{user:Iuser,setUser:any}> {
 
   state = {
-    item: 0,
+    page: 0,
     pass: false,
     score: 0,
     totalScore: 0,
@@ -62,24 +56,32 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
 
   correct = new Audio(sfxCorrect)
   wrong = new Audio(sfxWrong)
+  Composers = [C1,C2,C3]
+  RandomComposer = this.Composers[Math.floor(Math.random()*this.Composers.length)]
+  Questions = [Q1,Q2,Q3]
+  RandomQuestion= this.Questions[Math.floor(Math.random()*this.Questions.length)]
 
   answerCheck = (valid) => {
-    if (valid) {
+    if (valid && !this.state.pass) {
       this.setState({ pass: true, totalScore: this.state.totalScore + this.state.score, nextbutton: true })
     }
     else {
-      this.setState({ penalty: this.state.penalty + 500 })
+      this.setState({ penalty: this.state.penalty + 200 })
     }
   }
 
-  next = () => this.setState({ item: this.state.item + 1, penalty: 0, pass: false, nextbutton: false })
+  next = () => {
+    this.setState({ page: this.state.page + 1, penalty: 0, pass: false, nextbutton: false })
+  }
 
   handleScore = score => this.setState({ score: score })
 
   updateScore = () => {
-    axios.put('http://localhost/updateInfo', { score: this.state.totalScore })
+    axios.put(`${ENDPOINT.URL}/updateInfo`, { score: this.state.totalScore })
     this.props.setUser(()=>({...this.props.user,score: this.state.totalScore}))
-    this.next()
+    // relocation instead of next() for pop-up post survey
+    window.location.href = '/challenge'
+    // this.next()
   }
 
   render() {
@@ -105,72 +107,52 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
           </div>
         </HeaderDiv>
         {
-          this.state.item === 0 &&
+          this.state.page === 0 &&
           <React.Fragment>
             <HeaderDiv>
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={false} />
             </HeaderDiv>
             <ObjectDiv>
-            <Dragon style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
+            <img src={dragon} style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
             </ObjectDiv>
-           <DialogBox showIcon={false} img={dragonIcon} next={this.next} 
-           message="คำถามมีด้วยกันทั้งหมด 2 ข้อ มีเวลาข้อละ 60 วินาที คะแนนจะลดลงตามเวลาที่ใช้ หากตอบผิดจะโดนหัก 500 คะแนนในข้อนั้น"/>
+           <DialogBox showIcon img={dragonIcon} next={this.next} 
+           message="โฮ่! เจ้ากล้ามากนะ ที่มาทำร้ายลูกน้องที่น่ารักของข้าแล้วยังกล้าบุกมาถึงถิ่นของข้าแบบนี้ เห็นทีข้าจะต้องทดสอบความสามารถของเจ้าดูเสียหน่อยแล้ว"/>
           </React.Fragment>
         }
         {
-          this.state.item === 1 &&
+          this.state.page === 1 &&
           <React.Fragment>
             <HeaderDiv>
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={!this.state.pass} />
             </HeaderDiv>
-            <ObjectDiv>
-              <Composer column={6} quiz={true} answerCheck={this.answerCheck} solution={[0, 50, 50, 0]} />
-            </ObjectDiv>
-            {this.state.pass && <DialogBox img={dragonIcon} showNext={this.state.pass} next={this.next}
-            message="ฮึ่ม เจ้าตอบได้ถูกต้อง"/>
-            }
-            {!this.state.pass && <DialogBox img={dragonIcon} showNext={this.state.pass} next={this.next}
-            message="ไหนเจ้าลองต่อวงจรควอนตัม ให้ได้ผลลัพธ์เป็น 01 และ 10 อย่างละ 50% ดูซิ"/>
-            }
+            <this.RandomQuestion next={this.next} pass={this.state.pass} answerCheck={this.answerCheck} />
           </React.Fragment>
         }
         {
-          this.state.item === 2 &&
+          this.state.page === 2 &&
           <React.Fragment>
             <HeaderDiv>
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={!this.state.pass} />
             </HeaderDiv>
-            <ObjectDiv>
-              <Question 
-                answerValidate={this.answerCheck}
-                choices={["|01> และ |10>","|10> และ |11>","|00> และ |11>"]}
-                solution={1} 
-              />
-            </ObjectDiv>
-            {this.state.pass && <DialogBox img={dragonIcon} next={this.state.pass?this.next:null}
-            message="ฮึ่ม เจ้าตอบได้ถูกต้อง"/>
-            }
-            {!this.state.pass && <DialogBox img={dragonIcon} next={this.state.pass?this.next:null}
-            message="ไหนลองบอกผลลัพธ์ที่เป็นไปได้ หากเรานำคิวบิตที่มีค่าเท่ากับ |0> สองตัว ทำการต่อวงจรด้วย H-Gate ที่คิวบิตที่สอง และ X-Gate ที่คิวบิตที่หนึ่ง "/>
-            }
+            <this.RandomComposer next={this.next} pass={this.state.pass} answerCheck={this.answerCheck} />
           </React.Fragment>
         }
         {
-          this.state.item === 3 &&
+          this.state.page === 3 &&
           <React.Fragment>
 
             <HeaderDiv>
               <Header handleScore={this.handleScore} penalty={this.state.penalty} play={false} />
             </HeaderDiv>
             <ObjectDiv>
-            <Dragon style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
+            <img src={dragon} style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
             </ObjectDiv>
-           <DialogBox showIcon={false} img={dragonIcon} next={this.updateScore} 
-           message={"เจ้าผ่านการทดสอบแล้ว ได้คะแนนทั้งหมด ".concat(this.state.totalScore.toString()).concat(" คะแนน")}/>
+           <DialogBox showIcon img={dragonIcon} next={this.updateScore} 
+           message={"ทำได้ไม่เลวนี่ พลังของเจ้าทำคะแนนไปทั้งหมด ".concat(this.state.totalScore.toString()).concat(" คะแนน ยังมีผู้กล้าอีกมากที่เก่งกว่าเจ้า ถ้าคิดว่าเจ้ายังมีของดีมากกว่านี้ก็ลองเข้ามาใหม่ดู")}/>
           </React.Fragment>
         }
-        {this.state.item === 4 &&
-        <Redirect to="/challenge"/>}
+        {/* {this.state.page === 4 &&
+        <Redirect to="/challenge"/>} */}
         <Music url={src} />
       </Main>
     );

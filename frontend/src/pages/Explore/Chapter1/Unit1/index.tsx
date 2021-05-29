@@ -1,9 +1,9 @@
 import React from 'react';
-import background from '../../../../assets/explore/chapter1/BackgroundContent.png';
-import beck from '../../../../assets/explore/chapter1/beckIcon.png';
+import background from '@assets/explore/chapter1/BackgroundContent.png';
+import beck from '@assets/explore/chapter1/beckIcon.png';
 import {F0,F1,F2,F3,F4,F5,F6,F7,F8,F9} from './Frame'
 import { Iuser } from '../../../../type.modal'
-import UnitTemplate from '../../UnitTemplate'
+import UnitTemplate from '../../Template/UnitTemplate'
 
 class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
 
@@ -17,7 +17,7 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                     user={this.props.user}
                     setUser={this.props.setUser}
                     chapter={1}
-                    unit={3}
+                    unit={1}
                     frameComponent={[F0,F1,F2,F3,F4,F5,F6,F7,F8,F9]}
                     interactFrame={[F1]}
                     script={[
@@ -32,12 +32,12 @@ class Unit1 extends React.Component<{ setUser: any, user: Iuser }> {
                         "คราวนี้ มาดูคอมพิวเตอร์อีกประเภทกันบ้างดีกว่า",
                         `คอมพิวเตอร์ประเภทนี้เป็นคอมพิวเตอร์แห่งยุคอนาคต ที่ทีมนักวิจัยกำลังพัฒนา
                         เพื่อให้นำมาใช้จริงได้ เรียกว่า ควอนตัมคอมพิวเตอร์ (Quantum computer)`,
-                        `ควอนตัมคอมพิวเตอร์ ทำงานด้วยทฤษฎีทางควอนตัม โดยใช้คุณสมบัติพิเศษต่าง ๆ 
-                        ของอะตอม ซึ่งทำให้เราค้นพบวิธีการใหม่ ๆ ในแบบที่คอมพิวเตอร์แบบดั้งเดิมทำไม่ได้!`,
+                        `ควอนตัมคอมพิวเตอร์ ทำงานด้วยทฤษฎีทางควอนตัมโดยใช้คุณสมบัติพิเศษต่าง ๆ 
+                        ของอะตอมซึ่งทำให้เราค้นพบวิธีการใหม่ ๆ ในแบบที่คอมพิวเตอร์แบบดั้งเดิมทำไม่ได้!`,
                         `แต่ก่อนจะไปถึงควอนตัมคอมพิวเตอร์ ฉันจะพาเธอไปทำความเข้าใจหลักการทำงาน
                         ของคอมพิวเตอร์แบบดั้งเดิมกันก่อน ไปกันเถอะ`
                     ]}
-                    icon={[beck, beck, beck, beck, beck, beck, beck, beck, beck, beck]}
+                    icon={beck}
                     background={background}
                 />
         );
