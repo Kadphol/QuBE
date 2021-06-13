@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import Beck from '@assets/explore/chapter1/Beck.png'
-import BackgroundClose from '@assets/explore/chapter1/BackgroundClose.png'
+import Beck from '@assets/explore/chapter1/beck.png'
+import BackgroundClose from '@assets/explore/chapter1/backgroundClose.png'
 import item1 from '@assets/explore/chapter1/unit1/item1.png'
 import item2 from '@assets/explore/chapter1/unit1/item2.png'
 import item3 from '@assets/explore/chapter1/unit1/item3.png'

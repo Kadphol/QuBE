@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import styled, {keyframes} from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
-import { ReactComponent as Qubie } from "@svg/Qubie-intro.svg";
-import { ReactComponent as Beck } from "@svg/Beck.svg";
+import Qubie from '@assets/challenge/Qubie.png'
+import king from '@assets/challenge/king.png'
 import dragon from '@assets/challenge/dragonBlack.png'
 import ComingSoonModal from '@components/ComingSoonModal'
 const sfxClick = require("@assets/sound/sfx_click.mp3").default;
@@ -51,6 +52,13 @@ const character = {
   transform: "rotate(5deg)",
 } as React.CSSProperties;
 
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+`
+
 export default function Menu() {
   let { url } = useRouteMatch();
 
@@ -80,7 +88,7 @@ export default function Menu() {
       </div>
 
       <div style={bar}>
-        <Qubie
+      <img src={Qubie}
           className={hover === 1 ? "svg-qubie-intro" : ""}
           style={character}
         />
@@ -98,9 +106,9 @@ export default function Menu() {
       </div>
 
       <div style={bar}> 
-      {/* <Link to={url + "/howtoplay"} style={linkStyle}> */}
+      <Link to={url + "/howtoplay"} style={linkStyle}>
       <ComingSoonModal show={modalShow} onHide={()=>changeModalShow(false)}/>
-      <div onClick={()=>changeModalShow(true)} style={{...linkStyle,cursor:'pointer'}}>
+      {/* <div onClick={()=>changeModalShow(true)} style={{...linkStyle,cursor:'pointer'}}> */}
         <div
           className="mapmenu__item"
           style={hover === 2 ? liStyleHover : liStyle}
@@ -110,9 +118,9 @@ export default function Menu() {
         >
             วิธีการเล่น
         </div>
-        </div>
-        {/* </Link> */}
-        <Beck
+        {/* </div> */}
+        </Link>
+        <img src={king}
           className={hover === 2 ? "svg-qubie-intro" : ""}
           style={character}
         />

@@ -28,6 +28,11 @@
     margin-left: 10px;
 }
 
+.rows {
+    padding: 0;
+    margin: 0;
+}
+
 .rows img {
     height: 5%; 
     width: 5%; 

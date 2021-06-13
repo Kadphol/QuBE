@@ -39,7 +39,8 @@ interface IProps {
 class Choice extends React.Component<IProps> {
 
     state = {
-        barShow: [bar, bar, bar, bar]
+        barShow: [bar, bar, bar, bar],
+        delay: false
     }
 
     click = new Audio(sfxClick)
@@ -56,14 +57,20 @@ class Choice extends React.Component<IProps> {
 
     select = (selectItem) => {
         let valid = selectItem === this.props.solution
-        if (this.state.barShow[selectItem] === bar) {
+        if(!this.state.delay){
+            if (this.state.barShow[selectItem] === bar) {
             let barShow = this.state.barShow
             barShow[selectItem] = valid ? barCorrect : barWrong
             let sfx = valid ? this.correct : this.wrong
             sfx.play()
-            this.setState({ barShow: barShow })
+            this.setState({ barShow: barShow, delay:true })
             this.props.answerValidate(valid)
+            setTimeout(()=>{
+                this.setState({delay:false})
+            },1000)
         }
+        }
+        
     }
 
     componentWillReceiveProps = () => {

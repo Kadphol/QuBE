@@ -18,6 +18,7 @@ const TimerDiv = styled.div`
 interface IProps {
     play: boolean;
     penalty: number;
+    page: number;
     handleScore:(number)=>void;
 }
 
@@ -70,6 +71,14 @@ class Quiz extends React.Component <IProps>{
                 <div style={{marginTop: '-15px',fontSize: '20px'}}>
                 {"คะแนน"}
                 </div>
+                {   
+                    this.props.page <=4
+                    ? <div style={{marginTop: '-60px',marginLeft:'400px',fontSize: '35px',width:'200px'}}>
+                    {"ข้อที่ "}{this.props.page}{"/4"}
+                    </div>
+                    : null
+                }
+                
                 </div>
             </Main>
         );

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
-import background from '@assets/explore/chapter2/BackgroundUnit.png'
-import Back from '@components/Button/back'
-import { userContext } from '@context/userContext';
+import background from '../../../assets/explore/chapter2/backgroundUnit.png'
+import Back from '../../../components/Button/back'
+import { userContext } from '../../../context/userContext';
 import Intro from './Intro'
 import Unit1 from './Unit1'
 import Unit2 from './Unit2'

@@ -1,5 +1,5 @@
 import React from 'react';
-import background from '@assets/explore/chapter2/BackgroundContent.png';
+import background from '@assets/explore/chapter2/backgroundContent.png';
 import bew from '@assets/explore/chapter2/bewIcon.png';
 import {F0,F1,F2,F3,F4,F5} from './Frame'
 import { Iuser } from '../../../../type.modal'
