@@ -3,7 +3,7 @@ import instance from '@config/axiosconfig';
 import Person from './person';
 import { Iuser } from '@src/type.modal';
 import Qubie from '@assets/explore/Qubie.png'
-import beck from '@assets/explore/chapter1/beck.png'
+import beck from '@assets/explore/chapter1/Beck.png'
 import styled, { keyframes } from 'styled-components';
 import scene from '@assets/challenge/leaderboard.png';
 import board1 from '@assets/challenge/Board-all.png';

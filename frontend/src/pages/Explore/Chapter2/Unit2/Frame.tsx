@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import Bew from '@assets/explore/chapter2/bew.png'
-import backgroundClose from '@assets/explore/chapter2/backgroundClose.png'
+import Bew from '@assets/explore/chapter2/Bew.png'
+import backgroundClose from '@assets/explore/chapter2/BackgroundClose.png'
 import qv0 from '@assets/explore/chapter2/unit2/qv0.png'
 import qv1 from '@assets/explore/chapter2/unit2/qv1.png'
 import qvp from '@assets/explore/chapter2/unit2/qv+.png'
