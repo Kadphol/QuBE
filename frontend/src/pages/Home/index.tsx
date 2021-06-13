@@ -43,13 +43,13 @@ class Home extends React.Component {
               <div className="embed-responsive embed-responsive-16by9"> {/*test video*/}
                 <iframe title="video preview" className="embed-responsive-item"
                 frameBorder="0"  
-                src="https://www.youtube.com/embed/K4TOrB7at0Y" /> 
+                src="https://www.youtube.com/embed/5UNB7M3mr54" /> 
               </div>
             </div>
           </div>
 
           <div className="row wave">
-            <div className="row subrow">
+            <div className="row subrow rowwhy">
               <div className="col-lg-1"></div>
               <div className="col-lg-6 why">
                 <h2>ทำไมต้องควอนตัม</h2>
@@ -62,10 +62,10 @@ class Home extends React.Component {
                 </p>
               </div>
               <div className="col-lg-4">
-                {/* <img src={item1} alt="column 1" className="mx-auto img-fluid imagewhy"/> */}
+                <img src={item1} alt="column 1" className="mx-auto img-fluid imagewhy"/>
               </div>
             </div>
-            <div className="row subrow justify-content-end">
+            <div className="row subrow rowwhat justify-content-end">
               <div className="col-lg-5">
                 <img src={item2} alt="column 2" className="mx-auto img-fluid"/>
               </div>
@@ -86,7 +86,7 @@ class Home extends React.Component {
               <div className="head">
                 <h1>QuBE มีอะไรบ้าง</h1>
               </div>
-              <div className="feature-box feature-explore">
+              <div className="feature-box">
                 <h2>การผจญภัยในโลกควอนตัม</h2>
                 <p>
                   การผจญภัยไปกับเหล่านางฟ้าในดินแดนอันแสนพิศวง 
@@ -116,7 +116,7 @@ class Home extends React.Component {
         </div>
 
         <footer className="footer ml-0 mr-0">
-            <img src={footer} alt="footer" className="img-fluid"/>
+            <img src={footer} alt="footer" className="img-fluid" style={{width:'100%',height:'100%'}}/>
         </footer>
       </div>
 

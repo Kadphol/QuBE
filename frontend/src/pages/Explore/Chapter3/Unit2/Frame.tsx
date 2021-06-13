@@ -263,7 +263,7 @@ class F4 extends React.Component {
                 </Slide>
                 <Fade>
             <div style={{position:'absolute',left:'360px',top:'430px',borderRadius:'10px',border:'solid 1px #A29BFE',padding:'5px 5px 5px',background:'rgb(255,255,255,0.7)'}}>
-                            <button className="btn btn-primary btn-shot" id="buttonPanel" disabled >จำนวนช็อต</button>
+                            <button className="btn btn-primary btn-shot" id="buttonPanel" disabled style={{width:'100px'}}>จำนวนช็อต</button>
                             <div className="radioPanel">
                             {/* <label className="shot">จำนวนช็อต</label> */}
                                 <div className="form-check form-check-inline">
@@ -330,7 +330,7 @@ class F5 extends React.Component {
              style={{ position: 'absolute', left: '240px', top: '250px', height:'150px'}} />
                 <button style={{ position: 'absolute', left: '510px', top: '435px'}} className="btn btn-primary" id="buttonPanel" onMouseDown={() => this.click.play()} onClick={this.run}>วัดค่าคิวบิต</button>
             <div style={{position:'absolute',left:'200px',top:'430px',borderRadius:'10px',border:'solid 1px #A29BFE',padding:'5px 5px 5px',background:'rgb(255,255,255,0.7)'}}>
-                            <button className="btn btn-primary btn-shot" id="buttonPanel" disabled >จำนวนช็อต</button>
+                            <button className="btn btn-primary btn-shot" id="buttonPanel" disabled style={{width:'100px'}}>จำนวนช็อต</button>
                             <div className="radioPanel">
                             {/* <label className="shot">จำนวนช็อต</label> */}
                                 <div className="form-check form-check-inline">

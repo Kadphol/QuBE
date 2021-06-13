@@ -47,8 +47,8 @@ import './Composer.scoped.css';
 import axios from '@config/axiosconfig';
 import { Row } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
-import {ReactComponent as Qubie} from '@svg/Qubie-intro.svg';
-import styled from 'styled-components';
+import Qubie from '@assets/explore/Qubie.png'
+import styled, { keyframes } from 'styled-components';
 
 
 const sfxClick = require('@assets/sound/sfx_click.mp3').default
@@ -68,26 +68,25 @@ const qubit: { [id: number]: string; } = { 0: q1, 1: q2, 2: q3, 3: q4, 4: q5, }
 
 const QubieWrapper = styled.div`
     transform: scaleX(-1);
-    height: 200px;
-    width: 200px;
-    right: 50px;
-    bottom: 100px;
-    margin-left: 20px;
-    * {
-        position: absolute;
-        right: 0;
-        bottom: 0px;
-        width: 100%;
-        height: 100%;
-    }
+    margin-top: -60px;
+    margin-left: 50px;
 `;
+
+const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+`
 
 interface IProps {
     quiz: boolean,
     answerCheck: (string) => void,
     column: number,
     n: number,
-    solution?: number[]
+    solution?: number[],
+    remove?: string[],
+    condition?: string[]
 }
 
 interface IState {
@@ -123,7 +122,7 @@ class Composer extends React.Component<IProps, IState>{
         placingGate: Array(),
         multipleGate: Array(),
         n: this.props.n,
-        ccimg: [this.eLine.slice(),this.eLine.slice()],
+        ccimg: [this.eLine.slice(), this.eLine.slice()],
         cc: Array(),
         selectShot: 100,
         shot: 100,
@@ -151,7 +150,16 @@ class Composer extends React.Component<IProps, IState>{
                 result.labels = res.data.measureLabels
                 result.datasets[0].data = res.data.measureValues
                 if (this.props.quiz) {
-                    let valid = JSON.stringify(res.data.stateValues) == JSON.stringify(this.props.solution)
+                    let solutionValid = JSON.stringify(res.data.stateValues) == JSON.stringify(this.props.solution)
+                    let conditionValid = true
+                    let ccgates = this.state.cc.map(el=>el.gate)
+                    if(this.props.condition!){
+                        this.props.condition!.map(cond=>{
+                            if(!ccgates.includes(cond)) conditionValid = false
+                    })
+                    }
+                    
+                    let valid = solutionValid && conditionValid
                     if (valid) this.correct.play()
                     else this.wrong.play()
                     this.props.answerCheck(valid)
@@ -265,7 +273,56 @@ class Composer extends React.Component<IProps, IState>{
                     this.setState({ ccimg: newccimg, placingGate: Array() })
                 }
             }
+            // place x
+            else if (this.state.placingGate.length === 2) {
+                let newPlace: Array<number> = [line, col]
+                let control1: Array<number> = placingGate[0]
+                let control2: Array<number> = placingGate[1]
+                let valid = col === control1[1] && line !== control1[0] && line !== control2[0]
+                if (valid) {
+                    placingGate.push(newPlace)
 
+                    // find index of top, med, bottom line
+                    let top: number = Math.min(control1[0], control2[0], newPlace[0])
+                    let bottom: number = Math.max(control1[0], control2[0], newPlace[0])
+                    let med: number = [control1[0], control2[0], newPlace[0]].find(el => el !== top && el !== bottom)!
+
+                    if (top === newPlace[0]) newccimg[top][col] = 'ccz0'
+                    else newccimg[top][col] = 'ccz2'
+                    if (bottom === newPlace[0]) newccimg[bottom][col] = 'ccz1'
+                    else newccimg[bottom][col] = 'ccz4'
+                    if (med === newPlace[0]) newccimg[med][col] = 'ccz00'
+                    else newccimg[med][col] = 'ccz5'
+
+                    let forPush = [[control1[0], control1[1]], [control2[0], control2[1]], [line, col]]
+
+                    // add line between c and x
+                    let i = Math.min(control1[0], control2[0], newPlace[0]) + 1
+                    let j = Math.max(control1[0], control2[0], newPlace[0])
+                    console.log(i, j)
+                    while (i < j) {
+                        if (i !== control1[0] && i !== control2[0] && i !== newPlace[0]) {
+                            newccimg[i][col] = 'ccz3'
+                            forPush.push([i, col])
+                        }
+                        i += 1
+                    }
+
+                    multipleGate.push(forPush)
+                    const newgate = {
+                        gate: 'ccz',
+                        line: [control1[0], control2[0], newPlace[0]],
+                        col: newPlace[1]
+                    }
+                    cc = [...cc, newgate] // cannot apply ccx gate
+                    this.setState({ ccimg: newccimg, cc: cc, placingGate: Array(), multipleGate: multipleGate }) // clear Placing Gate, Add Miltiple Gate
+                }
+                else { // remove all ccx before
+                    newccimg[control1[0]][control1[1]] = 'e'
+                    newccimg[control2[0]][control2[1]] = 'e'
+                    this.setState({ ccimg: newccimg, placingGate: Array() })
+                }
+            }
         }
 
         else if (this.state.active === 'cz') {
@@ -533,21 +590,21 @@ class Composer extends React.Component<IProps, IState>{
 
                 <div style={{ display: 'block' }}>
                     <div>
-                        
-                <div className="gates" id={this.props.quiz?"quiz":"none"}>
-                    {Object.keys(image).map(key => {
-                        return <img src={image[key]} onClick={(e) => this.activate(e, key)} alt="gate"/>
-                    })}
-                </div>
-                <br />
-                        {this.state.ccimg.map((line, l:number) => {
-                            return ( 
-                                <Row className="rows" id={this.props.quiz?"quiz":"none"}>
-                                    <img src={qubit[l]} id="first" alt="qubit"/>
+
+                        <div className="gates" id={this.props.quiz ? "quiz" : "none"}>
+                            {Object.keys(image).map(key => {
+                                return !this.props.remove!.includes(key) && <img src={image[key]} onClick={(e) => this.activate(e, key)} alt="gate" />
+                            })}
+                        </div>
+                        <br />
+                        {this.state.ccimg.map((line, l: number) => {
+                            return (
+                                <Row className="rows" id={this.props.quiz ? "quiz" : "none"}>
+                                    <img src={qubit[l]} id="first" alt="qubit" />
                                     {line.map((col: string, c: number) => {
-                                        return <img id="middle" src={imageInuse[col]} onClick={() => this.place(l, c)} alt="line"/>
+                                        return <img id="middle" src={imageInuse[col]} onClick={() => this.place(l, c)} alt="line" />
                                     })}
-                                    <img src={m} id="last" alt="measure"/>
+                                    <img src={m} id="last" alt="measure" />
                                 </Row>
                             )
                         })}
@@ -555,23 +612,23 @@ class Composer extends React.Component<IProps, IState>{
                     </div>
 
 
-                    <div style={{position:'relative'}} className="buttonPanel" id={this.props.quiz?"quiz":"none"}>
+                    <div style={{ position: 'relative' }} className="buttonPanel" id={this.props.quiz ? "quiz" : "none"}>
                         <button className="btn btn-primary" id="buttonPanel" onMouseDown={() => this.click.play()} onClick={this.run}>วัดค่าคิวบิต</button>
                         <button className="btn btn-primary" id="buttonPanel" onMouseDown={() => this.click.play()} onClick={this.reset}>รีเซ็ต</button>
                         {!this.props.quiz && <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n > 4} onMouseDown={() => this.click.play()} onClick={this.addQubit}>เพิ่มคิวบิต</button>}
                         {!this.props.quiz && <button className="btn btn-primary" id="buttonPanel" disabled={this.state.n < 2} onMouseDown={() => this.click.play()} onClick={this.removeQubit}>ลดคิวบิต</button>}
-                        
-                        <div style={{float:'left', margin:'-5px 20px',borderRadius:'10px',border:'solid 1px #A29BFE',padding:'5px 5px 5px'}}>
+
+                        <div style={{ float: 'left', margin: '-5px 20px', borderRadius: '10px', border: 'solid 1px #A29BFE', padding: '5px 5px 5px' }}>
                             <button className="btn btn-primary btn-shot" id="buttonPanel" disabled >จำนวนช็อต</button>
                             <div className="radioPanel">
-                            {/* <label className="shot">จำนวนช็อต</label> */}
+                                {/* <label className="shot">จำนวนช็อต</label> */}
                                 <div className="form-check form-check-inline">
-                                    <input type="radio" onChange={() => this.shotChange(1)} name="inlineRadioOptions"/>
+                                    <input type="radio" onChange={() => this.shotChange(1)} name="inlineRadioOptions" />
                                     <span className="checkmark"></span>
                                     <label className="form-check-label" >{1}</label>
                                 </div>
                                 <div className="form-check form-check-inline">
-                                    <input type="radio" onChange={() => this.shotChange(100)} checked={this.state.selectShot === 100} name="inlineRadioOptions"/>
+                                    <input type="radio" onChange={() => this.shotChange(100)} checked={this.state.selectShot === 100} name="inlineRadioOptions" />
                                     <label className="form-check-label"  >{100}</label>
                                 </div>
                                 <div className="form-check form-check-inline">
@@ -582,10 +639,13 @@ class Composer extends React.Component<IProps, IState>{
                         </div>
                     </div>
                     <div style={{
-                        display: 'flex',
+                        display: this.props.quiz ? 'flex' : 'flex',
+                        background: 'rgb(255,255,255,0.8)',
+                        width: this.props.quiz ? '500px' : '750px',
+                        height: this.props.quiz ? '130px' : '275px',
                         position: 'relative',
                         marginTop: '80px',
-                        marginLeft: this.props.quiz ? '250px' : '0'
+                        marginLeft: this.props.quiz ? '270px' : '0'
                     }}>
                         <Bar
                             data={this.state.result}
@@ -616,7 +676,9 @@ class Composer extends React.Component<IProps, IState>{
                         />
                         {!this.props.quiz &&
                             <QubieWrapper>
-                                <Qubie className="svg-qubie-intro" />
+                                <Fly>
+                                    <img src={Qubie} style={{ position: 'static', height: '300px' }} />
+                                </Fly>
                             </QubieWrapper>
                         }
                     </div>
