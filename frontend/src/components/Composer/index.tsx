@@ -152,13 +152,13 @@ class Composer extends React.Component<IProps, IState>{
                 if (this.props.quiz) {
                     let solutionValid = JSON.stringify(res.data.stateValues) == JSON.stringify(this.props.solution)
                     let conditionValid = true
-                    let ccgates = this.state.cc.map(el=>el.gate)
-                    if(this.props.condition!){
-                        this.props.condition!.map(cond=>{
-                            if(!ccgates.includes(cond)) conditionValid = false
-                    })
+                    let ccgates = this.state.cc.map(el => el.gate)
+                    if (this.props.condition!) {
+                        this.props.condition!.map(cond => {
+                            if (!ccgates.includes(cond)) conditionValid = false
+                        })
                     }
-                    
+
                     let valid = solutionValid && conditionValid
                     if (valid) this.correct.play()
                     else this.wrong.play()
@@ -273,55 +273,54 @@ class Composer extends React.Component<IProps, IState>{
                     this.setState({ ccimg: newccimg, placingGate: Array() })
                 }
             }
-            // place x
-            else if (this.state.placingGate.length === 2) {
-                let newPlace: Array<number> = [line, col]
-                let control1: Array<number> = placingGate[0]
-                let control2: Array<number> = placingGate[1]
-                let valid = col === control1[1] && line !== control1[0] && line !== control2[0]
-                if (valid) {
-                    placingGate.push(newPlace)
+        }
+        else if (this.state.placingGate.length === 2) {
+            let newPlace: Array<number> = [line, col]
+            let control1: Array<number> = placingGate[0]
+            let control2: Array<number> = placingGate[1]
+            let valid = col === control1[1] && line !== control1[0] && line !== control2[0]
+            if (valid) {
+                placingGate.push(newPlace)
 
-                    // find index of top, med, bottom line
-                    let top: number = Math.min(control1[0], control2[0], newPlace[0])
-                    let bottom: number = Math.max(control1[0], control2[0], newPlace[0])
-                    let med: number = [control1[0], control2[0], newPlace[0]].find(el => el !== top && el !== bottom)!
+                // find index of top, med, bottom line
+                let top: number = Math.min(control1[0], control2[0], newPlace[0])
+                let bottom: number = Math.max(control1[0], control2[0], newPlace[0])
+                let med: number = [control1[0], control2[0], newPlace[0]].find(el => el !== top && el !== bottom)!
 
-                    if (top === newPlace[0]) newccimg[top][col] = 'ccz0'
-                    else newccimg[top][col] = 'ccz2'
-                    if (bottom === newPlace[0]) newccimg[bottom][col] = 'ccz1'
-                    else newccimg[bottom][col] = 'ccz4'
-                    if (med === newPlace[0]) newccimg[med][col] = 'ccz00'
-                    else newccimg[med][col] = 'ccz5'
+                if (top === newPlace[0]) newccimg[top][col] = 'ccz0'
+                else newccimg[top][col] = 'ccz2'
+                if (bottom === newPlace[0]) newccimg[bottom][col] = 'ccz1'
+                else newccimg[bottom][col] = 'ccz4'
+                if (med === newPlace[0]) newccimg[med][col] = 'ccz00'
+                else newccimg[med][col] = 'ccz5'
 
-                    let forPush = [[control1[0], control1[1]], [control2[0], control2[1]], [line, col]]
+                let forPush = [[control1[0], control1[1]], [control2[0], control2[1]], [line, col]]
 
-                    // add line between c and x
-                    let i = Math.min(control1[0], control2[0], newPlace[0]) + 1
-                    let j = Math.max(control1[0], control2[0], newPlace[0])
-                    console.log(i, j)
-                    while (i < j) {
-                        if (i !== control1[0] && i !== control2[0] && i !== newPlace[0]) {
-                            newccimg[i][col] = 'ccz3'
-                            forPush.push([i, col])
-                        }
-                        i += 1
+                // add line between c and x
+                let i = Math.min(control1[0], control2[0], newPlace[0]) + 1
+                let j = Math.max(control1[0], control2[0], newPlace[0])
+                console.log(i, j)
+                while (i < j) {
+                    if (i !== control1[0] && i !== control2[0] && i !== newPlace[0]) {
+                        newccimg[i][col] = 'ccz3'
+                        forPush.push([i, col])
                     }
+                    i += 1
+                }
 
-                    multipleGate.push(forPush)
-                    const newgate = {
-                        gate: 'ccz',
-                        line: [control1[0], control2[0], newPlace[0]],
-                        col: newPlace[1]
-                    }
-                    cc = [...cc, newgate] // cannot apply ccx gate
-                    this.setState({ ccimg: newccimg, cc: cc, placingGate: Array(), multipleGate: multipleGate }) // clear Placing Gate, Add Miltiple Gate
+                multipleGate.push(forPush)
+                const newgate = {
+                    gate: 'ccz',
+                    line: [control1[0], control2[0], newPlace[0]],
+                    col: newPlace[1]
                 }
-                else { // remove all ccx before
-                    newccimg[control1[0]][control1[1]] = 'e'
-                    newccimg[control2[0]][control2[1]] = 'e'
-                    this.setState({ ccimg: newccimg, placingGate: Array() })
-                }
+                cc = [...cc, newgate] // cannot apply ccx gate
+                this.setState({ ccimg: newccimg, cc: cc, placingGate: Array(), multipleGate: multipleGate }) // clear Placing Gate, Add Miltiple Gate
+            }
+            else { // remove all ccx before
+                newccimg[control1[0]][control1[1]] = 'e'
+                newccimg[control2[0]][control2[1]] = 'e'
+                this.setState({ ccimg: newccimg, placingGate: Array() })
             }
         }
 
