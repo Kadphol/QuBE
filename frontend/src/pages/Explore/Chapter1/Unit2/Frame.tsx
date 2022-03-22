@@ -373,7 +373,7 @@ class F8 extends React.Component {
           />
           {
             this.state.switches.map((item, index) => (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <img src={item ? switchOn : switchOff} style={{ position: 'absolute', width: "150px", height: "75px", top: `${this.switchTop[index]}px`, left: '480px' }} alt="light switch" />
                 <img src={line2} style={{ position: 'absolute', width: '150px', height: '5px', top: `${this.lineTop[index]}px`, filter: item ? 'none' : 'grayscale(1)', left: '630px' }} alt="power line" />
                 <img src={item ? bit1 : bit0} style={{ position: 'absolute', width: '100px', height: '100px', top: `${this.bitTop[index]}px`, left: '760px' }} alt="bit" />
@@ -433,7 +433,7 @@ class F9 extends React.Component<any> {
           />
           {
             this.state.switches.map((item, index) => (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <img src={item ? switchOn : switchOff} style={{ position: 'absolute', width: "150px", height: "75px", top: `${this.switchTop[index]}px`, left: '480px', cursor: 'pointer', zIndex: 2 }}
                   onMouseDown={() => this.click.play()}
                   onClick={() => this.handleClick(index)}
@@ -538,7 +538,7 @@ class F11 extends React.Component {
           />
           {
             this.state.switches.map((item, index) => (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <img src={item ? switchOn : switchOff} style={{ position: 'absolute', width: "150px", height: "75px", top: `${this.switchTop[index]}px`, left: '480px' }} alt="light switch" />
                 <img src={line2} style={{ position: 'absolute', width: '150px', height: '5px', top: `${this.lineTop[index]}px`, filter: item ? 'none' : 'grayscale(1)', left: '630px' }} alt="power line" />
                 <img src={item ? bit1 : bit0} style={{ position: 'absolute', width: '100px', height: '100px', top: `${this.bitTop[index]}px`, left: '760px' }} alt="bit" />

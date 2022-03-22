@@ -110,7 +110,7 @@ const main = {
       {items.map((item,index) => (
        user.chapter! >= index
        ? index <= avaliable-1
-       ? <Link to={item.path} style={linkStyle} >
+       ? <Link to={item.path} style={linkStyle} key={index}>
        <li key={item.path} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleListHover[index]:liStyleList[index]} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
          <p>{item.text}</p>
          </li>

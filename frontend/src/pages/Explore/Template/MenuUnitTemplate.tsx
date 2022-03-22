@@ -158,7 +158,7 @@ export default function MenuUnit(props: IProps) {
       {items.map((item, index) => (
         props.user.chapter! > props.detail.chapter - 1 || (props.user.chapter! === props.detail.chapter - 1 && props.user.unit! >= index)
           // unlocked
-          ? <div onClick={() => openModal(index)} onMouseDown={() => audio.play()} style={cards[index]}>
+          ? <div onClick={() => openModal(index)} onMouseDown={() => audio.play()} style={cards[index]} key={index}>
             <div style={{ position: 'relative' }}>
               <div style={
                 props.user.chapter === props.detail.chapter - 1 && props.user.unit === index

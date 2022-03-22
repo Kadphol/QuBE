@@ -60,7 +60,7 @@ class Unit extends React.Component <IProps> {
         <Main style={{ background: `url(${background})` }}>
                 {Component.map((Item,index)=>(
                     frame === index &&
-                    <React.Fragment>
+                    <React.Fragment key={index}>
                         <Item next={this.next}/>
                         <Dialog showNext={interactFrame.includes(Item)?false:true} next={this.next} img={icon} message={script[index]} />
                         <Back path={menuPath} />
