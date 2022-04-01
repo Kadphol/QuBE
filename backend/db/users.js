@@ -56,8 +56,11 @@ module.exports.updateInfo = function (user, chapter, unit, star, score, callback
                 res.info.chapter = chapter
                 res.info.unit = unit
             } 
-            res.markModified('info.star')
-            res.save()
+            res.markModified('info.chapter');
+            res.markModified('info.unit');
+            res.markModified('info.star');
+            res.markModified('info.highscore');
+            res.save();
         }
     })
 }
