@@ -1,28 +1,19 @@
 /\* TEAM \*/
  Project Lead (Front-end Developer): Kadphol Lenglerdphol
- Contact: kadphol.len@mail.kmutt.ac.th
- From: Thailand
 
  UI/UX Designer: Thanaporn Yankomut 
- Contact: thanaporn.fk@mail.kmutt.ac.th
- From: Thailand
 
  Back-end Developer: Worapat Tubtimdee
- Contact: worapat.2542@mail.kmutt.ac.th
- From: Thailand
 
 /\* ACKNOWLEDGEMENT \*/
 Advior: Dr.Unchalisa Taetragool
-Contact: unchalisa.tae@mail.kmutt.ac.th
 
 Character: Irin Yooktajarong
-Contact: irinirinnn@gmail.com
 
 Video Voice Actor: Phuraefa Rattanakun
-Contact: 
 
 /\* SITE \*/
- Last update: 16 May 2021
+ Last update: 1 Apr 2022
  Language: Thai
  Doctype: HTML5
  IDE: VSCode
