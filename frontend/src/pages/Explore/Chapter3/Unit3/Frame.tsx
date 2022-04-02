@@ -248,7 +248,7 @@ class F3 extends React.Component<any,any> {
                 {
                 this.state.count>=3 &&
                 <div style={{position:'relative',marginTop:'-720px',zIndex:3}}>
-                <Dialog showNext next={this.props.next} img={maxIcon} message={"หลังจากทำการวัดมาหลายครั้ง จะเห็นว่าคิวบิต |0> วัดผลลัพธ์ได้ 0 ตลอดนะครั่บ"} />
+                <Dialog showNext next={this.props.next} img={maxIcon} message={"หลังจากทำการวัดมาหลายครั้ง จะเห็นว่าคิวบิต |0> วัดผลลัพธ์ได้ 0 ตลอดนะครับ"} />
                 </div>
             }
             </Main>);
@@ -355,7 +355,7 @@ class F4 extends React.Component<any,any> {
                 this.state.count>=4 &&
                 <div style={{position:'relative',marginTop:'-720px',zIndex:3}}>
                 <Dialog showNext next={this.props.next} img={maxIcon} 
-                message={`ถูกต้องแล้วครั่บ เนื่องจากคิวบิตทั้งสองมีสถานะ Superposition ทั้งคู่ ทำให้คิวบิตแต่ละตัวมีโอกาสเป็นไปได้ทั้ง |0> และ |1> นั่นเองครั่บ`} />
+                message={`ถูกต้องแล้วครับ เนื่องจากคิวบิตทั้งสองมีสถานะ Superposition ทั้งคู่ ทำให้คิวบิตแต่ละตัวมีโอกาสเป็นไปได้ทั้ง |0> และ |1> นั่นเองครับ`} />
                 </div>
             }
             </Main>);

@@ -118,7 +118,7 @@ class F1 extends React.Component<any,any> {
                 this.state.count>=4 &&
                 <div style={{position:'relative',marginTop:'-720px',zIndex:3}}>
                 <Dialog showNext next={this.props.next} img={maxIcon} 
-                message={"ในกรณีนี้ คิวบิตแรกมีสถานะเป็น |0> เสมอและคิวบิตที่สองมีสถานะเป็น |1> เสมอ ผลลัพธ์จากการวัดคิวบิตคู่นี้จึงเป็น |01> เท่านั้นครั่บ"} />
+                message={"ในกรณีนี้ คิวบิตแรกมีสถานะเป็น |0> เสมอและคิวบิตที่สองมีสถานะเป็น |1> เสมอ ผลลัพธ์จากการวัดคิวบิตคู่นี้จึงเป็น |01> เท่านั้นครับ"} />
                 </div>
             }
         </Main>);
