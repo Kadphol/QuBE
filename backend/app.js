@@ -35,6 +35,7 @@ app.use(session({
 require('./passport.js')(app)  
 require('./route.js')(app)
 require('./simulator.js')(app)
+require('./avaliable.js')(app)
 
 if(process.env.NODE_ENV === 'production') {
   //Serve any static files

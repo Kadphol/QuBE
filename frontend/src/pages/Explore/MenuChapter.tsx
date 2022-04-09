@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Iuser} from '@src/type.modal'
 import { Link, useRouteMatch } from 'react-router-dom';
 import padlock from '@assets/explore/padlock.png'
 import ComingSoonModal from '@components/ComingSoonModal'
 import styled, { keyframes } from 'styled-components';
+
+import axios from '@config/axiosconfig';
+import ENDPOINT from '@config/endpoint';
 
 import map1 from '@assets/explore/map1.png';
 import map2 from '@assets/explore/map2.png';
@@ -13,6 +16,8 @@ import map5 from '@assets/explore/map5.png';
 import map6 from '@assets/explore/map6.png';
 import Qubie from '@assets/explore/Qubie.png';
 import Princess from '@assets/explore/chapter5/princess.png'
+
+var avaliable = 0;
 
 const sfx = require('@assets/sound/sfx_click.mp3').default
 
@@ -73,7 +78,7 @@ const linkStyle = {
 } as React.CSSProperties;
 
 export default function MenuChapter(user:Iuser) {
-  let { url } = useRouteMatch();
+let { url } = useRouteMatch();
 
 const map = [map1,map2,map3,map4,map5,map6]
 
@@ -89,8 +94,6 @@ const main = {
   const [modalShow,changeModalShow] = useState(false)
   const audio = new Audio(sfx)
 
-  const avaliable = 6
-  
   const Fly = styled.div`
     animation: ${keyframes`
     from, to {transform: translateY(0px)}
@@ -123,6 +126,14 @@ const main = {
     path: url+'/chapter-5/intro',
     text: "บทที่ 5: อัลกอริทึม"
   }]
+
+  
+  useEffect(() => {
+    if(avaliable===0){
+      axios.get(`${ENDPOINT.URL}/avaliable`).then((res => {avaliable = res.data.avaliable}))
+    }
+  });
+
   return (
     <React.Fragment>
     <ComingSoonModal show={modalShow} onHide={()=>changeModalShow(false)}/> 
