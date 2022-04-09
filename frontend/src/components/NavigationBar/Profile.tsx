@@ -21,6 +21,14 @@ export default function Profile({user,setUser}) {
         history.push('/')
     }
 
+    const next = () => {
+        setUser(()=>({...user,unit: 0, chapter: user.chapter+1, score:0}))
+    }
+
+    const prev = () => {
+        setUser(()=>({...user,unit: 0, chapter: user.chapter-1, score:0}))
+    }
+
     const profileIcon = (<img className="circleBorder" src={user.image} width="30" height="30" alt="profile" />);
     
     return (
@@ -32,6 +40,8 @@ export default function Profile({user,setUser}) {
                 <NavDropdown.Item className="ml-auto" >High Score: {user.highscore}</NavDropdown.Item>
                 {/* <NavDropdown.Item className="ml-auto" onClick={clear}>Clear</NavDropdown.Item> */}
                 <NavDropdown.Item className="ml-auto" href={`${ENDPOINT.URL}/logout`} onClick={logout}>Logout</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" onClick={next}>Next chapter</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" onClick={prev}>Prev chapter</NavDropdown.Item>
             </NavDropdown>  
       </React.Fragment>
     );
