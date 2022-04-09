@@ -3,12 +3,16 @@ import {Iuser} from '@src/type.modal'
 import { Link, useRouteMatch } from 'react-router-dom';
 import padlock from '@assets/explore/padlock.png'
 import ComingSoonModal from '@components/ComingSoonModal'
+import styled, { keyframes } from 'styled-components';
 
 import map1 from '@assets/explore/map1.png';
 import map2 from '@assets/explore/map2.png';
 import map3 from '@assets/explore/map3.png';
 import map4 from '@assets/explore/map4.png';
 import map5 from '@assets/explore/map5.png';
+import map6 from '@assets/explore/map6.png';
+import Qubie from '@assets/explore/Qubie.png';
+import Princess from '@assets/explore/chapter5/princess.png'
 
 const sfx = require('@assets/sound/sfx_click.mp3').default
 
@@ -35,23 +39,23 @@ const liStyle = {
 //   position: 'relative'
 // } as React.CSSProperties;
 
-const liStyleList = [{...liStyle,top:'600px',left:'50px',},
-                      {...liStyle,top:'220px',left:'80px',},
-                      {...liStyle,top:'400px',left:'470px',},
-                      {...liStyle,top:'180px',left:'850px',},
-                      {...liStyle,top:'450px',left:'900px',}]
+const liStyleList = [{...liStyle,top:'560px',left:'30px'},
+                      {...liStyle,top:'50px',left:'80px',},
+                      {...liStyle,top:'180px',left:'550px',},
+                      {...liStyle,top:'460px',left:'570px',},
+                      {...liStyle,top:'570px',left:'950px',}]
 const liStyleHover = {...liStyle,backgroundColor:'#7AB175'}
-const liStyleListHover = [{...liStyleHover,top:'600px',left:'50px',},
-                      {...liStyleHover,top:'220px',left:'80px',},
-                      {...liStyleHover,top:'400px',left:'470px',},
-                      {...liStyleHover,top:'180px',left:'850px',},
-                      {...liStyleHover,top:'450px',left:'900px',}]
+const liStyleListHover = [{...liStyleHover,top:'560px',left:'30px',},
+                      {...liStyleHover,top:'50px',left:'80px',},
+                      {...liStyleHover,top:'180px',left:'550px',},
+                      {...liStyleHover,top:'460px',left:'570px',},
+                      {...liStyleHover,top:'570px',left:'950px',}]
 const liStyleDisable = {...liStyle,backgroundColor:'#7AB175',filter:'brightness(50%)', cursor:'auto'}
-const liStyleListDisable = [{...liStyleDisable,top:'600px',left:'50px',},
-                      {...liStyleDisable,top:'220px',left:'80px',},
-                      {...liStyleDisable,top:'400px',left:'470px',},
-                      {...liStyleDisable,top:'180px',left:'850px',},
-                      {...liStyleDisable,top:'450px',left:'900px',}]
+const liStyleListDisable = [{...liStyleDisable,top:'560px',left:'30px'},
+                      {...liStyleDisable,top:'50px',left:'80px',},
+                      {...liStyleDisable,top:'180px',left:'550px',},
+                      {...liStyleDisable,top:'460px',left:'570px',},
+                      {...liStyleDisable,top:'570px',left:'950px',}]
 
 const padlockStyle = {
   position:'absolute',
@@ -71,7 +75,7 @@ const linkStyle = {
 export default function MenuChapter(user:Iuser) {
   let { url } = useRouteMatch();
 
-const map = [map1,map2,map3,map4,map5]
+const map = [map1,map2,map3,map4,map5,map6]
 
 const main = {
   background: `url(${map[user.chapter!]})`,
@@ -85,7 +89,23 @@ const main = {
   const [modalShow,changeModalShow] = useState(false)
   const audio = new Audio(sfx)
 
-  const avaliable = 5
+  const avaliable = 6
+  
+  const Fly = styled.div`
+    animation: ${keyframes`
+    from, to {transform: translateY(0px)}
+    50% {transform: translateY(30px)}
+    `} 2.5s infinite forwards
+  `
+
+  const position = [
+    {position:'absolute', height:'150px', left: '190px', top:'300px'},
+    {position:'absolute', height:'150px', left: '210px', top:'170px'},
+    {position:'absolute', height:'150px', left: '470px', top:'280px'},
+    {position:'absolute', height:'150px', left: '600px', top:'520px'},
+    {position:'absolute', height:'150px', left: '840px', top:'320px'},
+    {position:'absolute', height:'150px', left: '1000px', top:'350px'},
+  ] as React.CSSProperties[];
 
   const items = [{
     path: url+'/chapter-1/intro',
@@ -126,6 +146,9 @@ const main = {
        <img src={padlock} style={padlockStyle} alt="locking content"/>
        </li>
       ))}
+      <Fly>
+          <img src={user.chapter! >= 5 ? Princess: Qubie} style={{...position[user.chapter!] }} />
+      </Fly>
     </ul>
     </React.Fragment>
   )
