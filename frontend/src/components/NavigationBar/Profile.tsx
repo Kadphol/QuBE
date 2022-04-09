@@ -40,8 +40,8 @@ export default function Profile({user,setUser}) {
                 <NavDropdown.Item className="ml-auto" >High Score: {user.highscore}</NavDropdown.Item>
                 {/* <NavDropdown.Item className="ml-auto" onClick={clear}>Clear</NavDropdown.Item> */}
                 <NavDropdown.Item className="ml-auto" href={`${ENDPOINT.URL}/logout`} onClick={logout}>Logout</NavDropdown.Item>
-                <NavDropdown.Item className="ml-auto" onClick={next}>Next chapter</NavDropdown.Item>
-                <NavDropdown.Item className="ml-auto" onClick={prev}>Prev chapter</NavDropdown.Item>
+                {/* <NavDropdown.Item className="ml-auto" onClick={next}>Next chapter</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" onClick={prev}>Prev chapter</NavDropdown.Item> */}
             </NavDropdown>  
       </React.Fragment>
     );
