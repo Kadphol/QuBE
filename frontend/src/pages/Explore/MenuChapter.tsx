@@ -17,7 +17,7 @@ import map6 from '@assets/explore/map6.png';
 import Qubie from '@assets/explore/Qubie.png';
 import Princess from '@assets/explore/chapter5/princess.png'
 
-var avaliable = 0;
+var available = 0;
 
 const sfx = require('@assets/sound/sfx_click.mp3').default
 
@@ -78,17 +78,17 @@ const linkStyle = {
 } as React.CSSProperties;
 
 export default function MenuChapter(user:Iuser) {
-let { url } = useRouteMatch();
+  let { url } = useRouteMatch();
 
-const map = [map1,map2,map3,map4,map5,map6]
+  const map = [map1,map2,map3,map4,map5,map6]
 
-const main = {
-  background: `url(${map[user.chapter!]})`,
-  margin: 'auto',
-  padding: 0,
-  position: 'relative',
-  height:'100%'
-} as React.CSSProperties;
+  const main = {
+    background: `url(${map[user.chapter!]})`,
+    margin: 'auto',
+    padding: 0,
+    position: 'relative',
+    height:'100%'
+  } as React.CSSProperties;
 
   const [hover,changeHover] = useState(-1)
   const [modalShow,changeModalShow] = useState(false)
@@ -129,10 +129,8 @@ const main = {
 
   
   useEffect(() => {
-    if(avaliable===0){
-      axios.get(`${ENDPOINT.URL}/avaliable`).then((res => {avaliable = res.data.avaliable}))
-    }
-  });
+    axios.get(`/available`).then((res => {available = res.data.available}))
+  }, []);
 
   return (
     <React.Fragment>
@@ -140,7 +138,7 @@ const main = {
     <ul style={main}>
       {items.map((item,index) => (
        user.chapter! >= index
-       ? index <= avaliable-1
+       ? index <= available-1
        ? <Link to={item.path} style={linkStyle} key={index}>
        <li key={item.path} className= "mapmenu__item" onMouseDown={()=>audio.play()} style={hover===index?liStyleListHover[index]:liStyleList[index]} onMouseEnter={()=>changeHover(index)} onMouseLeave={()=>changeHover(-1)}>
          <p>{item.text}</p>
