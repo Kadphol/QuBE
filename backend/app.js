@@ -13,7 +13,11 @@ app.listen(config.APP_PORT);
 app.use(compression());
 app.use(morgan('tiny'));
 app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', config.ENDPOINT.URL);
+  const allowedOrigins = [config.ENDPOINT.FRONTEND_URL, config.ENDPOINT.URL];
+  const origin = req.headers.origin;
+  if(allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
   res.setHeader('Access-Control-Allow-Headers', 'Authorization,X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -33,9 +37,12 @@ app.use(session({
 }));
 
 require('./passport.js')(app)  
-require('./route.js')(app)
-require('./simulator.js')(app)
-require('./avaliable.js')(app)
+const route = require('./route.js');
+const sim = require('./simulator.js');
+const available = require('./available.js');
+app.use('/api', route);
+app.use('/api/sim', sim);
+app.use('/api/available', available);
 
 if(process.env.NODE_ENV === 'production') {
   //Serve any static files
