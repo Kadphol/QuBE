@@ -11,9 +11,9 @@ export default function Profile({user,setUser}) {
     const history = useHistory()
 
     const clear = () => {
-        axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: 0, chapter: 0, score:0}) // clear progress
-        axios.put(`${ENDPOINT.URL}/updatePreSurvey`, { degree: 0, type: false}) // clear pre survey
-        axios.put(`${ENDPOINT.URL}/updatePostSurvey`, { satisfy: 0, comment: null}) // clear post survey
+        axios.put(`/updateInfo`, { unit: 0, chapter: 0, score:0}) // clear progress
+        axios.put(`/updatePreSurvey`, { degree: 0, type: false}) // clear pre survey
+        axios.put(`/updatePostSurvey`, { satisfy: 0, comment: null}) // clear post survey
         setUser(()=>({...user,unit: 0, chapter: 0, score:0}))
     }
 
@@ -39,7 +39,7 @@ export default function Profile({user,setUser}) {
                 <NavDropdown.Item className="ml-auto" >Unit: {user.unit+1}</NavDropdown.Item>
                 <NavDropdown.Item className="ml-auto" >High Score: {user.highscore}</NavDropdown.Item>
                 {/* <NavDropdown.Item className="ml-auto" onClick={clear}>Clear</NavDropdown.Item> */}
-                <NavDropdown.Item className="ml-auto" href={`${ENDPOINT.URL}/logout`} onClick={logout}>Logout</NavDropdown.Item>
+                <NavDropdown.Item className="ml-auto" href={`${ENDPOINT.URL}/api/logout`} onClick={logout}>Logout</NavDropdown.Item>
                 {/* <NavDropdown.Item className="ml-auto" onClick={next}>Next chapter</NavDropdown.Item>
                 <NavDropdown.Item className="ml-auto" onClick={prev}>Prev chapter</NavDropdown.Item> */}
             </NavDropdown>  

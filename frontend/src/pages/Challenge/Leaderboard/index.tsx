@@ -1,5 +1,5 @@
 import React from 'react';
-import instance from '@config/axiosconfig';
+import axios from '@config/axiosconfig';
 import Person from './person';
 import { Iuser } from '@src/type.modal';
 import Qubie from '@assets/explore/Qubie.png'
@@ -89,7 +89,7 @@ class Leaderboard extends React.Component<{ user: Iuser }, IState> {
   switch = (global) => this.setState({ global: global });
 
   componentDidMount = () => {
-    instance.get('http://localhost/getuser')
+    axios.get('/getuser')
       .then(res => {
         let sorted = res.data.sort((a, b) => (a.info.highscore > b.info.highscore) ? -1 : ((b.info.highscore > a.info.highscore) ? 1 : 0));
         let docs = Array();

@@ -25,7 +25,7 @@ function App() {
   const providerValue = {user,setUser}
 
   useEffect(()=>{
-    axios.get(`${ENDPOINT.URL}/fetch`)
+    axios.get(`/fetch`)
     .then(res => {
       console.log(res.data);
       if (res.data) {

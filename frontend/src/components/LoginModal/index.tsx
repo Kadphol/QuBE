@@ -8,17 +8,17 @@ import ENDPOINT from '@config/endpoint'
 
 export default function LoginModal(props) {
 
-  const history = useHistory()
+  const history = useHistory();
 
   const Login = () => {
-    window.location.href = `${ENDPOINT.URL}/login`
-    history.push('/')
+    window.location.href = `${ENDPOINT.URL}/api/login`;
+    history.push('/');
     
   }
 
   const guestLogin = () =>{
-    axios.get(`${ENDPOINT.URL}/guestlogin`,{})
-    .then( () => history.push('/'))
+    axios.get(`/guestlogin`)
+      .then( () => window.location.href = ENDPOINT.URL);
   }
   
   return (

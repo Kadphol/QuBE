@@ -39,7 +39,7 @@ class Unit extends React.Component <IProps> {
         let updateUnit = this.props.unit
         if (nextFrame === this.lastFrame) {
             if(updateChapter>chapter! || (updateChapter===chapter && updateUnit>unit!)){
-            axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: updateUnit, chapter: updateChapter})  // not clear chapter yet
+            axios.put(`/updateInfo`, { unit: updateUnit, chapter: updateChapter})  // not clear chapter yet
             this.props.setUser(()=>({...this.props.user,unit: updateUnit, chapter: updateChapter}))
             }
         }
