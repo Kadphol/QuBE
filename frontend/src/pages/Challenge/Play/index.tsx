@@ -105,7 +105,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
     return (
       <Main>
         <HeaderDiv style={{
-  backgroundColor: 'rgb(255,255,255,0.25)'}}/>
+  backgroundColor: 'rgb(255,255,255,0.50)'}}/>
         <HeaderDiv>
           <div style={{
             right:'10px',

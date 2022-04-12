@@ -35,7 +35,13 @@ const IconDiv = styled.div`
   z-index: 2;
 `;
 
-const DialogBox = ({img,message,next,showIcon=true,showNext=true}) => {
+const nextButtonStyle = {
+  cursor: 'pointer',
+  position: 'flex',
+  marginTop: '19px'
+}
+
+const DialogBox = ({img,message,next,showIcon=true,showNext=true,nextStyle={}}) => {
 
   const click = new Audio(sfxClick)
 
@@ -48,7 +54,7 @@ const DialogBox = ({img,message,next,showIcon=true,showNext=true}) => {
       :null}
       <MessageDiv>
         <Message message={message} />
-        {showNext?<img className={`${styles.next}`} src={nextIcon} alt="next icon" onMouseDown={()=>click.play()} onClick={next}/>:null}
+        {showNext?<img style={{...nextButtonStyle,...nextStyle} as React.CSSProperties} src={nextIcon} alt="next icon" onMouseDown={()=>click.play()} onClick={next}/>:null}
       </MessageDiv>
     </div>
   )

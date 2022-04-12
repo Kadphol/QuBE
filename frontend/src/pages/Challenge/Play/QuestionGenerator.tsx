@@ -23,6 +23,8 @@ const HeaderDiv = styled.div`
             display: flex;
             position: absolute;
             `
+const warning = {border:'solid red', borderRadius:'50%'};
+
 class Q1 extends React.Component<any> {
 
     render() {
@@ -37,7 +39,7 @@ class Q1 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message="ใครเป็นผู้คิดค้นคอมพิวเตอร์เครื่องแรกของโลก ?" />
             }
         </React.Fragment>
@@ -58,7 +60,7 @@ class Q2 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message="ใครมีส่วนเกี่ยวข้องกับการวิจัยควอนตัมคอมพิวเตอร์ยุคแรก ?" />
             }
         </React.Fragment>
@@ -79,7 +81,7 @@ class Q3 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message="ในการต่อวงจร Grover's Algorithm (3 คิวบิต) ไม่จำเป็นต้องใช้เกตในข้อใด ?" />
             }
         </React.Fragment>
@@ -100,7 +102,7 @@ class Q4 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message="ในการต่อวงจร Deutsch Jozsa Algorithm ไม่จำเป็นต้องใช้เกตในข้อใด ?" />
             }
         </React.Fragment>
@@ -121,7 +123,7 @@ class Q5 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message="ในการต่อวงจร Teleportation ไม่จำเป็นต้องใช้เกตในข้อใด ?" />
             }
         </React.Fragment>
@@ -142,7 +144,7 @@ class Q6 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message=" หากมีข้อมูลจำนวน 400 ข้อมูล Grover's algorithm ต้องใช้คิวบิตทั้งหมดกี่คิวบิต และใช้เวลาในการคำนวณเท่าไร ?  " />
             }
         </React.Fragment>
@@ -163,7 +165,7 @@ class Q7 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message=" หากมีข้อมูลจำนวน 200 ข้อมูล Grover's algorithm ต้องใช้คิวบิตทั้งหมดกี่คิวบิต และใช้เวลาในการคำนวณเท่าไร ?  " />
             }
         </React.Fragment>
@@ -185,7 +187,7 @@ class Q8 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message="ข้อใดเป็นผลลัพธ์ที่คาดหวัง จากการต่อวงจร Bell Pair ?" />
             }
         </React.Fragment>
@@ -206,7 +208,7 @@ class Q9 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message="ข้อใดเป็นผลลัพธ์ที่คาดหวัง หลังจากต่อคิวบิตตั้งต้นเข้ากับ Hardamard Gate" />
             }
         </React.Fragment>
@@ -227,7 +229,7 @@ class Q10 extends React.Component<any> {
             {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
                 message="เจ้าตอบได้ถูกต้อง" />
             }
-            {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.pass ? this.props.next : null}
+            {!this.props.pass && <DialogBox img={dragonIcon} nextStyle={warning} next={this.props.next}
                 message="ข้อใดหมายถึงส่วน Input ของวงจรที่สามารถปรับเปลี่ยนได้ และส่งผลให้ผลลัพธ์ที่ได้แตกต่างกัน" />
             }
         </React.Fragment>
