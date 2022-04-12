@@ -7,6 +7,7 @@ import step1 from '@assets/challenge/step1.png'
 import step2 from '@assets/challenge/step2.png'
 import step3 from '@assets/challenge/step3.png'
 import step4 from '@assets/challenge/step4.png'
+import step5 from '@assets/challenge/step5.png'
 import far from '@assets/challenge/backgroundFar.png';
 
 const sfxClick = require('@assets/sound/sfx_click.mp3').default
@@ -89,4 +90,15 @@ class F4 extends React.Component {
     }
 } 
 
-export { F0, F1, F2, F3, F4}
+class F5 extends React.Component {
+    render() {
+        return (<Main>
+            <Content>
+                <img src={step5} style={{ position: 'absolute', left: '180px', top: '50px', height: '500px' }} />
+            </Content>
+        </Main>);
+    }
+} 
+
+
+export { F0, F1, F2, F3, F4, F5}
