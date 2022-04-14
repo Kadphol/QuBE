@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Row } from 'react-bootstrap'
 import qubie from '@assets/explore/qubieIcon.png'
 import beck from '@assets/explore/chapter1/beckIcon.png'
 import gust from '@assets/explore/chapter4/gustIcon.png'

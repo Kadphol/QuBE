@@ -9,7 +9,6 @@ import u1 from '@assets/playground/u1.png';
 import u2 from '@assets/playground/u2.png';
 import e from '@assets/playground/e.png';
 import x from '@assets/playground/x_Inuse.png';
-import z from '@assets/playground/z_Inuse.png';
 import h from '@assets/playground/h_Inuse.png';
 import algo3u1 from '@assets/playground/algo3-u1.png';
 import algo3u2 from '@assets/playground/algo3-u2.png';

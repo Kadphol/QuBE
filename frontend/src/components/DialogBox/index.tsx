@@ -6,7 +6,6 @@ import styles from './DialogBox.module.css';
 
 
 import nextIcon from '@assets/explore/dialog/next.png';
-const sfxDialog = require('@assets/sound/sfx_dialog.mp3').default
 const sfxClick = require('@assets/sound/sfx_click.mp3').default
 
 

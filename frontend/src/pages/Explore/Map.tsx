@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import map from '@assets/explore/chapter1/backgroundFar.png';
-
 const Menu = styled.div`
   width: 1240px;
   height: 720px;

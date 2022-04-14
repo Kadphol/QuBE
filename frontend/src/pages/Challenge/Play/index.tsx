@@ -11,7 +11,6 @@ import { Iuser } from '@src/type.modal';
 import Music from '@components/Button/Music';
 import {C1,C2,C3,C4,C5,C6,C7,C8,C9,C10} from './ComposerGenerator'
 import { Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10 } from './QuestionGenerator'
-import ENDPOINT from '@config/endpoint'
 
 
 const src = require('@assets/sound/bgm6.mp3').default
@@ -93,11 +92,9 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
 
   updateScore = () => {
     if(this.state.totalScore>this.props.user.highscore!){
-    axios.put(`/updateInfo`, { score: this.state.totalScore })
-    this.props.setUser(()=>({...this.props.user,highscore: this.state.totalScore}))
+      axios.put(`/updateInfo`, { score: this.state.totalScore })
+      this.props.setUser(()=>({...this.props.user,highscore: this.state.totalScore}))
     }
-    // relocation instead of next() for pop-up post survey
-    // window.location.href = '/challenge'
     this.next()
   }
 
@@ -105,7 +102,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
     return (
       <Main>
         <HeaderDiv style={{
-  backgroundColor: 'rgb(255,255,255,0.50)'}}/>
+           backgroundColor: 'rgb(255,255,255,0.50)'}}/>
         <HeaderDiv>
           <div style={{
             right:'10px',
@@ -131,7 +128,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
             </HeaderDiv>
             <ObjectDiv>
               <Fly>
-              <img src={dragon} style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
+              <img src={dragon} style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}} alt="Dragon"/> 
               </Fly>
             </ObjectDiv>
            <DialogBox showIcon img={dragonIcon} next={this.next} 
@@ -183,7 +180,7 @@ class Play extends React.Component <{user:Iuser,setUser:any}> {
             </HeaderDiv>
             <ObjectDiv>
               <Fly>
-              <img src={dragon} style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}}/> 
+              <img src={dragon} style={{position:'static',margin:'30px auto',height:'350px',width:'350px'}} alt="Dragon"/> 
               </Fly>
             </ObjectDiv>
            <DialogBox showIcon img={dragonIcon} next={this.updateScore} 

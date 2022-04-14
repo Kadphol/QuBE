@@ -1,11 +1,8 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import far from '@assets/explore/chapter5/backgroundFar.png';
+import styled, { keyframes } from 'styled-components';
 import close from '@assets/explore/chapter5/backgroundClose.png';
 import ChapterBox from '@components/ChapterBox'
-import princessIcon from '@assets/explore/chapter5/princessIcon.png'
 import princess from '@assets/explore/chapter5/princess.png'
-import qubieIcon from '@assets/explore/qubieIcon.png';
 import qubie from '@assets/explore/Qubie.png'
 
 const sfxClick = require('@assets/sound/sfx_click.mp3').default
@@ -56,7 +53,7 @@ class F1 extends React.Component {
             <Content style={{ backgroundImage: `url(${close})` }}>
                 <Fly>
                 <Slide>
-                    <img src={qubie} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} />
+                    <img src={qubie} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} alt="Qubie"/>
                 </Slide>
                 </Fly>
             </Content>
@@ -69,7 +66,7 @@ class F2 extends React.Component {
         return (<Main>
             <Content style={{ backgroundImage: `url(${close})` }}>
                 <Fly>
-                    <img src={qubie} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} />
+                    <img src={qubie} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} alt="Qubie"/>
                 </Fly>
             </Content>
         </Main>);
@@ -95,7 +92,7 @@ class F3 extends React.Component {
                 <Flash>
                     <Fly>
                         <Flip>
-                            <img src={qubie} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} />
+                            <img src={qubie} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} alt="Qubie"/>
                         </Flip>
                 </Fly>
                 </Flash>
@@ -116,7 +113,7 @@ class F4 extends React.Component {
             <Content style={{ backgroundImage: `url(${close})` }}>
                 <Flash>
                     <Fly>
-                            <img src={princess} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} />
+                            <img src={princess} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} alt="princess Qubie"/>
                     </Fly>
                 </Flash>
             </Content>
@@ -129,7 +126,7 @@ class F5 extends React.Component {
         return (<Main>
             <Content style={{ backgroundImage: `url(${close})` }}>
                     <Fly>
-                            <img src={princess} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} />
+                            <img src={princess} style={{ position: 'absolute', left: '400px', top: '120px', height: '400px' }} alt="princess Qubie"/>
                     </Fly>
             </Content>
         </Main>);

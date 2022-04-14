@@ -16,13 +16,7 @@ const ObjectDiv = styled.div`
             display: block;
             overflow: hidden;
             `
-
-const HeaderDiv = styled.div`  
-            width: 100%;
-            height: 120px;
-            display: flex;
-            position: absolute;
-            `
+            
 const warning = {border:'solid red', borderRadius:'50%'};
 
 class Q1 extends React.Component<any> {

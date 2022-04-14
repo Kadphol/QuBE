@@ -13,7 +13,6 @@ import Chapter3 from './Chapter3';
 import Chapter4 from './Chapter4';
 import Chapter5 from './Chapter5';
 const bgm1 = require('@assets/sound/bgm1.mp3');
-const bgm2 = require('@assets/sound/sfx_clear.mp3');
 
 const Main = styled.div`
   height: 100%;

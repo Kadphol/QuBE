@@ -6,7 +6,6 @@ import ComingSoonModal from '@components/ComingSoonModal'
 import styled, { keyframes } from 'styled-components';
 
 import axios from '@config/axiosconfig';
-import ENDPOINT from '@config/endpoint';
 
 import map1 from '@assets/explore/map1.png';
 import map2 from '@assets/explore/map2.png';
@@ -32,17 +31,6 @@ const liStyle = {
   textAlign: 'center',
   cursor: 'pointer'
 } as React.CSSProperties;
-
-// const liStyleDisable = {
-//   backgroundColor: '#7AB175',
-//   marginBottom: '31px',
-//   height: '100px',
-//   borderRadius: '10px',
-//   textAlign: 'left',
-//   paddingLeft: '70px',
-//   paddingTop: '15px',
-//   position: 'relative'
-// } as React.CSSProperties;
 
 const liStyleList = [{...liStyle,top:'560px',left:'30px'},
                       {...liStyle,top:'50px',left:'80px',},
@@ -156,7 +144,7 @@ export default function MenuChapter(user:Iuser) {
        </li>
       ))}
       <Fly>
-          <img src={user.chapter! >= 5 ? Princess: Qubie} style={{...position[user.chapter!] }} />
+          <img src={user.chapter! >= 5 ? Princess: Qubie} style={{...position[user.chapter!] }} alt="Qubie"/>
       </Fly>
     </ul>
     </React.Fragment>

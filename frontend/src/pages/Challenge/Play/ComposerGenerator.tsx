@@ -14,13 +14,6 @@ display: block;
 overflow: hidden;
 `
 
-const HeaderDiv = styled.div`  
-width: 100%;
-height: 120px;
-display: flex;
-position: absolute;
-`
-
 const warning = {border:'solid red', borderRadius:'50%'};
 
 class C1 extends React.Component<any> {
@@ -202,24 +195,5 @@ class C10 extends React.Component<any> {
         </React.Fragment>
   }
 }
-
-
-// class C11 extends React.Component<any> {
-
-//   render() {
-
-//   return <React.Fragment>
-//           <ObjectDiv>
-//             <Composer column={6} n={2} quiz={true} answerCheck={this.props.answerCheck} solution={[25,25,25,25]} remove={['ccx','ccz']}/>
-//           </ObjectDiv>
-//           {this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.next}
-//           message="ฮึ่ม เจ้าตอบได้ถูกต้อง"/>
-//           }
-//           {!this.props.pass && <DialogBox img={dragonIcon} showNext={this.props.pass} next={this.props.next}
-//           message="จงต่อวงจรให้ได้ผลลัพธ์เป็น 00 01 10 และ 11 อย่างละเท่า ๆ กัน"/>
-//           }
-//         </React.Fragment>
-//   }
-// }
 
 export {C1,C2,C3,C4,C5,C6,C7,C8,C9,C10}

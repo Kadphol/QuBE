@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Dialog from '@components/DialogBox';
 import { Redirect } from "react-router-dom";
 import axios from '@config/axiosconfig';
-import ENDPOINT from '@config/endpoint'
 import { Iuser } from '@src/type.modal';
 import Back from '@components/Button/back'
 
@@ -44,15 +43,6 @@ class Unit extends React.Component<IProps> {
             chapter = this.props.chapter > chapter!? this.props.chapter : chapter
             axios.put(`/updateInfo`, { star: star, unit: unit, chapter: chapter })
             this.props.setUser(() => ({ ...this.props.user, star: star, unit: unit, chapter: chapter }))
-            // if (this.state.star > star![this.props.chapter-1]) { // if new star is higher, replace
-            //     star![this.props.chapter - 1] = this.state.star
-            //     axios.put(`${ENDPOINT.URL}/updateInfo`, { star: star })  // update star
-            //     this.props.setUser(() => ({ ...this.props.user, star: star }))
-            // }
-            // if (this.props.chapter > chapter!) {
-            //     axios.put(`${ENDPOINT.URL}/updateInfo`, { unit: 0, chapter: this.props.chapter })  // clear chapter
-            //     this.props.setUser(() => ({ ...this.props.user, unit: 0, chapter: this.props.chapter }))
-            // }
         }
         this.setState({ frame: nextFrame, clear: false })
     }

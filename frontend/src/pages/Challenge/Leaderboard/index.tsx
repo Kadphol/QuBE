@@ -141,8 +141,8 @@ class Leaderboard extends React.Component<{ user: Iuser }, IState> {
           }
         </Board>
           <Fly>
-            <img src={Qubie} style={{ position: 'absolute', bottom:'50px', left: '15px', height: '280px' }} />
-            <img src={beck} style={{ position: 'absolute', bottom:'50px', right: '15px', height: '280px' }} />
+            <img src={Qubie} style={{ position: 'absolute', bottom:'50px', left: '15px', height: '280px' }} alt="Qubie"/>
+            <img src={beck} style={{ position: 'absolute', bottom:'50px', right: '15px', height: '280px' }} alt="Beck"/>
           </Fly>
         <Back path="/challenge" />
       </Main>

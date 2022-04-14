@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const sfxClick = require('@assets/sound/sfx_click.mp3').default
 
