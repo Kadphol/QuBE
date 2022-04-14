@@ -1,8 +1,8 @@
 require('dotenv').config({ path: __dirname + '../.env' });
 
 const prod = {
-  URL: 'https://qube.com',
-  URL_404: 'https://qube.com/404',
+  URL: `${process.env.CLIENT_URL}:${process.env.APP_PORT}`,
+  FRONTEND_URL: `${process.env.CLIENT_URL}:${process.env.APP_PORT}`
 };
 
 const dev = {
@@ -12,7 +12,7 @@ const dev = {
 };
 
 module.exports = {
-  DB: process.env.MONGO_URL ? process.env.MONGO_URL : 'mongodb://localhost:27017/qube',
+  DB: process.env.MONGO_URI ? process.env.MONGO_URI : 'mongodb://localhost:27017/qube',
   APP_PORT: process.env.APP_PORT ? process.env.APP_PORT : '80',
   ENDPOINT: process.env.NODE_ENV === 'production' ? prod : dev,
   CLIENT_ID: process.env.CLIENT_ID,

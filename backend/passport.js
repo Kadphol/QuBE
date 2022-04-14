@@ -3,8 +3,7 @@ var FacebookStrategy = require('passport-facebook').Strategy
 var DummyStrategy = require('passport-dummy').Strategy
 var uuid = require('uuid').v4
 const config = require('./config/config');
-// var CLIENT_ID = '406602993675033'
-// var CLIENT_SECRET = 'ad29d0665bde6cd353d86ce0fff1094e'
+
 var CLIENT_ID = config.CLIENT_ID;
 var CLIENT_SECRET = config.CLIENT_SECERT;
 var callbackUrl = config.ENDPOINT.URL + '/api/login/callback';
