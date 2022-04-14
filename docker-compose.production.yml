@@ -1,31 +1,35 @@
 version: "3"
 services:
-  frontend: 
-    image: frontend
-    restart: unless-stopped
-    ports: 
-      - "80:80"
-      - "433:433"
-    networks:
-      - qube-app
-  backend:
-    image: backend
-    restart: unless-stopped
+  qube-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
     ports:
-      - "5000:5000"
+      - "8080:8080"
+    env_file: ./backend/.env
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/qube
+    depends_on:
+      - mongo
     networks:
       - qube-app
 
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile.dev
-    ports:
-      - 3000:80
+
+  mongo:
+    image: mongo:4.0
     restart: always
+    volumes:
+      - db-volume:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - qube-app
     
 networks:
   qube-app:
     driver: bridge
+
 volumes:
-  
+  db-volume:
+    driver: local
