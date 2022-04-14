@@ -8,27 +8,20 @@ import '@styles/App.css';
 import { Iuser } from '@src/type.modal';
 
 import axios from '@config/axiosconfig';
-import ENDPOINT from '@config/endpoint';
 import { userContext } from '@context/userContext';
-import PreSurvey from '@components/Survey/Presurvey'
-import PostSurvey from '@components/Survey/Postsurvey'
 
 function App() {
 
   const [user, setUser] = useState<Iuser>({
     loginStatus: false
-  })
-
-  const [preSurveyShow,changePreSurveyShow] = useState(false)
-  const [postSurveyShow,changePostSurveyShow] = useState(false)
+  });
 
   const providerValue = {user,setUser}
 
   useEffect(()=>{
     axios.get(`/fetch`)
     .then(res => {
-      console.log(res.data);
-      if (res.data) {
+      if (res.data.info !== undefined) {
         setUser( () => ({
           loginStatus: true,
           type: res.data.type,
@@ -40,8 +33,6 @@ function App() {
           highscore: res.data.info.highscore
         }));
       }
-      //if (res.data.preSurvey.degree === 0){changePreSurveyShow(true)}
-      //if (res.data.postSurvey.satisfy === 0 && res.data.info.highscore !== 0){changePostSurveyShow(true)}
     })
     .catch(error =>{
       console.log(error);
@@ -50,8 +41,6 @@ function App() {
 
   return (
     <div className="App">
-      <PreSurvey show={preSurveyShow} onHide={() => changePreSurveyShow(false)} />
-      <PostSurvey show={postSurveyShow} onHide={() => changePostSurveyShow(false)} />
       <userContext.Provider value={providerValue}>
         <BrowserRouter>
             <NavigationBar />
