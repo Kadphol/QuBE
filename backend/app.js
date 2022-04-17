@@ -21,6 +21,7 @@ app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
   res.setHeader('Access-Control-Allow-Headers', 'Authorization,X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Cache-Control', 'max-age=86400000');
   next()
 }); 
 
@@ -46,7 +47,7 @@ app.use('/api/available', available);
 
 if(process.env.NODE_ENV === 'production') {
   //Serve any static files
-  app.use(express.static(path.join(__dirname,'../frontend/build')));
+  app.use(express.static(path.join(__dirname,'../frontend/build'), {maxAge: '86400000'}));
 
   //Handle React routing, return all request to React ap
   app.get('*', function(req, res) {
