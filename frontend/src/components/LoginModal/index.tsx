@@ -12,6 +12,10 @@ export default function LoginModal(props) {
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [errorNameMsg, setErrorNameMsg] = useState('');
+  const [errorPasswordMsg, setErrorPasswordMsg] = useState('');
+  const [errorRegMsg, setErrorRegMsg] = useState('');
+  const [errorLoginMsg, setErrorLoginMsg] = useState('');
   const [loginModal, setLoginModal] = useState(true);
 
   const Login = () => {
@@ -26,32 +30,47 @@ export default function LoginModal(props) {
   };
 
   const loginUser = (e) => {
+    defaultErrorMsg();
     e.preventDefault();
     if(name === '' || password === '') {
-
+      if(name === '') setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
+      if(password === '') setErrorPasswordMsg('กรุณกรอกรหัสผ่าน');
     } else {
       axios
-        .post('/local-login', { name: name, password: password})
+        .post('/local-login', { name: name, password: password })
         .then(response => {
-          if(response.status === 401) {
-            
+          if(response.data) {
+            if(response.data.code === 1) setErrorLoginMsg('ไม่พบชื่อผู้ใช้งานในระบบ');
+            else if(response.data.code === 2) setErrorLoginMsg('กรอกชื่อผู้ใช้งานหรือรหัสผ่านผิด');
+            else window.location.href = ENDPOINT.URL;
+          } else {
+            window.location.href = ENDPOINT.URL
           }
         })
+        .catch(err => {
+          console.log(err)
+        });
     }
   };
 
   const registerUser = (e) => {
+    defaultErrorMsg();
     e.preventDefault();
     if(name === '' || password === '') {
-
+      if(name === '') setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
+      if(password === '') setErrorPasswordMsg('กรุณกรอกรหัสผ่าน');
     } else {
       axios
         .post('/register', { name: name, password: password})
         .then(response => {
-          if(response.status === 401) {
-            
+          if(response.data) {
+            if(response.data.code === 1) setErrorRegMsg('ชื่อผู้ใช้มีอยู่แล้วในระบบ');
+            else window.location.href = ENDPOINT.URL;
           }
         })
+        .catch(err => {
+          console.log(err)
+        });
     }
   };
 
@@ -71,11 +90,24 @@ export default function LoginModal(props) {
     setPassword(e.target.value);
   };
 
+  const defaultErrorMsg = () => {
+    setErrorNameMsg('');
+    setErrorPasswordMsg('');
+    setErrorRegMsg('');
+    setErrorLoginMsg('');
+  }
+
   const setLogin = () => {
+    setName('');
+    setPassword('');
+    defaultErrorMsg();
     setLoginModal(true);
   };
 
   const setRegister = () => {
+    setName('');
+    setPassword('');
+    defaultErrorMsg();
     setLoginModal(false);
   };
   
@@ -99,11 +131,14 @@ export default function LoginModal(props) {
                     <label htmlFor='name'>ชื่อผู้ใช้</label>
                     <input className='form-control' id='name' 
                       onChange={handleLoginName} value={name}/>
+                    {errorLoginMsg && <p className='text-danger'>{errorLoginMsg}</p>}
+                    {errorNameMsg && <p className='text-danger'>{errorNameMsg}</p>}
                   </div>
                   <div className={`form-group ${styles.formGroup} ${styles.formLabel}`}>
                     <label htmlFor='password'>รหัสผ่าน</label>
                     <input className='form-control' type='password' id="password"
                       onChange={handleLoginPassword} value={password}/>
+                    {errorPasswordMsg && <p className='text-danger'>{errorPasswordMsg}</p>}
                   </div>
                   <div className={`form-group ${styles.formGroup}`}>
                     <button className={`form-control btn btn-primary ${styles.fblogin} ${styles.formButton}`} type='submit'>
@@ -131,11 +166,14 @@ export default function LoginModal(props) {
                       <label htmlFor='name'>ชื่อผู้ใช้</label>
                       <input className='form-control' id='name' 
                         onChange={handleRegName} value={name}/>
+                      {errorRegMsg && <p className='text-danger'>{errorRegMsg}</p>}
+                      {errorNameMsg && <p className='text-danger'>{errorNameMsg}</p>}  
                     </div>
                     <div className={`form-group ${styles.formGroup} ${styles.formLabel}`}>
                       <label htmlFor='password'>รหัสผ่าน</label>
                       <input className='form-control' type='password' id="password" 
                         onChange={handleRegPassword} value={password}/>
+                      {errorPasswordMsg && <p className='text-danger'>{errorPasswordMsg}</p>}
                     </div>
                     <div className={`form-group ${styles.formGroup}`}>
                       <button className={`form-control btn btn-primary ${styles.fblogin} ${styles.formButton}`} type='submit'>
