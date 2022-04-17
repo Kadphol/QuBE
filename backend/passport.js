@@ -1,6 +1,7 @@
-var passport = require('passport')
-var FacebookStrategy = require('passport-facebook').Strategy
-var DummyStrategy = require('passport-dummy').Strategy
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
+var DummyStrategy = require('passport-dummy').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var uuid = require('uuid').v4
 const config = require('./config/config');
 
@@ -45,6 +46,58 @@ module.exports = (app) => {
     users.addnew(data,function(err){if(err) throw err})
     done(null,data)
   }))
+
+  passport.use('local-register', new LocalStrategy({
+    usernameField : 'name',
+    passwordField : 'password',
+    passReqToCallback : true
+  },
+    function(req, name, password, done) {
+      process.nextTick(function() {
+        users.findOne({ 'name' : name }, function(err, user) {
+          if(err) return done(err);
+
+          if(user) {
+            return done(null, false, {
+              message: 'existed username'
+            });
+          } else {
+            var genid = uuid();
+            var data = new users({
+              id: genid,
+              type: "Local",
+              name: name,
+              password: users.generateHash(password),
+              image:"https://i.pinimg.com/564x/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.jpg"
+            });
+            users.addnew(data, function(err) {
+              if(err) throw err
+              return done(null, data);
+            });
+          }
+        });
+      });
+    }
+  ));
+
+  passport.use('local-login', new LocalStrategy({
+    usernameField : 'name',
+    passwordField : 'password',
+    passReqToCallback : true
+  },
+    function(req, name, password, done) {
+      users.findOne({ 'name': name }, function(err, user) {
+        if(err) return done(err);
+        if(!user) return done(null, false, {
+          'message': 'user not found'
+        });
+        if(!user.validPassword(password)) return done(null, false, {
+          'message': 'wrong username or password'
+        });
+        return done(null, user);
+      });
+    }
+  ));
 
   app.use(passport.initialize())
   app.use(passport.session())

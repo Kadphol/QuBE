@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const config = require('../config/config');
 
 mongoose.connect(config.DB, {
@@ -10,8 +11,9 @@ const schema = mongoose.Schema
 
 const users_schema = new schema({
     id: String,
-    type: "Facebook" | "Guest",
+    type: "Facebook" | "Guest" | "Local",
     name: String,
+    password: String,
     image: String,
     created: typeof(Date()),
     info: {
@@ -29,9 +31,18 @@ const users_schema = new schema({
         type: { type: Boolean, default: false }
     }
     
-})
+});
 
-const users = module.exports = mongoose.model("users", users_schema)
+const users = module.exports = mongoose.model("users", users_schema);
+
+module.exports.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+module.exports.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
 
 module.exports.addnew = function (data, callback) {
     users.findOne({ id: data.id }).exec((err, res) => {
@@ -39,8 +50,7 @@ module.exports.addnew = function (data, callback) {
             data.created = Date()
             users.create(data)
         }
-    }
-    )
+    })
 }
 
 module.exports.updateInfo = function (user, chapter, unit, star, score, callback) {
@@ -90,7 +100,7 @@ module.exports.fetch = function (id, callback) {
 }
 
 module.exports.getAll = function (callback) {
-    users.find(callback)
+    users.find({ password: 0 }, callback)
 }
 
 module.exports.removeAll = function (callback) {

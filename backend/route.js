@@ -9,21 +9,21 @@ router.get('/', (req, res) => {
   res.send('Backend')
 })
 
-router.get('/init', (req, res) => {
-  data = {
-    id: 0,
-    chapter: 0,
-    unit: 0,
-    frame: 0,
-    resource: {
-      image: ['', ''],
-      text: 'hello',
-      voice: ''
-    }
-  }
-  explore.addnew(data)
-  return res.send("SUCCESS")
-})
+// router.get('/init', (req, res) => {
+//   data = {
+//     id: 0,
+//     chapter: 0,
+//     unit: 0,
+//     frame: 0,
+//     resource: {
+//       image: ['', ''],
+//       text: 'hello',
+//       voice: ''
+//     }
+//   }
+//   explore.addnew(data)
+//   return res.send("SUCCESS")
+// })
 
 router.get('/fetch', (req, res) => {
   if (req.isAuthenticated()) {
@@ -38,12 +38,43 @@ router.get('/login', passport.authenticate('facebook'))
 router.get('/login/callback', passport.authenticate('facebook', {
   successRedirect: config.ENDPOINT.FRONTEND_URL,
   failureRedirect: config.ENDPOINT.FRONTEND_URL
-})
+}));
 
-)
 router.get('/guestlogin', passport.authenticate('dummy'), (req, res) => {
   return res.send("OK")
-})
+});
+
+router.post('/register', (req, res) => {
+  passport.authenticate('local-register', function(err, user, info) {
+    if(err) {
+      res.status(500).send(JSON.stringify({
+        'message': "Internal Server error"
+      }));
+    }
+    if(!user) {
+      res.status(401).send(JSON.stringify(info))
+    }
+    if(user) {
+      res.redirect(config.ENDPOINT.FRONTEND_URL);
+    }
+  })(req, res, next);
+});
+
+router.post('/local-login', (req, res) => {
+  passport.authenticate('local-login', function(err, user, info) {
+    if(err) {
+      res.status(500).send(JSON.stringify({
+        'message': "Internal Server error"
+      }));
+    }
+    if(!user) {
+      res.status(401).send(JSON.stringify(info))
+    }
+    if(user) {
+      res.redirect(config.ENDPOINT.FRONTEND_URL);
+    }
+  })(req, res, next);
+});
 
 router.put('/updateInfo', (req, res) => {
   users.updateInfo(req.user, req.body.chapter, req.body.unit, req.body.star, req.body.score, () => {
@@ -98,20 +129,20 @@ router.get('/removeGuest', (req, res) => {
   res.redirect('/getuser')
 })
 
-router.get('/test', (req, res) => {
-  data = {
-    id: 1,
-    chapter: 0,
-    unit: 0,
-    frame: 1,
-    resource: {
-      image: ['', ''],
-      text: 'hello',
-      voice: ''
-    }
-  }
-  explore.addnew(data)
-  return res.send("SUCCESS")
-});
+// router.get('/test', (req, res) => {
+//   data = {
+//     id: 1,
+//     chapter: 0,
+//     unit: 0,
+//     frame: 1,
+//     resource: {
+//       image: ['', ''],
+//       text: 'hello',
+//       voice: ''
+//     }
+//   }
+//   explore.addnew(data)
+//   return res.send("SUCCESS")
+// });
 
 module.exports = router;
