@@ -13,6 +13,14 @@
   color: #8B90E3;
 }
 
+.subtext {
+  font-family: 'Kanit',sans-serif;
+  font-size: 15px;
+  position: relative;
+  margin: 0;
+  color: #8B90E3;
+}
+
 .line {
   font-family: 'Kanit',sans-serif;
   font-size: 15px;
@@ -42,6 +50,22 @@
   border-radius: 50px !important;
   padding: 0.5rem 3rem !important;
   font-size: 23px;
+}
+
+.formGroup {
+  padding-left: 10%;
+  padding-right: 10%;
+  width: auto;
+}
+
+.formLabel {
+  text-align: left;
+  font-family: 'Kanit',sans-serif;
+  color: #8B90E3;
+}
+
+.formButton {
+  width: 50%;
 }
 
 .bot {
