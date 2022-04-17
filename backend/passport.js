@@ -59,7 +59,8 @@ module.exports = (app) => {
 
           if(user) {
             return done(null, false, {
-              message: 'existed username'
+              'code': 1,
+              'message': 'existed username'
             });
           } else {
             var genid = uuid();
@@ -72,8 +73,8 @@ module.exports = (app) => {
             });
             users.addnew(data, function(err) {
               if(err) throw err
-              return done(null, data);
             });
+            done(null, data);
           }
         });
       });
@@ -89,9 +90,11 @@ module.exports = (app) => {
       users.findOne({ 'name': name }, function(err, user) {
         if(err) return done(err);
         if(!user) return done(null, false, {
+          'code': 1,
           'message': 'user not found'
         });
-        if(!user.validPassword(password)) return done(null, false, {
+        if(!users.validPassword(password, user.password)) return done(null, false, {
+          'code': 2,
           'message': 'wrong username or password'
         });
         return done(null, user);

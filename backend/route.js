@@ -47,33 +47,33 @@ router.get('/guestlogin', passport.authenticate('dummy'), (req, res) => {
 router.post('/register', (req, res) => {
   passport.authenticate('local-register', function(err, user, info) {
     if(err) {
-      res.status(500).send(JSON.stringify({
+      return res.status(500).send(JSON.stringify({
         'message': "Internal Server error"
       }));
     }
     if(!user) {
-      res.status(401).send(JSON.stringify(info))
+      return res.send(JSON.stringify(info))
     }
     if(user) {
-      res.redirect(config.ENDPOINT.FRONTEND_URL);
+      return res.send("OK");
     }
-  })(req, res, next);
+  })(req, res);
 });
 
 router.post('/local-login', (req, res) => {
   passport.authenticate('local-login', function(err, user, info) {
     if(err) {
-      res.status(500).send(JSON.stringify({
+      return res.status(500).send(JSON.stringify({
         'message': "Internal Server error"
       }));
     }
     if(!user) {
-      res.status(401).send(JSON.stringify(info))
+      return res.send(JSON.stringify(info))
     }
     if(user) {
-      res.redirect(config.ENDPOINT.FRONTEND_URL);
+      return res.send("OK");
     }
-  })(req, res, next);
+  })(req, res);
 });
 
 router.put('/updateInfo', (req, res) => {
