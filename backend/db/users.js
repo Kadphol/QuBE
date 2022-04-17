@@ -13,7 +13,7 @@ const users_schema = new schema({
     id: String,
     type: "Facebook" | "Guest" | "Local",
     name: String,
-    password: String,
+    password: { type: String, default: null },
     image: String,
     created: typeof(Date()),
     info: {
@@ -96,11 +96,11 @@ module.exports.updatePostSurvey = function (user, satisfy, comment, callback) {
 }
 
 module.exports.fetch = function (id, callback) {
-    users.findOne({ id: id }, callback)
+    users.findOne({ id: id }, { password: 0 }, callback)
 }
 
 module.exports.getAll = function (callback) {
-    users.find({ password: 0 }, callback)
+    users.find({}, { password: 0 }, callback)
 }
 
 module.exports.removeAll = function (callback) {

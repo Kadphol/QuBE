@@ -97,6 +97,7 @@ router.put('/updatePostSurvey', (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.session.destroy(function (err) {
+    req.logout()
     return res.redirect(req.headers.referer || '/');
   })
 })
@@ -119,14 +120,14 @@ router.get('/removeAll', (req, res) => {
   users.removeAll(function (err) {
     if (err) throw err
   })
-  res.redirect('/getuser')
+  res.redirect('/api/getuser')
 })
 
 router.get('/removeGuest', (req, res) => {
   users.removeGuest(function (err) {
     if (err) throw err
   })
-  res.redirect('/getuser')
+  res.redirect('/api/getuser')
 })
 
 // router.get('/test', (req, res) => {
