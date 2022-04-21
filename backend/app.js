@@ -11,7 +11,9 @@ var app = express();
 app.listen(config.APP_PORT);
 
 app.use(compression());
-app.use(morgan('tiny'));
+app.use(morgan(':date[clf] :method :url :status :response-time ms', {
+  skip: function(req, res) { return req.originalUrl.startsWith('/static'); }
+}));
 app.use(function(req, res, next) {
   const allowedOrigins = [config.ENDPOINT.FRONTEND_URL, config.ENDPOINT.URL];
   const origin = req.headers.origin;
