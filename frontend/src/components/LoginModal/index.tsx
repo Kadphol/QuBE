@@ -12,8 +12,10 @@ export default function LoginModal(props) {
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [errorNameMsg, setErrorNameMsg] = useState('');
   const [errorPasswordMsg, setErrorPasswordMsg] = useState('');
+  const [errorConfirmPassMsg, setErrorConfirmPassMsg] = useState('');
   const [errorRegMsg, setErrorRegMsg] = useState('');
   const [errorLoginMsg, setErrorLoginMsg] = useState('');
   const [loginModal, setLoginModal] = useState(true);
@@ -30,64 +32,96 @@ export default function LoginModal(props) {
   };
 
   const loginUser = (e) => {
-    defaultErrorMsg();
     e.preventDefault();
-    if(name === '' || password === '') {
-      if(name === '') setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
-      if(password === '') setErrorPasswordMsg('กรุณกรอกรหัสผ่าน');
-    } else {
+    if(errorNameMsg === '' && errorPasswordMsg === '') {
+      defaultErrorMsg();
       axios
         .post('/local-login', { name: name, password: password })
         .then(response => {
-          if(response.data) {
-            if(response.data.code === 1) setErrorLoginMsg('ไม่พบชื่อผู้ใช้งานในระบบ');
-            else if(response.data.code === 2) setErrorLoginMsg('กรอกชื่อผู้ใช้งานหรือรหัสผ่านผิด');
-            else window.location.href = ENDPOINT.URL;
-          } else {
             window.location.href = ENDPOINT.URL
-          }
         })
         .catch(err => {
-          console.log(err)
+          if(err.response.status === 401) {
+            setErrorLoginMsg('กรอกชื่อผู้ใช้งานหรือรหัสผ่านผิด');
+          } else {
+            setErrorLoginMsg('ไม่สามารถเข้าสู่ระบบได้');
+          }
         });
     }
+    
   };
 
   const registerUser = (e) => {
-    defaultErrorMsg();
     e.preventDefault();
-    if(name === '' || password === '') {
-      if(name === '') setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
-      if(password === '') setErrorPasswordMsg('กรุณกรอกรหัสผ่าน');
-    } else {
+    if(errorNameMsg === '' && errorPasswordMsg === '' && errorConfirmPassMsg === '') {
+      defaultErrorMsg();
       axios
         .post('/register', { name: name, password: password})
         .then(response => {
-          if(response.data) {
-            if(response.data.code === 1) setErrorRegMsg('ชื่อผู้ใช้มีอยู่แล้วในระบบ');
-            else window.location.href = ENDPOINT.URL;
-          }
+          window.location.href = ENDPOINT.URL;
         })
         .catch(err => {
-          console.log(err)
+          if(err.response.status === 401) {
+            setErrorRegMsg('ชื่อผู้ใช้มีอยู่แล้วในระบบ');
+          } else {
+            setErrorRegMsg('ไม่สามารถลงทะเบียนได้');
+          }
         });
     }
   };
 
   const handleLoginName = (e) => {
-    setName(e.target.value);
+    setName(e.target.value.trim());
   };
 
   const handleLoginPassword = (e) => {
-    setPassword(e.target.value);
+    setPassword(e.target.value.trim());
   };
 
   const handleRegName = (e) => {
-    setName(e.target.value);
+    setName(e.target.value.trim());
   };
 
   const handleRegPassword = (e) => {
-    setPassword(e.target.value);
+    setPassword(e.target.value.trim());
+  };
+
+  const handleRegConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value.trim());
+  };
+
+  const handleNameValid = (e) => {
+    const input = e.target.value.trim();
+    if(input.length === 0) {
+      setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
+    } else if(input.length < 4) {
+      setErrorNameMsg('ชื่อผู้ใช้ต้องมีความยาวมากกว่า 4 ตัวอักษร');
+    } else {
+      setErrorNameMsg('');
+    }
+  };
+
+  const handlePasswordValid = (e) => {
+    const input = e.target.value.trim();
+    if(input.length === 0) {
+      setErrorPasswordMsg('กรุณากรอกรหัสผ่าน');
+    } else if(input.length < 4) {
+      setErrorPasswordMsg('รหัสผ่านต้องมีความยาวมากกว่า 4 ตัวอักษร');
+    } else {
+      setErrorPasswordMsg('');
+    }
+  };
+
+  const handleConfirmPassword = (e) => {
+    if(confirmPassword.length > 0) {
+      if(password !== confirmPassword) {
+        setErrorConfirmPassMsg('รหัสผ่านไม่ตรงกัน');
+      } else {
+        setErrorConfirmPassMsg('');
+      }
+    } else {
+      setErrorConfirmPassMsg('กรุณากรอกยืนยันรหัสผ่าน');
+    }
   };
 
   const defaultErrorMsg = () => {
@@ -95,11 +129,13 @@ export default function LoginModal(props) {
     setErrorPasswordMsg('');
     setErrorRegMsg('');
     setErrorLoginMsg('');
-  }
+    setErrorConfirmPassMsg('');
+  };
 
   const setLogin = () => {
     setName('');
     setPassword('');
+    setConfirmPassword('');
     defaultErrorMsg();
     setLoginModal(true);
   };
@@ -107,6 +143,7 @@ export default function LoginModal(props) {
   const setRegister = () => {
     setName('');
     setPassword('');
+    setConfirmPassword('');
     defaultErrorMsg();
     setLoginModal(false);
   };
@@ -130,14 +167,16 @@ export default function LoginModal(props) {
                   <div className={`form-group ${styles.formGroup} ${styles.formLabel}`}>
                     <label htmlFor='name'>ชื่อผู้ใช้</label>
                     <input className='form-control' id='name' 
-                      onChange={handleLoginName} value={name}/>
+                      onChange={handleLoginName} value={name}
+                      maxLength={16} required/>
                     {errorLoginMsg && <p className='text-danger'>{errorLoginMsg}</p>}
                     {errorNameMsg && <p className='text-danger'>{errorNameMsg}</p>}
                   </div>
                   <div className={`form-group ${styles.formGroup} ${styles.formLabel}`}>
                     <label htmlFor='password'>รหัสผ่าน</label>
                     <input className='form-control' type='password' id="password"
-                      onChange={handleLoginPassword} value={password}/>
+                      onChange={handleLoginPassword} value={password}
+                      maxLength={16} required />
                     {errorPasswordMsg && <p className='text-danger'>{errorPasswordMsg}</p>}
                   </div>
                   <div className={`form-group ${styles.formGroup}`}>
@@ -165,15 +204,27 @@ export default function LoginModal(props) {
                     <div className={`form-group ${styles.formGroup} ${styles.formLabel}`}>
                       <label htmlFor='name'>ชื่อผู้ใช้</label>
                       <input className='form-control' id='name' 
-                        onChange={handleRegName} value={name}/>
+                        onChange={handleRegName} value={name}
+                        onKeyUp={handleNameValid}
+                        minLength={4} maxLength={16} required />
                       {errorRegMsg && <p className='text-danger'>{errorRegMsg}</p>}
                       {errorNameMsg && <p className='text-danger'>{errorNameMsg}</p>}  
                     </div>
                     <div className={`form-group ${styles.formGroup} ${styles.formLabel}`}>
                       <label htmlFor='password'>รหัสผ่าน</label>
                       <input className='form-control' type='password' id="password" 
-                        onChange={handleRegPassword} value={password}/>
+                        onChange={handleRegPassword} value={password}
+                        onKeyUp={handlePasswordValid}
+                        minLength={4} maxLength={16} required />
                       {errorPasswordMsg && <p className='text-danger'>{errorPasswordMsg}</p>}
+                    </div>
+                    <div className={`form-group ${styles.formGroup} ${styles.formLabel}`}>
+                      <label htmlFor='confirmPassword'>ยืนยันรหัสผ่าน</label>
+                      <input className='form-control' type='password' id="confirmPassword" 
+                        onChange={handleRegConfirmPassword} value={confirmPassword}
+                        onKeyUp={handleConfirmPassword}
+                        minLength={4} maxLength={16} required />
+                      {errorConfirmPassMsg && <p className='text-danger'>{errorConfirmPassMsg}</p>}
                     </div>
                     <div className={`form-group ${styles.formGroup}`}>
                       <button className={`form-control btn btn-primary ${styles.fblogin} ${styles.formButton}`} type='submit'>
