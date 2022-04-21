@@ -6,24 +6,8 @@ const router = require('express').Router();
 const config = require('./config/config');
 
 router.get('/', (req, res) => {
-  res.send('Backend')
+  res.send('Nothing here!')
 })
-
-// router.get('/init', (req, res) => {
-//   data = {
-//     id: 0,
-//     chapter: 0,
-//     unit: 0,
-//     frame: 0,
-//     resource: {
-//       image: ['', ''],
-//       text: 'hello',
-//       voice: ''
-//     }
-//   }
-//   explore.addnew(data)
-//   return res.send("SUCCESS")
-// })
 
 router.get('/fetch', (req, res) => {
   if (req.isAuthenticated()) {
@@ -44,37 +28,15 @@ router.get('/guestlogin', passport.authenticate('dummy'), (req, res) => {
   return res.send("OK")
 });
 
-router.post('/register', (req, res) => {
-  passport.authenticate('local-register', function(err, user, info) {
-    if(err) {
-      return res.status(500).send(JSON.stringify({
-        'message': "Internal Server error"
-      }));
-    }
-    if(!user) {
-      return res.send(JSON.stringify(info))
-    }
-    if(user) {
-      return res.send("OK");
-    }
-  })(req, res);
-});
+router.post('/register', passport.authenticate('local-register', {
+  successRedirect: config.ENDPOINT.FRONTEND_URL,
+  failureMessage: true
+}));
 
-router.post('/local-login', (req, res) => {
-  passport.authenticate('local-login', function(err, user, info) {
-    if(err) {
-      return res.status(500).send(JSON.stringify({
-        'message': "Internal Server error"
-      }));
-    }
-    if(!user) {
-      return res.send(JSON.stringify(info))
-    }
-    if(user) {
-      return res.send("OK");
-    }
-  })(req, res);
-});
+router.post('/local-login', passport.authenticate('local-login', {
+  successRedirect: config.ENDPOINT.FRONTEND_URL,
+  failureMessage: true
+}))
 
 router.put('/updateInfo', (req, res) => {
   users.updateInfo(req.user, req.body.chapter, req.body.unit, req.body.star, req.body.score, () => {
@@ -129,21 +91,5 @@ router.get('/removeGuest', (req, res) => {
   })
   res.redirect('/api/getuser')
 })
-
-// router.get('/test', (req, res) => {
-//   data = {
-//     id: 1,
-//     chapter: 0,
-//     unit: 0,
-//     frame: 1,
-//     resource: {
-//       image: ['', ''],
-//       text: 'hello',
-//       voice: ''
-//     }
-//   }
-//   explore.addnew(data)
-//   return res.send("SUCCESS")
-// });
 
 module.exports = router;
