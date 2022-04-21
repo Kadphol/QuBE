@@ -35,7 +35,11 @@ function App() {
       }
     })
     .catch(error =>{
-      console.log(error);
+      if(error.response.status === 401) {
+        console.log("unauthorized");
+      } else {
+        console.error(error);
+      }
     })
   },[])
 

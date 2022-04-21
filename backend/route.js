@@ -15,6 +15,8 @@ router.get('/fetch', (req, res) => {
         if (err) throw err
         return res.send(data)
     }) 
+  } else {
+    res.status(401);
   }
 })
 
