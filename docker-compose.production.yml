@@ -12,6 +12,7 @@ services:
       - MONGO_URI=mongodb://mongo:27017/qube
     depends_on:
       - mongo
+    restart: on-failure:5
     networks:
       - qube-app
 
