@@ -112,6 +112,24 @@ export default function LoginModal(props) {
     }
   };
 
+  const loginNameValid = (e) => {
+    const input = e.target.value.trim();
+    if(input.length === 0) {
+      setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
+    } else {
+      setErrorNameMsg('');
+    }
+  };
+
+  const loginPasswordValid = (e) => {
+    const input = e.target.value.trim();
+    if(input.length === 0) {
+      setErrorPasswordMsg('กรุณากรอกรหัสผ่าน');
+    } else {
+      setErrorPasswordMsg('');
+    }
+  };
+
   const handleConfirmPassword = (e) => {
     if(confirmPassword.length > 0) {
       if(password !== confirmPassword) {
@@ -168,6 +186,7 @@ export default function LoginModal(props) {
                     <label htmlFor='name'>ชื่อผู้ใช้</label>
                     <input className='form-control' id='name' 
                       onChange={handleLoginName} value={name}
+                      onKeyUp={loginNameValid}
                       maxLength={16} required/>
                     {errorLoginMsg && <p className='text-danger'>{errorLoginMsg}</p>}
                     {errorNameMsg && <p className='text-danger'>{errorNameMsg}</p>}
@@ -176,6 +195,7 @@ export default function LoginModal(props) {
                     <label htmlFor='password'>รหัสผ่าน</label>
                     <input className='form-control' type='password' id="password"
                       onChange={handleLoginPassword} value={password}
+                      onKeyUp={loginPasswordValid}
                       maxLength={16} required />
                     {errorPasswordMsg && <p className='text-danger'>{errorPasswordMsg}</p>}
                   </div>
