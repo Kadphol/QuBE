@@ -93,6 +93,7 @@ export default function LoginModal(props) {
   };
 
   const handleNameValid = (e) => {
+    setErrorRegMsg('');
     const input = e.target.value.trim();
     if(input.length === 0) {
       setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
@@ -119,6 +120,7 @@ export default function LoginModal(props) {
   };
 
   const loginNameValid = (e) => {
+    setErrorLoginMsg('');
     const input = e.target.value.trim();
     if(input.length === 0) {
       setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
