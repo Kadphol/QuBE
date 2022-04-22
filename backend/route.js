@@ -18,7 +18,7 @@ router.get('/fetch', (req, res) => {
   } else {
     res.status(401);
   }
-})
+});
 
 router.get('/login', passport.authenticate('facebook'))
 router.get('/login/callback', passport.authenticate('facebook', {
@@ -43,19 +43,6 @@ router.post('/local-login', passport.authenticate('local-login', {
 router.put('/updateInfo', (req, res) => {
   users.updateInfo(req.user, req.body.chapter, req.body.unit, req.body.star, req.body.score, () => {
     return res.send("OK")
-  })
-})
-
-router.put('/updatePreSurvey', (req, res) => {
-  users.updatePreSurvey(req.user, req.body.degree, req.body.type, () => {
-    return res.send("OK")
-  })
-})
-
-router.put('/updatePostSurvey', (req, res) => {
-  users.updatePostSurvey(req.user, req.body.satisfy, req.body.comment, () => {
-    return res.send("OK")
-
   })
 })
 

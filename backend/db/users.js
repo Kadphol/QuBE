@@ -75,26 +75,6 @@ module.exports.updateInfo = function (user, chapter, unit, star, score, callback
     })
 }
 
-module.exports.updatePreSurvey = function (user, degree, type, callback) {
-    users.findOne({ id: user.id }).exec((err, res) => {
-        if (res) {
-            res.preSurvey.degree = degree
-            res.preSurvey.type = type
-            res.save()
-        }
-    })
-}
-
-module.exports.updatePostSurvey = function (user, satisfy, comment, callback) {
-    users.findOne({ id: user.id }).exec((err, res) => {
-        if (res) {
-            res.postSurvey.satisfy = satisfy
-            res.postSurvey.comment = comment
-            res.save()
-        }
-    })
-}
-
 module.exports.fetch = function (id, callback) {
     users.findOne({ id: id }, { password: 0 }, callback)
 }
