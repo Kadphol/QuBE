@@ -10,7 +10,7 @@ export default function LoginModal(props) {
 
   const history = useHistory();
   const regexp = /^[a-zA-Z0-9!@#$%^&*)(+=._-]+$/g;
-  const namereg = /^[a-zA-Z0-9]+/g;
+  const namereg = /^[a-zA-Z0-9]+$/g;
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -119,7 +119,8 @@ export default function LoginModal(props) {
     } else {
       setErrorPasswordMsg('');
     }
-    if(confirmPassword.length > 0 && confirmPassword === input) {
+    
+    if(confirmPassword.length > 0 && confirmPassword !== input) {
       setErrorConfirmPassMsg('รหัสผ่านไม่ตรงกัน');
     } else {
       setErrorConfirmPassMsg('');
