@@ -40,6 +40,7 @@ export default function LoginModal(props) {
       axios
         .post('/local-login', { name: name, password: password })
         .then(response => {
+            setLogin();
             window.location.href = ENDPOINT.URL
         })
         .catch(err => {
@@ -60,6 +61,7 @@ export default function LoginModal(props) {
       axios
         .post('/register', { name: name, password: password})
         .then(response => {
+          setLogin();
           window.location.href = ENDPOINT.URL;
         })
         .catch(err => {
