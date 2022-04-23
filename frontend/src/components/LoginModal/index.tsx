@@ -9,8 +9,7 @@ import ENDPOINT from '@config/endpoint'
 export default function LoginModal(props) {
 
   const history = useHistory();
-  const regexp = /^[a-zA-Z0-9!@#$%^&*)(+=._-]+$/g;
-  const namereg = /^[a-zA-Z0-9]+/g;
+  const namereg = /^[a-zA-Z0-9]*$/g;
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -94,15 +93,15 @@ export default function LoginModal(props) {
     setConfirmPassword(e.target.value.trim());
   };
 
-  const handleNameValid = () => {
+  const handleNameValid = (e) => {
     setErrorRegMsg('');
     if(name.length === 0) {
       setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
     } else if(name.length < 4) {
       setErrorNameMsg('ชื่อผู้ใช้ต้องมีความยาวมากกว่า 4 ตัวอักษร');
-    } else if(!namereg.test(name)){ 
+    } else if(!name.match(namereg)){ 
       setErrorNameMsg('ชื่อผู้ใช้งานต้องมีเฉพาะตัวอักษรภาษาอังกฤษและตัวเลขเท่านั้น');
-    } else {
+    }else {
       setErrorNameMsg('');
     }
   };
@@ -112,8 +111,6 @@ export default function LoginModal(props) {
       setErrorPasswordMsg('กรุณากรอกรหัสผ่าน');
     } else if(password.length < 4) {
       setErrorPasswordMsg('รหัสผ่านต้องมีความยาวมากกว่า 4 ตัวอักษร');
-    } else if(!regexp.test(password)){ 
-      setErrorPasswordMsg('รหัสผ่านมีอักขระพิเศษที่ไม่สามารถใช้ได้อยู่');
     } else {
       setErrorPasswordMsg('');
     }

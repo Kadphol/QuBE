@@ -12,11 +12,11 @@ router.get('/', (req, res) => {
 router.get('/fetch', (req, res) => {
   if (req.isAuthenticated()) {
     users.fetch(req.user.id, function (err, data) {
-        if (err) throw err
+        if (err) return res.status(401).send('no authorized');
         return res.send(data)
     }) 
   } else {
-    return res.status(401);
+    return res.status(401).send('no authorized');
   }
 });
 
