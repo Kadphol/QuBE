@@ -10,7 +10,7 @@ export default function LoginModal(props) {
 
   const history = useHistory();
   const regexp = /^[a-zA-Z0-9!@#$%^&*)(+=._-]+$/g;
-  const namereg = /^[a-zA-Z0-9]+$/g;
+  const namereg = /^[a-zA-Z0-9]+/g;
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -94,33 +94,31 @@ export default function LoginModal(props) {
     setConfirmPassword(e.target.value.trim());
   };
 
-  const handleNameValid = (e) => {
+  const handleNameValid = () => {
     setErrorRegMsg('');
-    const input = e.target.value.trim();
-    if(input.length === 0) {
+    if(name.length === 0) {
       setErrorNameMsg('กรุณากรอกชื่อผู้ใช้งาน');
-    } else if(input.length < 4) {
+    } else if(name.length < 4) {
       setErrorNameMsg('ชื่อผู้ใช้ต้องมีความยาวมากกว่า 4 ตัวอักษร');
-    } else if(!namereg.test(input)){ 
+    } else if(!namereg.test(name)){ 
       setErrorNameMsg('ชื่อผู้ใช้งานต้องมีเฉพาะตัวอักษรภาษาอังกฤษและตัวเลขเท่านั้น');
     } else {
       setErrorNameMsg('');
     }
   };
 
-  const handlePasswordValid = (e) => {
-    const input = e.target.value.trim();
-    if(input.length === 0) {
+  const handlePasswordValid = () => {
+    if(password.length === 0) {
       setErrorPasswordMsg('กรุณากรอกรหัสผ่าน');
-    } else if(input.length < 4) {
+    } else if(password.length < 4) {
       setErrorPasswordMsg('รหัสผ่านต้องมีความยาวมากกว่า 4 ตัวอักษร');
-    } else if(!regexp.test(input)){ 
+    } else if(!regexp.test(password)){ 
       setErrorPasswordMsg('รหัสผ่านมีอักขระพิเศษที่ไม่สามารถใช้ได้อยู่');
     } else {
       setErrorPasswordMsg('');
     }
-    
-    if(confirmPassword.length > 0 && confirmPassword !== input) {
+
+    if(confirmPassword.length > 0 && confirmPassword !== password) {
       setErrorConfirmPassMsg('รหัสผ่านไม่ตรงกัน');
     } else {
       setErrorConfirmPassMsg('');
