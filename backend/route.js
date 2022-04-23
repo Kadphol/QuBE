@@ -16,7 +16,7 @@ router.get('/fetch', (req, res) => {
         return res.send(data)
     }) 
   } else {
-    res.status(401);
+    return res.status(401);
   }
 });
 
