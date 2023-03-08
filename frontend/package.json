@@ -60,5 +60,6 @@
     "@types/prop-types": "^15.7.3",
     "@types/styled-components": "^5.1.7",
     "craco-alias": "^2.1.1"
-  }
+  },
+  "homepage": "https://qx.kmutt.ac.th/game"
 }
