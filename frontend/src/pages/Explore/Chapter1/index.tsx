@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -35,77 +35,75 @@ export default function Chapter1() {
       <Back path="/explore" />
       <userContext.Consumer>
         {({ user, setUser }) => (
-          <Fragment>
-            <Router basename="/game/explore">
-              <Switch>
-                <Route
-                  path={`${path}/intro`}
-                  render={() => <Intro />}
-                />
-                <Route
-                  exact
-                  path={path}
-                  render={() => (
-                    <MenuUnitTemplate
-                      user={user}
-                      detail={{
-                        chapter: 1,
-                        title: [
-                          'สวัสดี! คอมพิวเตอร์',
-                          'รู้จักกับบิต',
-                          'คอมพิวเตอร์ทำงาน!',
-                          'เผชิญหน้ากับมังกร 1',
-                        ],
-                        titleEng: [
-                          'Hello world!',
-                          'Bit Representation',
-                          'Computer System Process',
-                          'Beat the dragon I',
-                        ],
-                      }}
-                    />
-                  )}
-                />
-                <Route
-                  path={`${path}/unit-1`}
-                  render={() => (
-                    <Unit1
-                      setUser={setUser}
-                      user={user}
-                    />
-                  )}
-                />
-                <Route
-                  path={`${path}/unit-2`}
-                  render={() => (
-                    <Unit2
-                      setUser={setUser}
-                      user={user}
-                    />
-                  )}
-                />
-                <Route
-                  path={`${path}/unit-3`}
-                  render={() => (
-                    <Unit3
-                      setUser={setUser}
-                      user={user}
-                    />
-                  )}
-                />
-                <Route
-                  path={`${path}/quiz`}
-                  render={() => (
-                    <Quiz
-                      setUser={setUser}
-                      user={user}
-                    />
-                  )}
-                />
-              </Switch>
-            </Router>
+          <Router basename="/game/explore">
+            <Switch>
+              <Route
+                path={`${path}/intro`}
+                render={() => <Intro />}
+              />
+              <Route
+                exact
+                path={path}
+                render={() => (
+                  <MenuUnitTemplate
+                    user={user}
+                    detail={{
+                      chapter: 1,
+                      title: [
+                        'สวัสดี! คอมพิวเตอร์',
+                        'รู้จักกับบิต',
+                        'คอมพิวเตอร์ทำงาน!',
+                        'เผชิญหน้ากับมังกร 1',
+                      ],
+                      titleEng: [
+                        'Hello world!',
+                        'Bit Representation',
+                        'Computer System Process',
+                        'Beat the dragon I',
+                      ],
+                    }}
+                  />
+                )}
+              />
+              <Route
+                path={`${path}/unit-1`}
+                render={() => (
+                  <Unit1
+                    setUser={setUser}
+                    user={user}
+                  />
+                )}
+              />
+              <Route
+                path={`${path}/unit-2`}
+                render={() => (
+                  <Unit2
+                    setUser={setUser}
+                    user={user}
+                  />
+                )}
+              />
+              <Route
+                path={`${path}/unit-3`}
+                render={() => (
+                  <Unit3
+                    setUser={setUser}
+                    user={user}
+                  />
+                )}
+              />
+              <Route
+                path={`${path}/quiz`}
+                render={() => (
+                  <Quiz
+                    setUser={setUser}
+                    user={user}
+                  />
+                )}
+              />
+            </Switch>
             <Music url={src} />
-          </Fragment>
+          </Router>
         )}
       </userContext.Consumer>
     </div>
