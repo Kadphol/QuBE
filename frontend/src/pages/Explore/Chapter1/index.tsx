@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -29,7 +29,6 @@ const main = {
 
 export default function Chapter1() {
   const { path } = useRouteMatch()
-  const [introFinish] = useState(false)
 
   return (
     <div style={main}>
