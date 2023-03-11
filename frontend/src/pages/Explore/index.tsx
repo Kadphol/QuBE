@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  BrowserRouter,
   BrowserRouter as Router,
   Route,
   Switch,
@@ -44,37 +43,35 @@ export default function Explore() {
             <Progressbar {...user} />
             <MapWrapper>
               <Map>
-                <BrowserRouter basename="/game">
-                  <Router>
-                    <Switch>
-                      <Route
-                        exact
-                        path={path}
-                        render={() => <MenuChapter {...user} />}
-                      />
-                      <Route
-                        path={`${path}/chapter-1`}
-                        component={Chapter1}
-                      />
-                      <Route
-                        path={`${path}/chapter-2`}
-                        component={Chapter2}
-                      />
-                      <Route
-                        path={`${path}/chapter-3`}
-                        component={Chapter3}
-                      />
-                      <Route
-                        path={`${path}/chapter-4`}
-                        component={Chapter4}
-                      />
-                      <Route
-                        path={`${path}/chapter-5`}
-                        component={Chapter5}
-                      />
-                    </Switch>
-                  </Router>
-                </BrowserRouter>
+                <Router basename="/game">
+                  <Switch>
+                    <Route
+                      exact
+                      path={path}
+                      render={() => <MenuChapter {...user} />}
+                    />
+                    <Route
+                      path={`${path}/chapter-1`}
+                      component={Chapter1}
+                    />
+                    <Route
+                      path={`${path}/chapter-2`}
+                      component={Chapter2}
+                    />
+                    <Route
+                      path={`${path}/chapter-3`}
+                      component={Chapter3}
+                    />
+                    <Route
+                      path={`${path}/chapter-4`}
+                      component={Chapter4}
+                    />
+                    <Route
+                      path={`${path}/chapter-5`}
+                      component={Chapter5}
+                    />
+                  </Switch>
+                </Router>
               </Map>
             </MapWrapper>
           </React.Fragment>
