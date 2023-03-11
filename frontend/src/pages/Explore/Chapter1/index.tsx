@@ -29,13 +29,14 @@ const main = {
 
 export default function Chapter1() {
   const { path } = useRouteMatch()
+  console.log(path)
 
   return (
     <div style={main}>
       <Back path="/explore" />
       <userContext.Consumer>
         {({ user, setUser }) => (
-          <Router basename="/game/explore">
+          <Router basename="/game/explore/chapter-1">
             <Switch>
               <Route
                 path={`${path}/intro`}
