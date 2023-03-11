@@ -37,7 +37,7 @@ export default function Chapter1() {
       <userContext.Consumer>
         {({ user, setUser }) => (
           <Fragment>
-            <Router>
+            <Router basename="/game">
               <Switch>
                 <Route
                   path={`${path}/intro`}
