@@ -26,9 +26,10 @@ router.get('/login/callback', passport.authenticate('facebook', {
   failureRedirect: config.ENDPOINT.FRONTEND_URL
 }));
 
-router.get('/guestlogin', passport.authenticate('dummy'), (req, res) => {
-  return res.send("OK")
-});
+router.get('/guestlogin', passport.authenticate('dummy', {
+  successRedirect: config.ENDPOINT.FRONTEND_URL,
+  failureMessage: true
+}));
 
 router.post('/register', passport.authenticate('local-register', {
   successRedirect: config.ENDPOINT.FRONTEND_URL,
