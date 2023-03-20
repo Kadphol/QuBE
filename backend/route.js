@@ -28,9 +28,13 @@ router.get(
   })
 )
 
-router.get('/guestlogin', passport.authenticate('dummy'), (req, res) => {
-  return res.redirect(req.headers.referer || '/')
-})
+router.get(
+  '/guestlogin',
+  passport.authenticate('dummy', {
+    successRedirect: config.ENDPOINT.FRONTEND_URL,
+    failureMessage: true,
+  })
+)
 
 router.post(
   '/register',
