@@ -32,7 +32,7 @@ router.get(
   '/guestlogin',
   passport.authenticate('dummy', {
     successRedirect: config.ENDPOINT.FRONTEND_URL,
-    failureMessage: true,
+    failureRedirect: config.ENDPOINT.FRONTEND_URL,
   })
 )
 
@@ -90,14 +90,14 @@ router.get('/removeAll', (req, res) => {
   users.removeAll(function (err) {
     if (err) throw err
   })
-  res.redirect('/api/getuser')
+  res.redirect('/game/api/getuser')
 })
 
 router.get('/removeGuest', (req, res) => {
   users.removeGuest(function (err) {
     if (err) throw err
   })
-  res.redirect('/api/getuser')
+  res.redirect('/game/api/getuser')
 })
 
 module.exports = router
